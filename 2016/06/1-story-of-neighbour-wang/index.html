@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>1 隔壁老王的故事 (从新手到菜鸟的Linux教程) | xDroid&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="好的，欢迎大家来到这篇教程。首先，我们认识一下故事的主角，隔壁老王。 ![想密码想了我十分钟](&#x2F;images&#x2F;2016-06-1-story-of-neighbour-wang&#x2F;Screenshot from 2016-06-01 21-38-44.jpg) 老王是一个学习挺认真的同学，熟悉Microsoft办公套件的打开与关闭，能够默写主流编程语言的名字；他的理想是成为一名全栈工程师。他听说最">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1 隔壁老王的故事 (从新手到菜鸟的Linux教程)">
+<meta property="og:url" content="https://blog.xdrd.tech/2016/06/1-story-of-neighbour-wang/index.html">
+<meta property="og:site_name" content="xDroid&#39;s Blog">
+<meta property="og:description" content="好的，欢迎大家来到这篇教程。首先，我们认识一下故事的主角，隔壁老王。 ![想密码想了我十分钟](&#x2F;images&#x2F;2016-06-1-story-of-neighbour-wang&#x2F;Screenshot from 2016-06-01 21-38-44.jpg) 老王是一个学习挺认真的同学，熟悉Microsoft办公套件的打开与关闭，能够默写主流编程语言的名字；他的理想是成为一名全栈工程师。他听说最">
+<meta property="article:published_time" content="2016-06-02T03:32:10.000Z">
+<meta property="article:modified_time" content="2020-03-29T15:15:57.395Z">
+<meta property="article:author" content="xDroid">
+<meta property="article:tag" content="cd">
+<meta property="article:tag" content="ls">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="xDroid&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/image/logo.png">
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  
+<link rel="stylesheet" href="/css/styles.css">
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-90381862-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <link rel="canonical" href="https://blog.xdrd.tech/2016/06/1-story-of-neighbour-wang/index.html" />
+  <script type="text/javascript">
+    var host = "blog.xdrd.tech";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https:";
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a class="navbar-brand" href="/"><img src="/image/logo.png" /></a>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">xDroid&#39;s Blog</h1>
+  
+    <p class="lead blog-description">假装高冷的Geek</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-1-story-of-neighbour-wang" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      1 隔壁老王的故事 (从新手到菜鸟的Linux教程)
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2016/06/1-story-of-neighbour-wang/" class="article-date"><time datetime="2016-06-02T03:32:10.000Z" itemprop="datePublished">2016-06-01</time></a>
+</div>
+
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>好的，欢迎大家来到这篇教程。首先，我们认识一下故事的主角，隔壁老王。</p>
+<p>![想密码想了我十分钟](/images/2016-06-1-story-of-neighbour-wang/Screenshot from 2016-06-01 21-38-44.jpg)</p>
+<p>老王是一个学习挺认真的同学，熟悉Microsoft办公套件的打开与关闭，能够默写主流编程语言的名字；他的理想是成为一名全栈工程师。他听说最好去学学Linux，因为这对一个程序员，或者未来的程序员有帮助。于是老王找到了我，让我教他用。</p>
+<p>我说：“我也是新手啊。”</p>
+<p>老王说：“你别装了，你看你都精神分裂了。”</p>
+<p>我：“……”</p>
+<p>果然我不适合写小说。</p>
+<p>好吧，我们还是回归到正题上来吧。所以呢，接下来我将会以wang这个用户的身份，带大家一点点积累Linux使用的经验的。<a id="more"></a></p>
+<p>所以初识Linux（Ubuntu），我们登陆之后，先会看到这个：![](/images/2016-06-1-story-of-neighbour-wang/Screenshot from 2016-06-01 21-39-29.jpg)不好意思，这不是一篇教你怎么用Unity（桌面环境）的文章；我们感兴趣的是命令行。按住Ctrl和Alt，再按下T键，就会弹出来通往新世界的大门：</p>
+<p>![我在思考留这么大的空是为了干什么……](/images/2016-06-1-story-of-neighbour-wang/Screenshot from 2016-06-01 22-01-01.jpg)</p>
+<p>其实命令行还是有很多有趣的东西的，比如下面这个命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wang:~$ who am i</span><br><span class="line">wang     pts/19       2016-06-01 22:00 (:1)</span><br></pre></td></tr></table></figure>
+<p>是不是很有趣的语法？<br>行走在bash的大地上，你会感到疑惑：我现在究竟在什么地方呢？可以干什么呢？事实上前一个问题的回答已经显现过了。看到<code>wang:~$</code>中间那个<code>~</code>没有？这个半角的波浪线（全角就不行←_←）代表的就是家目录的意思；其实它会被bash转义成为<code>/home/wang</code>（当然现在我们还不需要关心什么是“转义”），所以文件系统中是没有<code>~</code>这个地方的啦。<br>好了，如果我们想要查看当前目录下的文件，我们应该怎么办呢？<code>ls</code>命令就是为了列举文件(<strong>l</strong>i<strong>s</strong>t files)而编写的。要查看当前目录（现在是<code>~</code>）下的文件，输入<code>ls</code>并按回车：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wang:~$ ls</span><br><span class="line">Desktop    Downloads         Music     Public     Videos</span><br><span class="line">Documents  examples.desktop  Pictures  Templates</span><br></pre></td></tr></table></figure>
+<p>终端里应该能显示高亮的效果，方便我们区分文件的属性。<br><code>ls</code>命令还有许多变体。比如<code>l</code>就是<code>ls</code>本身（可以少按一个键），<code>la</code>可以查看隐藏文件，<code>ll</code><del>大法好</del>可以详细列出文件的信息：就像这样：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wang:~$ l</span><br><span class="line">Desktop/    Downloads/        Music/     Public/     Videos/</span><br><span class="line">Documents/  examples.desktop  Pictures/  Templates/</span><br><span class="line"></span><br><span class="line">wang:~$ la</span><br><span class="line">.bash_history  .dmrc             .ICEauthority  .profile     .xinputrc</span><br><span class="line">.bash_logout   Documents         .<span class="built_in">local</span>         Public       .xsession-errors</span><br><span class="line">.bashrc        Downloads         .mozilla       Templates</span><br><span class="line">.cache         examples.desktop  Music          Videos</span><br><span class="line">.config        .gconf            Pictures       .viminfo</span><br><span class="line">Desktop        .gnome            .pki           .Xauthority</span><br><span class="line"></span><br><span class="line">wang:~$ ll</span><br><span class="line">total 120</span><br><span class="line">drwxr-xr-x 17 wang wang 4096  6月  1 21:59 ./</span><br><span class="line">drwxr-xr-x  7 root root 4096  6月  1 21:36 ../</span><br><span class="line">-rw-------  1 wang wang   63  6月  1 22:00 .bash_history</span><br><span class="line">-rw-r--r--  1 wang wang  220  6月  1 21:36 .bash_logout</span><br><span class="line">-rw-r--r--  1 wang wang 3768  6月  1 21:59 .bashrc</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>为了清晰起见，命令输出结果被我追加了一个换行符；事实上是没有的。<br>那如果我想要切换到某个文件夹下怎么办呢？那就用<code>cd</code>命令(<strong>c</strong>hange <strong>d</strong>irectory)。值得注意的是如果你不确定文件夹的名字，或者只记得一部分，可以先输入一部分，然后按Tab键补全：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wang:~$ <span class="built_in">cd</span> P</span><br><span class="line">Pictures/ Public/</span><br></pre></td></tr></table></figure>
+<p>输入一个<code>i</code>以后再按Tab键就会自动补全为<code>Pictures</code>，因为当前目录下只有一个以<code>Pi</code>开头的文件夹。<br>好的，我们已经切换到<code>~/Picutres</code>下面了，查看一下文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wang:~/Pictures$ ls</span><br><span class="line">Screenshot from 2016-06-01 21-39-29.png</span><br><span class="line">Screenshot from 2016-06-01 21-40-26.png</span><br><span class="line">Screenshot from 2016-06-01 21-40-49.png</span><br><span class="line">Screenshot from 2016-06-01 22-01-01.png</span><br></pre></td></tr></table></figure>
+<p>不好意思这些截图被你们看到了-_-<br>如果想要退回上一级菜单怎么办呢？难道输入<code>cd [parent]</code>吗？其实，父文件夹也是一个“文件”（这种特性我们之后会详细说到），那么“文件名”是什么呢？答案由<code>ll</code>来揭晓：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wang:~/Pictures$ ll</span><br><span class="line">total 232</span><br><span class="line">drwxr-xr-x  2 wang wang   4096  6月  1 22:01 ./</span><br><span class="line">drwxr-xr-x 17 wang wang   4096  6月  1 21:59 ../</span><br><span class="line">-rw-rw-r--  1 wang wang 179521  6月  1 21:39 Screenshot from 2016-06-01 21-39-29.png</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>你猜～对了！<code>.</code>是指向了当前目录，而<code>..</code>是指向了上一级目录。所以为了退出这个文件夹，我们只要输入<code>cd ..</code>就行了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wang:~/Pictures$ <span class="built_in">cd</span> ..</span><br><span class="line">wang:~$</span><br></pre></td></tr></table></figure>
+<p>注意到<code>$</code>前面显示路径的变化了没有？表示我们成功达到了我们的目的。<br>好了，今天的教程就到这里。至于老王的故事，我还是先好好想一想再说吧。</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.xdrd.tech/2016/06/1-story-of-neighbour-wang/" data-id="ck8d81dry0004g1zrdaan1c7m" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+        <a href="https://blog.xdrd.tech/2016/06/1-story-of-neighbour-wang/#disqus_thread" class="article-comment-link">
+          <i class="fa fa-comment"></i> Comments
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cd/" rel="tag">cd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ls/" rel="tag">ls</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2016/06/0-5-installing-ubuntu/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">0.5 开始安装Ubuntu (从新手到菜鸟的Linux教程)</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/2016/06/2-this-apt-has-super-cow-power/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">2 本apt具有超级牛力 (从新手到菜鸟的Linux教程)</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>xDroid, student of UT Austin and formerly PKU.</p>
+
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>小伙伴们</h4>
+    <ul>
+      
+        
+        <li><a href="https://www.blackglory.me/" target="_blank" rel="noopener">BlackGlory</a></li>
+      
+        
+        <li><a href="https://www.buriedjet.com/" target="_blank" rel="noopener">BuriedJet</a></li>
+      
+        
+        <li><a href="https://blog.shsty.site/" target="_blank" rel="noopener">Rabbit_Hole</a></li>
+      
+        
+        <li><a href="https://zh.neuromancer42.com/" target="_blank" rel="noopener">神经漫游日志</a></li>
+      
+        
+        <li><a href="https://taroxd.github.io/" target="_blank" rel="noopener">taroxd</a></li>
+      
+        
+        <li><a href="https://yangwenh.github.io/" target="_blank" rel="noopener">Wenhao Yang</a></li>
+      
+        
+        <li><a href="https://blog.xlk.me/" target="_blank" rel="noopener">XLuke</a></li>
+      
+    </ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2020/03/amd-yes/">AMD Yes!</a>
+        </li>
+      
+        <li>
+          <a href="/2020/03/ssd-perished/">纪念在疫情中不幸暴毙的 SSD</a>
+        </li>
+      
+        <li>
+          <a href="/2019/12/mi-a2-lite-daisy/">Mi A2 Lite</a>
+        </li>
+      
+        <li>
+          <a href="/2019/10/repairing-bacon/">一加一换屏</a>
+        </li>
+      
+        <li>
+          <a href="/2019/09/account-deletion/">账户大清理</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">March 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">October 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">September 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">March 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/02/">February 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">December 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">July 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">May 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">April 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">March 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">February 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">January 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">December 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">November 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">October 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">August 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">July 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">June 2017</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">May 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">March 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/02/">February 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">January 2017</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">December 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">November 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">October 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">September 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">August 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">July 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">June 2016</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">May 2016</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">April 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">March 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">February 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/01/">January 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/12/">December 2015</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/10/">October 2015</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">August 2015</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">July 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/02/">February 2015</a><span class="sidebar-module-list-count">4</span></li></ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2020 xDroid<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'xdroid';
+  
+  var disqus_url = 'https://blog.xdrd.tech/2016/06/1-story-of-neighbour-wang/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</body>
+</html>

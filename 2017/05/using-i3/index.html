@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>跳入 i3 的大坑 | xDroid&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="好吧，因爲上一次 gnome 莫名其妙掛了，想試一下 i3 能不能啓動，於是就掉進了大坑。這裏記錄一下我的使用習慣和相關配置。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跳入 i3 的大坑">
+<meta property="og:url" content="https://blog.xdrd.tech/2017/05/using-i3/index.html">
+<meta property="og:site_name" content="xDroid&#39;s Blog">
+<meta property="og:description" content="好吧，因爲上一次 gnome 莫名其妙掛了，想試一下 i3 能不能啓動，於是就掉進了大坑。這裏記錄一下我的使用習慣和相關配置。">
+<meta property="article:published_time" content="2017-05-23T00:13:19.000Z">
+<meta property="article:modified_time" content="2020-03-29T15:15:57.402Z">
+<meta property="article:author" content="xDroid">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="xDroid&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/image/logo.png">
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  
+<link rel="stylesheet" href="/css/styles.css">
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-90381862-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <link rel="canonical" href="https://blog.xdrd.tech/2017/05/using-i3/index.html" />
+  <script type="text/javascript">
+    var host = "blog.xdrd.tech";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https:";
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a class="navbar-brand" href="/"><img src="/image/logo.png" /></a>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">xDroid&#39;s Blog</h1>
+  
+    <p class="lead blog-description">假装高冷的Geek</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-using-i3" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      跳入 i3 的大坑
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2017/05/using-i3/" class="article-date"><time datetime="2017-05-23T00:13:19.000Z" itemprop="datePublished">2017-05-22</time></a>
+</div>
+
+
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>好吧，因爲<a href="/2017/05/confusing-breakdown/">上一次 gnome 莫名其妙掛了</a>，想試一下 i3 能不能啓動，於是就掉進了大坑。這裏記錄一下我的使用習慣和相關配置。</p>
+<a id="more"></a>
+
+<h2 id="終端"><a href="#終端" class="headerlink" title="終端"></a>終端</h2><ol>
+<li>將終端調整爲 <code>gnome-terminal</code>（在 <code>~/i3/config</code> 中）<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bindsym $mod+Return exec gnome-terminal</span><br></pre></td></tr></table></figure></li>
+<li>對於字體，不知道爲什麼原來好好的 Ubuntu Mono 等一系列字體全都 fallback 到一個奇怪的繁體字體上（其實 UI 也有這個問題）。后来发现只是搜狗输入法没切成简体……</li>
+</ol>
+<h2 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h2><ol>
+<li>啓動菜單使用 <code>synapse</code></li>
+<li>不知爲啥 <code>nautilus</code> 不能用了，改用 <code>thunar</code></li>
+</ol>
+<h2 id="快捷鍵"><a href="#快捷鍵" class="headerlink" title="快捷鍵"></a>快捷鍵</h2><table>
+<thead>
+<tr>
+<th>鍵位</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>$ Return</code></td>
+<td>終端</td>
+</tr>
+<tr>
+<td><code>$ shift q</code></td>
+<td>關閉窗口</td>
+</tr>
+<tr>
+<td><code>$ s</code></td>
+<td>應用菜單</td>
+</tr>
+<tr>
+<td><code>$ ↑/↓/←/→</code></td>
+<td>切換焦點</td>
+</tr>
+<tr>
+<td><code>$ shift ↑/↓/←/→</code></td>
+<td>移動焦點窗口</td>
+</tr>
+<tr>
+<td><code>$ f</code></td>
+<td>全屏（免打擾～）</td>
+</tr>
+<tr>
+<td><code>$ d/w/e</code></td>
+<td>棧疊/標籤/分裂模式</td>
+</tr>
+<tr>
+<td><code>$ shift space</code></td>
+<td>切換浮動狀態</td>
+</tr>
+<tr>
+<td><code>$ [n]</code></td>
+<td>進入工作區 [n]</td>
+</tr>
+<tr>
+<td><code>$ shift [n]</code></td>
+<td>移動焦點處的窗口到工作區 [n]</td>
+</tr>
+<tr>
+<td><code>$ shift c/r/e</code></td>
+<td>重載配置/重啓 i3 /退出</td>
+</tr>
+</tbody></table>
+<h2 id="控制鍵"><a href="#控制鍵" class="headerlink" title="控制鍵"></a>控制鍵</h2><ol>
+<li>原來的控制鍵不能用了，於是要註冊一下（ <code>~/.config/i3/config</code> ）<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Brightness</span><br><span class="line">bindsym XF86MonBrightnessUp exec xbacklight -inc 10</span><br><span class="line">bindsym XF86MonBrightnessDown exec xbacklight -dec 10</span><br><span class="line"></span><br><span class="line"># Audio</span><br><span class="line">bindsym XF86AudioRaiseVolume exec pamixer --increase 10</span><br><span class="line">bindsym XF86AudioLowerVolume exec pamixer --decrease 10</span><br><span class="line">bindsym XF86AudioMute exec pamixer -t</span><br></pre></td></tr></table></figure></li>
+<li>像截屏一類的比較難搞，本來好好的 <code>gnome-screenshot</code> 在 i3 下水土不服，只好默認開 <code>-i</code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># PrintScreen</span><br><span class="line">bindsym Print exec gnome-screenshot</span><br><span class="line">bindsym $mod+Print exec gnome-screenshot -i</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="狀態欄"><a href="#狀態欄" class="headerlink" title="狀態欄"></a>狀態欄</h2><p>首先安裝一堆依賴</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S i3blocks acpi sysstat</span><br></pre></td></tr></table></figure>
+<p>然后……一通瞎搞，直接贴代码吧</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">command&#x3D;&#x2F;usr&#x2F;lib&#x2F;i3blocks&#x2F;$BLOCK_NAME</span><br><span class="line">separator_block_width&#x3D;15</span><br><span class="line">markup&#x3D;none</span><br><span class="line"></span><br><span class="line"># Volume indicator</span><br><span class="line">#</span><br><span class="line"># The first parameter sets the step (and units to display)</span><br><span class="line"># The second parameter overrides the mixer selection</span><br><span class="line"># See the script for details.</span><br><span class="line">[volume]</span><br><span class="line">command&#x3D;~&#x2F;.i3&#x2F;bin&#x2F;volume</span><br><span class="line">interval&#x3D;once</span><br><span class="line">signal&#x3D;10</span><br><span class="line">separator&#x3D;false</span><br><span class="line"></span><br><span class="line">[battery]</span><br><span class="line">command&#x3D;~&#x2F;.i3&#x2F;bin&#x2F;battery</span><br><span class="line">interval&#x3D;30</span><br><span class="line"></span><br><span class="line"># ---</span><br><span class="line"></span><br><span class="line">[iface]</span><br><span class="line">label&#x3D;</span><br><span class="line">#instance&#x3D;wlan0</span><br><span class="line">color&#x3D;#00FF00</span><br><span class="line">interval&#x3D;10</span><br><span class="line">separator&#x3D;false</span><br><span class="line"></span><br><span class="line">[wifi]</span><br><span class="line">instance&#x3D;wlp3s0</span><br><span class="line">interval&#x3D;10</span><br><span class="line"></span><br><span class="line">[proxy]</span><br><span class="line">command&#x3D;~&#x2F;.i3&#x2F;bin&#x2F;proxy</span><br><span class="line">color&#x3D;#00FF00</span><br><span class="line">interval&#x3D;10</span><br><span class="line">separator&#x3D;true</span><br><span class="line"></span><br><span class="line"># ---</span><br><span class="line"></span><br><span class="line">[cpu_usage]</span><br><span class="line">interval&#x3D;1</span><br><span class="line">min_width&#x3D;99.99%</span><br><span class="line">align&#x3D;right</span><br><span class="line">separator&#x3D;false</span><br><span class="line"></span><br><span class="line">[memory]</span><br><span class="line">label&#x3D;</span><br><span class="line">interval&#x3D;30</span><br><span class="line"></span><br><span class="line"># ---</span><br><span class="line"></span><br><span class="line">[time]</span><br><span class="line">command&#x3D;date &#39;+%Y-%m-%d %H:%M:%S&#39;</span><br><span class="line">interval&#x3D;1</span><br></pre></td></tr></table></figure>
+<p>依赖几个小脚本</p>
+<ul>
+<li><code>battery</code><figure class="highlight perl"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/bin/perl</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"><span class="keyword">use</span> utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $acpi;</span><br><span class="line"><span class="keyword">my</span> $status;</span><br><span class="line"><span class="keyword">my</span> $percent;</span><br><span class="line"><span class="keyword">my</span> $ac_adapt;</span><br><span class="line"><span class="keyword">my</span> $full_text;</span><br><span class="line"><span class="keyword">my</span> $short_text;</span><br><span class="line"><span class="keyword">my</span> $bat_number = $ENV<span class="string">&#123;BLOCK_INSTANCE&#125;</span> || <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># read the first line of the "acpi" command output</span></span><br><span class="line"><span class="keyword">open</span> (ACPI, <span class="string">"acpi -b | grep 'Battery $bat_number' |"</span>) <span class="keyword">or</span> <span class="keyword">die</span>;</span><br><span class="line">$acpi = &lt;ACPI&gt;;</span><br><span class="line"><span class="keyword">close</span>(ACPI);</span><br><span class="line"></span><br><span class="line"><span class="comment"># fail on unexpected output</span></span><br><span class="line"><span class="keyword">if</span> ($acpi !~ <span class="regexp">/: (\w+), (\d+)%/</span>) &#123;</span><br><span class="line">	<span class="keyword">die</span> <span class="string">"$acpi\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$status = $1;</span><br><span class="line">$percent = $2;</span><br><span class="line">$full_text = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($status eq <span class="string">'Discharging'</span>) &#123;</span><br><span class="line">	$full_text .= <span class="string">''</span>;</span><br><span class="line">&#125; <span class="keyword">elsif</span> ($status eq <span class="string">'Charging'</span>) &#123;</span><br><span class="line">	$full_text .= <span class="string">''</span>;</span><br><span class="line">&#125; <span class="keyword">elsif</span> ($status eq <span class="string">'Unknown'</span>) &#123;</span><br><span class="line">	<span class="keyword">open</span> (AC_ADAPTER, <span class="string">"acpi -a |"</span>) <span class="keyword">or</span> <span class="keyword">die</span>;</span><br><span class="line">	$ac_adapt = &lt;AC_ADAPTER&gt;;</span><br><span class="line">	<span class="keyword">close</span>(AC_ADAPTER);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ($ac_adapt =~ <span class="regexp">/: ([\w-]+)/</span>) &#123;</span><br><span class="line">		$ac_adapt = $1;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> ($ac_adapt eq <span class="string">'on-line'</span>) &#123;</span><br><span class="line">			$full_text .= <span class="string">''</span>;</span><br><span class="line">		&#125; <span class="keyword">elsif</span> ($ac_adapt eq <span class="string">'off-line'</span>) &#123;</span><br><span class="line">			$full_text .= <span class="string">''</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$short_text = $full_text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($acpi =~ <span class="regexp">/(\d\d:\d\d):/</span>) &#123;</span><br><span class="line">	$full_text .= <span class="string">" ($1)"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$full_text .= <span class="string">" $percent%";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># print text</span></span><br><span class="line"><span class="string">print "</span>$full_text\n<span class="string">";</span></span><br><span class="line"><span class="string">print "</span>$short_text\n<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># consider color and urgent flag only on discharge</span></span><br><span class="line"><span class="string">if ($status eq 'Discharging') &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	if ($percent &lt; 20) &#123;</span></span><br><span class="line"><span class="string">		print "</span><span class="comment">#FF0000\n";</span></span><br><span class="line">	&#125; <span class="keyword">elsif</span> ($percent &lt; <span class="number">40</span>) &#123;</span><br><span class="line">		<span class="keyword">print</span> <span class="string">"#FFAE00\n"</span>;</span><br><span class="line">	&#125; <span class="keyword">elsif</span> ($percent &lt; <span class="number">60</span>) &#123;</span><br><span class="line">		<span class="keyword">print</span> <span class="string">"#FFF600\n"</span>;</span><br><span class="line">	&#125; <span class="keyword">elsif</span> ($percent &lt; <span class="number">85</span>) &#123;</span><br><span class="line">		<span class="keyword">print</span> <span class="string">"#A8FF00\n"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ($percent &lt; <span class="number">5</span>) &#123;</span><br><span class="line">		<span class="keyword">exit</span>(<span class="number">33</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">exit</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></li>
+<li><code>proxy</code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">target=<span class="string">"www.google.com"</span></span><br><span class="line">timeout=1</span><br><span class="line"></span><br><span class="line">res=`proxychains -f /etc/proxychain.conf.test curl <span class="variable">$&#123;target&#125;</span> -m <span class="variable">$&#123;timeout&#125;</span> -I -s -w %&#123;http_code&#125; 2&gt;/dev/null | tail -n1`</span><br><span class="line"></span><br><span class="line">icon=<span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"x<span class="variable">$&#123;res&#125;</span>"</span> = <span class="string">"x200"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment">#2F8DFF</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment">#CD101E</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></li>
+<li><code>volume</code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ismute=`pamixer --get-mute`</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$ismute</span> = <span class="string">"true"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="comment"># mute</span></span><br><span class="line">    muteicon=<span class="string">""</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$muteicon</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$muteicon</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment">#777777</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="comment"># not mute</span></span><br><span class="line">    volume=`pamixer --get-volume`</span><br><span class="line">    icon=<span class="string">""</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span> <span class="variable">$volume</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span> <span class="variable">$volume</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment">#FFFF00</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+超有趣。</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>有趣的配置，見 <a href="https://github.com/j-san/i3-config" target="_blank" rel="noopener">i3-config</a></li>
+<li>全局字體換爲 DejaVu （在 <code>~/i3/config</code> 中）<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">font pango:DejaVu Sans Mono, Noto Sans Mono CJK SC 8</span><br></pre></td></tr></table></figure></li>
+<li>改 <code>$mod</code> 爲 Windows 徽<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set $mod Mod4</span><br></pre></td></tr></table></figure></li>
+<li>自啓動 <code>fcitx</code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exec --no-startup-id fcitx</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.xdrd.tech/2017/05/using-i3/" data-id="ck8d81dum003rg1zrfwmmflev" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+        <a href="https://blog.xdrd.tech/2017/05/using-i3/#disqus_thread" class="article-comment-link">
+          <i class="fa fa-comment"></i> Comments
+        </a>
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2017/05/confusing-breakdown/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">令人困惑的啓動失敗</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/2017/06/anti-aliasing-in-matlab/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">MATLAB 开启字体抗锯齿</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>xDroid, student of UT Austin and formerly PKU.</p>
+
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>小伙伴们</h4>
+    <ul>
+      
+        
+        <li><a href="https://www.blackglory.me/" target="_blank" rel="noopener">BlackGlory</a></li>
+      
+        
+        <li><a href="https://www.buriedjet.com/" target="_blank" rel="noopener">BuriedJet</a></li>
+      
+        
+        <li><a href="https://blog.shsty.site/" target="_blank" rel="noopener">Rabbit_Hole</a></li>
+      
+        
+        <li><a href="https://zh.neuromancer42.com/" target="_blank" rel="noopener">神经漫游日志</a></li>
+      
+        
+        <li><a href="https://taroxd.github.io/" target="_blank" rel="noopener">taroxd</a></li>
+      
+        
+        <li><a href="https://yangwenh.github.io/" target="_blank" rel="noopener">Wenhao Yang</a></li>
+      
+        
+        <li><a href="https://blog.xlk.me/" target="_blank" rel="noopener">XLuke</a></li>
+      
+    </ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2020/03/amd-yes/">AMD Yes!</a>
+        </li>
+      
+        <li>
+          <a href="/2020/03/ssd-perished/">纪念在疫情中不幸暴毙的 SSD</a>
+        </li>
+      
+        <li>
+          <a href="/2019/12/mi-a2-lite-daisy/">Mi A2 Lite</a>
+        </li>
+      
+        <li>
+          <a href="/2019/10/repairing-bacon/">一加一换屏</a>
+        </li>
+      
+        <li>
+          <a href="/2019/09/account-deletion/">账户大清理</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">March 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">October 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">September 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">March 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/02/">February 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">December 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">July 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">May 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">April 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">March 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">February 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">January 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">December 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">November 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">October 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">August 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">July 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">June 2017</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">May 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">March 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/02/">February 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">January 2017</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">December 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">November 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">October 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">September 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">August 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">July 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">June 2016</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">May 2016</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">April 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">March 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">February 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/01/">January 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/12/">December 2015</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/10/">October 2015</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">August 2015</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">July 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/02/">February 2015</a><span class="sidebar-module-list-count">4</span></li></ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2020 xDroid<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'xdroid';
+  
+  var disqus_url = 'https://blog.xdrd.tech/2017/05/using-i3/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</body>
+</html>

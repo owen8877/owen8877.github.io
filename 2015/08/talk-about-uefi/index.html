@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>说说UEFI | xDroid&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="先吐个槽：写完以后，发现逻辑还是有点混乱。没耐心看完的人，只要看下面的结论就行了：  Windows efi引导修复：在安装环境下diskpart+bcdboot Ubuntu efi引导修复：livecd环境下重装（请允许我做出一个悲伤的表情）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="说说UEFI">
+<meta property="og:url" content="https://blog.xdrd.tech/2015/08/talk-about-uefi/index.html">
+<meta property="og:site_name" content="xDroid&#39;s Blog">
+<meta property="og:description" content="先吐个槽：写完以后，发现逻辑还是有点混乱。没耐心看完的人，只要看下面的结论就行了：  Windows efi引导修复：在安装环境下diskpart+bcdboot Ubuntu efi引导修复：livecd环境下重装（请允许我做出一个悲伤的表情）">
+<meta property="article:published_time" content="2015-08-30T03:28:02.000Z">
+<meta property="article:modified_time" content="2020-03-29T15:15:57.402Z">
+<meta property="article:author" content="xDroid">
+<meta property="article:tag" content="uefi">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="xDroid&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/image/logo.png">
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  
+<link rel="stylesheet" href="/css/styles.css">
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-90381862-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <link rel="canonical" href="https://blog.xdrd.tech/2015/08/talk-about-uefi/index.html" />
+  <script type="text/javascript">
+    var host = "blog.xdrd.tech";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https:";
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a class="navbar-brand" href="/"><img src="/image/logo.png" /></a>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">xDroid&#39;s Blog</h1>
+  
+    <p class="lead blog-description">假装高冷的Geek</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-talk-about-uefi" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      说说UEFI
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2015/08/talk-about-uefi/" class="article-date"><time datetime="2015-08-30T03:28:02.000Z" itemprop="datePublished">2015-08-29</time></a>
+</div>
+
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/laptop/">laptop</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先吐个槽：写完以后，发现逻辑还是有点混乱。没耐心看完的人，只要看下面的结论就行了：</p>
+<blockquote>
+<p>Windows efi引导修复：在安装环境下diskpart+bcdboot</p>
+<p>Ubuntu efi引导修复：livecd环境下重装<del>（请允许我做出一个悲伤的表情）</del></p>
+</blockquote>
+<a id="more"></a>
+<p>首先，这篇文章不涉及任何关于UEFI底层操作，也不涉及任何关于GPT分区格式的深入讨论；我只不过是把这几天的烦人经历吐个槽，让路过的人偶尔有一点收获。仅此而已。<br>先从度娘上扒一些基础知识：</p>
+<p><a href="http://baike.baidu.com/link?url=YrKNVa1YZQoXk3_kxkaN_l8kkvUMd1vWIbYWhCJS6XdfRJSUld4IIJfOH97EJ68PbMZRtR74pdSKg7KO4ZxST_" target="_blank" rel="noopener">UEFI_百度百科</a></p>
+<p><a href="http://baike.baidu.com/item/GPT/15413476" target="_blank" rel="noopener">GPT （计算机技术）_百度百科</a></p>
+<p>简单说来，bios是固件程序，uefi是高级固件程序；mbr是分区格式，gpt是高级分区格式。理论上有2*2=4种存在方式,（不过在ubuntu论坛上看到好像是有16种……？）<del>和gilgame其实没什么差别对吧</del>。<br>区别在哪里呢？<br>抛开底层实现方式的不同，我想问题往往出在安装系统的过程中（安装完还管你是什么固件什么分区格式呢）。4种存在方式中，bios+mbr最为原始，uefi+gpt是大势所趋，这两个搭配没有什么问题；uefi+mbr可以用，但是要用legacy模式（有些也称为csm兼容模式），相当于uefi不存在；bios+gpt太奇葩了，好像没有人用。</p>
+<p>细细说来，新旧两种搭配的思维是截然不同的的。</p>
+<table>
+<thead>
+<tr>
+<th>引导方式</th>
+<th></th>
+<th>分区限制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bios+mbr</td>
+<td>加载磁盘首端的位置固定一段程序</td>
+<td>4个主分区</td>
+</tr>
+<tr>
+<td>uefi+gpt</td>
+<td>加载esp分区中的bootx64.efi文件</td>
+<td>128个分区（windows至多赋予128个盘符）</td>
+</tr>
+</tbody></table>
+<p>哎，等等……突然跳出来一个esp分区是什么鬼……这便是efi下的引导方式的精髓。通过让uefi“理解”分区，将引导文件转移到磁盘的任意一个分区，从而将引导文件“摆脱枷锁”。<br>这话可怎么说？mbr分区模式下不仅要指定活动分区，而且引导文件也不能过大，只能一级级地载入，效率比较低；如果开机自检的时候载入的文件能一步到位，岂不是会快很多（虽然这些都是我脑补的）？<br>esp分区要求分区格式为fat系列中的一种（fat12，fat16，fat32），位置不作要求，但是在ubuntu的官方指南中强烈要求esp分区数量不得超过一个。<del>实际上，在各种分区软件中，esp分区的格式都是识别为“efi分区”，而不是fat系列( ╯□╰ )。</del></p>
+<p>说句题外话。有人经常问，说windows安装程序在划磁盘的时候，总是一口气建立了四个分区。没错，因为它建立了这几个分区：</p>
+<ul>
+<li>recover分区，450MB</li>
+<li>efi分区，100MB</li>
+<li>msr分区，128MB</li>
+<li>你的C分区，99.3GB<br>这是一种常见的情况。recover分区放置winre环境，efi分区放置引导文件，msr分区鬼知道放了什么<del>（因为大家都识别不了）</del>，最后才把余下的空间给C分区。</li>
+</ul>
+<p>那么各大操作系统对于uefi固件的支援情况怎么样呢？grub（代表linux和unix阵营）分legacy grub（就是grub1）和grub2，前者几乎不支持uefi启动，后者是支持的。bootmgr方面，win7还不能识别uefi，尽管安装的时候会划出esp分区（捂脸）；win8以上是原生支持的。<br>对gpt分区呢？linux阵营好像支持的不错；<del>高贵的</del>mac osx<del>（你不就是一个unix叫什么叫）</del>也支持；然而windows情况比较复杂（x86_64为例）：在xp时代（那是什么年代了）能读写gpt分区但是不能启动；win7原生不支持，必须要手动加载efi文件。反正windows8以上微软强烈要求用uefi+gpt分区。</p>
+<p>强烈要求到什么地步呢？就是搞了一个Secure boot。<br>Secure boot是什么？简单来说，就是签名不通过的引导文件不能启动。在efi的标准中，这个选项与csm是冲突的（很好理解嘛，都csm兼容了还能感觉到uefi固件么）。这里也有许多复杂的事情，什么x86平台的可以关闭，arm平台的不可以关闭……你问我surface1&amp;2装android x86这么难，大概就是这个原因。</p>
+<p>来讲讲我这几天折腾的感受：</p>
+<p>先装的windows10，再装的ubuntu。ubuntu还算比较智能，写了一个grub2覆盖原来的默认引导文件，把windows启动项往里一扔完事。<br>但是呢（no zuo no die），windows10实在不好用（而且没有正版），就退回windows8.1（即重新安装）。在这一步中，我把本来分出来的recover分区删掉，把efi分区向前挪，再划分分区。那么问题就来了：引导怎么办呢？</p>
+<p>windows的引导不打紧，在安装环境用bcdboot x64重建一下就行；ubuntu的grub引导可是惨了，尽管备份了一次（而且grub.cfg应该还不在efi分区里），但是恢复回去以后居然不认！不认！<br>在livecd环境下死活装上了grub，然而等待我的是一闪而过的lenovo标志，然后又是windows启动……<br>究竟出什么问题了呢？个人推测，有以下几种可能性：</p>
+<ul>
+<li>grub.cfg分区数目错误（因为删掉了recover分区）</li>
+<li>grub2没找到/dev/sda7上面的grub.cfg</li>
+<li>uefi固件压根没有理会grub，即grub引导文件不在uefi的引导选项范围内（后几日推测，可能性最大）<br>所以说……最简单粗暴的方法就是重装ubuntu。</li>
+</ul>
+<p>最后再说一句：uefi+gpt模式下，以前一切一切的引导修复、（基于bios的）盗版激活全部失效。很简单，前者基于mbr，后者依赖传统bios。</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.xdrd.tech/2015/08/talk-about-uefi/" data-id="ck8d81dt90036g1zr6ik3fxnw" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+        <a href="https://blog.xdrd.tech/2015/08/talk-about-uefi/#disqus_thread" class="article-comment-link">
+          <i class="fa fa-comment"></i> Comments
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uefi/" rel="tag">uefi</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2015/08/s210-configure/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">S210调教</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/2015/08/os-fighting/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">OS大乱斗</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>xDroid, student of UT Austin and formerly PKU.</p>
+
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>小伙伴们</h4>
+    <ul>
+      
+        
+        <li><a href="https://www.blackglory.me/" target="_blank" rel="noopener">BlackGlory</a></li>
+      
+        
+        <li><a href="https://www.buriedjet.com/" target="_blank" rel="noopener">BuriedJet</a></li>
+      
+        
+        <li><a href="https://blog.shsty.site/" target="_blank" rel="noopener">Rabbit_Hole</a></li>
+      
+        
+        <li><a href="https://zh.neuromancer42.com/" target="_blank" rel="noopener">神经漫游日志</a></li>
+      
+        
+        <li><a href="https://taroxd.github.io/" target="_blank" rel="noopener">taroxd</a></li>
+      
+        
+        <li><a href="https://yangwenh.github.io/" target="_blank" rel="noopener">Wenhao Yang</a></li>
+      
+        
+        <li><a href="https://blog.xlk.me/" target="_blank" rel="noopener">XLuke</a></li>
+      
+    </ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2020/03/amd-yes/">AMD Yes!</a>
+        </li>
+      
+        <li>
+          <a href="/2020/03/ssd-perished/">纪念在疫情中不幸暴毙的 SSD</a>
+        </li>
+      
+        <li>
+          <a href="/2019/12/mi-a2-lite-daisy/">Mi A2 Lite</a>
+        </li>
+      
+        <li>
+          <a href="/2019/10/repairing-bacon/">一加一换屏</a>
+        </li>
+      
+        <li>
+          <a href="/2019/09/account-deletion/">账户大清理</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">March 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">October 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">September 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">March 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/02/">February 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">December 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">July 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">May 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">April 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">March 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">February 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">January 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">December 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">November 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">October 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">August 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">July 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">June 2017</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">May 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">March 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/02/">February 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">January 2017</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">December 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">November 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">October 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">September 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">August 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">July 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">June 2016</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">May 2016</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">April 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">March 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">February 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/01/">January 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/12/">December 2015</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/10/">October 2015</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">August 2015</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">July 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/02/">February 2015</a><span class="sidebar-module-list-count">4</span></li></ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2020 xDroid<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'xdroid';
+  
+  var disqus_url = 'https://blog.xdrd.tech/2015/08/talk-about-uefi/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</body>
+</html>

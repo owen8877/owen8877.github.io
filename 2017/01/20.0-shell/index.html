@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>20.0 shell语言 (从新手到菜鸟的Linux教程) | xDroid&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="忙里偷闲写点东西……想了想好像也快没什么好写了（尴尬），于是挖个大坑吧，看看什么时候能填完。 那么就来接触一下 bash 的语法吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20.0 shell语言 (从新手到菜鸟的Linux教程)">
+<meta property="og:url" content="https://blog.xdrd.tech/2017/01/20.0-shell/index.html">
+<meta property="og:site_name" content="xDroid&#39;s Blog">
+<meta property="og:description" content="忙里偷闲写点东西……想了想好像也快没什么好写了（尴尬），于是挖个大坑吧，看看什么时候能填完。 那么就来接触一下 bash 的语法吧。">
+<meta property="article:published_time" content="2017-01-19T03:14:52.000Z">
+<meta property="article:modified_time" content="2020-03-29T15:15:57.395Z">
+<meta property="article:author" content="xDroid">
+<meta property="article:tag" content="bash">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="xDroid&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/image/logo.png">
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  
+<link rel="stylesheet" href="/css/styles.css">
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-90381862-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <link rel="canonical" href="https://blog.xdrd.tech/2017/01/20.0-shell/index.html" />
+  <script type="text/javascript">
+    var host = "blog.xdrd.tech";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https:";
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a class="navbar-brand" href="/"><img src="/image/logo.png" /></a>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">xDroid&#39;s Blog</h1>
+  
+    <p class="lead blog-description">假装高冷的Geek</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-20.0-shell" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      20.0 shell语言 (从新手到菜鸟的Linux教程)
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2017/01/20.0-shell/" class="article-date"><time datetime="2017-01-19T03:14:52.000Z" itemprop="datePublished">2017-01-18</time></a>
+</div>
+
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>忙里偷闲写点东西……想了想好像也快没什么好写了（尴尬），于是挖个大坑吧，看看什么时候能填完。</p>
+<p>那么就来接触一下 bash 的语法吧。</p>
+<a id="more"></a>
+<p>bash 是不是在<a href="/2016/06/3-hello-world-in-shell/">第三篇</a>的时候提到过来着？那一篇似乎只说了 <code>echo</code> 。翻了一下我之前学 bash 语法的网页，是<a href="http://c.biancheng.net/cpp/shell/" target="_blank" rel="noopener">这篇</a>，觉得讲的挺好的 <del>意思是估计接下来的教程全都得抄</del> 。那么我们就开始吧。</p>
+<hr>
+<p>首先明确几件比较重要的事情：</p>
+<ul>
+<li>shell 语言（和它的后继者们）都是 <em>脚本语言</em> ，所谓 <em>脚本语言</em> 就是可以不用编译直接运行的；因此，脚本语言有一个非常重要的特点，就是可以在到运行时才确定句子的赋值，换句话说就是可以在运行到某句话的时候才“写出”它的样子然后马上执行，或者干脆“拼凑”出一句程序运行</li>
+<li>shell 就是这个语言的 <a href="https://zh.wikipedia.org/wiki/%E8%AF%BB%E5%8F%96%EF%B9%A3%E6%B1%82%E5%80%BC%EF%B9%A3%E8%BE%93%E5%87%BA%E5%BE%AA%E7%8E%AF" target="_blank" rel="noopener">REPL</a> ，也即是说怎么在终端输入就可以怎么在脚本里写</li>
+<li>由于是弱类型语言（所有变量均视为字符串），加上动态生成程序的样子，因此实际运行的程序的模样可能和写的时候千差万别</li>
+</ul>
+<p>总之弱类型还是系统相关就导致这语言使用不当会很危险～～</p>
+<hr>
+<p>首先开始写第一个 shell 脚本吧！</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nano hello_world.sh <span class="comment"># or `vim hello_world.sh`</span></span><br></pre></td></tr></table></figure>
+<p>然后输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Hello World!"</span></span><br></pre></td></tr></table></figure>
+<p>开头的一行叫 <a href="https://zh.wikipedia.org/wiki/Shebang" target="_blank" rel="noopener"><strong>释伴(shebang)</strong></a> （这是我见过的信达雅的翻译之一），用来表明以下的程序由 <code>/bin/sh</code> 来执行（反正 <code>sh</code> 被软链接到 <code>bash</code> 上）。接下来的程序就与平时我们所见的 shell 命令没什么区别了；命令行下输入的命令与脚本里被解释的命令运行模式几乎是一样的。</p>
+<hr>
+<p>然鹅怎么运行呢，记得当年菜鸟的自己也是遇到了“千古难题”：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hello_world.sh</span><br><span class="line">sh: <span class="built_in">command</span> not found: hello_world.sh</span><br></pre></td></tr></table></figure>
+<p>不就在目录下吗，为什么找不到呢？因为这样直接写出来的命令， bash 会到 <code>$PATH</code> 中去找（可以理解成一个 yindian 的路径），而当前目录一般都不会在钦定的系统目录中（对吧），自然找不到啦。</p>
+<p>那怎么才能找到呢？很简单，指定该文件是 <code>./hello_world.sh</code> 是当前目录下的这个文件就可以了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ./hello_world.sh</span><br><span class="line">sh: permission denied: ./hello_world.sh</span><br></pre></td></tr></table></figure>
+<p>黑人问号？怎么权限拒绝了呢？明明可以读可以写啊？原来 Unix/Linux 除了读写之外还有第三种权限是 <strong>可执行权限</strong> ，没有可执行权限自然是不能运行该脚本的啦。为了赋予我们能够执行这个文件，我们要用到 <code>chmod</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ chmod +x hello_world.sh </span><br><span class="line">$ ls -l hello_world.sh </span><br><span class="line">-rwxr-xr-x 1 xdroid users 33 Jan 19 09:49 hello_world.sh</span><br></pre></td></tr></table></figure>
+<p><code>+x</code> 参数的意思是给所有人都增加执行这个文件的权限，用 <code>ls -l</code> 可以看到文件详细的情况。现在就可以执行了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ./hello_world.sh </span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>既然能输出，那怎么输入呢？用 <code>read</code> 呗：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vim hello_world.sh</span><br><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Please enter you name : "</span></span><br><span class="line"><span class="built_in">read</span> NAME</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Your name is <span class="variable">$NAME</span>. Bye."</span></span><br></pre></td></tr></table></figure>
+<p>运行一下试试</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ./hello_world.sh </span><br><span class="line">Please enter your name : </span><br><span class="line">xDroid</span><br><span class="line">Your name is xDroid. Bye.</span><br></pre></td></tr></table></figure>
+<p>想想也知道 <code>read NAME</code> 的作用是将输入的一行读到 <code>NAME</code> 这个变量里去，可是为什么下一行使用的时候还要在变量名前加 <code>$</code> 号呢？我们下一篇说这个事情。</p>
+<hr>
+<p>P.S. 关于释伴</p>
+<p>别以为释伴只能写 <code>#!/bin/sh</code> 哦！除了 <code>#!/usr/bin/python</code> 这一类脚本语言解释器以外，其实什么命令都是可以的～～（以下摘抄自维基百科）</p>
+<blockquote>
+<p>由于 shebang 开头的井号也是 Bourne shell 和许多其它解释性语言的注释符，因此在这些语言中，解释器指令本身会被解释器认为是单纯的注释而跳过。 然而，并不是每一种解释器都会自动忽略 shebang 行，例如对于下面的脚本，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;cat</span><br><span class="line">Hello world! </span><br></pre></td></tr></table></figure>
+<p><code>cat</code> 会把文件中的两行都输出到标准输出中。</p>
+</blockquote>
+<p>我理解下来意思是说 shebang 之后可以跟任意的命令，然后运行这个脚本的时候这个文件会作为参数传给这个命令。除了 cat 的这个例子之外我还准备了一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;sort</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<p>将这个文件保存为 <code>test.sh</code>，赋予可执行权限，再运行一下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ chmod +x test.sh</span><br><span class="line">$ ./test.sh </span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line"><span class="comment">#!/usr/bin/sort</span></span><br></pre></td></tr></table></figure>
+<p>看，它将 shebang 一起排序进去了。</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.xdrd.tech/2017/01/20.0-shell/" data-id="ck8d81ds8000ng1zr1qcoas84" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+        <a href="https://blog.xdrd.tech/2017/01/20.0-shell/#disqus_thread" class="article-comment-link">
+          <i class="fa fa-comment"></i> Comments
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bash/" rel="tag">bash</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2017/01/19-xxd/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">19 xxd (从新手到菜鸟的Linux教程)</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/2017/01/bash-read/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">Bash 中 read 的行为</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>xDroid, student of UT Austin and formerly PKU.</p>
+
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>小伙伴们</h4>
+    <ul>
+      
+        
+        <li><a href="https://www.blackglory.me/" target="_blank" rel="noopener">BlackGlory</a></li>
+      
+        
+        <li><a href="https://www.buriedjet.com/" target="_blank" rel="noopener">BuriedJet</a></li>
+      
+        
+        <li><a href="https://blog.shsty.site/" target="_blank" rel="noopener">Rabbit_Hole</a></li>
+      
+        
+        <li><a href="https://zh.neuromancer42.com/" target="_blank" rel="noopener">神经漫游日志</a></li>
+      
+        
+        <li><a href="https://taroxd.github.io/" target="_blank" rel="noopener">taroxd</a></li>
+      
+        
+        <li><a href="https://yangwenh.github.io/" target="_blank" rel="noopener">Wenhao Yang</a></li>
+      
+        
+        <li><a href="https://blog.xlk.me/" target="_blank" rel="noopener">XLuke</a></li>
+      
+    </ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2020/03/amd-yes/">AMD Yes!</a>
+        </li>
+      
+        <li>
+          <a href="/2020/03/ssd-perished/">纪念在疫情中不幸暴毙的 SSD</a>
+        </li>
+      
+        <li>
+          <a href="/2019/12/mi-a2-lite-daisy/">Mi A2 Lite</a>
+        </li>
+      
+        <li>
+          <a href="/2019/10/repairing-bacon/">一加一换屏</a>
+        </li>
+      
+        <li>
+          <a href="/2019/09/account-deletion/">账户大清理</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">March 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">October 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">September 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">March 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/02/">February 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">December 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">July 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">May 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">April 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">March 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">February 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">January 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">December 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">November 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">October 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">August 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">July 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">June 2017</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">May 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">March 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/02/">February 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">January 2017</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">December 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">November 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">October 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">September 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">August 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">July 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">June 2016</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">May 2016</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">April 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">March 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">February 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/01/">January 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/12/">December 2015</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/10/">October 2015</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">August 2015</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">July 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/02/">February 2015</a><span class="sidebar-module-list-count">4</span></li></ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2020 xDroid<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'xdroid';
+  
+  var disqus_url = 'https://blog.xdrd.tech/2017/01/20.0-shell/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>xDroid&#39;s Blog</title>
+  
+  <subtitle>假装高冷的Geek</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.xdrd.tech/"/>
+  <updated>2020-03-29T17:42:40.608Z</updated>
+  <id>https://blog.xdrd.tech/</id>
+  
+  <author>
+    <name>xDroid</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AMD Yes!</title>
+    <link href="https://blog.xdrd.tech/2020/03/amd-yes/"/>
+    <id>https://blog.xdrd.tech/2020/03/amd-yes/</id>
+    <published>2020-03-29T15:57:46.000Z</published>
+    <updated>2020-03-29T17:42:40.608Z</updated>
+    
+    <content type="html"><![CDATA[<p>自从 <a href="/2020/03/ssd-perished/" title="那块 SSD 在疫情中暴毙了">那块 SSD 在疫情中暴毙了</a> 之后，我摸出了之前换下的硬盘装了上去，还算能用。但是与此同时一直积累着的想要换电脑的冲动抑制不住了（神船：你不<a href="/2019/07/laptop-case/" title="爱我">爱我</a>了吗x），就盘算着趁春假这段时间攥一台。</p><p>在网上闲逛逛正好看到 Ryzen 5 打折力度还不错，于是就不如以 AMD Yes 的口号出发吧（滑稽</p><a id="more"></a><h2 id="攒机"><a href="#攒机" class="headerlink" title="攒机"></a>攒机</h2><p>首先确定中心思想：Ryzen 5 2600 + B450 （因为穷，但是又想要性能</p><p>结果过了几分钟查到 microcenter 卖 2600X 打对折。那肯定香啊！而且配套主板还能立减 20 刀，那赶紧买啊！</p><p>呃……店内自提……？最近的网点是在 Houston ……？</p><p>幸好有（并不）熟的人那两天在 Houston 马上要回来，于是就托他带回来了。</p><hr><p>显卡由于买不起全新的，故转战 ebay 。由于矿卡鱼龙混杂，水太深，干脆就当不知道有这回事（鸵鸟态度x</p><p>结果下单后过了几分钟又发现带保的非公版 RX470 ，那肯定香啊（如出一辙的剧情）于是退了之前的订单重下。</p><hr><p>由于小区的网络是无线网，而且买的是<del>低端</del>主板，没有自带 wifi ，所以只能在 ebay 上网购无线网卡。</p><p>看了一圈……为啥无线网卡都这么贵……随便买一个 8265 得了……</p><hr><p>机箱和电源：新蛋有促销，虽然是 mail-in rebate ，但是我相信（flag）通过合理操作应该能搞到的！</p><p>发现两边都是铁板的机箱普遍 60 刀朝上……下面价位的全都是光污染（我吐了，但是想想成本似乎也挺合理的……</p><p>（在 Amazon 上逛逛）为啥便宜的风扇全都是 RGB ！ LED 不要钱的吗（可能还真不要，我也不知道怎么关掉x</p><hr><p>小结：所以整机的配置大概是这个样子的：</p><table><thead><tr><th>组件</th><th></th><th>价格（单位：刀）</th><th>吐槽</th></tr></thead><tbody><tr><td>CPU</td><td><a href="https://www.microcenter.com/product/505629/amd-ryzen-5-2600x-36ghz-6-core-am4-boxed-processor-with-wraith-spire-cooler" target="_blank" rel="noopener">Ryzen 2600X</a></td><td>99.99</td><td>所以 CPU 的毛利究竟有多高啊……</td></tr><tr><td>Motherboard</td><td><a href="https://www.microcenter.com/product/510207/gigabyte-b450-aorus-m-amd-am4-matx-motherboard" target="_blank" rel="noopener">Gigabyte B450 AORUS M</a></td><td>84.99-20</td><td>这里买不到迫击炮……也不是买不到，但是好贵……</td></tr><tr><td>SSD</td><td><a href="https://www.amazon.com/Samsung-970-EVO-500GB-MZ-V7E500BW/dp/B07BN4NJ2J/ref=sr_1_2" target="_blank" rel="noopener">Samsung (MZ-V7E500BW) 970 EVO 500GB</a></td><td>87.99</td><td>五年质保（新月.jpg</td></tr><tr><td>Memory</td><td><a href="https://www.microcenter.com/product/607433/crucial-ballistix-sport-lt-16gb-(2-x-8gb)-ddr4-3200-pc4-25600-cl16-dual-channel-desktop-memory-kit-bls2k8g4d32aesb---gray" target="_blank" rel="noopener">Crucial Ballistix Sport LT 2x8GB</a></td><td>68.99</td><td></td></tr><tr><td>Graphics Card</td><td><a href="https://www.ebay.com/itm/MSI-Radeon-RX-470-4GB-Graphics-Card-Processor-ARMOR-4G-OC-for-Gaming/323948065176" target="_blank" rel="noopener">MSI Radeon RX 470 4GB Armor</a></td><td>83.99+8.99</td><td>带保，香了（虽然看成色可能是返修过的</td></tr><tr><td>Power</td><td><a href="https://www.newegg.com/corsair-cx-series-cx450-450w/p/N82E16817139201" target="_blank" rel="noopener">CORSAIR CX 450 (Non-mod)</a></td><td>54.99-20</td><td>非模组的线加起来可以绕地球三圈（</td></tr><tr><td>Wireless Network</td><td><a href="https://www.ebay.com/itm/GENUINE-DELL-WIRELESS-BLUETOOTH-CARD-M-2-INTEL-8265NGW-8F3Y8/253864289929" target="_blank" rel="noopener">M.2 INTEL 8265NGW 8F3Y8</a></td><td>10.5</td><td></td></tr><tr><td></td><td><a href="https://www.ebay.com/itm/NGFF-M-2-To-PCI-E-X1-wifi-adapter-Converter-For-Intel-AX200-8260-7260-Wifi-Card/202929891708" target="_blank" rel="noopener">NGFF M.2 To PCI-E X1 Converter</a></td><td>10.44</td><td></td></tr><tr><td>Case</td><td><a href="https://www.newegg.com/black-corsair-carbide-series-spec-05-atx-mid-tower/p/N82E16811139122" target="_blank" rel="noopener">Corsair Carbide Series SPEC-05</a></td><td>59.99-15</td><td></td></tr><tr><td>Fan</td><td><a href="https://www.amazon.com/gp/product/B00066FH7O" target="_blank" rel="noopener">好像是 Antec 的什么</a></td><td>6.99</td><td></td></tr></tbody></table><p>所以整机（不含税）的话大概是五百多刀的样子……我觉得还是很香的！</p><h2 id="装机"><a href="#装机" class="headerlink" title="装机"></a>装机</h2><p>先来张全家福~</p><p><img src="/images/2020-03-amd-yes/IMG_20200321_141017_resized.jpg" alt="全家福~"></p><p>发现了一堆说明书（新月.jpg）大概流程反正还是 CPU 、内存先插到主板上，然后主板再放进机箱里……</p><p><img src="/images/2020-03-amd-yes/IMG_20200321_151657_resized.jpg" alt="主板放进去了。一开始有一个锚孔没有留意到，一直在想为什么卡不进去（新月"></p><p>先装了显卡……过了一会儿才发现 M.2 SSD 位置被压在显卡下面了（囧），只好全部反工。</p><p><img src="/images/2020-03-amd-yes/IMG_20200321_154435_resized.jpg" alt="主板自带散热片（这里没拍进去），但是用起来温度还是挺高的……"></p><p><img src="/images/2020-03-amd-yes/IMG_20200320_164931_resized.jpg" alt="无线网卡和 adapter"></p><p><img src="/images/2020-03-amd-yes/IMG_20200320_171327_resized.jpg" alt="装好的样子"></p><p><img src="/images/2020-03-amd-yes/IMG_20200321_161509_resized.jpg" alt="稍微走了一下线"></p><p><img src="/images/2020-03-amd-yes/IMG_20200321_165325_resized.jpg" alt="这根多出来的线是风扇调速器……"></p><p><img src="/images/2020-03-amd-yes/IMG_20200321_175921_resized.jpg" alt="贴上标签美滋滋w"></p><p>然后就是漫长的系统安装和迁移……</p><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>现在用了一个星期感觉还不错，打全境 2 中画质大概整机 60 度左右，温度最高的居然是 SSD ……</p><p>还没有跑数值……等有机会了更新一下……</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自从 &lt;a href=&quot;/2020/03/ssd-perished/&quot; title=&quot;那块 SSD 在疫情中暴毙了&quot;&gt;那块 SSD 在疫情中暴毙了&lt;/a&gt; 之后，我摸出了之前换下的硬盘装了上去，还算能用。但是与此同时一直积累着的想要换电脑的冲动抑制不住了（神船：你不&lt;a href=&quot;/2019/07/laptop-case/&quot; title=&quot;爱我&quot;&gt;爱我&lt;/a&gt;了吗x），就盘算着趁春假这段时间攥一台。&lt;/p&gt;
+&lt;p&gt;在网上闲逛逛正好看到 Ryzen 5 打折力度还不错，于是就不如以 AMD Yes 的口号出发吧（滑稽&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="desktop" scheme="https://blog.xdrd.tech/categories/desktop/"/>
+    
+    
+      <category term="amd" scheme="https://blog.xdrd.tech/tags/amd/"/>
+    
+      <category term="2600X" scheme="https://blog.xdrd.tech/tags/2600X/"/>
+    
+      <category term="desktop" scheme="https://blog.xdrd.tech/tags/desktop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>纪念在疫情中不幸暴毙的 SSD</title>
+    <link href="https://blog.xdrd.tech/2020/03/ssd-perished/"/>
+    <id>https://blog.xdrd.tech/2020/03/ssd-perished/</id>
+    <published>2020-03-29T15:34:58.000Z</published>
+    <updated>2020-03-29T15:51:12.392Z</updated>
+    
+    <content type="html"><![CDATA[<p>这篇文章本应当是两周前写的，可是一放春假就开始拖延症，加上其他的一些压力和逃避因素就迟迟没有动笔……我本人也不是很喜欢在博客上写这种无病呻吟的文字（x，但是那天触动还算是挺大的（不然我也不会现在想起来去补</p><p>简单来说呢，就是吃个晚饭的功夫，回到桌前发现电脑重启到 bios 界面了……仔细一看说是没有启动介质，因为之前也遇到过这种情况，想着可能是什么引导器的 bug ，就随手重启了一下。结果重启之后直接卡在 bios logo 那里了（呆）。</p><p>一开始想莫非不是内存挂了（这就比较麻烦了）。把笔记本壳子拆下来之后换了内存插槽的位置，还是没什么卵用（因为之前几天帮人修过开机问题，当时就是内存没插紧，所以思路一直卡在这里）。后来不知怎么开始怀疑是不是硬盘的问题，把 SSD 拆下来开机发现果然可以进 bios 设置了（也就是说自检过了……），那么问题基本上就是 SSD 挂了或者是 nvme 插槽坏了。问同学借了一个 nvme 插槽（这也能借的吗x），看了一下 <code>/dev</code> ，嗯……凉了（哭晕了）。</p><p>既然硬盘已经自挂东南枝了，那只好处理后事了……首先是考虑数据丢失的程度。幸好这块 SSD 上存放的是 Windows 10 和 Arch Linux 的两个系统分区和一些杂七杂八的 <code>/tmp</code> 什么的，所以没有损失下载不到的东西（x 这块 SSD 给我扔冰箱里冻着了，希望有朝一日拿出来还能用+上面零碎的数据还能拷出来（x</p><p>仔细想了一下数据没丢完全是运气好，平时程序放 SSD 数据放 HDD 上，虽然原因仅仅是空间不太够……但是确实给我敲响了数据备份的警钟。（有钱了组 RAID 学习一下……</p><p>P.S. 这块 SSD 是大葱出给我的，原本是笔记本内置的，所以也不知道有没有保修这一说。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这篇文章本应当是两周前写的，可是一放春假就开始拖延症，加上其他的一些压力和逃避因素就迟迟没有动笔……我本人也不是很喜欢在博客上写这种无病呻吟的文字（x，但是那天触动还算是挺大的（不然我也不会现在想起来去补&lt;/p&gt;
+&lt;p&gt;简单来说呢，就是吃个晚饭的功夫，回到桌前发现电脑重启到
+      
+    
+    </summary>
+    
+    
+      <category term="nagging" scheme="https://blog.xdrd.tech/categories/nagging/"/>
+    
+    
+      <category term="ssd" scheme="https://blog.xdrd.tech/tags/ssd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mi A2 Lite</title>
+    <link href="https://blog.xdrd.tech/2019/12/mi-a2-lite-daisy/"/>
+    <id>https://blog.xdrd.tech/2019/12/mi-a2-lite-daisy/</id>
+    <published>2019-12-18T21:34:06.000Z</published>
+    <updated>2020-03-29T15:15:57.398Z</updated>
+    
+    <content type="html"><![CDATA[<p><del>每月流水帐任务 1/1</del></p><p>继上次 <a href="/2019/10/repairing-bacon/" title="给 bacon 换屏幕续命">给 bacon 换屏幕续命</a> 以后，最近发现电池掉得巨快。确认绿色守护正常工作了之后，应该就是电池老化的原因了……总之该换手机了（（（</p><p>这次换的是 Mi A2 Lite（代号 <code>daisy</code>，和 Redmi 6 Pro 基本配置一致），主要是看重 android one 不锁 bootloader（小米锁 bootloader 的操作……你懂的）。</p><p>本来心动 Moto g7 power 的，因为有 5000mAh 的电池而且屏幕也比较大的，只可惜没降价——而且 Moto 的 bootloader 解锁起来也相当麻烦，xda 上给出的说法并不统一。<br>Moto 机型的另一个好处是支持 sdcard 拓展——然鹅红米系列也是支持的。daisy 的另一个优势是指南针和 LTE 支持要比 Moto Power G7 好（后者的国际版压根就没指南针和米国的 4G 频段）。<br>本来还看上 Moto Z3 Play 的，电池太小，太贵，遂弃。</p><p><a href="https://www.ebay.com/itm/Xiaomi-Mi-A2-Lite-Unlocked-32GB-3GB-RAM-DualSim-4G-LTE-Smartphone-Global-Version/173459246269?epid=22025300359&hash=item2862fa0cbd%3Am%3AmvBzAXWZP41glJOlsAFsjzg&LH_ItemCondition=1000" target="_blank" rel="noopener">下单链接</a>（购买后两天就售罄了）</p><a id="more"></a><p>Mi A2 Lite（下简称 daisy）是 Android One 系列的产品。和 bacon 比较的话，机身比较长，所以屏幕对角线更长其实并没有什么优势，去掉刘海和导航键区域，实际展示的内容其实不及 bacon （有种 16:9 vs 黑莓手机的感觉）。<br>厚度也略厚（想想电池还是忍一下吧……但是测了一下电池容量只有93%左右了？难道不是全新？），还有原装的保护壳手感有些难以描述……</p><hr><p>daisy 的分区方案是臭名昭著的 A/B 分区，很多人吐槽到</p><blockquote><p>Installing a custom ROM on an Android phone used to be a walk in the park. However, some newer phones, like Xiaomi Mi A2 Lite, have what’s called an A/B partition layout. This facilitates an update process on stock ROMs, however it makes it harder to install and develop custom ROMs.</p><footer><strong>tkchn</strong><cite><a href="https://github.com/tkchn/daisyinstall/blob/master/README.md" target="_blank" rel="noopener">README.md at master - tkchn/daisyinstall</a></cite></footer></blockquote><p>所以之后理所当然掉进去了（（（<br>事情是这样的：移植 lineageos 的开发者用了一种新的打包格式，要用有补丁的某个 TWRP 才能刷入。起初我不知道这个事情，就 official TWRP 上了，结果 system 清了发现刷不进去，连带着某些奇怪的分区也给清了，结果 fastboot 进不了 recovery。最后下了<a href="https://forum.xda-developers.com/mi-a2-lite/how-to/fastboot-xiaomi-mi-a2-fastboot-images-t3824871" target="_blank" rel="noopener">官方的包</a>，用 <code>flash_all.bat</code> 刷了一遍（其实之后还会回来的233）才修复好这里。</p><p>本来决定 lineageos 一生推，结果和 google play 不太兼容——play 更新安装不了，按理说 safetynet 过了应该不是 root 的问题，不知道是什么 bug。<br>后来刷了 <a href="https://forum.xda-developers.com/mi-a2-lite/development/10-superioros-xiaomi-mi-a2-lite-t3998109" target="_blank" rel="noopener">superioros</a>；9102 年都快结束了 opengapps 10 还没出 stable……好在我正好赶上了 <a href="https://github.com/opengapps/opengapps/pull/773#issuecomment-557702216" target="_blank" rel="noopener">beta 发布</a>，总之能凑合用了233。</p><p>驱动稍微有点问题……后来刷了<a href="https://forum.xda-developers.com/mi-a2-lite/development/r1-nitrogen-kernel-mi-a2-lite-t4011019" target="_blank" rel="noopener">新的内核</a>掉电问题稍微好一点了……但是还是不如 bacon 最后调教到一晚上完全不掉电。</p><p>Pix3lify把手机屏幕关了……只好卸了，然后用 magisk props 手动开启 camera2api……</p><hr><p>昨天把微信什么一堆扔过去了，发现一个问题就是默认通讯录是备份 google 而且不能选择存到本机。后来发现一个上古解决方案 <a href="https://play.google.com/store/apps/details?id=com.fjsoft.mylocalaccount" target="_blank" rel="noopener">MyLocalAccount</a>，实在是太草了。</p><hr><p>Update (19/12/21):</p><p>感觉电池还是不太经用……搁一晚上就会慢慢漏电很不爽。</p><p>指纹传感器在吃炸鸡之后性能显著下降（（（</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;del&gt;每月流水帐任务 1/1&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;继上次 &lt;a href=&quot;/2019/10/repairing-bacon/&quot; title=&quot;给 bacon 换屏幕续命&quot;&gt;给 bacon 换屏幕续命&lt;/a&gt; 以后，最近发现电池掉得巨快。确认绿色守护正常工作了之后，应该就是电池老化的原因了……总之该换手机了（（（&lt;/p&gt;
+&lt;p&gt;这次换的是 Mi A2 Lite（代号 &lt;code&gt;daisy&lt;/code&gt;，和 Redmi 6 Pro 基本配置一致），主要是看重 android one 不锁 bootloader（小米锁 bootloader 的操作……你懂的）。&lt;/p&gt;
+&lt;p&gt;本来心动 Moto g7 power 的，因为有 5000mAh 的电池而且屏幕也比较大的，只可惜没降价——而且 Moto 的 bootloader 解锁起来也相当麻烦，xda 上给出的说法并不统一。&lt;br&gt;Moto 机型的另一个好处是支持 sdcard 拓展——然鹅红米系列也是支持的。daisy 的另一个优势是指南针和 LTE 支持要比 Moto Power G7 好（后者的国际版压根就没指南针和米国的 4G 频段）。&lt;br&gt;本来还看上 Moto Z3 Play 的，电池太小，太贵，遂弃。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.ebay.com/itm/Xiaomi-Mi-A2-Lite-Unlocked-32GB-3GB-RAM-DualSim-4G-LTE-Smartphone-Global-Version/173459246269?epid=22025300359&amp;hash=item2862fa0cbd%3Am%3AmvBzAXWZP41glJOlsAFsjzg&amp;LH_ItemCondition=1000&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下单链接&lt;/a&gt;（购买后两天就售罄了）&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="phone" scheme="https://blog.xdrd.tech/categories/phone/"/>
+    
+    
+      <category term="bacon" scheme="https://blog.xdrd.tech/tags/bacon/"/>
+    
+      <category term="daisy" scheme="https://blog.xdrd.tech/tags/daisy/"/>
+    
+      <category term="Android Q" scheme="https://blog.xdrd.tech/tags/Android-Q/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一加一换屏</title>
+    <link href="https://blog.xdrd.tech/2019/10/repairing-bacon/"/>
+    <id>https://blog.xdrd.tech/2019/10/repairing-bacon/</id>
+    <published>2019-10-27T03:37:37.000Z</published>
+    <updated>2020-03-29T15:15:57.398Z</updated>
+    
+    <content type="html"><![CDATA[<p>终于，我的手机的屏幕也撑不住了（</p><p>在上个手机被棒球砸了之后，我 <a href="/2016/04/oneplus-bacon/" title="换了">换了</a> 用至今日的 Oneplus One 。在搬家后数次与大地亲密接触之后，它终于通过罢工的方式表达了不满（（（</p><a id="more"></a><h2 id="起"><a href="#起" class="headerlink" title="起"></a>起</h2><p>是的，我花了很长的时间才发现只有下半部分的触摸屏不能用了——之所以花了很长的时间，是因为锁屏界面就是这么设计的，我的解锁图案正好经过了一小部分坏掉的区域……直到我意识到并不是软件 bug ，而是那一块的触摸手势根本就没有得到 input ……</p><p>那怎么办呢？至少有三种可行的方案：</p><ol><li>天天插一个 USB 转接器接无线鼠标接收器</li><li>从国内买屏幕并邮寄过洋，然后自己换</li><li>换手机</li></ol><p>至少 1 是一个过渡方案吧。 3 对于我这种穷 PhD 还是稍微省省吧……那就只能咬咬牙花高价运费把屏幕从国内运来咯。</p><h2 id="承"><a href="#承" class="headerlink" title="承"></a>承</h2><p>首先要确定能不能买到。一加一是 14 年的型号了，当时买的时候就已经是清仓型号了。幸好，万能的某宝上还能买到屏幕总成（价格 150 左右），这样还能省去用热风枪的 <a href="/2019/07/laptop-case/" title="烦恼">烦恼</a> （233</p><p>既然运费毛估估也要两百多，不如顺便多买点把后盖也换了。别听一加吹的桃好花好，什么腰果成分 baby skin，被划了之后全是“磨砂”纹路。于是我开始寻找后盖的旅途。</p><p>本来是没打算报多大期望的，因为本来一年多前就在闲鱼上找过一次，当时就直接没找着。不出意料，这次开始也是相当艰苦，出二手、而且各类残废的一加一倒是不少，我一度打算买一台成色尚可的工作室机来杀鸡取卵（（（……后来终于翻到一家店还有白色（似乎是全新）的后盖，开价一百；这个价格不算太高，毕竟一周年售卖的时候应该也是这个价格。</p><p>那几天我在各种论坛上转悠，就看到无数人（见 <a href="https://forums.oneplus.com/threads/oneplus-one-battery-cover-nfc-back-cover.761950/page-5" title="" target="">这里</a> <a href="https://cellphone.parts/wholesale-for-oneplus-one-battery-door-sandstone-black-original" title="" target="">这里</a> <a href="https://www.sunsky-online.com/view/421405/iPartsBuy%20NFC%20Back%20Housing%20Cover%20Replacement%20for%20Oneplus%20One%20Black%20.htm" title="" target="">和这里</a> 都希望通过这种方式给自己的爱机续命（（（……还要顶着闲鱼频繁闪退，用外接鼠标和卖家套近乎……（所以修好之后第一件事情就是卸载闲鱼 =。=</p><p>最后，抱着试一试的心态问了几家出工作室机子的卖家能不能单独卖后盖，倒是有人愿意出，就以 60 的价格成交了。</p><h2 id="转"><a href="#转" class="headerlink" title="转"></a>转</h2><p>越洋包裹的寄送遇到了一丢丢麻烦……因为正好赶上了阅兵，所以耽搁了几天……</p><p>基本上是按照 <a href="https://zh.ifixit.com/Guide/%E4%B8%80%E5%8A%A0+%E4%B8%80+%E6%98%BE%E7%A4%BA%E6%A8%A1%E7%BB%84%E6%9B%B4%E6%8D%A2/30611" title="" target="">一加 一 显示模组更换 | iFixit Repair Guide</a> 和 <a href="https://forum.xda-developers.com/oneplus-one/general/fixing-ghost-touch-grounding-issue-hint-t2951000" title="" target="">Fixing the touch issues for good! | XDA</a> 这两篇来的，期间还看了 <a href="https://www.youtube.com/watch?v=AiJLF_ct9Yc" title="" target="">HOW TO: REPLACE ONEPLUS ONE SCREEN (OPO Disassembly Tutorial) EASY COMPLETE TEARDOWN | Youtube</a> 的拆解，算是有惊无险吧。</p><p><img src="/images/2019-10-repairing-bacon/IMG_20191001_182503-resized.jpg" alt="退役的SIM卡槽；其实寄来的黑色卡槽是不能用的，害得我还只能用白色的"></p><p><img src="/images/2019-10-repairing-bacon/IMG_20191001_183112-resized.jpg" alt="先卸下后盖"></p><p><img src="/images/2019-10-repairing-bacon/IMG_20191001_183508-resized.jpg" alt="专门放螺丝钉（"></p><p>螺丝钉其实挺小的，用了最小的十字螺丝刀（好像有个差点打滑还是把刀磨花了来着，最后用一字大力出奇迹了</p><p><img src="/images/2019-10-repairing-bacon/IMG_20191001_184717-resized.jpg" alt="卸下内盖（顶部）"></p><p><img src="/images/2019-10-repairing-bacon/IMG_20191001_184953-resized.jpg" alt="和（底部），好像是扬声器"></p><p><img src="/images/2019-10-repairing-bacon/IMG_20191001_193600-resized.jpg" alt="电池是搞下来了，但是包装被美工刀划开了……还好不影响内部……"></p><p><img src="/images/2019-10-repairing-bacon/IMG_20191001_194138-resized.jpg" alt="进行到了拆主板上排线的部分……和电脑主板都不太一样"></p><p><img src="/images/2019-10-repairing-bacon/IMG_20191001_194453-resized.jpg" alt="安能辨我是雄雌？"></p><p><img src="/images/2019-10-repairing-bacon/IMG_20191001_200213-resized.jpg" alt="底部充电和扬声器有关的电路板"></p><p><img src="/images/2019-10-repairing-bacon/IMG_20191001_212408-resized.jpg" alt="新的手机和旧的外壳"></p><h2 id="结"><a href="#结" class="headerlink" title="结"></a>结</h2><p><del>为了凑文章的结构我什么都写得出来（</del></p><p>其实现在也不是百分百完美无缺，至少有两个主要问题：</p><ol><li>由于是自己装的，后盖没有贴紧，可能后续会松动。</li><li>屏幕可能是返修货，右下角已经出现屏内开裂迹象，并有不断扩大的趋势。</li></ol><p>Anyway，我还是很喜欢 bacon 的，姑且用一天是一天咯。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;终于，我的手机的屏幕也撑不住了（&lt;/p&gt;
+&lt;p&gt;在上个手机被棒球砸了之后，我 &lt;a href=&quot;/2016/04/oneplus-bacon/&quot; title=&quot;换了&quot;&gt;换了&lt;/a&gt; 用至今日的 Oneplus One 。在搬家后数次与大地亲密接触之后，它终于通过罢工的方式表达了不满（（（&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="phone" scheme="https://blog.xdrd.tech/categories/phone/"/>
+    
+    
+      <category term="oneplus" scheme="https://blog.xdrd.tech/tags/oneplus/"/>
+    
+      <category term="bacon" scheme="https://blog.xdrd.tech/tags/bacon/"/>
+    
+      <category term="repair" scheme="https://blog.xdrd.tech/tags/repair/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>账户大清理</title>
+    <link href="https://blog.xdrd.tech/2019/09/account-deletion/"/>
+    <id>https://blog.xdrd.tech/2019/09/account-deletion/</id>
+    <published>2019-09-14T21:42:58.000Z</published>
+    <updated>2020-03-29T15:15:57.395Z</updated>
+    
+    <content type="html"><![CDATA[<p>心血来潮把 KeepassXC 数据库中的所有账号检查了一遍，目标是关掉尽可能多的非活跃账户和修改弱密码。</p><a id="more"></a><h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR:"></a>TL;DR:</h2><p>显然大部分国产服务是不具备关闭账户的功能的（哼）。很多在欧洲提供服务的公司为了迎合 <a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noopener">GDPR</a> 规范会提供下载/关闭的选项。<br>一些账户关闭的的策略比较安全，比如禁止同一邮箱账号再次注册。</p><h2 id="以下是奖惩名单公布时间！"><a href="#以下是奖惩名单公布时间！" class="headerlink" title="以下是奖惩名单公布时间！"></a>以下是奖惩名单公布时间！</h2><p>以下表格中</p><ul><li><strong>delete?</strong> = 能否删除账户？</li><li><strong>request?</strong> = 能否将用户数据打包一次性下载？</li></ul><h3 id="模范类"><a href="#模范类" class="headerlink" title="模范类"></a>模范类</h3><table><thead><tr><th>service</th><th>delete?</th><th>request?</th><th>备注</th></tr></thead><tbody><tr><td>c9.io</td><td>y</td><td>y</td><td>或者可以迁移到 AWS（c9 我会永远想念你的 QAQ）</td></tr><tr><td>discord</td><td>y</td><td>y</td><td></td></tr><tr><td>facebook</td><td>y</td><td>y</td><td></td></tr><tr><td>IFTTT</td><td>y</td><td>y</td><td></td></tr><tr><td>Pokemon</td><td>y</td><td>y</td><td></td></tr><tr><td>slack</td><td>y*</td><td>y</td><td>仅限关闭 workspace，不过好像和关账户没什么区别吧</td></tr></tbody></table><h3 id="一般类"><a href="#一般类" class="headerlink" title="一般类"></a>一般类</h3><table><thead><tr><th>service</th><th>delete?</th><th>request?</th><th>备注</th></tr></thead><tbody><tr><td>apple</td><td>?</td><td>y</td><td></td></tr><tr><td>archive.org</td><td>y</td><td>?</td><td></td></tr><tr><td>aws</td><td>y</td><td>n</td><td></td></tr><tr><td>bbc</td><td>y</td><td>?</td><td>难道是欧洲国家的公司都能？</td></tr><tr><td>bitbucket</td><td>y</td><td>n</td><td></td></tr><tr><td>chartable</td><td>y</td><td>?</td><td></td></tr><tr><td>cousera</td><td>y</td><td>n</td><td></td></tr><tr><td>craigslist</td><td>y</td><td>n</td><td>很安全，deactivate 了之后不能用相同邮箱注册</td></tr><tr><td>disque</td><td>y</td><td>n</td><td></td></tr><tr><td>EA</td><td>n</td><td>y</td><td></td></tr><tr><td>evernote</td><td>y</td><td>n</td><td>同样是 deactivate</td></tr><tr><td>genymotion</td><td>y</td><td>n</td><td></td></tr><tr><td>grammarly</td><td>y</td><td>n</td><td></td></tr><tr><td>IKEA</td><td>y</td><td>?</td><td></td></tr><tr><td>kaggle</td><td>y</td><td>?</td><td></td></tr><tr><td>ksyun</td><td>y*</td><td>n</td><td>卡在最后一步了，因为手机号，没了收不到验证码</td></tr><tr><td>lenovo</td><td>y</td><td>n</td><td>同样是 deactivate</td></tr><tr><td>minecraft</td><td>y</td><td>?</td><td></td></tr><tr><td>musescore</td><td>y</td><td>n</td><td></td></tr><tr><td>namecheap</td><td>y*</td><td>n</td><td>提交工单很麻烦……</td></tr><tr><td>prezi</td><td>y</td><td>n</td><td></td></tr><tr><td>realvnc</td><td>y</td><td>n</td><td></td></tr><tr><td>somagu</td><td>y</td><td>*</td><td>仅能下载到一些访问日志</td></tr><tr><td>teamviewer</td><td>y</td><td>n</td><td></td></tr><tr><td>unity</td><td>y</td><td>n</td><td></td></tr><tr><td>wjx</td><td>y*</td><td>n</td><td>问卷星账户注销流程同样神烦……</td></tr><tr><td>wordpress</td><td>y</td><td>n</td><td></td></tr></tbody></table><h3 id="无良类（x"><a href="#无良类（x" class="headerlink" title="无良类（x"></a>无良类（x</h3><table><thead><tr><th>service</th><th>delete?</th><th>request?</th><th>备注</th></tr></thead><tbody><tr><td>115</td><td>?</td><td>?</td><td>无法通过web登录=死</td></tr><tr><td>360</td><td>n</td><td>n</td><td>盲猜不能x</td></tr><tr><td>Auphonic</td><td>n</td><td>n</td><td></td></tr><tr><td>baidu</td><td>n</td><td>n</td><td>同样遇到手机无法换绑的问题</td></tr><tr><td>bestbuy</td><td>n</td><td>n</td><td></td></tr><tr><td>cloudiplc</td><td>n</td><td>n</td><td></td></tr><tr><td>dnspod</td><td>n</td><td>n</td><td></td></tr><tr><td>gurobi</td><td>n</td><td>n</td><td></td></tr><tr><td>Imperva</td><td>n</td><td>n</td><td></td></tr><tr><td>leapmotion</td><td>n</td><td>n</td><td></td></tr><tr><td>livere</td><td>n</td><td>n</td><td></td></tr><tr><td>markdownnotes</td><td>n</td><td>n</td><td></td></tr><tr><td>mathworks</td><td>n</td><td>n</td><td></td></tr><tr><td>mcbbs</td><td>n</td><td>n</td><td></td></tr><tr><td>oray</td><td>n</td><td>n</td><td>向日葵 dns</td></tr><tr><td>osu</td><td>n</td><td>n</td><td>改名还要课金（很可惜啊）</td></tr><tr><td>p360</td><td>n</td><td>n</td><td>现 teliportme</td></tr><tr><td>podtrac</td><td>n</td><td>n</td><td></td></tr><tr><td>qiniu</td><td>n</td><td>n</td><td></td></tr><tr><td>renren</td><td>n</td><td>n</td><td><a href="/2019/09/clone-your-renren-com/">人人网备份方案</a></td></tr><tr><td>小站</td><td>n</td><td>n</td><td>盲猜不能+1</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;心血来潮把 KeepassXC 数据库中的所有账号检查了一遍，目标是关掉尽可能多的非活跃账户和修改弱密码。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="KeepassXC" scheme="https://blog.xdrd.tech/tags/KeepassXC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人人网备份方案</title>
+    <link href="https://blog.xdrd.tech/2019/09/clone-your-renren-com/"/>
+    <id>https://blog.xdrd.tech/2019/09/clone-your-renren-com/</id>
+    <published>2019-09-10T14:12:41.000Z</published>
+    <updated>2020-03-29T15:15:57.398Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="//www.renren.com" target="_blank" rel="noopener">人人网</a> 居然还没有倒闭，真是神奇……作为近十年前崛起的社交新秀，人人网（前身校内网）火了也将近有三四年了；不过上大学之后我就几乎没有用过它了……</p><p>最近登陆上去发现整个站已经非常破败了，还是趁早数据 dump 下来比较好。</p><a id="more"></a><p>本来想直接每个网页 <code>ctrl-s</code> 保存的，转念一想这样也太累了（而且一些评论什么不一定能加载出来）。遂考虑用爬虫来进行抓取，语言使用了比较熟悉的 bash ，所使用的脚本放在 <a href="https://github.com/owen8877/clone-your-renren.com" target="_blank" rel="noopener">owen8877/clone-your-renren.com</a> 了。</p><p>中间步骤就不细说了，是比较常规的操作（使用 Firefox/… 的 Developer Tools）。提几点技术细节吧：</p><ol><li><p>bash 如何解析 json 数据呢？这里用到 <a href="//github.com/stedolan/jq" target="_blank" rel="noopener">jq</a> 库，语法上还是比较方便的，直接 pipe 进去就好，至于快不快我就不管了（</p></li><li><p>人人网的数据适配比较奇葩，既不是后端直接渲染，也不是前端动态抓取数据渲染，而是后端把数据塞在 <code>&lt;script&gt;</code> 里然后由浏览器加载并渲染……这种思路还真是第一次见到，毕竟给抓取数据带来了极大的便利www。</p></li><li><p>有一些差点掉到坑里的细节，比如说在抓取相册的时候，每张图片都有不同尺寸的压缩预览，最大的是 <code>xLargeUrl</code> （大概是 1024*768 ，真的抠门……考虑到五六年前可能还算是良心的吧x）。有些图片有这个属性，但是链接是空的，实际的链接在 <code>large</code> （你没看错，命名还不一样）！于是就下载下了空文件，不检查的话就漏过去了囧。</p></li><li><p>名字可以改成 undefined ，似乎不会挂（各种意义上）。</p></li><li><p>没了的东西：日志，语音相册，公共主页的视频（speaking of 公共主页，似乎不好找规律，我就直接存网页了= =）</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;//www.renren.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;人人网&lt;/a&gt; 居然还没有倒闭，真是神奇……作为近十年前崛起的社交新秀，人人网（前身校内网）火了也将近有三四年了；不过上大学之后我就几乎没有用过它了……&lt;/p&gt;
+&lt;p&gt;最近登陆上去发现整个站已经非常破败了，还是趁早数据 dump 下来比较好。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://blog.xdrd.tech/categories/tech/"/>
+    
+    
+      <category term="bash" scheme="https://blog.xdrd.tech/tags/bash/"/>
+    
+      <category term="renren" scheme="https://blog.xdrd.tech/tags/renren/"/>
+    
+      <category term="jq" scheme="https://blog.xdrd.tech/tags/jq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二周目红米 5 刷机</title>
+    <link href="https://blog.xdrd.tech/2019/08/flashing-whyred-2/"/>
+    <id>https://blog.xdrd.tech/2019/08/flashing-whyred-2/</id>
+    <published>2019-08-14T18:00:07.000Z</published>
+    <updated>2020-03-29T15:15:57.398Z</updated>
+    
+    <content type="html"><![CDATA[<p>七月中旬发生的事情，已经记不太清了。以下内容根据刷机日志口胡（</p><a id="more"></a><p>首先又是折腾 7 天的解锁等待。结果这次剧情发生大转折——居然说我使用时间不够长？？于是又等了 1.3 天的 cooldown 。</p><p>解锁后 twrp3.3.1 刷入，但是 sideload 不了，还手贱清了系统分区，这下砖了 QAQ</p><p>为了救砖，下载 miflash 含泪刷回 miui （但是国际版需要解锁才能刷入后安装！<del>这 TM 不是鸡生蛋蛋生鸡的问题吗！</del>好在解锁条件已达成，之后立即可以解锁。</p><p>后来发现直接刷 <a href="https://orangefox.tech/" target="_blank" rel="noopener">orangefox</a> 就好= =</p><p>lineageos 不再主线支持，改用 <a href="https://forum.xda-developers.com/redmi-note-5-pro/development/rom-syberia-project-t3862355" target="_blank" rel="noopener">Syberia Project</a> 。刷入后发现过早刷入了 gapps 导致无法连接网络。<del>含泪</del>用 adb 切换前台进程并安装 ss ，终于通过了开机设置。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;七月中旬发生的事情，已经记不太清了。以下内容根据刷机日志口胡（&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="phone" scheme="https://blog.xdrd.tech/categories/phone/"/>
+    
+    
+      <category term="whyred" scheme="https://blog.xdrd.tech/tags/whyred/"/>
+    
+      <category term="orangefox" scheme="https://blog.xdrd.tech/tags/orangefox/"/>
+    
+      <category term="syberia" scheme="https://blog.xdrd.tech/tags/syberia/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>是时候给沉船换一个外壳了！</title>
+    <link href="https://blog.xdrd.tech/2019/07/laptop-case/"/>
+    <id>https://blog.xdrd.tech/2019/07/laptop-case/</id>
+    <published>2019-07-06T21:26:35.000Z</published>
+    <updated>2020-03-29T15:15:57.398Z</updated>
+    
+    <content type="html"><![CDATA[<p>距 <a href="/2017/08/unboxing-Z6/index.html">上船</a> 已有近两年之久，在这两年中先是 AB 面的卡扣被拆断，最近半年开始，连转轴也无法正常工作了，每次打开盖子的时候都要小心翼翼地扶住转轴处，免得又——</p><p>“咔！崩！”</p><p>说多了都是泪（</p><a id="more"></a><p>所幸万能的淘宝给我们指了一条<del>通往黄浦江.jpg</del>的明路，我才发现居然这种冷门型号的什么配件都有卖（</p><p>于是光速下单了 CD 两面，合计三百多大洋。</p><hr><p>拆机我看的是 <a href="https://www.bilibili.com/video/av49776314" target="_blank" rel="noopener">小秋搞机战神Z6-Z7M T6 T6TI-X5蓝天N850炫龙T50TIC蓝天N85X更换整套外壳实况</a> 的视频。之前也拆过两次，我就按部就班地拆下螺丝钉、拆各种外设部件。</p><p>尸体现场：其实是 C 面和转轴连接的那部分的塑料底座化了（不要问我是什么反应……看图就知道怎么化了……）怪不得之前拧 D 面螺丝的时候有一个拧不动……</p><p><img src="/images/2019-07-laptop-case/IMG_20190706_163745-resized.jpg" alt="尸体现场"></p><hr><p>中间有一步令我x躯一震：“这里触控板的反面都是用双面胶粘起来的……处理比较麻烦，建议用热风机吹吹才能弄下来。”</p><p>热风机？我 TM 上哪里搞热风机？</p><p>向同学求助了一会儿（中间那个功率不到 30W 的吹风机不算 ←_←），误打误撞了解到学校里有热风枪的设备<del>，于是临毕业前美美地薅了羊毛</del></p><p><img src="/images/2019-07-laptop-case/IMG_20190630_145636-resized.jpg" alt="翘下来的触控板，全是胶水= ="></p><p><img src="/images/2019-07-laptop-case/IMG_20190630_145701-resized.jpg" alt="胶水对应的另一面，伤痕累累（"></p><hr><p>回去之后兴高采烈地磨平了一部分胶水，贴上双面胶接上排线开机一试……嗯？触控板没反应吗……可能是没装完全吧（</p><p>全部安装完才发现触控板确实不工作了 QAQ 难道是热风枪吹坏了？</p><p>这里补一个小插曲，那热风枪强怼之前确实查过一些说明书，上面写着工作 -20 到 85 度，存储温度还更宽一些……(应该能耐一百度左右的高温？)</p><p>雪上加霜的是，一不小心在上 D 面螺丝的时候用了卖家寄来的过长的螺丝钉，导致 C 面触控板区域旁边多出来一个小包（暴风哭泣）</p><hr><p>吃了个晚饭一琢磨，发现键盘、触控板和按键的排线可能接反了（这是因为它们的排线都是平的，靠一个翻盖固定住的）；于是动手拆了第二次。</p><p><img src="/images/2019-07-laptop-case/IMG_20190630_184712-resized.jpg" alt="吸取了教训，第二次拆的时候拍下了排线连接方式；话说这个接点安装方式好诡异"></p><p>把两组排线旋转一百八十度加 ！@#￥% 操作，然后就好使了233享受双指滚动的品质生活～</p><hr><p>装机的时候发现有一块很小的板，上面似乎只有一个三极管不知道什么用，不过现在知道了。</p><p><img src="/images/2019-07-laptop-case/IMG_20190630_191635-resized.jpg" alt="原来机身温度测量的这里= =好吧似乎也没什么问题"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;距 &lt;a href=&quot;/2017/08/unboxing-Z6/index.html&quot;&gt;上船&lt;/a&gt; 已有近两年之久，在这两年中先是 AB 面的卡扣被拆断，最近半年开始，连转轴也无法正常工作了，每次打开盖子的时候都要小心翼翼地扶住转轴处，免得又——&lt;/p&gt;
+&lt;p&gt;“咔！崩！”&lt;/p&gt;
+&lt;p&gt;说多了都是泪（&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="laptop" scheme="https://blog.xdrd.tech/categories/laptop/"/>
+    
+    
+      <category term="touchpad" scheme="https://blog.xdrd.tech/tags/touchpad/"/>
+    
+      <category term="screw" scheme="https://blog.xdrd.tech/tags/screw/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数值实验二三事</title>
+    <link href="https://blog.xdrd.tech/2019/03/numerical-experiments-0/"/>
+    <id>https://blog.xdrd.tech/2019/03/numerical-experiments-0/</id>
+    <published>2019-03-25T19:40:30.000Z</published>
+    <updated>2020-03-29T15:15:57.398Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="在-i3-中默认悬浮显示-Matlab-的图像窗口"><a href="#在-i3-中默认悬浮显示-Matlab-的图像窗口" class="headerlink" title="在 i3 中默认悬浮显示 Matlab 的图像窗口"></a>在 i3 中默认悬浮显示 Matlab 的图像窗口</h2><p>用 <code>xprop</code> 查询可知只需配置如下 i3 布局</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for_window [class&#x3D;&quot;MATLAB R2018b - academic use&quot; title&#x3D;&quot;^Fig&quot;] floating enable</span><br></pre></td></tr></table></figure><h2 id="运行数值实验容易自动关机的解决办法"><a href="#运行数值实验容易自动关机的解决办法" class="headerlink" title="运行数值实验容易自动关机的解决办法"></a>运行数值实验容易自动关机的解决办法</h2><p>猜测是因为撞到温度墙了；不知道哪个优化软件把 cpu 调度器设成 <code>powersave</code> 了，改成 <code>performance</code> 再加上酷冷应该就没问题了。<br>参考资料：<a href="https://wiki.archlinux.org/index.php/CPU_frequency_scaling" target="_blank" rel="noopener">CPU Frequency Scaling</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;在-i3-中默认悬浮显示-Matlab-的图像窗口&quot;&gt;&lt;a href=&quot;#在-i3-中默认悬浮显示-Matlab-的图像窗口&quot; class=&quot;headerlink&quot; title=&quot;在 i3 中默认悬浮显示 Matlab 的图像窗口&quot;&gt;&lt;/a&gt;在 i3 中默认悬浮显
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://blog.xdrd.tech/categories/linux/"/>
+    
+    
+      <category term="matlab" scheme="https://blog.xdrd.tech/tags/matlab/"/>
+    
+      <category term="i3" scheme="https://blog.xdrd.tech/tags/i3/"/>
+    
+      <category term="governor" scheme="https://blog.xdrd.tech/tags/governor/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>amixer 切换静音模式的诡异行为</title>
+    <link href="https://blog.xdrd.tech/2019/02/amixer-strange-behaviour/"/>
+    <id>https://blog.xdrd.tech/2019/02/amixer-strange-behaviour/</id>
+    <published>2019-02-06T19:28:00.000Z</published>
+    <updated>2020-03-29T15:15:57.395Z</updated>
+    
+    <content type="html"><![CDATA[<p>最新版的 arch 套件又出奇怪的事情了（滚滚乐滚 bug</p><p>之前切换静音模式是通过绑定功能键行为实现的（在 <code>~/.config/i3/config</code> ）：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bindsym XF86AudioMute exec amixer sset Master toggle</span><br></pre></td></tr></table></figure><p>不知道为什么新版 amixer 静音 Master 的时候所有通道一起 mute ，但是取消静音的时候只设置了 Master ……</p><a id="more"></a><p>如果想直接 toggle 其他通道是不行的= =会导致一种奇妙的循环；只好改成这个样子：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bindsym XF86AudioMute exec amixer sset Master toggle &amp;&amp; amixer sset Headphone unmute &amp;&amp; amixer sset Speaker unmute</span><br></pre></td></tr></table></figure><p>居然能 work ……也是醉了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最新版的 arch 套件又出奇怪的事情了（滚滚乐滚 bug&lt;/p&gt;
+&lt;p&gt;之前切换静音模式是通过绑定功能键行为实现的（在 &lt;code&gt;~/.config/i3/config&lt;/code&gt; ）：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;bindsym XF86AudioMute exec amixer sset Master toggle&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;不知道为什么新版 amixer 静音 Master 的时候所有通道一起 mute ，但是取消静音的时候只设置了 Master ……&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://blog.xdrd.tech/categories/linux/"/>
+    
+    
+      <category term="amixer" scheme="https://blog.xdrd.tech/tags/amixer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入定制 i3bar</title>
+    <link href="https://blog.xdrd.tech/2019/02/decor-i3bar/"/>
+    <id>https://blog.xdrd.tech/2019/02/decor-i3bar/</id>
+    <published>2019-02-05T04:04:03.000Z</published>
+    <updated>2020-03-29T15:15:57.398Z</updated>
+    
+    <content type="html"><![CDATA[<p>又到寒假开始折腾的时间了（</p><p>听说 i3bar 有传递鼠标按键的功能，于是研究了一下。</p><a id="more"></a><p>用的模板是 <a href="https://github.com/LukeSmithxyz/voidrice" target="_blank" rel="noopener">LukeSmithxyz/voidrice</a> ，是在 YouTube 上看到的，感觉颇有意思。</p><p>clone 下来试了一下就后悔了……因为用了很多 emoji ，实际上并看不清（</p><hr><p>工作原理大概是 i3bar 本身支持传递 button event ，然后经过 i3blocks 一包装就非常易用了。处理点击事件的结过是由 dunst 提供的消息通知服务实现的（一开始不知道要安装这个……）；大概每个 blocklet 模板是这样：</p><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="variable">$BLOCK_BUTTON</span> <span class="keyword">in</span></span><br><span class="line">    3) pgrep -x dunst &gt;/dev/null &amp;&amp; notify-send <span class="string">"..."</span> ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure><p>总之（重新）学习了很多正则表达式和 <code>ip</code> 命令东西（传送门：<a href="https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf" target="_blank" rel="noopener">CHEAT SHEET for Red Hat Enterprise Linux</a>）。</p><hr><p>另一件比较头疼的事情是 i3bar 不能很好的处理空格，总是会尝试用 FontAwesome 来显示空格，留下一个方框里面写着 0020 ……只好用各种标点符号 hack 一下填充进去。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;又到寒假开始折腾的时间了（&lt;/p&gt;
+&lt;p&gt;听说 i3bar 有传递鼠标按键的功能，于是研究了一下。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://blog.xdrd.tech/categories/linux/"/>
+    
+    
+      <category term="i3" scheme="https://blog.xdrd.tech/tags/i3/"/>
+    
+      <category term="voidrice" scheme="https://blog.xdrd.tech/tags/voidrice/"/>
+    
+      <category term="fontawesome" scheme="https://blog.xdrd.tech/tags/fontawesome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从 pacman 更新的中断中恢复</title>
+    <link href="https://blog.xdrd.tech/2018/12/fixing-pacman/"/>
+    <id>https://blog.xdrd.tech/2018/12/fixing-pacman/</id>
+    <published>2018-12-31T05:48:16.000Z</published>
+    <updated>2020-03-29T15:15:57.398Z</updated>
+    
+    <content type="html"><![CDATA[<p>呃……今天出的事有点多（</p><p>大概就是船在 pacman 更新的时候过热关机了……然后重启之后找不到 linux module 的位置了……非常尴尬。</p><a id="more"></a><p>先把睡梦中的大葱摇醒让他帮我刻一个 LiveCD （喂），然后轻车熟路各种 mount。</p><p>首先注意到是断电，需要在每个分区上运行 <code>fsck</code>；之后 arch-chroot 进去，本来想直接 <code>pacman -Syu</code> 的，没想到还是得联网（含泪打开了热点，并且暂时把 archlinuxcn 注释掉了 = =）。</p><p>比较麻烦的是滚动更新并不顺利，中间出现了这样一些错误：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[2018-12-30 10:44] [ALPM-SCRIPTLET] ldconfig: File &#x2F;usr&#x2F;lib&#x2F;libjavascriptcoregtk-4.0.so.18 is empty, not checked.</span><br><span class="line">[2018-12-30 10:44] [ALPM-SCRIPTLET] ldconfig: File &#x2F;usr&#x2F;lib&#x2F;libgit2-glib-1.0.so is empty, not checked.</span><br><span class="line">...</span><br><span class="line">[2018-12-30 10:44] [ALPM-SCRIPTLET] xetex: error while loading shared libraries: &#x2F;usr&#x2F;lib&#x2F;libharfbuzz-icu.so.0: file too short</span><br><span class="line">[2018-12-30 10:44] [ALPM-SCRIPTLET] fmtutil [ERROR]: running &#96;xetex -ini   -jobname&#x3D;xetex -progname&#x3D;xetex -etex xetex.ini &lt;&#x2F;dev&#x2F;null&#39; return status 127</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>反正……各种报错。</p><p>重启之后倒是能进入 lightdm 了，可是没看见 i3bar ，有点慌张。</p><hr><p>先解决 pacman 报错的问题（</p><p>看论坛上的说法可能是之前断电更新那次的影响，反正 <code>pacman -S --force</code> 一把梭就是了（<br><em>（摘自 Arch Linux Wiki）警告: 小心使用 <code>--force</code> 开关。使用不当会造成大问题。 请只在 Arch 新闻里要求这么做的时候才用。</em></p><p>重装了 git gimp webkit2gtk libgit2 libgit2-glib harfbuzz-icu webkit2gtk texlive-core i3，反正怀疑坏的都重装了一下（具体什么命令记不得了，好像是全部重装的错误输出里看到的</p><hr><p>（假装解决了上述的问题）</p><p>另一个让人困惑的问题是 i3bar 为什么不见了——其实原因很简单，因为</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ i3 --version </span><br><span class="line">i3 version 4.16 (2018-11-04) © 2009 Michael Stapelberg and contributors</span><br><span class="line">$ i3bar --version </span><br><span class="line">i3bar version 4.16 (2018-11-04) © 2010 Axel Wagner and contributors</span><br><span class="line">$ i3bar-icons --version </span><br><span class="line">i3bar version 4.11 (2015-09-30, branch <span class="string">"4.11"</span>) © 2010 Axel Wagner and contributors</span><br></pre></td></tr></table></figure><p>所以现在用不了 xbm 的图标了……只好拿 icon font 的字符凑活一下（</p><p>（挖个坑寒假里研究一下 <a href="https://github.com/greshake/i3status-rust" target="_blank" rel="noopener">i3status-rust</a>）</p><hr><p>于是全盘升级遇到了第二个 bug：在 lyx 里插入图片的时候不能自动转换格式并显示。找来找去发现是 Magick 的锅。</p><p>根据 <a href="https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion" target="_blank" rel="noopener">ImageMagick security policy ‘PDF’ blocking conversion</a> 的提示，只要把 <code>/etc/ImageMagick-7/policy.xml</code> 里的</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">policy</span> <span class="attr">domain</span>=<span class="string">"coder"</span> <span class="attr">rights</span>=<span class="string">"none"</span> <span class="attr">pattern</span>=<span class="string">"&#123;PS,PS2,PS3,EPS,PDF,XPS&#125;"</span> /&gt;</span></span><br></pre></td></tr></table></figure><p>注释了就行。（我：emmm……）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;呃……今天出的事有点多（&lt;/p&gt;
+&lt;p&gt;大概就是船在 pacman 更新的时候过热关机了……然后重启之后找不到 linux module 的位置了……非常尴尬。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://blog.xdrd.tech/categories/Linux/"/>
+    
+    
+      <category term="i3" scheme="https://blog.xdrd.tech/tags/i3/"/>
+    
+      <category term="pacman" scheme="https://blog.xdrd.tech/tags/pacman/"/>
+    
+      <category term="imagemagick" scheme="https://blog.xdrd.tech/tags/imagemagick/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>皈依 firefox 教（</title>
+    <link href="https://blog.xdrd.tech/2018/12/switching-to-firefox/"/>
+    <id>https://blog.xdrd.tech/2018/12/switching-to-firefox/</id>
+    <published>2018-12-31T05:39:55.000Z</published>
+    <updated>2020-03-29T15:15:57.402Z</updated>
+    
+    <content type="html"><![CDATA[<p>呃，反正心血来潮从 chrome 迁移到了 firefox。</p><a id="more"></a><p>首先在 Windows 下安装了 Firefox 64.0；在 Arch Linux 下直接 pacman 一把梭（</p><p>需要迁移的东西其实并不多：</p><ul><li>书签</li><li>cookies（……？）</li><li>插件，尽量找原版，实在不行找替代品</li></ul><p>密码保存在 keepassxc 那里 233</p><hr><p>插件其实基本都能找到（顺便切换到了 duckduckgo 作为主力搜索引擎）；另外，<a href="https://addons.mozilla.org/en-US/firefox/addon/chrome-store-foxified/" target="_blank" rel="noopener">chrome store foxified</a> 是个好东西 233</p><p><del>虽然 keepassxc 的插件还没配置好 QAQ</del></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;呃，反正心血来潮从 chrome 迁移到了 firefox。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="nagging" scheme="https://blog.xdrd.tech/categories/nagging/"/>
+    
+    
+      <category term="firefox" scheme="https://blog.xdrd.tech/tags/firefox/"/>
+    
+      <category term="chrome" scheme="https://blog.xdrd.tech/tags/chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>红米 5 刷机</title>
+    <link href="https://blog.xdrd.tech/2018/12/flashing-whyred/"/>
+    <id>https://blog.xdrd.tech/2018/12/flashing-whyred/</id>
+    <published>2018-12-31T05:16:40.000Z</published>
+    <updated>2020-03-29T15:15:57.398Z</updated>
+    
+    <content type="html"><![CDATA[<p>继上次买了一部 <a href="/2017/08/redmi-3s/">红米 3</a>，这次是父上大人换手机了。根据大葱的推荐，这次买了红米 5 。</p><a id="more"></a><p>红米 5 现在有 <a href="https://wiki.lineageos.org/devices/whyred" target="_blank" rel="noopener">官方的 lineageos 支持</a> 了，所以算是一个比较好的千元机选择（</p><p>按照上次的经验，下载了 Mi Unlock app ，然后被告知等 360 个小时……呃……</p><hr><p>（15 天后）</p><p>前天下午终于解锁 bootloader 了！不过刷机经历有一点坎坷：</p><ol><li>因为大葱试了一下升级到 MIUI 10，所以还得重新登录账号满一个小时。</li><li>貌似是签名的限制，twrp 没法通过 <code>fastboot flash recovery twrp.img</code> 直接刷进去，而是要先 <code>fastboot boot twrp.img</code> 启动之后再在 twrp 里把自己的 img 文件安装到 recovery。（参见 <a href="https://en.miui.com/thread-3565664-1-1.html" target="_blank" rel="noopener">这个解决方案</a>）（无语……）</li><li>lineageos 15.1 的包本身没有问题，但是如果没有第一时间把 gapps 刷进去的话，之后 google services 就会一直崩溃……呃……反正只要一起四清然后刷入就可以了www</li></ol><hr><p>杂：</p><ul><li>Oreo 体验还是很不错的！特别是用 pattern 做全盘加密的特性。</li><li>google camera 的移植能用上一半的功能，前提是开启 <a href="https://www.youtube.com/watch?v=5GL1QdIteQQ" target="_blank" rel="noopener">Camera2 API /HAL3</a> 。</li><li>买回来查了一下屏幕，看起来没什么坏点；然鹅最近还是翻车了，右上角的灰度显示不太对——虽然只要调成暗色主题就几乎看不出来（</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;继上次买了一部 &lt;a href=&quot;/2017/08/redmi-3s/&quot;&gt;红米 3&lt;/a&gt;，这次是父上大人换手机了。根据大葱的推荐，这次买了红米 5 。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="phone" scheme="https://blog.xdrd.tech/categories/phone/"/>
+    
+    
+      <category term="whyred" scheme="https://blog.xdrd.tech/tags/whyred/"/>
+    
+      <category term="lineageos" scheme="https://blog.xdrd.tech/tags/lineageos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>真·双显示屏配置</title>
+    <link href="https://blog.xdrd.tech/2018/07/duet-display-2/"/>
+    <id>https://blog.xdrd.tech/2018/07/duet-display-2/</id>
+    <published>2018-07-18T20:52:20.000Z</published>
+    <updated>2020-03-29T15:15:57.398Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先感谢一下大葱，给我换了一块好一点的显示屏，于是 <a href="/2018/07/duet-display/">上一篇博文</a> 就这样华丽地作废了（手动微笑）</p><p>OK，让我们正式开始暑假摸鱼的旅程！</p><a id="more"></a><hr><p>在住处问题不是很大，因为是接 HDMI 线到屏幕上，只要对 i3 略加配置就行：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xrandr --output HDMI-2 --right-of eDP-1 --auto</span><br></pre></td></tr></table></figure><p>加到 <code>~/.config/i3/config</code> 里去。</p><hr><p>问题比较严重的是在研究所的时候，由于公用的电脑显示屏不仅有奇葩的 1680*1050*119Hz 的显示模式而且有 DVI、S 分量、VGA、模拟信号但就是没有 HDMI 再加上没有 sudo 权限……就变得很麻烦。</p><p>其实问题好像也没有这么严重……呃……Anyway……</p><p>首先和上面一样配置第二显示区域：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xrandr --newmode &quot;1680x1050_60.00&quot;  147.14  1680 1784 1968 2256  1050 1051 1054 1087</span><br><span class="line">xrandr --addmode HDMI-1 1680x1050_60.00</span><br><span class="line">xrandr --output HDMI-1 --mode 1680x1050_60.00 --right-of eDP-1</span><br></pre></td></tr></table></figure><p>一开始我把输出定向到自定义的 VIRTUAL1 ，但是持续报错……算了，反正有两个 HDMI 插槽（虽然机身上只有一个）。</p><p>核心步骤是配置 vnc ，我用的是 tigervnc ：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x0vncserver -display :0 -HostsFile ~&#x2F;.vnc&#x2F;hosts -passwordfile ~&#x2F;.vnc&#x2F;passwd</span><br></pre></td></tr></table></figure><p>这一步就发生许多喜闻乐见的事情了（手动微笑）。理论上只要客户端运行</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh xdroid@laptopIP -L 8900:localhost:5900</span><br></pre></td></tr></table></figure><p>就能够再通过</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vncviewer localhost:8900</span><br></pre></td></tr></table></figure><p>连上来。但是呢！由于为了加强安全性，我给 tigervnc 加了一个 IP 名单，这个名单里写的是</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+127.0.0.1</span><br><span class="line">-</span><br></pre></td></tr></table></figure><p>然后……绑定地址时候用的 <code>localhost</code> 就挂了QAQ其实只要换成 <code>127.0.0.1</code> 就好了。</p><hr><p>补两句。</p><p>VNC 服务器似乎和 gnome-keyring 冲突，暂时没找到什么好的解决方案。</p><p>端口转发的写法这篇还算清楚：<a href="https://blog.fundebug.com/2017/04/24/ssh-port-forwarding/" target="_blank" rel="noopener">玩转SSH端口转发</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先感谢一下大葱，给我换了一块好一点的显示屏，于是 &lt;a href=&quot;/2018/07/duet-display/&quot;&gt;上一篇博文&lt;/a&gt; 就这样华丽地作废了（手动微笑）&lt;/p&gt;
+&lt;p&gt;OK，让我们正式开始暑假摸鱼的旅程！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="laptop" scheme="https://blog.xdrd.tech/categories/laptop/"/>
+    
+    
+      <category term="ssh" scheme="https://blog.xdrd.tech/tags/ssh/"/>
+    
+      <category term="vnc" scheme="https://blog.xdrd.tech/tags/vnc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>复制显示解决方案</title>
+    <link href="https://blog.xdrd.tech/2018/07/duet-display/"/>
+    <id>https://blog.xdrd.tech/2018/07/duet-display/</id>
+    <published>2018-07-10T23:44:34.000Z</published>
+    <updated>2020-03-29T15:15:57.398Z</updated>
+    
+    <content type="html"><![CDATA[<p>呃，因为神船比较破烂，屏幕只有 45% 色域，所以做一些和颜色相关的事情就很蛋疼 <del>比如开发的 app 拿到手机上看无比鲜艳等等</del> ，于是一直想有没有什么双显示的手段，把电脑上的图像投射到颜色较为准确的手机上。</p><a id="more"></a><h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>虽然我不用，但是我听说直接用 <a href="https://www.duetdisplay.com/" target="_blank" rel="noopener">Duet Display</a> 就行。发热情况不清楚。</p><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>之前听说/用过 Teamviewer 和 splashtop ，但是我主要是检查调色是否正确，因此完全不需要控制的部分，所以有轻量级的最好。</p><p>话虽然这么说但是几乎找不到 orz 现在用的是 <a href="https://www.spacedesk.net/" target="_blank" rel="noopener">spacedesk</a> ，只要指定高图像质量就会疯狂发热（</p><p>喜欢折腾的同学可以考虑一下 Steam Link ？</p><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>呃这种情况会简单一点，只要按照 <a href="https://wiki.archlinux.org/index.php/Virtual_Network_Computing_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">这篇</a> 慢慢配置 VNC 就行。</p><p>手机端使用 RealVNC 软件，有控制功能，还算能用。发热问题的话，没有用过很长时间，不是很清楚。</p><p><strong>注</strong> 有一个后遗症是 gnome-keyring 无法正常弹出显示（差点以为是服务器拒绝了我的 key ），可能和我用的 i3 管理器有关系。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;呃，因为神船比较破烂，屏幕只有 45% 色域，所以做一些和颜色相关的事情就很蛋疼 &lt;del&gt;比如开发的 app 拿到手机上看无比鲜艳等等&lt;/del&gt; ，于是一直想有没有什么双显示的手段，把电脑上的图像投射到颜色较为准确的手机上。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="laptop" scheme="https://blog.xdrd.tech/categories/laptop/"/>
+    
+    
+      <category term="display" scheme="https://blog.xdrd.tech/tags/display/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HiDPI 适配</title>
+    <link href="https://blog.xdrd.tech/2018/07/tweaking-dpi/"/>
+    <id>https://blog.xdrd.tech/2018/07/tweaking-dpi/</id>
+    <published>2018-07-06T15:30:50.000Z</published>
+    <updated>2020-03-29T15:15:57.402Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近又重新拾起 arch （假装自己在做科研），看着很小的字有点难受……</p><p>记得最简单的方案是调整 <code>xrandr</code> ？</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xrandr --dpi 120</span><br></pre></td></tr></table></figure><p>似乎效果不是很好？ Android Studio 会出现蜜汁位图放大和错位的现象。</p><hr><p>尝试了一下似乎 dpi 设置到 110 看起来差不多；而且把<a href="https://winaero.com/blog/find-change-screen-dpi-linux/" target="_blank" rel="noopener">参数设置</a>放到 <code>~/.Xresources</code> 里去了：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Xft.dpi: 110</span><br></pre></td></tr></table></figure><hr><p><strong>i3</strong><br>先到 <code>~/.config/i3/config</code> 去把 i3-bar 的字号调了一下（并重新发现了一些有用的按键绑定）</p><p><strong>sogou-pinyin</strong><br>输入法的字号就有点小了……而且白底实在看不下去了[捂脸]然而主题又很难改……</p><p><strong>chrome</strong><br>这个比较简单，直接改 <code>~/.config/chrome-flags.conf</code> ：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--force-device-scale-factor&#x3D;1.2</span><br></pre></td></tr></table></figure><p><strong>sublime</strong><br>直接读取了 dpi 参数，不需要其他操作</p><p><strong>android studio</strong><br>按理说也是自动读取了 dpi 参数但是……每日 tips 居然是位图？？</p><p><strong>matlab</strong><br>Wiki 上说 R2017b 支持……回学校我就重装 matlab ！</p><hr><p><em>参考链接</em><br><a href="https://wiki.archlinux.org/index.php/HiDPI" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/HiDPI</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近又重新拾起 arch （假装自己在做科研），看着很小的字有点难受……&lt;/p&gt;
+&lt;p&gt;记得最简单的方案是调整 &lt;code&gt;xrandr&lt;/code&gt; ？&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;co
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://blog.xdrd.tech/categories/Linux/"/>
+    
+    
+      <category term="i3" scheme="https://blog.xdrd.tech/tags/i3/"/>
+    
+      <category term="xrandr" scheme="https://blog.xdrd.tech/tags/xrandr/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>untrunc</title>
+    <link href="https://blog.xdrd.tech/2018/05/untrunc/"/>
+    <id>https://blog.xdrd.tech/2018/05/untrunc/</id>
+    <published>2018-05-10T20:35:25.000Z</published>
+    <updated>2020-03-29T15:15:57.402Z</updated>
+    
+    <content type="html"><![CDATA[<p>起因：手机接 OTG 线录视频，结果空间太小没把尾部/头部的流信息写上，完全无法播放。<br>查到似乎 <a href="https://github.com/ponchio/untrunc" target="_blank" rel="noopener">untrunc</a> 可以尝试修复。</p><hr><p>先尝试安装一些依赖；在 Arch 上似乎是 ffmpeg-full ：<br><del></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cuda-9.1.85.3-5-x86_64  1119.3 MiB  28.7M&#x2F;s 00:39 100%</span><br></pre></td></tr></table></figure><p>？？？</del></p><hr><p>还是先 clone 一下 repo 吧（<br>然后发现 <code>/</code> 没空间了 QAQ<br>清了一遍 cache ，发现 aur 上原来有现成的源；但试了一下似乎又不行，报错 <code>std::bad_alloc</code> ……</p><hr><p>后来发现是采样用的视频太大了，装不进内存里。<br>那还是挺简单的，直接 ffmpeg 截一段就好。<br>最终顺利修复，有一些地方音画略不同步 QAQ</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;起因：手机接 OTG 线录视频，结果空间太小没把尾部/头部的流信息写上，完全无法播放。&lt;br&gt;查到似乎 &lt;a href=&quot;https://github.com/ponchio/untrunc&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;untrunc&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="daily" scheme="https://blog.xdrd.tech/categories/daily/"/>
+    
+    
+      <category term="untrunc" scheme="https://blog.xdrd.tech/tags/untrunc/"/>
+    
+      <category term="ffmpeg" scheme="https://blog.xdrd.tech/tags/ffmpeg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ss 与 nssm</title>
+    <link href="https://blog.xdrd.tech/2018/04/ss-and-nssm/"/>
+    <id>https://blog.xdrd.tech/2018/04/ss-and-nssm/</id>
+    <published>2018-04-29T21:39:14.000Z</published>
+    <updated>2020-03-29T15:15:57.402Z</updated>
+    
+    <content type="html"><![CDATA[<p>期中考试的时候实在无法忍受 ss 的 Windows 客户端的速度了，于是琢磨着是不是要换个客户端用用。</p><hr><p>先前用的是用 C# 实现的<a href="https://github.com/shadowsocks/shadowsocks-windows" target="_blank" rel="noopener">客户端</a>，不知为何连接速度非常慢。考虑到在 Arch Linux 上使用的 python 版本表现还不错，试着在 Windows 下 <code>pip</code> 安装了一下。</p><p>然后就发现……并没有 systemd 啊（摔）这怎么开机自启？其实是有两种解决方案：</p><ol><li>使用计划任务等工具配置</li><li>使用 the <strong>N</strong>on-<strong>S</strong>ucking <strong>S</strong>ervice <strong>M</strong>anager 配置<br>我觉得 <a href="https://nssm.cc/" target="_blank" rel="noopener">nssm</a> 还是挺不错的，支持日志旋转等非常细致的功能，就是 last release 老了一点……</li></ol><hr><p>不过 ss 的 python 版维护已经不勤快了，正在测试 libev 的版本……</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;期中考试的时候实在无法忍受 ss 的 Windows 客户端的速度了，于是琢磨着是不是要换个客户端用用。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;先前用的是用 C# 实现的&lt;a href=&quot;https://github.com/shadowsocks/shadowsocks-windows
+      
+    
+    </summary>
+    
+    
+      <category term="Windows" scheme="https://blog.xdrd.tech/categories/Windows/"/>
+    
+    
+      <category term="ss" scheme="https://blog.xdrd.tech/tags/ss/"/>
+    
+      <category term="nssm" scheme="https://blog.xdrd.tech/tags/nssm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EFI Shell 升级 BIOS 了解一下</title>
+    <link href="https://blog.xdrd.tech/2018/03/updating-bios/"/>
+    <id>https://blog.xdrd.tech/2018/03/updating-bios/</id>
+    <published>2018-03-19T15:45:55.000Z</published>
+    <updated>2020-03-29T15:15:57.402Z</updated>
+    
+    <content type="html"><![CDATA[<p>昨天听说有个上了 Z7 船的小伙伴升级了一下 BIOS ，自检飞快，不禁有些心动，决定也去升级一下。</p><a id="more"></a><p>可以直接从蓝天的 <a href="https://repo.palkeo.com/clevo-mirror/" target="_blank" rel="noopener">非官方 BIOS 仓库</a> 下载对应模具的固件。找固件的型号稍微费了一番功夫，其实也就是印在底面上的几个标签中的一个= =。</p><p>DOS 启动！切换目录！</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">C:\ cd ES10513</span><br><span class="line">The system cannot find ES10513.</span><br></pre></td></tr></table></figure><p><del>大概是这样记不清错误信息了</del></p><p>垃圾 DOS 还我青春！</p><p>于是默默去改文件夹名了。</p><p>DOS 再启动！切换目录！ <code>ECFLASH</code> ！</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">C:\EC\ ECFLASH</span><br><span class="line">...</span><br><span class="line">The ROM file is larger than 64K.</span><br></pre></td></tr></table></figure><p>\表情包{震惊.jpg}</p><hr><p>先吃个饭冷静一下。</p><p>在 google 上搜索了一下其他厂商的升级指南，发现其实不用进 DOS ，直接从 EFI Shell 刷也是可以的。想了一下我不是还有一个 Arch Linux 的启动盘么，正好拿来用用。</p><p>大概刷的步骤是 ecflash.nsh -&gt; meset.nsh -&gt; flash.nsh 这样。坑不算很多，比较麻烦的一步是一开始需要找到正确的分区 <code>fs[n]:</code> ——由于默认的屏幕映射只有 640x360 ，所以看不到特别靠上的分区信息= =只能猜猜看。</p><hr><p>然鹅默认的 splash logo 也太 TM 丑了吧！滚去改图片去了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;昨天听说有个上了 Z7 船的小伙伴升级了一下 BIOS ，自检飞快，不禁有些心动，决定也去升级一下。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="laptop" scheme="https://blog.xdrd.tech/categories/laptop/"/>
+    
+    
+      <category term="bios" scheme="https://blog.xdrd.tech/tags/bios/"/>
+    
+      <category term="efi" scheme="https://blog.xdrd.tech/tags/efi/"/>
+    
+  </entry>
+  
+</feed>

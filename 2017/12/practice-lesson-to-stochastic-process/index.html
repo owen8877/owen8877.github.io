@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>随机过程实践课 | xDroid&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="兴起即往，兴至则返，岂不快哉（ 所以今天的主题是，如何将随机游动运用到城市公共交通的通行上（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随机过程实践课">
+<meta property="og:url" content="https://blog.xdrd.tech/2017/12/practice-lesson-to-stochastic-process/index.html">
+<meta property="og:site_name" content="xDroid&#39;s Blog">
+<meta property="og:description" content="兴起即往，兴至则返，岂不快哉（ 所以今天的主题是，如何将随机游动运用到城市公共交通的通行上（">
+<meta property="og:image" content="https://maps.google.com/maps/api/staticmap?size=640x640&scale=2&zoom=14&path=color:0xff0000%7Cweight:5%7C39.985949,116.316037%7C39.984603,116.316254%7C39.983641,116.316417%7C39.983541,116.316455%7C39.982328,116.316574%7C39.980572,116.31668%7C39.980181,116.316704%7C39.980166,116.316712%7C39.979704,116.316711%7C39.97878,116.316688%7C39.978724,116.316679%7C39.978542,116.316709%7C39.97836,116.3167%7C39.978122,116.316772%7C39.978044,116.316858%7C39.97781,116.316881%7C39.977782,116.316877%7C39.97777,116.316898%7C39.977302,116.316983%7C39.976267,116.317337%7C39.975533,116.317646%7C39.974711,116.318024%7C39.974032,116.318303%7C39.972526,116.318917%7C39.971159,116.319395%7C39.970942,116.319483%7C39.970799,116.319601%7C39.970318,116.319752%7C39.969192,116.320195%7C39.968152,116.320538%7C39.967645,116.320738%7C39.967364,116.320828%7C39.967124,116.320891%7C39.966704,116.319498%7C39.966651,116.319196%7C39.965742,116.316894%7C39.964975,116.31494%7C39.964729,116.314277%7C39.964655,116.314186%7C39.964542,116.313815%7C39.964435,116.313515%7C39.964173,116.312769%7C39.963718,116.311503%7C39.963388,116.310444%7C39.963212,116.309773%7C39.962813,116.308854%7C39.96221,116.307846%7C39.961507,116.306312%7C39.960939,116.305085%7C39.960741,116.304776%7C39.960695,116.304699%7C39.960286,116.303464%7C39.960204,116.303171%7C39.960717,116.30296%7C39.961099,116.302882%7C39.961315,116.302874%7C39.961812,116.302822%7C39.962592,116.302735%7C39.962682,116.302714%7C39.963933,116.302549%7C39.965295,116.302379%7C39.966568,116.302176%7C39.966807,116.302111%7C39.967291,116.302026%7C39.96829,116.301767%7C39.968407,116.30112%7C39.968431,116.300786%7C39.968446,116.300175%7C39.96844,116.300173%7C39.968481,116.299967%7C39.968399,116.298466%7C39.968282,116.297357%7C39.968275,116.297032%7C39.969553,116.296597%7C39.970637,116.29651%7C39.970619,116.296547%7C39.970608,116.296365%7C39.970598,116.296349%7C39.970612,116.296306%7C39.970813,116.296371%7C39.971019,116.296431%7C39.97092,116.29629%7C39.970715,116.296316%7C39.970454,116.296297%7C39.970238,116.296319%7C39.970219,116.296278%7C39.97017,116.296346%7C39.970159,116.296339%7C39.97017,116.296342%7C39.970179,116.29637%7C39.970166,116.296337%7C39.970162,116.296335%7C39.970176,116.296352%7C39.970178,116.296351%7C39.970164,116.296361%7C39.970186,116.296357%7C39.970185,116.296357%7C39.97013,116.296357%7C39.97016,116.296395%7C39.970162,116.296436%7C39.970107,116.296398%7C39.97014,116.296381%7C39.97016,116.296404%7C39.970179,116.296389%7C39.970141,116.29641%7C39.970106,116.296415%7C39.970095,116.296425%7C39.969464,116.296548%7C39.967864,116.297005%7C39.967176,116.297134%7C39.967132,116.297191%7C39.967129,116.297199%7C39.967119,116.297193%7C39.967118,116.297194%7C39.967117,116.297194%7C39.967116,116.297194%7C39.967115,116.297195%7C39.967115,116.297195%7C39.967114,116.297195%7C39.967115,116.297196%7C39.967111,116.297224%7C39.967062,116.297283%7C39.967036,116.297353%7C39.967027,116.297428%7C39.967028,116.297429%7C39.967028,116.297432%7C39.967029,116.297337%7C39.966169,116.297574%7C39.964297,116.298024%7C39.963931,116.298108%7C39.962633,116.298523%7C39.962216,116.298653%7C39.962197,116.298666%7C39.96146,116.298926%7C39.960823,116.29916%7C39.959492,116.2995%7C39.959271,116.298925%7C39.95874,116.296199%7C39.958564,116.295324%7C39.95781,116.290291%7C39.957699,116.289983%7C39.957721,116.289729%7C39.957744,116.289641%7C39.957741,116.289558%7C39.957719,116.289374%7C39.957582,116.28922%7C39.957341,116.28931%7C39.95731,116.289547%7C39.957388,116.289647%7C39.957431,116.289705%7C39.957727,116.291429%7C39.958257,116.29416%7C39.958747,116.296754%7C39.959007,116.298371%7C39.959486,116.299628%7C39.959827,116.299487%7C39.959835,116.299487%7C39.960451,116.299274%7C39.961198,116.299099%7C39.962227,116.298749%7C39.962528,116.298767%7C39.96335,116.298464%7C39.965298,116.297828%7C39.966889,116.297308%7C39.967032,116.297327%7C39.967523,116.29716%7C39.96813,116.296794%7C39.969585,116.296541%7C39.970514,116.296504%7C39.971758,116.29645%7C39.972823,116.296437%7C39.973904,116.296352%7C39.973922,116.296384%7C39.973913,116.296384%7C39.973923,116.296382%7C39.973922,116.296382%7C39.973923,116.296383%7C39.973924,116.296383%7C39.973952,116.296402%7C39.974227,116.295916%7C39.974234,116.295794%7C39.974283,116.295824%7C39.974264,116.295696&markers=color%253ablue%7Clabel%253aS%7C39.985949,116.316037&markers=color%253ablue%7Clabel%253a1%7C39.970159,116.296339&markers=color%253ablue%7Clabel%253a2%7C39.9672745,116.2972789&markers=color%253ablue%7Clabel%253a3%7C39.9571102,116.2892963&markers=color%253ablue%7Clabel%253aE%7C39.974264,116.295696&sensor=false&key=AIzaSyB17idsRvfYWH1KacGZSkHohazlSUP3gjQ">
+<meta property="article:published_time" content="2017-12-29T03:38:47.000Z">
+<meta property="article:modified_time" content="2020-03-29T15:15:57.398Z">
+<meta property="article:author" content="xDroid">
+<meta property="article:tag" content="stochastic">
+<meta property="article:tag" content="outside">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://maps.google.com/maps/api/staticmap?size=640x640&scale=2&zoom=14&path=color:0xff0000%7Cweight:5%7C39.985949,116.316037%7C39.984603,116.316254%7C39.983641,116.316417%7C39.983541,116.316455%7C39.982328,116.316574%7C39.980572,116.31668%7C39.980181,116.316704%7C39.980166,116.316712%7C39.979704,116.316711%7C39.97878,116.316688%7C39.978724,116.316679%7C39.978542,116.316709%7C39.97836,116.3167%7C39.978122,116.316772%7C39.978044,116.316858%7C39.97781,116.316881%7C39.977782,116.316877%7C39.97777,116.316898%7C39.977302,116.316983%7C39.976267,116.317337%7C39.975533,116.317646%7C39.974711,116.318024%7C39.974032,116.318303%7C39.972526,116.318917%7C39.971159,116.319395%7C39.970942,116.319483%7C39.970799,116.319601%7C39.970318,116.319752%7C39.969192,116.320195%7C39.968152,116.320538%7C39.967645,116.320738%7C39.967364,116.320828%7C39.967124,116.320891%7C39.966704,116.319498%7C39.966651,116.319196%7C39.965742,116.316894%7C39.964975,116.31494%7C39.964729,116.314277%7C39.964655,116.314186%7C39.964542,116.313815%7C39.964435,116.313515%7C39.964173,116.312769%7C39.963718,116.311503%7C39.963388,116.310444%7C39.963212,116.309773%7C39.962813,116.308854%7C39.96221,116.307846%7C39.961507,116.306312%7C39.960939,116.305085%7C39.960741,116.304776%7C39.960695,116.304699%7C39.960286,116.303464%7C39.960204,116.303171%7C39.960717,116.30296%7C39.961099,116.302882%7C39.961315,116.302874%7C39.961812,116.302822%7C39.962592,116.302735%7C39.962682,116.302714%7C39.963933,116.302549%7C39.965295,116.302379%7C39.966568,116.302176%7C39.966807,116.302111%7C39.967291,116.302026%7C39.96829,116.301767%7C39.968407,116.30112%7C39.968431,116.300786%7C39.968446,116.300175%7C39.96844,116.300173%7C39.968481,116.299967%7C39.968399,116.298466%7C39.968282,116.297357%7C39.968275,116.297032%7C39.969553,116.296597%7C39.970637,116.29651%7C39.970619,116.296547%7C39.970608,116.296365%7C39.970598,116.296349%7C39.970612,116.296306%7C39.970813,116.296371%7C39.971019,116.296431%7C39.97092,116.29629%7C39.970715,116.296316%7C39.970454,116.296297%7C39.970238,116.296319%7C39.970219,116.296278%7C39.97017,116.296346%7C39.970159,116.296339%7C39.97017,116.296342%7C39.970179,116.29637%7C39.970166,116.296337%7C39.970162,116.296335%7C39.970176,116.296352%7C39.970178,116.296351%7C39.970164,116.296361%7C39.970186,116.296357%7C39.970185,116.296357%7C39.97013,116.296357%7C39.97016,116.296395%7C39.970162,116.296436%7C39.970107,116.296398%7C39.97014,116.296381%7C39.97016,116.296404%7C39.970179,116.296389%7C39.970141,116.29641%7C39.970106,116.296415%7C39.970095,116.296425%7C39.969464,116.296548%7C39.967864,116.297005%7C39.967176,116.297134%7C39.967132,116.297191%7C39.967129,116.297199%7C39.967119,116.297193%7C39.967118,116.297194%7C39.967117,116.297194%7C39.967116,116.297194%7C39.967115,116.297195%7C39.967115,116.297195%7C39.967114,116.297195%7C39.967115,116.297196%7C39.967111,116.297224%7C39.967062,116.297283%7C39.967036,116.297353%7C39.967027,116.297428%7C39.967028,116.297429%7C39.967028,116.297432%7C39.967029,116.297337%7C39.966169,116.297574%7C39.964297,116.298024%7C39.963931,116.298108%7C39.962633,116.298523%7C39.962216,116.298653%7C39.962197,116.298666%7C39.96146,116.298926%7C39.960823,116.29916%7C39.959492,116.2995%7C39.959271,116.298925%7C39.95874,116.296199%7C39.958564,116.295324%7C39.95781,116.290291%7C39.957699,116.289983%7C39.957721,116.289729%7C39.957744,116.289641%7C39.957741,116.289558%7C39.957719,116.289374%7C39.957582,116.28922%7C39.957341,116.28931%7C39.95731,116.289547%7C39.957388,116.289647%7C39.957431,116.289705%7C39.957727,116.291429%7C39.958257,116.29416%7C39.958747,116.296754%7C39.959007,116.298371%7C39.959486,116.299628%7C39.959827,116.299487%7C39.959835,116.299487%7C39.960451,116.299274%7C39.961198,116.299099%7C39.962227,116.298749%7C39.962528,116.298767%7C39.96335,116.298464%7C39.965298,116.297828%7C39.966889,116.297308%7C39.967032,116.297327%7C39.967523,116.29716%7C39.96813,116.296794%7C39.969585,116.296541%7C39.970514,116.296504%7C39.971758,116.29645%7C39.972823,116.296437%7C39.973904,116.296352%7C39.973922,116.296384%7C39.973913,116.296384%7C39.973923,116.296382%7C39.973922,116.296382%7C39.973923,116.296383%7C39.973924,116.296383%7C39.973952,116.296402%7C39.974227,116.295916%7C39.974234,116.295794%7C39.974283,116.295824%7C39.974264,116.295696&markers=color%253ablue%7Clabel%253aS%7C39.985949,116.316037&markers=color%253ablue%7Clabel%253a1%7C39.970159,116.296339&markers=color%253ablue%7Clabel%253a2%7C39.9672745,116.2972789&markers=color%253ablue%7Clabel%253a3%7C39.9571102,116.2892963&markers=color%253ablue%7Clabel%253aE%7C39.974264,116.295696&sensor=false&key=AIzaSyB17idsRvfYWH1KacGZSkHohazlSUP3gjQ">
+  
+    <link rel="alternate" href="/atom.xml" title="xDroid&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/image/logo.png">
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  
+<link rel="stylesheet" href="/css/styles.css">
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-90381862-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <link rel="canonical" href="https://blog.xdrd.tech/2017/12/practice-lesson-to-stochastic-process/index.html" />
+  <script type="text/javascript">
+    var host = "blog.xdrd.tech";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https:";
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a class="navbar-brand" href="/"><img src="/image/logo.png" /></a>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">xDroid&#39;s Blog</h1>
+  
+    <p class="lead blog-description">假装高冷的Geek</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-practice-lesson-to-stochastic-process" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      随机过程实践课
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2017/12/practice-lesson-to-stochastic-process/" class="article-date"><time datetime="2017-12-29T03:38:47.000Z" itemprop="datePublished">2017-12-28</time></a>
+</div>
+
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/gizmo/">gizmo</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>兴起即往，兴至则返，岂不快哉（</p>
+<p>所以今天的主题是，如何将随机游动运用到城市公共交通的通行上（</p>
+<a id="more"></a>
+
+<p>先放图：</p>
+<p><img src="https://maps.google.com/maps/api/staticmap?size=640x640&scale=2&zoom=14&path=color:0xff0000%7Cweight:5%7C39.985949,116.316037%7C39.984603,116.316254%7C39.983641,116.316417%7C39.983541,116.316455%7C39.982328,116.316574%7C39.980572,116.31668%7C39.980181,116.316704%7C39.980166,116.316712%7C39.979704,116.316711%7C39.97878,116.316688%7C39.978724,116.316679%7C39.978542,116.316709%7C39.97836,116.3167%7C39.978122,116.316772%7C39.978044,116.316858%7C39.97781,116.316881%7C39.977782,116.316877%7C39.97777,116.316898%7C39.977302,116.316983%7C39.976267,116.317337%7C39.975533,116.317646%7C39.974711,116.318024%7C39.974032,116.318303%7C39.972526,116.318917%7C39.971159,116.319395%7C39.970942,116.319483%7C39.970799,116.319601%7C39.970318,116.319752%7C39.969192,116.320195%7C39.968152,116.320538%7C39.967645,116.320738%7C39.967364,116.320828%7C39.967124,116.320891%7C39.966704,116.319498%7C39.966651,116.319196%7C39.965742,116.316894%7C39.964975,116.31494%7C39.964729,116.314277%7C39.964655,116.314186%7C39.964542,116.313815%7C39.964435,116.313515%7C39.964173,116.312769%7C39.963718,116.311503%7C39.963388,116.310444%7C39.963212,116.309773%7C39.962813,116.308854%7C39.96221,116.307846%7C39.961507,116.306312%7C39.960939,116.305085%7C39.960741,116.304776%7C39.960695,116.304699%7C39.960286,116.303464%7C39.960204,116.303171%7C39.960717,116.30296%7C39.961099,116.302882%7C39.961315,116.302874%7C39.961812,116.302822%7C39.962592,116.302735%7C39.962682,116.302714%7C39.963933,116.302549%7C39.965295,116.302379%7C39.966568,116.302176%7C39.966807,116.302111%7C39.967291,116.302026%7C39.96829,116.301767%7C39.968407,116.30112%7C39.968431,116.300786%7C39.968446,116.300175%7C39.96844,116.300173%7C39.968481,116.299967%7C39.968399,116.298466%7C39.968282,116.297357%7C39.968275,116.297032%7C39.969553,116.296597%7C39.970637,116.29651%7C39.970619,116.296547%7C39.970608,116.296365%7C39.970598,116.296349%7C39.970612,116.296306%7C39.970813,116.296371%7C39.971019,116.296431%7C39.97092,116.29629%7C39.970715,116.296316%7C39.970454,116.296297%7C39.970238,116.296319%7C39.970219,116.296278%7C39.97017,116.296346%7C39.970159,116.296339%7C39.97017,116.296342%7C39.970179,116.29637%7C39.970166,116.296337%7C39.970162,116.296335%7C39.970176,116.296352%7C39.970178,116.296351%7C39.970164,116.296361%7C39.970186,116.296357%7C39.970185,116.296357%7C39.97013,116.296357%7C39.97016,116.296395%7C39.970162,116.296436%7C39.970107,116.296398%7C39.97014,116.296381%7C39.97016,116.296404%7C39.970179,116.296389%7C39.970141,116.29641%7C39.970106,116.296415%7C39.970095,116.296425%7C39.969464,116.296548%7C39.967864,116.297005%7C39.967176,116.297134%7C39.967132,116.297191%7C39.967129,116.297199%7C39.967119,116.297193%7C39.967118,116.297194%7C39.967117,116.297194%7C39.967116,116.297194%7C39.967115,116.297195%7C39.967115,116.297195%7C39.967114,116.297195%7C39.967115,116.297196%7C39.967111,116.297224%7C39.967062,116.297283%7C39.967036,116.297353%7C39.967027,116.297428%7C39.967028,116.297429%7C39.967028,116.297432%7C39.967029,116.297337%7C39.966169,116.297574%7C39.964297,116.298024%7C39.963931,116.298108%7C39.962633,116.298523%7C39.962216,116.298653%7C39.962197,116.298666%7C39.96146,116.298926%7C39.960823,116.29916%7C39.959492,116.2995%7C39.959271,116.298925%7C39.95874,116.296199%7C39.958564,116.295324%7C39.95781,116.290291%7C39.957699,116.289983%7C39.957721,116.289729%7C39.957744,116.289641%7C39.957741,116.289558%7C39.957719,116.289374%7C39.957582,116.28922%7C39.957341,116.28931%7C39.95731,116.289547%7C39.957388,116.289647%7C39.957431,116.289705%7C39.957727,116.291429%7C39.958257,116.29416%7C39.958747,116.296754%7C39.959007,116.298371%7C39.959486,116.299628%7C39.959827,116.299487%7C39.959835,116.299487%7C39.960451,116.299274%7C39.961198,116.299099%7C39.962227,116.298749%7C39.962528,116.298767%7C39.96335,116.298464%7C39.965298,116.297828%7C39.966889,116.297308%7C39.967032,116.297327%7C39.967523,116.29716%7C39.96813,116.296794%7C39.969585,116.296541%7C39.970514,116.296504%7C39.971758,116.29645%7C39.972823,116.296437%7C39.973904,116.296352%7C39.973922,116.296384%7C39.973913,116.296384%7C39.973923,116.296382%7C39.973922,116.296382%7C39.973923,116.296383%7C39.973924,116.296383%7C39.973952,116.296402%7C39.974227,116.295916%7C39.974234,116.295794%7C39.974283,116.295824%7C39.974264,116.295696&markers=color%3ablue%7Clabel%3aS%7C39.985949,116.316037&markers=color%3ablue%7Clabel%3a1%7C39.970159,116.296339&markers=color%3ablue%7Clabel%3a2%7C39.9672745,116.2972789&markers=color%3ablue%7Clabel%3a3%7C39.9571102,116.2892963&markers=color%3ablue%7Clabel%3aE%7C39.974264,116.295696&sensor=false&key=AIzaSyB17idsRvfYWH1KacGZSkHohazlSUP3gjQ" alt="随机游动的轨道"></p>
+<p>一共有三个小伙伴参与了 <strong>公交图上的随机游动——第一回</strong> ，分别是我、 <a href="https://blog.shsty.site/" target="_blank" rel="noopener">Cheshire Cat</a> 与 <a href="https://github.com/Baifly" target="_blank" rel="noopener">Baifly</a> 。分工非常明确：</p>
+<ul>
+<li>Cheshire Cat 负责记录行踪</li>
+<li>Baifly 负责投掷色子决定是否上下车</li>
+<li>我负责玩 Ingress</li>
+</ul>
+<p><strong>规则</strong> 比较简单：</p>
+<ol>
+<li>上车原则：对于每一辆到达车站的公交车，以 1/2 的概率上车。</li>
+<li>下车原则：对于即将到达的车站，以 1/4 的概率从这一站下车；在终点站时不投掷色子直接下车。</li>
+<li>换向原则：下车后，以 1/2 的概率到对面车站等车。</li>
+<li>例外情况：若在终点站下车且该站无其他可乘车辆，做二维平面上的随机游动直至遇到能够正常上车的车站。<br><del>当然，我们差点就要处理第四条了</del></li>
+</ol>
+<hr>
+<p>根据 Cheshire Cat 的记录，我们的行程是这样的：</p>
+<h3 id="标记-S"><a href="#标记-S" class="headerlink" title="标记 S"></a>标记 S</h3><blockquote>
+<p>15:49 经过商讨决定，以 0.25 的概率上公交，每站以 0.125 的概率下来。</p>
+</blockquote>
+<p>是的，原来我们打算平均等 4 辆车才上车，平均坐 8 站才下车，然鹅……</p>
+<blockquote>
+<p>15:51 中关村北 pass车数&gt;&gt;&gt;&gt;</p>
+</blockquote>
+<p>没事，在预计范围内。</p>
+<blockquote>
+<p>15:55 614 路 站数++++++++++</p>
+</blockquote>
+<p>坐到第五站时发现好像没完没了，一想还要坐的站数期望总是 8 站，然后想起来原来是有无记忆性的[捂脸]感到了几何分布的恐怖；因此改成了每站 0.25 的概率下车， 0.5 概率上车。幸好离终点还有一站的时候下来了。</p>
+<h3 id="标记-1"><a href="#标记-1" class="headerlink" title="标记 1"></a>标记 1</h3><blockquote>
+<p>16:24 万柳中路站</p>
+</blockquote>
+<p>眼看就要坐到郊区了[傻眼] Cheshire Cat 急中生智，决定以 0.5 的概率换到对面车站。这个时候 Baifly 开始狂 roll 色子，我和 Cheshire Cat 义正辞严地警告他不能破坏掷色子的神圣性（</p>
+<blockquote>
+<p>16:27 万柳中路站 对面车站 &gt;&gt;<br>16:36 534 路 +</p>
+</blockquote>
+<p>坐了一站就下来了……</p>
+<h3 id="标记-2"><a href="#标记-2" class="headerlink" title="标记 2"></a>标记 2</h3><blockquote>
+<p>16:36 巴沟南路 &gt;<br>16:42 114 路 +++</p>
+</blockquote>
+<p>我们表示，“掷骰子这种神圣庄严的事情应该三个人公证才行”，于是进一步仪式化了决定上下车的投掷过程（</p>
+<h3 id="标记-3"><a href="#标记-3" class="headerlink" title="标记 3"></a>标记 3</h3><blockquote>
+<p>16:46 远大路东口</p>
+</blockquote>
+<p>投硬币决定要不要在这里吃饭……结果失败了，“色子之神”认为还没有到饭点（</p>
+<blockquote>
+<p>16:49 539 路 +++++终点站</p>
+</blockquote>
+<p>成功坐到了终点站，并投硬币决定在这里吃饭 233</p>
+<h3 id="标记-E"><a href="#标记-E" class="headerlink" title="标记 E"></a>标记 E</h3><p>吃完饭出来已经天黑了，就坐地铁回学校了。</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.xdrd.tech/2017/12/practice-lesson-to-stochastic-process/" data-id="ck8d81dt5002vg1zrb0lqef20" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+        <a href="https://blog.xdrd.tech/2017/12/practice-lesson-to-stochastic-process/#disqus_thread" class="article-comment-link">
+          <i class="fa fa-comment"></i> Comments
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/outside/" rel="tag">outside</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stochastic/" rel="tag">stochastic</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2017/11/working-with-ffmpeg/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">与 FFmpeg 共舞</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/2018/01/20.4-strings/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">20.4 Shell 字符串 (从新手到菜鸟的Linux教程)</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>xDroid, student of UT Austin and formerly PKU.</p>
+
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>小伙伴们</h4>
+    <ul>
+      
+        
+        <li><a href="https://www.blackglory.me/" target="_blank" rel="noopener">BlackGlory</a></li>
+      
+        
+        <li><a href="https://www.buriedjet.com/" target="_blank" rel="noopener">BuriedJet</a></li>
+      
+        
+        <li><a href="https://blog.shsty.site/" target="_blank" rel="noopener">Rabbit_Hole</a></li>
+      
+        
+        <li><a href="https://zh.neuromancer42.com/" target="_blank" rel="noopener">神经漫游日志</a></li>
+      
+        
+        <li><a href="https://taroxd.github.io/" target="_blank" rel="noopener">taroxd</a></li>
+      
+        
+        <li><a href="https://yangwenh.github.io/" target="_blank" rel="noopener">Wenhao Yang</a></li>
+      
+        
+        <li><a href="https://blog.xlk.me/" target="_blank" rel="noopener">XLuke</a></li>
+      
+    </ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2020/03/amd-yes/">AMD Yes!</a>
+        </li>
+      
+        <li>
+          <a href="/2020/03/ssd-perished/">纪念在疫情中不幸暴毙的 SSD</a>
+        </li>
+      
+        <li>
+          <a href="/2019/12/mi-a2-lite-daisy/">Mi A2 Lite</a>
+        </li>
+      
+        <li>
+          <a href="/2019/10/repairing-bacon/">一加一换屏</a>
+        </li>
+      
+        <li>
+          <a href="/2019/09/account-deletion/">账户大清理</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">March 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">October 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">September 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">March 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/02/">February 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">December 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">July 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">May 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">April 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">March 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">February 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">January 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">December 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">November 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">October 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">August 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">July 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">June 2017</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">May 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">March 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/02/">February 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">January 2017</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">December 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">November 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">October 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">September 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">August 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">July 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">June 2016</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">May 2016</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">April 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">March 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">February 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/01/">January 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/12/">December 2015</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/10/">October 2015</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">August 2015</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">July 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/02/">February 2015</a><span class="sidebar-module-list-count">4</span></li></ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2020 xDroid<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'xdroid';
+  
+  var disqus_url = 'https://blog.xdrd.tech/2017/12/practice-lesson-to-stochastic-process/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</body>
+</html>
