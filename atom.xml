@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.tech/"/>
-  <updated>2020-03-29T17:42:40.608Z</updated>
+  <updated>2020-04-12T15:44:36.111Z</updated>
   <id>https://blog.xdrd.tech/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>0202 年安装 Windows 记录</title>
+    <link href="https://blog.xdrd.tech/2020/04/install-windows/"/>
+    <id>https://blog.xdrd.tech/2020/04/install-windows/</id>
+    <published>2020-04-12T15:07:56.000Z</published>
+    <updated>2020-04-12T15:44:36.111Z</updated>
+    
+    <content type="html"><![CDATA[<p>补一下上次 <a href="/2020/03/amd-yes/" title="安装了新电脑">安装了新电脑</a> 的一些后续步骤吧。</p><p>由于这次没有附赠的授权了（而且贫穷 UT 没买批量授权……），只能偷偷摸摸用 KMS 激活了（（（</p><p>首先从 itellyoumsdn 的 ed2k 链接下载镜像（居然花了整整两天才下载完），然后刻到 U 盘上（现在 rufus 都更新这么多了），再插到新电脑上设好引导安装就可以了。</p><a id="more"></a><p>谁能想到第一个安装的软件居然是 uplay，steam 和 epic games 呢！</p><p>然后把游戏镜像拷过去……由于没有网线而且小区网络 AP 隔离，所以只能用移动硬盘了（才发现 Hitman 2 有 200G 多……天呐）</p><p><del>全境封锁，启动！进入任务！一通操作居然挂了，游戏退出！</del> 总之画质和流畅度都没有问题，温度也还正常。</p><hr><p>然后是 Windows Terminal + chocolatey 组合，全面向 Linux 看齐（</p><p>大概用包管理器安装了那些呢？</p><blockquote><p>7zip, cpuz, gpuz, hwi, dismplusplus, weasel, telegram, rufus, vlc …</p></blockquote><p>哦对了，还可以 <a href="https://superuser.com/questions/7327/how-to-add-a-custom-search-engine-to-firefox" target="_blank" rel="noopener">通过添加书签的方式自定义搜索引擎</a>（学习了</p><hr><h2 id="杂"><a href="#杂" class="headerlink" title="杂"></a>杂</h2><p>然后是用 dism++ 进行简单调教（咦，用户最终许可协议？有这回事情吗？），包括关闭小娜</p><p>好在 UT 买了 Office 365 的授权，但是给的安装包默认全部安装（呃……）。查了一下可以通过 <a href="https://docs.microsoft.com/zh-cn/deployoffice/configuration-options-for-the-office-2016-deployment-tool?redirectedfrom=MSDN#excludeapp-element" target="_blank" rel="noopener">xml 配置文件</a> 的方式 <a href="https://roov.org/2015/12/office-365-diy/" target="_blank" rel="noopener">定义安装行为</a>。</p><p>还有是小狼毫如果通过 chocolatey 安装的话似乎有点问题，好像是缺了一个 default.yaml 。另一个无关问题见 <a href="https://github.com/rime/weasel/issues/228" target="_blank" rel="noopener">这里</a>。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;补一下上次 &lt;a href=&quot;/2020/03/amd-yes/&quot; title=&quot;安装了新电脑&quot;&gt;安装了新电脑&lt;/a&gt; 的一些后续步骤吧。&lt;/p&gt;
+&lt;p&gt;由于这次没有附赠的授权了（而且贫穷 UT 没买批量授权……），只能偷偷摸摸用 KMS 激活了（（（&lt;/p&gt;
+&lt;p&gt;首先从 itellyoumsdn 的 ed2k 链接下载镜像（居然花了整整两天才下载完），然后刻到 U 盘上（现在 rufus 都更新这么多了），再插到新电脑上设好引导安装就可以了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Windows" scheme="https://blog.xdrd.tech/categories/Windows/"/>
+    
+    
+      <category term="windows" scheme="https://blog.xdrd.tech/tags/windows/"/>
+    
+      <category term="chocolatey" scheme="https://blog.xdrd.tech/tags/chocolatey/"/>
+    
+  </entry>
   
   <entry>
     <title>AMD Yes!</title>
@@ -529,31 +556,6 @@
       <category term="ss" scheme="https://blog.xdrd.tech/tags/ss/"/>
     
       <category term="nssm" scheme="https://blog.xdrd.tech/tags/nssm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EFI Shell 升级 BIOS 了解一下</title>
-    <link href="https://blog.xdrd.tech/2018/03/updating-bios/"/>
-    <id>https://blog.xdrd.tech/2018/03/updating-bios/</id>
-    <published>2018-03-19T15:45:55.000Z</published>
-    <updated>2020-03-29T15:15:57.402Z</updated>
-    
-    <content type="html"><![CDATA[<p>昨天听说有个上了 Z7 船的小伙伴升级了一下 BIOS ，自检飞快，不禁有些心动，决定也去升级一下。</p><a id="more"></a><p>可以直接从蓝天的 <a href="https://repo.palkeo.com/clevo-mirror/" target="_blank" rel="noopener">非官方 BIOS 仓库</a> 下载对应模具的固件。找固件的型号稍微费了一番功夫，其实也就是印在底面上的几个标签中的一个= =。</p><p>DOS 启动！切换目录！</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">C:\ cd ES10513</span><br><span class="line">The system cannot find ES10513.</span><br></pre></td></tr></table></figure><p><del>大概是这样记不清错误信息了</del></p><p>垃圾 DOS 还我青春！</p><p>于是默默去改文件夹名了。</p><p>DOS 再启动！切换目录！ <code>ECFLASH</code> ！</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">C:\EC\ ECFLASH</span><br><span class="line">...</span><br><span class="line">The ROM file is larger than 64K.</span><br></pre></td></tr></table></figure><p>\表情包{震惊.jpg}</p><hr><p>先吃个饭冷静一下。</p><p>在 google 上搜索了一下其他厂商的升级指南，发现其实不用进 DOS ，直接从 EFI Shell 刷也是可以的。想了一下我不是还有一个 Arch Linux 的启动盘么，正好拿来用用。</p><p>大概刷的步骤是 ecflash.nsh -&gt; meset.nsh -&gt; flash.nsh 这样。坑不算很多，比较麻烦的一步是一开始需要找到正确的分区 <code>fs[n]:</code> ——由于默认的屏幕映射只有 640x360 ，所以看不到特别靠上的分区信息= =只能猜猜看。</p><hr><p>然鹅默认的 splash logo 也太 TM 丑了吧！滚去改图片去了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;昨天听说有个上了 Z7 船的小伙伴升级了一下 BIOS ，自检飞快，不禁有些心动，决定也去升级一下。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="laptop" scheme="https://blog.xdrd.tech/categories/laptop/"/>
-    
-    
-      <category term="bios" scheme="https://blog.xdrd.tech/tags/bios/"/>
-    
-      <category term="efi" scheme="https://blog.xdrd.tech/tags/efi/"/>
     
   </entry>
   
