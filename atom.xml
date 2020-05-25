@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.tech/"/>
-  <updated>2020-04-12T15:44:36.111Z</updated>
+  <updated>2020-05-25T17:40:31.571Z</updated>
   <id>https://blog.xdrd.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AMD Yes 之深度学习</title>
+    <link href="https://blog.xdrd.tech/2020/05/rocm/"/>
+    <id>https://blog.xdrd.tech/2020/05/rocm/</id>
+    <published>2020-05-25T16:43:53.000Z</published>
+    <updated>2020-05-25T17:40:31.571Z</updated>
+    
+    <content type="html"><![CDATA[<p>继上次坚定不移的 <a href="/2020/03/amd-yes/" title="AMD Yes!">AMD Yes!</a> 之后，玩游戏之余的我发现了一个大问题……那就是我要拿手上的显卡完成 Deep Learning 课程的作业……</p><p>查了一下资料，似乎 AMD 官方正在推行一个叫做 <a href="https://rocmdocs.amd.com/en/latest/index.html" target="_blank" rel="noopener">ROCm</a> 的项目。啥意思，什么原理？我也不懂，总之赶紧完成作业就好啦（flag</p><a id="more"></a><p>尝试了一下 <code>yay rocm-dkms</code> ，然后看了一会儿 archlinux 的文档，然后等了一下午编译 llvm ……呃跑不起来（就很尴尬了</p><p>最终！还是划了一小块分区安装官方支持的 Ubuntu ，直接 apt 下个编译好的包就可以了ww虽然还是掉进了一堆坑里……总之想尝试的朋友们建议出门右转老老实实买老黄家的卡——毕竟连 tensorflow 都要安装一个额外的包，而像 pytorch 就根本没有 official build （摔</p><p>（于是过了一个多月我终于把报告口胡完了……享受一下最后一个暑假……</p><hr><p>哦对了，似乎 rocm 还有不少 bug ，因为拿 cpu 和 gpu train 一个 rnn 的结果是不一样的……很明显 gpu train 出来的 loss 一直不下降（一通操作猛如虎，一看 loss 根本没变）。倒是 cnn 那块可能比较稳定（用的人多了 bug 修好了吧）。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;继上次坚定不移的 &lt;a href=&quot;/2020/03/amd-yes/&quot; title=&quot;AMD Yes!&quot;&gt;AMD Yes!&lt;/a&gt; 之后，玩游戏之余的我发现了一个大问题……那就是我要拿手上的显卡完成 Deep Learning 课程的作业……&lt;/p&gt;
+&lt;p&gt;查了一下资料，似乎 AMD 官方正在推行一个叫做 &lt;a href=&quot;https://rocmdocs.amd.com/en/latest/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ROCm&lt;/a&gt; 的项目。啥意思，什么原理？我也不懂，总之赶紧完成作业就好啦（flag&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://blog.xdrd.tech/categories/Linux/"/>
+    
+    
+      <category term="amd graphics card" scheme="https://blog.xdrd.tech/tags/amd-graphics-card/"/>
+    
+      <category term="rocm" scheme="https://blog.xdrd.tech/tags/rocm/"/>
+    
+  </entry>
   
   <entry>
     <title>0202 年安装 Windows 记录</title>
@@ -526,36 +552,6 @@
       <category term="untrunc" scheme="https://blog.xdrd.tech/tags/untrunc/"/>
     
       <category term="ffmpeg" scheme="https://blog.xdrd.tech/tags/ffmpeg/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ss 与 nssm</title>
-    <link href="https://blog.xdrd.tech/2018/04/ss-and-nssm/"/>
-    <id>https://blog.xdrd.tech/2018/04/ss-and-nssm/</id>
-    <published>2018-04-29T21:39:14.000Z</published>
-    <updated>2020-03-29T15:15:57.402Z</updated>
-    
-    <content type="html"><![CDATA[<p>期中考试的时候实在无法忍受 ss 的 Windows 客户端的速度了，于是琢磨着是不是要换个客户端用用。</p><hr><p>先前用的是用 C# 实现的<a href="https://github.com/shadowsocks/shadowsocks-windows" target="_blank" rel="noopener">客户端</a>，不知为何连接速度非常慢。考虑到在 Arch Linux 上使用的 python 版本表现还不错，试着在 Windows 下 <code>pip</code> 安装了一下。</p><p>然后就发现……并没有 systemd 啊（摔）这怎么开机自启？其实是有两种解决方案：</p><ol><li>使用计划任务等工具配置</li><li>使用 the <strong>N</strong>on-<strong>S</strong>ucking <strong>S</strong>ervice <strong>M</strong>anager 配置<br>我觉得 <a href="https://nssm.cc/" target="_blank" rel="noopener">nssm</a> 还是挺不错的，支持日志旋转等非常细致的功能，就是 last release 老了一点……</li></ol><hr><p>不过 ss 的 python 版维护已经不勤快了，正在测试 libev 的版本……</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;期中考试的时候实在无法忍受 ss 的 Windows 客户端的速度了，于是琢磨着是不是要换个客户端用用。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;先前用的是用 C# 实现的&lt;a href=&quot;https://github.com/shadowsocks/shadowsocks-windows
-      
-    
-    </summary>
-    
-    
-      <category term="Windows" scheme="https://blog.xdrd.tech/categories/Windows/"/>
-    
-    
-      <category term="ss" scheme="https://blog.xdrd.tech/tags/ss/"/>
-    
-      <category term="nssm" scheme="https://blog.xdrd.tech/tags/nssm/"/>
     
   </entry>
   
