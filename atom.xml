@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.tech/"/>
-  <updated>2020-05-25T17:40:31.571Z</updated>
+  <updated>2020-05-25T18:01:22.798Z</updated>
   <id>https://blog.xdrd.tech/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>USTC 字体 CDN 服务被墙</title>
+    <link href="https://blog.xdrd.tech/2020/05/ustc-font-blocked/"/>
+    <id>https://blog.xdrd.tech/2020/05/ustc-font-blocked/</id>
+    <published>2020-05-25T17:52:35.000Z</published>
+    <updated>2020-05-25T18:01:22.798Z</updated>
+    
+    <content type="html"><![CDATA[<p>真是活久见，第一次看到除了影视版权原因以外被反向墙的案例（</p><p>今早准备更新博客的时候，发现自己的站点打不开了（什么？在国外 github 还能被墙？）看了一眼控制台，发现大概是一个字体的 css 加载不出来了。定睛一看：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fonts.lug.ustc.edu.cn&#x2F;css?family&#x3D;Source+Code+Pro</span><br></pre></td></tr></table></figure><p>这就，很尴尬，因为 <a href="https://lug.ustc.edu.cn/wiki/lug/services/googlefonts" target="_blank" rel="noopener">中科大的站点</a> 还是好好的——当然不能排除仅仅是由于他们的 CDN 服务器挂了的可能性，但是结合近日国内某重要会议事件，大概率是这种冷门访问被丢包了（</p><p>查了一下似乎很难有 fallback 的方案，而且现有的方案都是已知加载不出来之后的行动——但是这里是直接被丢包，Firefox 还在戆戆地等，这就很麻烦了。</p><p>所以最后怎么办呢？只好先换成 googleapis ，毕竟还有 cloudflare 撑腰，国内的小伙伴应该不至于完全打不开（</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;真是活久见，第一次看到除了影视版权原因以外被反向墙的案例（&lt;/p&gt;
+&lt;p&gt;今早准备更新博客的时候，发现自己的站点打不开了（什么？在国外 github 还能被墙？）看了一眼控制台，发现大概是一个字体的 css 加载不出来了。定睛一看：&lt;/p&gt;
+&lt;figure class=&quot;h
+      
+    
+    </summary>
+    
+    
+      <category term="site" scheme="https://blog.xdrd.tech/categories/site/"/>
+    
+    
+      <category term="ustc" scheme="https://blog.xdrd.tech/tags/ustc/"/>
+    
+      <category term="cdn" scheme="https://blog.xdrd.tech/tags/cdn/"/>
+    
+  </entry>
   
   <entry>
     <title>AMD Yes 之深度学习</title>
@@ -524,34 +554,6 @@
       <category term="i3" scheme="https://blog.xdrd.tech/tags/i3/"/>
     
       <category term="xrandr" scheme="https://blog.xdrd.tech/tags/xrandr/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>untrunc</title>
-    <link href="https://blog.xdrd.tech/2018/05/untrunc/"/>
-    <id>https://blog.xdrd.tech/2018/05/untrunc/</id>
-    <published>2018-05-10T20:35:25.000Z</published>
-    <updated>2020-03-29T15:15:57.402Z</updated>
-    
-    <content type="html"><![CDATA[<p>起因：手机接 OTG 线录视频，结果空间太小没把尾部/头部的流信息写上，完全无法播放。<br>查到似乎 <a href="https://github.com/ponchio/untrunc" target="_blank" rel="noopener">untrunc</a> 可以尝试修复。</p><hr><p>先尝试安装一些依赖；在 Arch 上似乎是 ffmpeg-full ：<br><del></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cuda-9.1.85.3-5-x86_64  1119.3 MiB  28.7M&#x2F;s 00:39 100%</span><br></pre></td></tr></table></figure><p>？？？</del></p><hr><p>还是先 clone 一下 repo 吧（<br>然后发现 <code>/</code> 没空间了 QAQ<br>清了一遍 cache ，发现 aur 上原来有现成的源；但试了一下似乎又不行，报错 <code>std::bad_alloc</code> ……</p><hr><p>后来发现是采样用的视频太大了，装不进内存里。<br>那还是挺简单的，直接 ffmpeg 截一段就好。<br>最终顺利修复，有一些地方音画略不同步 QAQ</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;起因：手机接 OTG 线录视频，结果空间太小没把尾部/头部的流信息写上，完全无法播放。&lt;br&gt;查到似乎 &lt;a href=&quot;https://github.com/ponchio/untrunc&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;untrunc&lt;/
-      
-    
-    </summary>
-    
-    
-      <category term="daily" scheme="https://blog.xdrd.tech/categories/daily/"/>
-    
-    
-      <category term="untrunc" scheme="https://blog.xdrd.tech/tags/untrunc/"/>
-    
-      <category term="ffmpeg" scheme="https://blog.xdrd.tech/tags/ffmpeg/"/>
     
   </entry>
   
