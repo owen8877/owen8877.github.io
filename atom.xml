@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.tech/"/>
-  <updated>2020-05-25T18:01:22.798Z</updated>
+  <updated>2020-05-26T22:12:21.245Z</updated>
   <id>https://blog.xdrd.tech/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「日历记事本」规划</title>
+    <link href="https://blog.xdrd.tech/2020/05/calendar-as-diary-roadmap/"/>
+    <id>https://blog.xdrd.tech/2020/05/calendar-as-diary-roadmap/</id>
+    <published>2020-05-26T21:49:42.000Z</published>
+    <updated>2020-05-26T22:12:21.245Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文是 2020 年暑假学习 rust 计划的一部分。目前项目存放在 <a href="//github.com/owen8877/calendar-as-diary" target="_blank" rel="noopener">owen8877/calendar-as-diary</a>，欢迎围观<del>和吐槽</del>。</p><h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>逐渐发现 Google Calendar 是个好东西（其实所有日历软件都是个好东西），用来计划日常生活、提醒工作安排真是非常方便，在计划之余还能形成一本自然的日记本。于是我就想，如果能 <strong>自动</strong> 记录一些生活琐事（一些懒得规划的事情），那就再好不过了——比如看视频、锻炼身体，因为在完成之余还要誊到日历上真的是非常麻烦。</p><p>市面上有一些比较成熟的自动化软件/服务，比如 ifttt 、 zapier 和被苹果收购的 workflow ，它们的特点是功能广泛，要完成和日历的对接也是非常容易。但是缺点也比较明显，如果是像上文提出的那种特殊需求，有时候就有点力不从心了。因为很多站点并不开放让用户自己查询自己的历史数据，因此根本无法从流程自动化的服务中提取这些信息——需要说明的是这一点和 GDPR 并不矛盾，因为后者只要把所有东西塞到一个 json 再打个 tarball 扔给用户就完事了。</p><p>目前来看，可以借由已有服务完成的有：</p><ul><li><a href="//ifttt.com/applets/416458p-add-strava-runs-and-rides-to-google-calendar" target="_blank" rel="noopener">将 Strava 上跑步和骑车记录同步到 GC</a></li><li>将 Zapier 上的天气预报信息同步到 GC</li></ul><p>（呃……还真是少的可怜呢）因此自己造轮子就势在必行啦！</p><a id="more"></a><h2 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h2><h3 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h3><ul><li>流视频类：netflix, bilibili, youtube</li><li>游戏类：steam, uplay, epic games</li><li>写<del>摸鱼</del>代码类：wakatime</li></ul><h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><ul><li>以 rust 为主要使用的语言</li><li>webserver 选用 <a href="//github.com/SergioBenitez/Rocket" target="_blank" rel="noopener">SergioBenitez/Rocket</a></li><li>json 解析用 <a href="//github.com/serde-rs/json" target="_blank" rel="noopener">serde-rs/json</a></li><li>xml 解析用 <a href="//github.com/tafia/quick-xml" target="_blank" rel="noopener">tafia/quick-xml</a></li></ul><h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>目前在看 <a href="https://doc.rust-lang.org/stable/book/" target="_blank" rel="noopener">官方教程</a>（还挺有意思）。IDE 选用 CLion 加 rust 插件支持（噫已经离不开 jetbrains 全家桶了吗）。安装过程查看了 <a href="https://wiki.archlinux.org/index.php/Rust" target="_blank" rel="noopener">archlinux 关于 rust 的文档</a>，用 pacman 安装了 rustup 然后更新了 toolchains 。</p><h2 id="纯净的吐槽"><a href="#纯净的吐槽" class="headerlink" title="纯净的吐槽"></a>纯净的吐槽</h2><p>有模式匹配哎（有 haskell 内味了……）相应地 enum 类型也变得很强大了</p><p>ownership 这个挺有意思……之后再慢慢琢磨到底是怎么回事……（看这个 ownership transfer 我已经可以预见到之后为了使编译通过要头昏脑胀了x</p><p><code>&quot;Hello World!&quot;.into()</code> 是个什么鬼玩意儿（看了一下代码……呃好吧，这个设计还可以吧）结果因为不能编译被迫使用 <code>&quot;Hello World!&quot;.to_string()</code></p><p>rust 这套 reference borrowing 也太激进了吧，non-const 方法（C++ 用语，rust 的话应该叫 <code>&amp;mut self</code>）也算 mutable reference 吗（想想确实没毛病</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文是 2020 年暑假学习 rust 计划的一部分。目前项目存放在 &lt;a href=&quot;//github.com/owen8877/calendar-as-diary&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;owen8877/calendar-as-diary&lt;/a&gt;，欢迎围观&lt;del&gt;和吐槽&lt;/del&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;动机&quot;&gt;&lt;a href=&quot;#动机&quot; class=&quot;headerlink&quot; title=&quot;动机&quot;&gt;&lt;/a&gt;动机&lt;/h2&gt;&lt;p&gt;逐渐发现 Google Calendar 是个好东西（其实所有日历软件都是个好东西），用来计划日常生活、提醒工作安排真是非常方便，在计划之余还能形成一本自然的日记本。于是我就想，如果能 &lt;strong&gt;自动&lt;/strong&gt; 记录一些生活琐事（一些懒得规划的事情），那就再好不过了——比如看视频、锻炼身体，因为在完成之余还要誊到日历上真的是非常麻烦。&lt;/p&gt;
+&lt;p&gt;市面上有一些比较成熟的自动化软件/服务，比如 ifttt 、 zapier 和被苹果收购的 workflow ，它们的特点是功能广泛，要完成和日历的对接也是非常容易。但是缺点也比较明显，如果是像上文提出的那种特殊需求，有时候就有点力不从心了。因为很多站点并不开放让用户自己查询自己的历史数据，因此根本无法从流程自动化的服务中提取这些信息——需要说明的是这一点和 GDPR 并不矛盾，因为后者只要把所有东西塞到一个 json 再打个 tarball 扔给用户就完事了。&lt;/p&gt;
+&lt;p&gt;目前来看，可以借由已有服务完成的有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;//ifttt.com/applets/416458p-add-strava-runs-and-rides-to-google-calendar&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;将 Strava 上跑步和骑车记录同步到 GC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;将 Zapier 上的天气预报信息同步到 GC&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（呃……还真是少的可怜呢）因此自己造轮子就势在必行啦！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="gizmo" scheme="https://blog.xdrd.tech/categories/gizmo/"/>
+    
+    
+      <category term="calendar-as-diary" scheme="https://blog.xdrd.tech/tags/calendar-as-diary/"/>
+    
+      <category term="rust" scheme="https://blog.xdrd.tech/tags/rust/"/>
+    
+  </entry>
   
   <entry>
     <title>USTC 字体 CDN 服务被墙</title>
@@ -524,36 +557,6 @@
     
     
       <category term="display" scheme="https://blog.xdrd.tech/tags/display/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HiDPI 适配</title>
-    <link href="https://blog.xdrd.tech/2018/07/tweaking-dpi/"/>
-    <id>https://blog.xdrd.tech/2018/07/tweaking-dpi/</id>
-    <published>2018-07-06T15:30:50.000Z</published>
-    <updated>2020-03-29T15:15:57.402Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近又重新拾起 arch （假装自己在做科研），看着很小的字有点难受……</p><p>记得最简单的方案是调整 <code>xrandr</code> ？</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xrandr --dpi 120</span><br></pre></td></tr></table></figure><p>似乎效果不是很好？ Android Studio 会出现蜜汁位图放大和错位的现象。</p><hr><p>尝试了一下似乎 dpi 设置到 110 看起来差不多；而且把<a href="https://winaero.com/blog/find-change-screen-dpi-linux/" target="_blank" rel="noopener">参数设置</a>放到 <code>~/.Xresources</code> 里去了：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Xft.dpi: 110</span><br></pre></td></tr></table></figure><hr><p><strong>i3</strong><br>先到 <code>~/.config/i3/config</code> 去把 i3-bar 的字号调了一下（并重新发现了一些有用的按键绑定）</p><p><strong>sogou-pinyin</strong><br>输入法的字号就有点小了……而且白底实在看不下去了[捂脸]然而主题又很难改……</p><p><strong>chrome</strong><br>这个比较简单，直接改 <code>~/.config/chrome-flags.conf</code> ：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--force-device-scale-factor&#x3D;1.2</span><br></pre></td></tr></table></figure><p><strong>sublime</strong><br>直接读取了 dpi 参数，不需要其他操作</p><p><strong>android studio</strong><br>按理说也是自动读取了 dpi 参数但是……每日 tips 居然是位图？？</p><p><strong>matlab</strong><br>Wiki 上说 R2017b 支持……回学校我就重装 matlab ！</p><hr><p><em>参考链接</em><br><a href="https://wiki.archlinux.org/index.php/HiDPI" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/HiDPI</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;最近又重新拾起 arch （假装自己在做科研），看着很小的字有点难受……&lt;/p&gt;
-&lt;p&gt;记得最简单的方案是调整 &lt;code&gt;xrandr&lt;/code&gt; ？&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;co
-      
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://blog.xdrd.tech/categories/Linux/"/>
-    
-    
-      <category term="i3" scheme="https://blog.xdrd.tech/tags/i3/"/>
-    
-      <category term="xrandr" scheme="https://blog.xdrd.tech/tags/xrandr/"/>
     
   </entry>
   
