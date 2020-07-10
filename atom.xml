@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.tech/"/>
-  <updated>2020-05-26T22:12:21.245Z</updated>
+  <updated>2020-07-10T19:21:48.627Z</updated>
   <id>https://blog.xdrd.tech/</id>
   
   <author>
@@ -17,13 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>「日历记事本」模组</title>
+    <link href="https://blog.xdrd.tech/2020/07/calendar-as-diary-module/"/>
+    <id>https://blog.xdrd.tech/2020/07/calendar-as-diary-module/</id>
+    <published>2020-07-09T18:25:21.000Z</published>
+    <updated>2020-07-10T19:21:48.627Z</updated>
+    
+    <content type="html"><![CDATA[<p>其实在上一篇 <a href="/2020/05/calendar-as-diary-roadmap/" title="「日历记事本」规划">「日历记事本」规划</a> 之后不久我就把插件陆陆续续写得差不多了，但是由于懒癌发作一直没有更新博客 QAQ ……</p><p>那么目前完成的模组有三个流媒体和一个 coding 时间跟踪工具。</p><a id="more"></a><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="#bilibili">Bilibili</a></li><li><a href="#netflix">Netflix</a></li><li><a href="#wakatime">Wakatime</a></li><li><a href="#youtube">Youtube</a></li></ul><h2 id="bilibili">Bilibili</h2><p>B 站的数据是从他们家的历史记录页面抓取的，从审查元素页面可以看到有如下的请求：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://api.bilibili.com/x/v2/history?pn=1&amp;ps=100&amp;jsonp=jsonp'</span></span><br></pre></td></tr></table></figure><p>那么返回的数据是一个 json 对象，内含一堆 <del>看不懂</del> 的条目……里面比较重要的其实也就下面这些：</p><ul><li>aid: 就是以前的 av 号</li><li>bvid: B 站后来又搞了个 bv 号，想了想那就拿这个当主键吧</li><li>duration: 这个应该是总长吧</li><li>page: 包含观看分 p 号和观看时间等</li><li>progress: 观看的长度；-1 表示的是看完了</li><li>redirect_link: 链接，其实可以用 av/bv 号生成</li><li>title: 标题</li><li>view_at: 观看时间，是 Unix 时间戳格式的</li></ul><p>这边比较复杂的一个问题是有些视频是分 p 的，所以需要考虑到可能看完第 1p 之后看了第 2p 导致有两个条目这样的情况。还有的问题就是 progress 可能是 -1 所以这个时候要用 duration 替代……</p><p><del>不过总的来说 B 站的数据真的是很良心了（全靠同行衬托），下面的两个流媒体网站才是真正的灾难（</del></p><h2 id="netflix">Netflix</h2><p>Netflix 只有精确到天且看完节目的记录，所以只能解析 html 了……</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://www.netflix.com/viewingactivity'</span></span><br></pre></td></tr></table></figure><p>虽然不是 json 格式，所幸数据都在一个 table 里面，还算比较规整，只要拿 scraper 稍微搞搞就可以了。其他应该也没什么坑点，日期用正则表达式 parse 一下就行（</p><h2 id="wakatime">Wakatime</h2><p>Wakatime 做的还不错，至少有 <a href="//wakatime.com/developers/" target="_blank" rel="noopener">api</a> 和对应的文档（虽然写得不怎么样……）</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://wakatime.com/api/v1/users/current/durations?date=YYYY-MM-DD'</span></span><br><span class="line">curl <span class="string">'https://wakatime.com/api/v1/users/current/summaries?start=YYYY-MM-DD&amp;end=YYYY-MM-DD&amp;cache=false'</span></span><br></pre></td></tr></table></figure><p>有个小问题（其实每个插件都会遇到）是，比如我正在看视频或者进行某个项目，那么如果这个活动持续时间超过了服务器抓取历史记录的间隔市场的话，就会抓取到两份历史记录——但是它们指向的是同一个活动。因此一个<a href="//github.com/owen8877/calendar-as-diary/issues/1" target="_blank" rel="noopener">修复的小技巧</a>就是过滤掉结束时间太近的那些活动；这样会引入一丢丢延迟，但是总体上来说应该没问题。</p><h2 id="youtube">Youtube</h2><p><del>谷歌简直是业界毒瘤x</del></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://myactivity.google.com/activitycontrols/youtube?view=item'</span></span><br></pre></td></tr></table></figure><p>Youtube 的历史记录要难搞很多，因为首先它可能会受到时区影响（因为精确到了分钟），其次它“智能”地将同一天观看的内容整合在一起，中间用另一个 div 元素分开，所以还要动点脑筋才能把日期读出来……像观看进度这种东西都是靠缩略图上的进度条读出来的，实在受不了这种奇技淫巧x</p><p>目前为止<a href="//github.com/owen8877/calendar-as-diary/issues/3" target="_blank" rel="noopener">时区的问题</a>还不太能搞定……还是等有时间再修复吧x</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;其实在上一篇 &lt;a href=&quot;/2020/05/calendar-as-diary-roadmap/&quot; title=&quot;「日历记事本」规划&quot;&gt;「日历记事本」规划&lt;/a&gt; 之后不久我就把插件陆陆续续写得差不多了，但是由于懒癌发作一直没有更新博客 QAQ ……&lt;/p&gt;
+&lt;p&gt;那么目前完成的模组有三个流媒体和一个 coding 时间跟踪工具。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="gizmo" scheme="https://blog.xdrd.tech/categories/gizmo/"/>
+    
+    
+      <category term="calendar-as-diary" scheme="https://blog.xdrd.tech/tags/calendar-as-diary/"/>
+    
+      <category term="rust" scheme="https://blog.xdrd.tech/tags/rust/"/>
+    
+  </entry>
+  
+  <entry>
     <title>「日历记事本」规划</title>
     <link href="https://blog.xdrd.tech/2020/05/calendar-as-diary-roadmap/"/>
     <id>https://blog.xdrd.tech/2020/05/calendar-as-diary-roadmap/</id>
     <published>2020-05-26T21:49:42.000Z</published>
-    <updated>2020-05-26T22:12:21.245Z</updated>
+    <updated>2020-06-01T16:56:29.055Z</updated>
     
-    <content type="html"><![CDATA[<p>本文是 2020 年暑假学习 rust 计划的一部分。目前项目存放在 <a href="//github.com/owen8877/calendar-as-diary" target="_blank" rel="noopener">owen8877/calendar-as-diary</a>，欢迎围观<del>和吐槽</del>。</p><h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>逐渐发现 Google Calendar 是个好东西（其实所有日历软件都是个好东西），用来计划日常生活、提醒工作安排真是非常方便，在计划之余还能形成一本自然的日记本。于是我就想，如果能 <strong>自动</strong> 记录一些生活琐事（一些懒得规划的事情），那就再好不过了——比如看视频、锻炼身体，因为在完成之余还要誊到日历上真的是非常麻烦。</p><p>市面上有一些比较成熟的自动化软件/服务，比如 ifttt 、 zapier 和被苹果收购的 workflow ，它们的特点是功能广泛，要完成和日历的对接也是非常容易。但是缺点也比较明显，如果是像上文提出的那种特殊需求，有时候就有点力不从心了。因为很多站点并不开放让用户自己查询自己的历史数据，因此根本无法从流程自动化的服务中提取这些信息——需要说明的是这一点和 GDPR 并不矛盾，因为后者只要把所有东西塞到一个 json 再打个 tarball 扔给用户就完事了。</p><p>目前来看，可以借由已有服务完成的有：</p><ul><li><a href="//ifttt.com/applets/416458p-add-strava-runs-and-rides-to-google-calendar" target="_blank" rel="noopener">将 Strava 上跑步和骑车记录同步到 GC</a></li><li>将 Zapier 上的天气预报信息同步到 GC</li></ul><p>（呃……还真是少的可怜呢）因此自己造轮子就势在必行啦！</p><a id="more"></a><h2 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h2><h3 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h3><ul><li>流视频类：netflix, bilibili, youtube</li><li>游戏类：steam, uplay, epic games</li><li>写<del>摸鱼</del>代码类：wakatime</li></ul><h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><ul><li>以 rust 为主要使用的语言</li><li>webserver 选用 <a href="//github.com/SergioBenitez/Rocket" target="_blank" rel="noopener">SergioBenitez/Rocket</a></li><li>json 解析用 <a href="//github.com/serde-rs/json" target="_blank" rel="noopener">serde-rs/json</a></li><li>xml 解析用 <a href="//github.com/tafia/quick-xml" target="_blank" rel="noopener">tafia/quick-xml</a></li></ul><h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>目前在看 <a href="https://doc.rust-lang.org/stable/book/" target="_blank" rel="noopener">官方教程</a>（还挺有意思）。IDE 选用 CLion 加 rust 插件支持（噫已经离不开 jetbrains 全家桶了吗）。安装过程查看了 <a href="https://wiki.archlinux.org/index.php/Rust" target="_blank" rel="noopener">archlinux 关于 rust 的文档</a>，用 pacman 安装了 rustup 然后更新了 toolchains 。</p><h2 id="纯净的吐槽"><a href="#纯净的吐槽" class="headerlink" title="纯净的吐槽"></a>纯净的吐槽</h2><p>有模式匹配哎（有 haskell 内味了……）相应地 enum 类型也变得很强大了</p><p>ownership 这个挺有意思……之后再慢慢琢磨到底是怎么回事……（看这个 ownership transfer 我已经可以预见到之后为了使编译通过要头昏脑胀了x</p><p><code>&quot;Hello World!&quot;.into()</code> 是个什么鬼玩意儿（看了一下代码……呃好吧，这个设计还可以吧）结果因为不能编译被迫使用 <code>&quot;Hello World!&quot;.to_string()</code></p><p>rust 这套 reference borrowing 也太激进了吧，non-const 方法（C++ 用语，rust 的话应该叫 <code>&amp;mut self</code>）也算 mutable reference 吗（想想确实没毛病</p>]]></content>
+    <content type="html"><![CDATA[<p>本文是 2020 年暑假学习 rust 计划的一部分。目前项目存放在 <a href="//github.com/owen8877/calendar-as-diary" target="_blank" rel="noopener">owen8877/calendar-as-diary</a>，欢迎围观<del>和吐槽</del>。</p><h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>逐渐发现 Google Calendar 是个好东西（其实所有日历软件都是个好东西），用来计划日常生活、提醒工作安排真是非常方便，在计划之余还能形成一本自然的日记本。于是我就想，如果能 <strong>自动</strong> 记录一些生活琐事（一些懒得规划的事情），那就再好不过了——比如看视频、锻炼身体，因为在完成之余还要誊到日历上真的是非常麻烦。</p><p>市面上有一些比较成熟的自动化软件/服务，比如 ifttt 、 zapier 和被苹果收购的 workflow ，它们的特点是功能广泛，要完成和日历的对接也是非常容易。但是缺点也比较明显，如果是像上文提出的那种特殊需求，有时候就有点力不从心了。因为很多站点并不开放让用户自己查询自己的历史数据，因此根本无法从流程自动化的服务中提取这些信息——需要说明的是这一点和 GDPR 并不矛盾，因为后者只要把所有东西塞到一个 json 再打个 tarball 扔给用户就完事了。</p><p>目前来看，可以借由已有服务完成的有：</p><ul><li><a href="//ifttt.com/applets/416458p-add-strava-runs-and-rides-to-google-calendar" target="_blank" rel="noopener">将 Strava 上跑步和骑车记录同步到 GC</a></li><li>将 Zapier 上的天气预报信息同步到 GC</li></ul><p>（呃……还真是少的可怜呢）因此自己造轮子就势在必行啦！</p><a id="more"></a><h2 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h2><h3 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h3><ul><li>流视频类：netflix, bilibili, youtube</li><li>游戏类：steam, uplay, epic games</li><li>写<del>摸鱼</del>代码类：wakatime</li></ul><h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><ul><li>以 rust 为主要使用的语言</li><li>webserver 选用 <a href="//github.com/SergioBenitez/Rocket" target="_blank" rel="noopener">SergioBenitez/Rocket</a></li><li>request 库 <a href="//github.com/seanmonstar/reqwest" target="_blank" rel="noopener">seanmonstar/reqwest</a></li><li>json 解析用 <a href="//github.com/serde-rs/json" target="_blank" rel="noopener">serde-rs/json</a></li><li>xml 解析用 <a href="//github.com/tafia/quick-xml" target="_blank" rel="noopener">tafia/quick-xml</a></li></ul><h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>目前在看 <a href="https://doc.rust-lang.org/stable/book/" target="_blank" rel="noopener">官方教程</a>（还挺有意思）。IDE 选用 CLion 加 rust 插件支持（噫已经离不开 jetbrains 全家桶了吗）。安装过程查看了 <a href="https://wiki.archlinux.org/index.php/Rust" target="_blank" rel="noopener">archlinux 关于 rust 的文档</a>，用 pacman 安装了 rustup 然后更新了 toolchains 。</p><h2 id="纯净的吐槽"><a href="#纯净的吐槽" class="headerlink" title="纯净的吐槽"></a>纯净的吐槽</h2><p>有模式匹配哎（有 haskell 内味了……）相应地 enum 类型也变得很强大了</p><p>ownership 这个挺有意思……之后再慢慢琢磨到底是怎么回事……（看这个 ownership transfer 我已经可以预见到之后为了使编译通过要头昏脑胀了x</p><p><code>&quot;Hello World!&quot;.into()</code> 是个什么鬼玩意儿（看了一下代码……呃好吧，这个设计还可以吧）结果因为不能编译被迫使用 <code>&quot;Hello World!&quot;.to_string()</code></p><p>rust 这套 reference borrowing 也太激进了吧，non-const 方法（C++ 用语，rust 的话应该叫 <code>&amp;mut self</code>）也算 mutable reference 吗（想想确实没毛病</p>]]></content>
     
     <summary type="html">
     
@@ -534,29 +560,6 @@
       <category term="ssh" scheme="https://blog.xdrd.tech/tags/ssh/"/>
     
       <category term="vnc" scheme="https://blog.xdrd.tech/tags/vnc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>复制显示解决方案</title>
-    <link href="https://blog.xdrd.tech/2018/07/duet-display/"/>
-    <id>https://blog.xdrd.tech/2018/07/duet-display/</id>
-    <published>2018-07-10T23:44:34.000Z</published>
-    <updated>2020-03-29T15:15:57.398Z</updated>
-    
-    <content type="html"><![CDATA[<p>呃，因为神船比较破烂，屏幕只有 45% 色域，所以做一些和颜色相关的事情就很蛋疼 <del>比如开发的 app 拿到手机上看无比鲜艳等等</del> ，于是一直想有没有什么双显示的手段，把电脑上的图像投射到颜色较为准确的手机上。</p><a id="more"></a><h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>虽然我不用，但是我听说直接用 <a href="https://www.duetdisplay.com/" target="_blank" rel="noopener">Duet Display</a> 就行。发热情况不清楚。</p><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>之前听说/用过 Teamviewer 和 splashtop ，但是我主要是检查调色是否正确，因此完全不需要控制的部分，所以有轻量级的最好。</p><p>话虽然这么说但是几乎找不到 orz 现在用的是 <a href="https://www.spacedesk.net/" target="_blank" rel="noopener">spacedesk</a> ，只要指定高图像质量就会疯狂发热（</p><p>喜欢折腾的同学可以考虑一下 Steam Link ？</p><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>呃这种情况会简单一点，只要按照 <a href="https://wiki.archlinux.org/index.php/Virtual_Network_Computing_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">这篇</a> 慢慢配置 VNC 就行。</p><p>手机端使用 RealVNC 软件，有控制功能，还算能用。发热问题的话，没有用过很长时间，不是很清楚。</p><p><strong>注</strong> 有一个后遗症是 gnome-keyring 无法正常弹出显示（差点以为是服务器拒绝了我的 key ），可能和我用的 i3 管理器有关系。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;呃，因为神船比较破烂，屏幕只有 45% 色域，所以做一些和颜色相关的事情就很蛋疼 &lt;del&gt;比如开发的 app 拿到手机上看无比鲜艳等等&lt;/del&gt; ，于是一直想有没有什么双显示的手段，把电脑上的图像投射到颜色较为准确的手机上。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="laptop" scheme="https://blog.xdrd.tech/categories/laptop/"/>
-    
-    
-      <category term="display" scheme="https://blog.xdrd.tech/tags/display/"/>
     
   </entry>
   
