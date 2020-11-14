@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.tech/"/>
-  <updated>2020-07-10T19:21:48.627Z</updated>
+  <updated>2020-11-14T18:03:43.342Z</updated>
   <id>https://blog.xdrd.tech/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>线性代数如此容易（棒读</title>
+    <link href="https://blog.xdrd.tech/2020/11/linear-algebra-made-easy/"/>
+    <id>https://blog.xdrd.tech/2020/11/linear-algebra-made-easy/</id>
+    <published>2020-11-14T17:43:28.000Z</published>
+    <updated>2020-11-14T18:03:43.342Z</updated>
+    
+    <content type="html"><![CDATA[<p>今早在朋友圈看到一张梗图：</p><p><img src="/images/2020-11-linear-algebra-made-easy/meme.jpg" alt="你学废了吗？"></p><p>然后转发到群里，出现了如下的沙雕对话：</p><blockquote><p>谁暴搜一下10^8个<br>看看还有啥<br><em>草</em><br><em>哦好多</em><br><em>我怎么贴比较好</em></p></blockquote><p>写了个简单的 <a href="//repl.it/@owen8877/TastyWrithingRedundancy" target="_blank" rel="noopener">代码</a> 跑了一下发现 <a href="https://gist.github.com/owen8877/1b9eb3c8a556e40342f7ba189de200e8" target="_blank" rel="noopener">解</a> 还挺多。然后群友看了一眼，讨论继续：</p><blockquote><p>| 9  3 | * | 9  3 | = | 99  33 |<br>| 6  2 | * | 6  2 | = | 66  22 |<br>这组真tm有意思<br><em>草还真是对的</em><br>我想想<br>搜出来100组<br>至少有4合1<br>ab，cd等价于ac，bd等价于dc，ba等价于db，ca<br><em>呃我想想</em><br><em>什么意思呢</em><br>就是你把矩阵转置一下和转180度是trivial的变换<br>我再看看细节<br><em>这不是很显然吧</em></p></blockquote><p>对，其实 180 旋转确实可以 trivial 地导出另一组解，但是转置并不行。因为如果 <code>X*Y=Z</code> 而且 <code>X^T*Y^T=Z^T</code> 的话，其实 <code>X</code> 和 <code>Y</code> 就可交换了。不过熟悉线性代数的朋友们应该知道，可交换等价于可被同时上三角化，所以其实我们可以推出两组恒等式：</p><p>假设 <code>X=(a, b; c, d)</code> 且 <code>Y=(e, f; g, h)</code>，我们有</p><ol><li><code>bg=cf</code> （感谢 Bai 同学的证明）</li><li><code>(a-d)/c=(e-h)/g</code> （这个不是太好证明）</li></ol><p>最后贴几组比较有意思的结果吧233</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 2  3 |   | 2  3 |   | 22  33 |</span><br><span class="line">|      | * |      | &#x3D; |        |</span><br><span class="line">| 6  9 |   | 6  9 |   | 66  99 |</span><br><span class="line"></span><br><span class="line">| 10  13 |   | 10  13 |   | 1010  1313 |</span><br><span class="line">|        | * |        | &#x3D; |            |</span><br><span class="line">| 70  91 |   | 70  91 |   | 7070  9191 |</span><br><span class="line"></span><br><span class="line">| 20  18 |   | 20  18 |   | 2020  1818 |</span><br><span class="line">|        | * |        | &#x3D; |            |</span><br><span class="line">| 90  81 |   | 90  81 |   | 9090  8181 |</span><br></pre></td></tr></table></figure><p>（就算是这样自己平方的解也有几十组……）</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;今早在朋友圈看到一张梗图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2020-11-linear-algebra-made-easy/meme.jpg&quot; alt=&quot;你学废了吗？&quot;&gt;&lt;/p&gt;
+&lt;p&gt;然后转发到群里，出现了如下的沙雕对话：&lt;/p&gt;
+&lt;blockquot
+      
+    
+    </summary>
+    
+    
+      <category term="gizmo" scheme="https://blog.xdrd.tech/categories/gizmo/"/>
+    
+    
+      <category term="matrix product" scheme="https://blog.xdrd.tech/tags/matrix-product/"/>
+    
+      <category term="linear algebra" scheme="https://blog.xdrd.tech/tags/linear-algebra/"/>
+    
+  </entry>
   
   <entry>
     <title>「日历记事本」模组</title>
@@ -534,32 +565,6 @@
       <category term="whyred" scheme="https://blog.xdrd.tech/tags/whyred/"/>
     
       <category term="lineageos" scheme="https://blog.xdrd.tech/tags/lineageos/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>真·双显示屏配置</title>
-    <link href="https://blog.xdrd.tech/2018/07/duet-display-2/"/>
-    <id>https://blog.xdrd.tech/2018/07/duet-display-2/</id>
-    <published>2018-07-18T20:52:20.000Z</published>
-    <updated>2020-03-29T15:15:57.398Z</updated>
-    
-    <content type="html"><![CDATA[<p>首先感谢一下大葱，给我换了一块好一点的显示屏，于是 <a href="/2018/07/duet-display/">上一篇博文</a> 就这样华丽地作废了（手动微笑）</p><p>OK，让我们正式开始暑假摸鱼的旅程！</p><a id="more"></a><hr><p>在住处问题不是很大，因为是接 HDMI 线到屏幕上，只要对 i3 略加配置就行：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xrandr --output HDMI-2 --right-of eDP-1 --auto</span><br></pre></td></tr></table></figure><p>加到 <code>~/.config/i3/config</code> 里去。</p><hr><p>问题比较严重的是在研究所的时候，由于公用的电脑显示屏不仅有奇葩的 1680*1050*119Hz 的显示模式而且有 DVI、S 分量、VGA、模拟信号但就是没有 HDMI 再加上没有 sudo 权限……就变得很麻烦。</p><p>其实问题好像也没有这么严重……呃……Anyway……</p><p>首先和上面一样配置第二显示区域：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xrandr --newmode &quot;1680x1050_60.00&quot;  147.14  1680 1784 1968 2256  1050 1051 1054 1087</span><br><span class="line">xrandr --addmode HDMI-1 1680x1050_60.00</span><br><span class="line">xrandr --output HDMI-1 --mode 1680x1050_60.00 --right-of eDP-1</span><br></pre></td></tr></table></figure><p>一开始我把输出定向到自定义的 VIRTUAL1 ，但是持续报错……算了，反正有两个 HDMI 插槽（虽然机身上只有一个）。</p><p>核心步骤是配置 vnc ，我用的是 tigervnc ：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x0vncserver -display :0 -HostsFile ~&#x2F;.vnc&#x2F;hosts -passwordfile ~&#x2F;.vnc&#x2F;passwd</span><br></pre></td></tr></table></figure><p>这一步就发生许多喜闻乐见的事情了（手动微笑）。理论上只要客户端运行</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh xdroid@laptopIP -L 8900:localhost:5900</span><br></pre></td></tr></table></figure><p>就能够再通过</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vncviewer localhost:8900</span><br></pre></td></tr></table></figure><p>连上来。但是呢！由于为了加强安全性，我给 tigervnc 加了一个 IP 名单，这个名单里写的是</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+127.0.0.1</span><br><span class="line">-</span><br></pre></td></tr></table></figure><p>然后……绑定地址时候用的 <code>localhost</code> 就挂了QAQ其实只要换成 <code>127.0.0.1</code> 就好了。</p><hr><p>补两句。</p><p>VNC 服务器似乎和 gnome-keyring 冲突，暂时没找到什么好的解决方案。</p><p>端口转发的写法这篇还算清楚：<a href="https://blog.fundebug.com/2017/04/24/ssh-port-forwarding/" target="_blank" rel="noopener">玩转SSH端口转发</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;首先感谢一下大葱，给我换了一块好一点的显示屏，于是 &lt;a href=&quot;/2018/07/duet-display/&quot;&gt;上一篇博文&lt;/a&gt; 就这样华丽地作废了（手动微笑）&lt;/p&gt;
-&lt;p&gt;OK，让我们正式开始暑假摸鱼的旅程！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="laptop" scheme="https://blog.xdrd.tech/categories/laptop/"/>
-    
-    
-      <category term="ssh" scheme="https://blog.xdrd.tech/tags/ssh/"/>
-    
-      <category term="vnc" scheme="https://blog.xdrd.tech/tags/vnc/"/>
     
   </entry>
   
