@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.tech/"/>
-  <updated>2020-11-14T18:03:43.342Z</updated>
+  <updated>2020-11-28T06:02:01.450Z</updated>
   <id>https://blog.xdrd.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>训练神经网络给图片上色</title>
+    <link href="https://blog.xdrd.tech/2020/11/image-colorization/"/>
+    <id>https://blog.xdrd.tech/2020/11/image-colorization/</id>
+    <published>2020-11-28T05:37:04.000Z</published>
+    <updated>2020-11-28T06:02:01.450Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文较长，会持续更新。</p><p>项目挂在 <a href="//github.com/owen8877/chroma-instance" target="_blank" rel="noopener">owen8877/chroma-instance</a> 上面了，是我在 UT 2020 Fall 的一门课的期末项目。</p><a id="more"></a><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>（待补充，report 写完之前哪有心情写x）</p><h2 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h2><p><del>哦我亲爱的读者啊，那需要吐槽的可真是太多了呢</del></p><ol><li>Keras 对于我来说已经是魔法般的存在了，想要手写一个组件嵌到 keras 里简直难度正无穷。<ul><li>Keras 将很多 tensorflow 中的操作进行了包装（应该是为了保证不同的后端都能有相同的 interface），但这也导致了有很多绕来绕去的 internal call。</li><li>如果想要自己写一个新的 Model，不仅需要 override <code>call</code> 函数，而且还要处理好<ul><li><code>get_config(self)</code></li><li><code>from_config(cls, config)</code></li><li><code>compute_output_shape(self, input_shape)</code><br>等等一大堆问题，才能保证 keras 正常存读自定义的模型</li></ul></li><li>最麻烦的是 keras 有时候会自己计算 tensor 的大小，出现 <code>_keras_shape</code> 这样的玩意儿，但很多时候还是错的</li><li>所以结论是看似 Layers API 是最吼的，<strong>但是</strong> Lambda 层里面可能会遇到 <code>tf</code> 这种符号在 load 的时候没定义的问题……结果我现在也不知道该怎么解决，只好调用 <code>set_weights()</code> 绕过去了。</li></ul></li><li>放大不仅可以用 <code>UpSampling2D</code>，还可以考虑一下 <code>Conv2DTranspose</code>。但是后者不仅维数不能自动推导（似乎是 keras 的 bug，import <code>tensorflow.python.keras</code> 可解决），而且还面临着训练困难的问题（</li><li>写了几天之后才发现 pipeline 只能接受定长的 tensor （嗯，我可能表达的不是特别清楚，就是说像物体分割这种可能导致变长输入/输出的问题，其实只能设一个最大上限，然后把数据一股脑堆进去）</li><li>Commit history 真的是一把辛酸泪，到后面真的是语无伦次了——Colab 体验还极差，改代码需要经过本地修改-&gt;推到 github-&gt;在 colab 上拉下来-&gt;重新初始化 colab 内存-&gt;运行的步骤，硬生生把 python 写出了 C++ 的感觉。</li><li>到现在我还是没搞清楚 GAN 的两个 counterpart 是怎么设置的，为什么 loss function 和 trainable 属性要这么写[捂脸]Keras 能不能出个官方教程啊……</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文较长，会持续更新。&lt;/p&gt;
+&lt;p&gt;项目挂在 &lt;a href=&quot;//github.com/owen8877/chroma-instance&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;owen8877/chroma-instance&lt;/a&gt; 上面了，是我在 UT 2020 Fall 的一门课的期末项目。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="gizmo" scheme="https://blog.xdrd.tech/categories/gizmo/"/>
+    
+    
+      <category term="deep learning" scheme="https://blog.xdrd.tech/tags/deep-learning/"/>
+    
+      <category term="keras" scheme="https://blog.xdrd.tech/tags/keras/"/>
+    
+      <category term="tensorflow" scheme="https://blog.xdrd.tech/tags/tensorflow/"/>
+    
+  </entry>
   
   <entry>
     <title>线性代数如此容易（棒读</title>
@@ -540,31 +568,6 @@
       <category term="firefox" scheme="https://blog.xdrd.tech/tags/firefox/"/>
     
       <category term="chrome" scheme="https://blog.xdrd.tech/tags/chrome/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>红米 5 刷机</title>
-    <link href="https://blog.xdrd.tech/2018/12/flashing-whyred/"/>
-    <id>https://blog.xdrd.tech/2018/12/flashing-whyred/</id>
-    <published>2018-12-31T05:16:40.000Z</published>
-    <updated>2020-03-29T15:15:57.398Z</updated>
-    
-    <content type="html"><![CDATA[<p>继上次买了一部 <a href="/2017/08/redmi-3s/">红米 3</a>，这次是父上大人换手机了。根据大葱的推荐，这次买了红米 5 。</p><a id="more"></a><p>红米 5 现在有 <a href="https://wiki.lineageos.org/devices/whyred" target="_blank" rel="noopener">官方的 lineageos 支持</a> 了，所以算是一个比较好的千元机选择（</p><p>按照上次的经验，下载了 Mi Unlock app ，然后被告知等 360 个小时……呃……</p><hr><p>（15 天后）</p><p>前天下午终于解锁 bootloader 了！不过刷机经历有一点坎坷：</p><ol><li>因为大葱试了一下升级到 MIUI 10，所以还得重新登录账号满一个小时。</li><li>貌似是签名的限制，twrp 没法通过 <code>fastboot flash recovery twrp.img</code> 直接刷进去，而是要先 <code>fastboot boot twrp.img</code> 启动之后再在 twrp 里把自己的 img 文件安装到 recovery。（参见 <a href="https://en.miui.com/thread-3565664-1-1.html" target="_blank" rel="noopener">这个解决方案</a>）（无语……）</li><li>lineageos 15.1 的包本身没有问题，但是如果没有第一时间把 gapps 刷进去的话，之后 google services 就会一直崩溃……呃……反正只要一起四清然后刷入就可以了www</li></ol><hr><p>杂：</p><ul><li>Oreo 体验还是很不错的！特别是用 pattern 做全盘加密的特性。</li><li>google camera 的移植能用上一半的功能，前提是开启 <a href="https://www.youtube.com/watch?v=5GL1QdIteQQ" target="_blank" rel="noopener">Camera2 API /HAL3</a> 。</li><li>买回来查了一下屏幕，看起来没什么坏点；然鹅最近还是翻车了，右上角的灰度显示不太对——虽然只要调成暗色主题就几乎看不出来（</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;继上次买了一部 &lt;a href=&quot;/2017/08/redmi-3s/&quot;&gt;红米 3&lt;/a&gt;，这次是父上大人换手机了。根据大葱的推荐，这次买了红米 5 。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="phone" scheme="https://blog.xdrd.tech/categories/phone/"/>
-    
-    
-      <category term="whyred" scheme="https://blog.xdrd.tech/tags/whyred/"/>
-    
-      <category term="lineageos" scheme="https://blog.xdrd.tech/tags/lineageos/"/>
     
   </entry>
   
