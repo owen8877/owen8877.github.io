@@ -133,8 +133,7 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文较长，会持续更新。</p>
-<p>项目挂在 <a href="//github.com/owen8877/chroma-instance" target="_blank" rel="noopener">owen8877/chroma-instance</a> 上面了，是我在 UT 2020 Fall 的一门课的期末项目。</p>
+        <p>项目挂在 <a href="//github.com/owen8877/chroma-instance" target="_blank" rel="noopener">owen8877/chroma-instance</a> 上面了，是我在 UT 2020 Fall 的一门课的期末项目。</p>
         
           <p class="article-more-link">
             <a class="btn btn-primary" href="/2020/11/image-colorization/#more">Read More</a>
@@ -202,26 +201,13 @@ ga('send', 'pageview');
 <blockquote>
 <p>谁暴搜一下10^8个<br>看看还有啥<br><em>草</em><br><em>哦好多</em><br><em>我怎么贴比较好</em></p>
 </blockquote>
-<p>写了个简单的 <a href="//repl.it/@owen8877/TastyWrithingRedundancy" target="_blank" rel="noopener">代码</a> 跑了一下发现 <a href="https://gist.github.com/owen8877/1b9eb3c8a556e40342f7ba189de200e8" target="_blank" rel="noopener">解</a> 还挺多。然后群友看了一眼，讨论继续：</p>
-<blockquote>
-<p>| 9  3 | * | 9  3 | = | 99  33 |<br>| 6  2 | * | 6  2 | = | 66  22 |<br>这组真tm有意思<br><em>草还真是对的</em><br>我想想<br>搜出来100组<br>至少有4合1<br>ab，cd等价于ac，bd等价于dc，ba等价于db，ca<br><em>呃我想想</em><br><em>什么意思呢</em><br>就是你把矩阵转置一下和转180度是trivial的变换<br>我再看看细节<br><em>这不是很显然吧</em></p>
-</blockquote>
-<p>对，其实 180 旋转确实可以 trivial 地导出另一组解，但是转置并不行。因为如果 <code>X*Y=Z</code> 而且 <code>X^T*Y^T=Z^T</code> 的话，其实 <code>X</code> 和 <code>Y</code> 就可交换了。不过熟悉线性代数的朋友们应该知道，可交换等价于可被同时上三角化，所以其实我们可以推出两组恒等式：</p>
-<p>假设 <code>X=(a, b; c, d)</code> 且 <code>Y=(e, f; g, h)</code>，我们有</p>
-<ol>
-<li><code>bg=cf</code> （感谢 Bai 同学的证明）</li>
-<li><code>(a-d)/c=(e-h)/g</code> （这个不是太好证明）</li>
-</ol>
-<p>最后贴几组比较有意思的结果吧233</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 2  3 |   | 2  3 |   | 22  33 |</span><br><span class="line">|      | * |      | &#x3D; |        |</span><br><span class="line">| 6  9 |   | 6  9 |   | 66  99 |</span><br><span class="line"></span><br><span class="line">| 10  13 |   | 10  13 |   | 1010  1313 |</span><br><span class="line">|        | * |        | &#x3D; |            |</span><br><span class="line">| 70  91 |   | 70  91 |   | 7070  9191 |</span><br><span class="line"></span><br><span class="line">| 20  18 |   | 20  18 |   | 2020  1818 |</span><br><span class="line">|        | * |        | &#x3D; |            |</span><br><span class="line">| 90  81 |   | 90  81 |   | 9090  8181 |</span><br></pre></td></tr></table></figure>
-
-<p>（就算是这样自己平方的解也有几十组……）</p>
-
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2020/11/linear-algebra-made-easy/#more">Read More</a>
+          </p>
+        
       
     </div>
-
-    
-      
 
     
 

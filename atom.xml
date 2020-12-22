@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.tech/"/>
-  <updated>2020-11-28T06:02:01.450Z</updated>
+  <updated>2020-12-22T23:40:16.609Z</updated>
   <id>https://blog.xdrd.tech/</id>
   
   <author>
@@ -21,14 +21,13 @@
     <link href="https://blog.xdrd.tech/2020/11/image-colorization/"/>
     <id>https://blog.xdrd.tech/2020/11/image-colorization/</id>
     <published>2020-11-28T05:37:04.000Z</published>
-    <updated>2020-11-28T06:02:01.450Z</updated>
+    <updated>2020-12-22T23:40:16.609Z</updated>
     
-    <content type="html"><![CDATA[<p>本文较长，会持续更新。</p><p>项目挂在 <a href="//github.com/owen8877/chroma-instance" target="_blank" rel="noopener">owen8877/chroma-instance</a> 上面了，是我在 UT 2020 Fall 的一门课的期末项目。</p><a id="more"></a><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>（待补充，report 写完之前哪有心情写x）</p><h2 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h2><p><del>哦我亲爱的读者啊，那需要吐槽的可真是太多了呢</del></p><ol><li>Keras 对于我来说已经是魔法般的存在了，想要手写一个组件嵌到 keras 里简直难度正无穷。<ul><li>Keras 将很多 tensorflow 中的操作进行了包装（应该是为了保证不同的后端都能有相同的 interface），但这也导致了有很多绕来绕去的 internal call。</li><li>如果想要自己写一个新的 Model，不仅需要 override <code>call</code> 函数，而且还要处理好<ul><li><code>get_config(self)</code></li><li><code>from_config(cls, config)</code></li><li><code>compute_output_shape(self, input_shape)</code><br>等等一大堆问题，才能保证 keras 正常存读自定义的模型</li></ul></li><li>最麻烦的是 keras 有时候会自己计算 tensor 的大小，出现 <code>_keras_shape</code> 这样的玩意儿，但很多时候还是错的</li><li>所以结论是看似 Layers API 是最吼的，<strong>但是</strong> Lambda 层里面可能会遇到 <code>tf</code> 这种符号在 load 的时候没定义的问题……结果我现在也不知道该怎么解决，只好调用 <code>set_weights()</code> 绕过去了。</li></ul></li><li>放大不仅可以用 <code>UpSampling2D</code>，还可以考虑一下 <code>Conv2DTranspose</code>。但是后者不仅维数不能自动推导（似乎是 keras 的 bug，import <code>tensorflow.python.keras</code> 可解决），而且还面临着训练困难的问题（</li><li>写了几天之后才发现 pipeline 只能接受定长的 tensor （嗯，我可能表达的不是特别清楚，就是说像物体分割这种可能导致变长输入/输出的问题，其实只能设一个最大上限，然后把数据一股脑堆进去）</li><li>Commit history 真的是一把辛酸泪，到后面真的是语无伦次了——Colab 体验还极差，改代码需要经过本地修改-&gt;推到 github-&gt;在 colab 上拉下来-&gt;重新初始化 colab 内存-&gt;运行的步骤，硬生生把 python 写出了 C++ 的感觉。</li><li>到现在我还是没搞清楚 GAN 的两个 counterpart 是怎么设置的，为什么 loss function 和 trainable 属性要这么写[捂脸]Keras 能不能出个官方教程啊……</li></ol>]]></content>
+    <content type="html"><![CDATA[<p>项目挂在 <a href="//github.com/owen8877/chroma-instance" target="_blank" rel="noopener">owen8877/chroma-instance</a> 上面了，是我在 UT 2020 Fall 的一门课的期末项目。</p><a id="more"></a><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>大家直接去 github 页面上看好了，反正就是抄了抄两篇论文二合为一（</p><p>倒是在画图的时候学到了一点新的东西，原来还有专门画网络结构图的 dsl <a href="//github.com/HarisIqbal88/PlotNeuralNet" target="_blank" rel="noopener">HarisIqbal88/PlotNeuralNet</a>。设计的还不错，就是小 bug 太多，需要配合补丁使用（见 <a href="//github.com/HarisIqbal88/PlotNeuralNet/issues/82" target="_blank" rel="noopener">这里</a> 或者 <a href="//github.com/owen8877/chroma-instance/blob/master/chroma_instance/source/plot_neural_net/generator.py" target="_blank" rel="noopener">这里</a>）。</p><h2 id="总结与感想"><a href="#总结与感想" class="headerlink" title="总结与感想"></a>总结与感想</h2><p>效果非常一般，基本就是瞎上色（</p><p>可能是数据量太小了，也就在 5k 的图片上跑了 5 个 epoch，能学出什么呢（</p><p>还有就是 VGG 拓展出来的 encoder-decoder 架构感觉不太靠谱……也许换 U-net 会好一些。</p><p>本来还想部署到 heroku 上的，一看内存……告辞……</p><h2 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h2><p><del>哦我亲爱的读者啊，那需要吐槽的可真是太多了呢</del></p><ol><li>Keras 对于我来说已经是魔法般的存在了，想要手写一个组件嵌到 keras 里简直难度正无穷。<ul><li>Keras 将很多 tensorflow 中的操作进行了包装（应该是为了保证不同的后端都能有相同的 interface），但这也导致了有很多绕来绕去的 internal call。</li><li>如果想要自己写一个新的 Model，不仅需要 override <code>call</code> 函数，而且还要处理好<ul><li><code>get_config(self)</code></li><li><code>from_config(cls, config)</code></li><li><code>compute_output_shape(self, input_shape)</code><br>等等一大堆问题，才能保证 keras 正常存读自定义的模型</li></ul></li><li>最麻烦的是 keras 有时候会自己计算 tensor 的大小，出现 <code>_keras_shape</code> 这样的玩意儿，但很多时候还是错的</li><li>所以结论是看似 Layers API 是最吼的，<strong>但是</strong> Lambda 层里面可能会遇到 <code>tf</code> 这种符号在 load 的时候没定义的问题……结果我现在也不知道该怎么解决，只好调用 <code>set_weights()</code> 绕过去了。</li></ul></li><li>放大不仅可以用 <code>UpSampling2D</code>，还可以考虑一下 <code>Conv2DTranspose</code>。但是后者不仅维数不能自动推导（似乎是 keras 的 bug，import <code>tensorflow.python.keras</code> 可解决），而且还面临着训练困难的问题（</li><li>写了几天之后才发现 pipeline 只能接受定长的 tensor （嗯，我可能表达的不是特别清楚，就是说像物体分割这种可能导致变长输入/输出的问题，其实只能设一个最大上限，然后把数据一股脑堆进去）</li><li>Commit history 真的是一把辛酸泪，到后面真的是语无伦次了——Colab 体验还极差，改代码需要经过本地修改-&gt;推到 github-&gt;在 colab 上拉下来-&gt;重新初始化 colab 内存-&gt;运行的步骤，硬生生把 python 写出了 C++ 的感觉。</li><li>到现在我还是没搞清楚 GAN 的两个 counterpart 是怎么设置的，为什么 loss function 和 trainable 属性要这么写[捂脸]Keras 能不能出个官方教程啊……</li><li>Colab 用到后面配额暂时用完了……只能开 pro 凑合一下了（有点小贵哦</li></ol>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;本文较长，会持续更新。&lt;/p&gt;
-&lt;p&gt;项目挂在 &lt;a href=&quot;//github.com/owen8877/chroma-instance&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;owen8877/chroma-instance&lt;/a&gt; 上面了，是我在 UT 2020 Fall 的一门课的期末项目。&lt;/p&gt;
+      &lt;p&gt;项目挂在 &lt;a href=&quot;//github.com/owen8877/chroma-instance&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;owen8877/chroma-instance&lt;/a&gt; 上面了，是我在 UT 2020 Fall 的一门课的期末项目。&lt;/p&gt;
     
     </summary>
     
@@ -49,19 +48,18 @@
     <link href="https://blog.xdrd.tech/2020/11/linear-algebra-made-easy/"/>
     <id>https://blog.xdrd.tech/2020/11/linear-algebra-made-easy/</id>
     <published>2020-11-14T17:43:28.000Z</published>
-    <updated>2020-11-14T18:03:43.342Z</updated>
+    <updated>2020-12-22T23:40:45.446Z</updated>
     
-    <content type="html"><![CDATA[<p>今早在朋友圈看到一张梗图：</p><p><img src="/images/2020-11-linear-algebra-made-easy/meme.jpg" alt="你学废了吗？"></p><p>然后转发到群里，出现了如下的沙雕对话：</p><blockquote><p>谁暴搜一下10^8个<br>看看还有啥<br><em>草</em><br><em>哦好多</em><br><em>我怎么贴比较好</em></p></blockquote><p>写了个简单的 <a href="//repl.it/@owen8877/TastyWrithingRedundancy" target="_blank" rel="noopener">代码</a> 跑了一下发现 <a href="https://gist.github.com/owen8877/1b9eb3c8a556e40342f7ba189de200e8" target="_blank" rel="noopener">解</a> 还挺多。然后群友看了一眼，讨论继续：</p><blockquote><p>| 9  3 | * | 9  3 | = | 99  33 |<br>| 6  2 | * | 6  2 | = | 66  22 |<br>这组真tm有意思<br><em>草还真是对的</em><br>我想想<br>搜出来100组<br>至少有4合1<br>ab，cd等价于ac，bd等价于dc，ba等价于db，ca<br><em>呃我想想</em><br><em>什么意思呢</em><br>就是你把矩阵转置一下和转180度是trivial的变换<br>我再看看细节<br><em>这不是很显然吧</em></p></blockquote><p>对，其实 180 旋转确实可以 trivial 地导出另一组解，但是转置并不行。因为如果 <code>X*Y=Z</code> 而且 <code>X^T*Y^T=Z^T</code> 的话，其实 <code>X</code> 和 <code>Y</code> 就可交换了。不过熟悉线性代数的朋友们应该知道，可交换等价于可被同时上三角化，所以其实我们可以推出两组恒等式：</p><p>假设 <code>X=(a, b; c, d)</code> 且 <code>Y=(e, f; g, h)</code>，我们有</p><ol><li><code>bg=cf</code> （感谢 Bai 同学的证明）</li><li><code>(a-d)/c=(e-h)/g</code> （这个不是太好证明）</li></ol><p>最后贴几组比较有意思的结果吧233</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 2  3 |   | 2  3 |   | 22  33 |</span><br><span class="line">|      | * |      | &#x3D; |        |</span><br><span class="line">| 6  9 |   | 6  9 |   | 66  99 |</span><br><span class="line"></span><br><span class="line">| 10  13 |   | 10  13 |   | 1010  1313 |</span><br><span class="line">|        | * |        | &#x3D; |            |</span><br><span class="line">| 70  91 |   | 70  91 |   | 7070  9191 |</span><br><span class="line"></span><br><span class="line">| 20  18 |   | 20  18 |   | 2020  1818 |</span><br><span class="line">|        | * |        | &#x3D; |            |</span><br><span class="line">| 90  81 |   | 90  81 |   | 9090  8181 |</span><br></pre></td></tr></table></figure><p>（就算是这样自己平方的解也有几十组……）</p>]]></content>
+    <content type="html"><![CDATA[<p>今早在朋友圈看到一张梗图：</p><p><img src="/images/2020-11-linear-algebra-made-easy/meme.jpg" alt="你学废了吗？"></p><p>然后转发到群里，出现了如下的沙雕对话：</p><blockquote><p>谁暴搜一下10^8个<br>看看还有啥<br><em>草</em><br><em>哦好多</em><br><em>我怎么贴比较好</em></p></blockquote><a id="more"></a><p>写了个简单的 <a href="//repl.it/@owen8877/TastyWrithingRedundancy" target="_blank" rel="noopener">代码</a> 跑了一下发现 <a href="https://gist.github.com/owen8877/1b9eb3c8a556e40342f7ba189de200e8" target="_blank" rel="noopener">解</a> 还挺多。然后群友看了一眼，讨论继续：</p><blockquote><p>| 9  3 | * | 9  3 | = | 99  33 |<br>| 6  2 | * | 6  2 | = | 66  22 |<br>这组真tm有意思<br><em>草还真是对的</em><br>我想想<br>搜出来100组<br>至少有4合1<br>ab，cd等价于ac，bd等价于dc，ba等价于db，ca<br><em>呃我想想</em><br><em>什么意思呢</em><br>就是你把矩阵转置一下和转180度是trivial的变换<br>我再看看细节<br><em>这不是很显然吧</em></p></blockquote><p>对，其实 180 旋转确实可以 trivial 地导出另一组解，但是转置并不行。因为如果 <code>X*Y=Z</code> 而且 <code>X^T*Y^T=Z^T</code> 的话，其实 <code>X</code> 和 <code>Y</code> 就可交换了。不过熟悉线性代数的朋友们应该知道，可交换等价于可被同时上三角化，所以其实我们可以推出两组恒等式：</p><p>假设 <code>X=(a, b; c, d)</code> 且 <code>Y=(e, f; g, h)</code>，我们有</p><ol><li><code>bg=cf</code> （感谢 Bai 同学的证明）</li><li><code>(a-d)/c=(e-h)/g</code> （这个不是太好证明）</li></ol><p>最后贴几组比较有意思的结果吧233</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 2  3 |   | 2  3 |   | 22  33 |</span><br><span class="line">|      | * |      | &#x3D; |        |</span><br><span class="line">| 6  9 |   | 6  9 |   | 66  99 |</span><br><span class="line"></span><br><span class="line">| 10  13 |   | 10  13 |   | 1010  1313 |</span><br><span class="line">|        | * |        | &#x3D; |            |</span><br><span class="line">| 70  91 |   | 70  91 |   | 7070  9191 |</span><br><span class="line"></span><br><span class="line">| 20  18 |   | 20  18 |   | 2020  1818 |</span><br><span class="line">|        | * |        | &#x3D; |            |</span><br><span class="line">| 90  81 |   | 90  81 |   | 9090  8181 |</span><br></pre></td></tr></table></figure><p>（就算是这样自己平方的解也有几十组……）</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;今早在朋友圈看到一张梗图：&lt;/p&gt;
+      &lt;p&gt;今早在朋友圈看到一张梗图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/2020-11-linear-algebra-made-easy/meme.jpg&quot; alt=&quot;你学废了吗？&quot;&gt;&lt;/p&gt;
 &lt;p&gt;然后转发到群里，出现了如下的沙雕对话：&lt;/p&gt;
-&lt;blockquot
-      
+&lt;blockquote&gt;
+&lt;p&gt;谁暴搜一下10^8个&lt;br&gt;看看还有啥&lt;br&gt;&lt;em&gt;草&lt;/em&gt;&lt;br&gt;&lt;em&gt;哦好多&lt;/em&gt;&lt;br&gt;&lt;em&gt;我怎么贴比较好&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     

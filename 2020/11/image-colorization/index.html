@@ -5,14 +5,14 @@
   
   <title>训练神经网络给图片上色 | xDroid&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文较长，会持续更新。 项目挂在 owen8877&#x2F;chroma-instance 上面了，是我在 UT 2020 Fall 的一门课的期末项目。">
+  <meta name="description" content="项目挂在 owen8877&#x2F;chroma-instance 上面了，是我在 UT 2020 Fall 的一门课的期末项目。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="训练神经网络给图片上色">
 <meta property="og:url" content="https://blog.xdrd.tech/2020/11/image-colorization/index.html">
 <meta property="og:site_name" content="xDroid&#39;s Blog">
-<meta property="og:description" content="本文较长，会持续更新。 项目挂在 owen8877&#x2F;chroma-instance 上面了，是我在 UT 2020 Fall 的一门课的期末项目。">
+<meta property="og:description" content="项目挂在 owen8877&#x2F;chroma-instance 上面了，是我在 UT 2020 Fall 的一门课的期末项目。">
 <meta property="article:published_time" content="2020-11-28T05:37:04.000Z">
-<meta property="article:modified_time" content="2020-11-28T06:02:01.450Z">
+<meta property="article:modified_time" content="2020-12-22T23:40:16.609Z">
 <meta property="article:author" content="xDroid">
 <meta property="article:tag" content="deep learning">
 <meta property="article:tag" content="keras">
@@ -138,11 +138,15 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文较长，会持续更新。</p>
-<p>项目挂在 <a href="//github.com/owen8877/chroma-instance" target="_blank" rel="noopener">owen8877/chroma-instance</a> 上面了，是我在 UT 2020 Fall 的一门课的期末项目。</p>
+        <p>项目挂在 <a href="//github.com/owen8877/chroma-instance" target="_blank" rel="noopener">owen8877/chroma-instance</a> 上面了，是我在 UT 2020 Fall 的一门课的期末项目。</p>
 <a id="more"></a>
 
-<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>（待补充，report 写完之前哪有心情写x）</p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>大家直接去 github 页面上看好了，反正就是抄了抄两篇论文二合为一（</p>
+<p>倒是在画图的时候学到了一点新的东西，原来还有专门画网络结构图的 dsl <a href="//github.com/HarisIqbal88/PlotNeuralNet" target="_blank" rel="noopener">HarisIqbal88/PlotNeuralNet</a>。设计的还不错，就是小 bug 太多，需要配合补丁使用（见 <a href="//github.com/HarisIqbal88/PlotNeuralNet/issues/82" target="_blank" rel="noopener">这里</a> 或者 <a href="//github.com/owen8877/chroma-instance/blob/master/chroma_instance/source/plot_neural_net/generator.py" target="_blank" rel="noopener">这里</a>）。</p>
+<h2 id="总结与感想"><a href="#总结与感想" class="headerlink" title="总结与感想"></a>总结与感想</h2><p>效果非常一般，基本就是瞎上色（</p>
+<p>可能是数据量太小了，也就在 5k 的图片上跑了 5 个 epoch，能学出什么呢（</p>
+<p>还有就是 VGG 拓展出来的 encoder-decoder 架构感觉不太靠谱……也许换 U-net 会好一些。</p>
+<p>本来还想部署到 heroku 上的，一看内存……告辞……</p>
 <h2 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h2><p><del>哦我亲爱的读者啊，那需要吐槽的可真是太多了呢</del></p>
 <ol>
 <li>Keras 对于我来说已经是魔法般的存在了，想要手写一个组件嵌到 keras 里简直难度正无穷。<ul>
@@ -161,6 +165,7 @@ ga('send', 'pageview');
 <li>写了几天之后才发现 pipeline 只能接受定长的 tensor （嗯，我可能表达的不是特别清楚，就是说像物体分割这种可能导致变长输入/输出的问题，其实只能设一个最大上限，然后把数据一股脑堆进去）</li>
 <li>Commit history 真的是一把辛酸泪，到后面真的是语无伦次了——Colab 体验还极差，改代码需要经过本地修改-&gt;推到 github-&gt;在 colab 上拉下来-&gt;重新初始化 colab 内存-&gt;运行的步骤，硬生生把 python 写出了 C++ 的感觉。</li>
 <li>到现在我还是没搞清楚 GAN 的两个 counterpart 是怎么设置的，为什么 loss function 和 trainable 属性要这么写[捂脸]Keras 能不能出个官方教程啊……</li>
+<li>Colab 用到后面配额暂时用完了……只能开 pro 凑合一下了（有点小贵哦</li>
 </ol>
 
       
