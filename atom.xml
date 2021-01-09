@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.tech/"/>
-  <updated>2020-12-22T23:40:16.609Z</updated>
+  <updated>2021-01-09T20:10:45.480Z</updated>
   <id>https://blog.xdrd.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>将可掀桌的黑白棋移植到 Wasm ！（持续更新）</title>
+    <link href="https://blog.xdrd.tech/2021/01/porting-othello-to-wasm/"/>
+    <id>https://blog.xdrd.tech/2021/01/porting-othello-to-wasm/</id>
+    <published>2021-01-04T17:05:59.000Z</published>
+    <updated>2021-01-09T20:10:45.480Z</updated>
+    
+    <content type="html"><![CDATA[<p>刚上大学的时候，我写了 <a href="//github.com/owen8877/Othello/blob/master/report.md" target="_blank" rel="noopener">owen8877/Othello</a> 作为我编程课的大作业。最近，当我想把它展示给其他人看的时候，却遇到了编译和链接上的困难，更别说大部分人没有 linux 环境了。想到移植到 Wasm 上应该是给不错的主意，那么这篇文章就梳理一下整体的流程和遇到的困难吧！</p><p>发布请移步至 <a href="//othello.xdroid.workers.dev/" target="_blank" rel="noopener">这里</a> 。</p><a id="more"></a><h2 id="配环境和-Smoke-Test"><a href="#配环境和-Smoke-Test" class="headerlink" title="配环境和 Smoke Test"></a>配环境和 Smoke Test</h2><p>照官方教程</p><ul><li><a href="//developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm" target="_blank" rel="noopener">Compiling a New C/C++ Module to WebAssembly</a></li><li><a href="//developer.mozilla.org/en-US/docs/WebAssembly/existing_C_to_wasm" target="_blank" rel="noopener">Compiling an Existing C Module to WebAssembly</a></li></ul><p>我们首先安装了 emsdk，然后编译一个 <code>hello.cpp</code> 看看能不能通过（这里还要用一步 <code>screen python3 -m http.server</code> 去加载本地的 wasm 文件）。</p><h2 id="What-about-OpenGL-and-FreeGLUT"><a href="#What-about-OpenGL-and-FreeGLUT" class="headerlink" title="What about OpenGL and FreeGLUT?"></a>What about OpenGL and FreeGLUT?</h2><p>嗯好问题！其实 emscripten 是支持 FreeGLUT 的，想不到吧！</p><p>但是支持就支持完整一些啊！为什么 <a href="//github.com/emscripten-core/emscripten/blob/4aba43b520aec5c648a8f05e5434471fd563e3e9/system/include/GL/freeglut_std.h#L514" target="_blank" rel="noopener">不能画圆柱</a> 啊！（明明茶杯都可以画</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Geometry functions, see freeglut_geometry.c</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireCube</span><span class="params">( GLdouble size )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidCube</span><span class="params">( GLdouble size )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireSphere</span><span class="params">( GLdouble radius, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidSphere</span><span class="params">( GLdouble radius, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireCone</span><span class="params">( GLdouble base, GLdouble height, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidCone</span><span class="params">( GLdouble base, GLdouble height, GLint slices, GLint stacks )</span></span>;</span><br></pre></td></tr></table></figure><p>（浪费了一下午的宝贵生命后）意识到 GLUT 是个被时代抛弃的玩意儿，不如趁早转到 SDL （虽然两者并不能直接这样比较……而且画圆柱也变得麻烦了）</p><p>然后又摸索了 n 久……发现虽然说是支持 OpenGL 1.0，但其实那套立即模式早就不支持了（请允悲），所以我们需要摸索一套不使用立即模式的绘画方式！</p><p>那么，（中二的）少年一起来学习着色器吧！</p><h2 id="Shaders"><a href="#Shaders" class="headerlink" title="Shaders"></a>Shaders</h2><p>一开始走了一点弯路，后来照着 <a href="//learnopengl-cn.github.io/" target="_blank" rel="noopener">LearnOpenGL CN</a> 的教程学chao习daima。</p><p>（准确地说，这个教程教的是 OpenGL 3.2 的核心模式，不过基本上和 OpenGL ES 2.0 差异不大，而 WebGL 和 ES 2.0 差异也不大，所以是没有问题的啦！）</p><p>但是学了一会儿之后发现……呃……这套 API 和以前一样丑啊……</p><p>比如，如果我想画一些三角形……</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `vertices` stores vertex position, normal and texture position.</span></span><br><span class="line"></span><br><span class="line">glGenVertexArrays(<span class="number">1</span>, &amp;vao);</span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;vbo);</span><br><span class="line"></span><br><span class="line">glBindVertexArray(vao);</span><br><span class="line"></span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, vbo);</span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices[<span class="number">0</span>]) * vertices.size(), &amp;vertices[<span class="number">0</span>], GL_STATIC_DRAW);</span><br><span class="line">drawCount = vertices.size();</span><br><span class="line"></span><br><span class="line">glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">8</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), <span class="literal">nullptr</span>);</span><br><span class="line">glEnableVertexAttribArray(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure><p>怎么这么 old style 啊！还好可以把它们封装起来。</p><p>所以在核心模式下，画图的流程大概是：</p><ol><li>加载+编译 shader</li><li>加载 texture</li><li>加载模型（就是上面那坨魔法）</li><li>每帧更新的时候<ol><li>激活 shader</li><li>计算好 model 和 projection 矩阵，喂给 shader</li><li>画模型</li></ol></li></ol><p>emmm，好像也不是很麻烦？但问题是这种旧的 API 没有类型保证，所以很有可能传错指针或者忘记激活 shader ，导致各类莫名奇妙的事情发生。</p><p>（啊忘记了，节标题是着色器，那我们讲讲着色器吧）</p><p>简单来说，</p><ul><li>定点着色器会把模型中的坐标（世界坐标）变成屏幕上可以画出来的坐标；</li><li>片段着色器负责决定每个像素是怎么被着色的；<br>所以——都需要手写（请允悲）。</li></ul><p>还好这些东西都可以抄的（开心），而且渲染出来直接是 Phong 光照，一下真实了很多呢！</p><p>坏处是……如果传错参数，连 runtime error 都没有……</p><h2 id="Emscripten-revisited"><a href="#Emscripten-revisited" class="headerlink" title="Emscripten revisited"></a>Emscripten revisited</h2><p>那么现在问题是如何将这些代码跑在浏览器里呢？</p><p>官方教程说用 cmake 的同学可以</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">emcmake cmake .</span><br></pre></td></tr></table></figure><p>但很显然，对于像我们这种有一些冷门依赖的项目是走不通的。所以还是只能手写 makefile：</p><figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">DIREM = bin-em</span><br><span class="line">BINEM = <span class="variable">$(DIREM)</span>/Othello.html</span><br><span class="line">OBJEM = <span class="variable">$(DIREM)</span>/main.o <span class="variable">$(DIREM)</span>/ai.o <span class="variable">$(DIREM)</span>/display.o <span class="variable">$(DIREM)</span>/element.o <span class="variable">$(DIREM)</span>/game.o <span class="variable">$(DIREM)</span>/io.o <span class="variable">$(DIREM)</span>/model.o <span class="variable">$(DIREM)</span>/player.o</span><br><span class="line">EMXX = em++</span><br><span class="line">EMXXFLAGS = -Wall -O2</span><br><span class="line">EMLINKFLAGS = -s FULL_ES2=1 -s FULL_ES3=1 -s USE_GLFW=3 -s LLD_REPORT_UNDEFINED -s WASM=1 --preload-file resources --preload-file render --preload-file Settings</span><br></pre></td></tr></table></figure><p>所幸也不是很长（</p><p>这里有个问题是 js 天生不支持读本地文件，所以 filesystem 其实是 runtime 模拟的，要用 <code>--preload-file</code> 搞进去。</p><p>还有个问题是，原本跑在 native 上的版本是给渲染单独开了一个线程，怎么在 wasm 上办到呢？官方说可以用 pthread ，但是试了一下 bug 太多，而且还会牵连到 firefox 的各种 bug 和兼容性问题。简单起见我们就全塞到 main 线程算啦~（于是遍地都是 <code>#ifdef __EMSCRIPTEN__</code> 宏）</p><h2 id="GLFW"><a href="#GLFW" class="headerlink" title="GLFW"></a>GLFW</h2><p>哦对了，后来我没用 SDL ，转成 GLFW ，因为教程用的这个（</p><p>不过总体上来说都要比 GLUT 好，毕竟 main loop 是自己的了（</p><p>其他一些 callback 照虎画猫就行，不难的</p><h2 id="白嫖-Cloudflare-worker"><a href="#白嫖-Cloudflare-worker" class="headerlink" title="白嫖 Cloudflare worker"></a>白嫖 Cloudflare worker</h2><p>既然编译出来都是静态文件，自然可以用 Cloudflare 的 worker 去 serve。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;刚上大学的时候，我写了 &lt;a href=&quot;//github.com/owen8877/Othello/blob/master/report.md&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;owen8877/Othello&lt;/a&gt; 作为我编程课的大作业。最近，当我想把它展示给其他人看的时候，却遇到了编译和链接上的困难，更别说大部分人没有 linux 环境了。想到移植到 Wasm 上应该是给不错的主意，那么这篇文章就梳理一下整体的流程和遇到的困难吧！&lt;/p&gt;
+&lt;p&gt;发布请移步至 &lt;a href=&quot;//othello.xdroid.workers.dev/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这里&lt;/a&gt; 。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="gizmo" scheme="https://blog.xdrd.tech/categories/gizmo/"/>
+    
+    
+      <category term="opengl" scheme="https://blog.xdrd.tech/tags/opengl/"/>
+    
+      <category term="wasm" scheme="https://blog.xdrd.tech/tags/wasm/"/>
+    
+      <category term="webgl" scheme="https://blog.xdrd.tech/tags/webgl/"/>
+    
+  </entry>
   
   <entry>
     <title>训练神经网络给图片上色</title>
@@ -541,31 +569,6 @@
       <category term="pacman" scheme="https://blog.xdrd.tech/tags/pacman/"/>
     
       <category term="imagemagick" scheme="https://blog.xdrd.tech/tags/imagemagick/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>皈依 firefox 教（</title>
-    <link href="https://blog.xdrd.tech/2018/12/switching-to-firefox/"/>
-    <id>https://blog.xdrd.tech/2018/12/switching-to-firefox/</id>
-    <published>2018-12-31T05:39:55.000Z</published>
-    <updated>2020-03-29T15:15:57.402Z</updated>
-    
-    <content type="html"><![CDATA[<p>呃，反正心血来潮从 chrome 迁移到了 firefox。</p><a id="more"></a><p>首先在 Windows 下安装了 Firefox 64.0；在 Arch Linux 下直接 pacman 一把梭（</p><p>需要迁移的东西其实并不多：</p><ul><li>书签</li><li>cookies（……？）</li><li>插件，尽量找原版，实在不行找替代品</li></ul><p>密码保存在 keepassxc 那里 233</p><hr><p>插件其实基本都能找到（顺便切换到了 duckduckgo 作为主力搜索引擎）；另外，<a href="https://addons.mozilla.org/en-US/firefox/addon/chrome-store-foxified/" target="_blank" rel="noopener">chrome store foxified</a> 是个好东西 233</p><p><del>虽然 keepassxc 的插件还没配置好 QAQ</del></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;呃，反正心血来潮从 chrome 迁移到了 firefox。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="nagging" scheme="https://blog.xdrd.tech/categories/nagging/"/>
-    
-    
-      <category term="firefox" scheme="https://blog.xdrd.tech/tags/firefox/"/>
-    
-      <category term="chrome" scheme="https://blog.xdrd.tech/tags/chrome/"/>
     
   </entry>
   
