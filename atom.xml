@@ -5,9 +5,9 @@
   <subtitle>假装高冷的Geek</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://blog.xdrd.tech/"/>
-  <updated>2021-01-09T20:10:45.480Z</updated>
-  <id>https://blog.xdrd.tech/</id>
+  <link href="https://blog.xdrd.me/"/>
+  <updated>2021-01-10T23:56:00.483Z</updated>
+  <id>https://blog.xdrd.me/</id>
   
   <author>
     <name>xDroid</name>
@@ -18,12 +18,12 @@
   
   <entry>
     <title>将可掀桌的黑白棋移植到 Wasm ！（持续更新）</title>
-    <link href="https://blog.xdrd.tech/2021/01/porting-othello-to-wasm/"/>
-    <id>https://blog.xdrd.tech/2021/01/porting-othello-to-wasm/</id>
+    <link href="https://blog.xdrd.me/2021/01/porting-othello-to-wasm/"/>
+    <id>https://blog.xdrd.me/2021/01/porting-othello-to-wasm/</id>
     <published>2021-01-04T17:05:59.000Z</published>
-    <updated>2021-01-09T20:10:45.480Z</updated>
+    <updated>2021-01-10T23:56:00.483Z</updated>
     
-    <content type="html"><![CDATA[<p>刚上大学的时候，我写了 <a href="//github.com/owen8877/Othello/blob/master/report.md" target="_blank" rel="noopener">owen8877/Othello</a> 作为我编程课的大作业。最近，当我想把它展示给其他人看的时候，却遇到了编译和链接上的困难，更别说大部分人没有 linux 环境了。想到移植到 Wasm 上应该是给不错的主意，那么这篇文章就梳理一下整体的流程和遇到的困难吧！</p><p>发布请移步至 <a href="//othello.xdroid.workers.dev/" target="_blank" rel="noopener">这里</a> 。</p><a id="more"></a><h2 id="配环境和-Smoke-Test"><a href="#配环境和-Smoke-Test" class="headerlink" title="配环境和 Smoke Test"></a>配环境和 Smoke Test</h2><p>照官方教程</p><ul><li><a href="//developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm" target="_blank" rel="noopener">Compiling a New C/C++ Module to WebAssembly</a></li><li><a href="//developer.mozilla.org/en-US/docs/WebAssembly/existing_C_to_wasm" target="_blank" rel="noopener">Compiling an Existing C Module to WebAssembly</a></li></ul><p>我们首先安装了 emsdk，然后编译一个 <code>hello.cpp</code> 看看能不能通过（这里还要用一步 <code>screen python3 -m http.server</code> 去加载本地的 wasm 文件）。</p><h2 id="What-about-OpenGL-and-FreeGLUT"><a href="#What-about-OpenGL-and-FreeGLUT" class="headerlink" title="What about OpenGL and FreeGLUT?"></a>What about OpenGL and FreeGLUT?</h2><p>嗯好问题！其实 emscripten 是支持 FreeGLUT 的，想不到吧！</p><p>但是支持就支持完整一些啊！为什么 <a href="//github.com/emscripten-core/emscripten/blob/4aba43b520aec5c648a8f05e5434471fd563e3e9/system/include/GL/freeglut_std.h#L514" target="_blank" rel="noopener">不能画圆柱</a> 啊！（明明茶杯都可以画</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Geometry functions, see freeglut_geometry.c</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireCube</span><span class="params">( GLdouble size )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidCube</span><span class="params">( GLdouble size )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireSphere</span><span class="params">( GLdouble radius, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidSphere</span><span class="params">( GLdouble radius, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireCone</span><span class="params">( GLdouble base, GLdouble height, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidCone</span><span class="params">( GLdouble base, GLdouble height, GLint slices, GLint stacks )</span></span>;</span><br></pre></td></tr></table></figure><p>（浪费了一下午的宝贵生命后）意识到 GLUT 是个被时代抛弃的玩意儿，不如趁早转到 SDL （虽然两者并不能直接这样比较……而且画圆柱也变得麻烦了）</p><p>然后又摸索了 n 久……发现虽然说是支持 OpenGL 1.0，但其实那套立即模式早就不支持了（请允悲），所以我们需要摸索一套不使用立即模式的绘画方式！</p><p>那么，（中二的）少年一起来学习着色器吧！</p><h2 id="Shaders"><a href="#Shaders" class="headerlink" title="Shaders"></a>Shaders</h2><p>一开始走了一点弯路，后来照着 <a href="//learnopengl-cn.github.io/" target="_blank" rel="noopener">LearnOpenGL CN</a> 的教程学chao习daima。</p><p>（准确地说，这个教程教的是 OpenGL 3.2 的核心模式，不过基本上和 OpenGL ES 2.0 差异不大，而 WebGL 和 ES 2.0 差异也不大，所以是没有问题的啦！）</p><p>但是学了一会儿之后发现……呃……这套 API 和以前一样丑啊……</p><p>比如，如果我想画一些三角形……</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `vertices` stores vertex position, normal and texture position.</span></span><br><span class="line"></span><br><span class="line">glGenVertexArrays(<span class="number">1</span>, &amp;vao);</span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;vbo);</span><br><span class="line"></span><br><span class="line">glBindVertexArray(vao);</span><br><span class="line"></span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, vbo);</span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices[<span class="number">0</span>]) * vertices.size(), &amp;vertices[<span class="number">0</span>], GL_STATIC_DRAW);</span><br><span class="line">drawCount = vertices.size();</span><br><span class="line"></span><br><span class="line">glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">8</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), <span class="literal">nullptr</span>);</span><br><span class="line">glEnableVertexAttribArray(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure><p>怎么这么 old style 啊！还好可以把它们封装起来。</p><p>所以在核心模式下，画图的流程大概是：</p><ol><li>加载+编译 shader</li><li>加载 texture</li><li>加载模型（就是上面那坨魔法）</li><li>每帧更新的时候<ol><li>激活 shader</li><li>计算好 model 和 projection 矩阵，喂给 shader</li><li>画模型</li></ol></li></ol><p>emmm，好像也不是很麻烦？但问题是这种旧的 API 没有类型保证，所以很有可能传错指针或者忘记激活 shader ，导致各类莫名奇妙的事情发生。</p><p>（啊忘记了，节标题是着色器，那我们讲讲着色器吧）</p><p>简单来说，</p><ul><li>定点着色器会把模型中的坐标（世界坐标）变成屏幕上可以画出来的坐标；</li><li>片段着色器负责决定每个像素是怎么被着色的；<br>所以——都需要手写（请允悲）。</li></ul><p>还好这些东西都可以抄的（开心），而且渲染出来直接是 Phong 光照，一下真实了很多呢！</p><p>坏处是……如果传错参数，连 runtime error 都没有……</p><h2 id="Emscripten-revisited"><a href="#Emscripten-revisited" class="headerlink" title="Emscripten revisited"></a>Emscripten revisited</h2><p>那么现在问题是如何将这些代码跑在浏览器里呢？</p><p>官方教程说用 cmake 的同学可以</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">emcmake cmake .</span><br></pre></td></tr></table></figure><p>但很显然，对于像我们这种有一些冷门依赖的项目是走不通的。所以还是只能手写 makefile：</p><figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">DIREM = bin-em</span><br><span class="line">BINEM = <span class="variable">$(DIREM)</span>/Othello.html</span><br><span class="line">OBJEM = <span class="variable">$(DIREM)</span>/main.o <span class="variable">$(DIREM)</span>/ai.o <span class="variable">$(DIREM)</span>/display.o <span class="variable">$(DIREM)</span>/element.o <span class="variable">$(DIREM)</span>/game.o <span class="variable">$(DIREM)</span>/io.o <span class="variable">$(DIREM)</span>/model.o <span class="variable">$(DIREM)</span>/player.o</span><br><span class="line">EMXX = em++</span><br><span class="line">EMXXFLAGS = -Wall -O2</span><br><span class="line">EMLINKFLAGS = -s FULL_ES2=1 -s FULL_ES3=1 -s USE_GLFW=3 -s LLD_REPORT_UNDEFINED -s WASM=1 --preload-file resources --preload-file render --preload-file Settings</span><br></pre></td></tr></table></figure><p>所幸也不是很长（</p><p>这里有个问题是 js 天生不支持读本地文件，所以 filesystem 其实是 runtime 模拟的，要用 <code>--preload-file</code> 搞进去。</p><p>还有个问题是，原本跑在 native 上的版本是给渲染单独开了一个线程，怎么在 wasm 上办到呢？官方说可以用 pthread ，但是试了一下 bug 太多，而且还会牵连到 firefox 的各种 bug 和兼容性问题。简单起见我们就全塞到 main 线程算啦~（于是遍地都是 <code>#ifdef __EMSCRIPTEN__</code> 宏）</p><h2 id="GLFW"><a href="#GLFW" class="headerlink" title="GLFW"></a>GLFW</h2><p>哦对了，后来我没用 SDL ，转成 GLFW ，因为教程用的这个（</p><p>不过总体上来说都要比 GLUT 好，毕竟 main loop 是自己的了（</p><p>其他一些 callback 照虎画猫就行，不难的</p><h2 id="白嫖-Cloudflare-worker"><a href="#白嫖-Cloudflare-worker" class="headerlink" title="白嫖 Cloudflare worker"></a>白嫖 Cloudflare worker</h2><p>既然编译出来都是静态文件，自然可以用 Cloudflare 的 worker 去 serve。</p>]]></content>
+    <content type="html"><![CDATA[<p>刚上大学的时候，我写了 <a href="//github.com/owen8877/Othello/blob/master/report.md" target="_blank" rel="noopener">owen8877/Othello</a> 作为我编程课的大作业。最近，当我想把它展示给其他人看的时候，却遇到了编译和链接上的困难，更别说大部分人没有 linux 环境了。想到移植到 Wasm 上应该是给不错的主意，那么这篇文章就梳理一下整体的流程和遇到的困难吧！</p><p>发布请移步至 <a href="//othello.xdroid.workers.dev/" target="_blank" rel="noopener">这里</a> 。</p><a id="more"></a><h2 id="配环境和-Smoke-Test"><a href="#配环境和-Smoke-Test" class="headerlink" title="配环境和 Smoke Test"></a>配环境和 Smoke Test</h2><p>照官方教程</p><ul><li><a href="//developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm" target="_blank" rel="noopener">Compiling a New C/C++ Module to WebAssembly</a></li><li><a href="//developer.mozilla.org/en-US/docs/WebAssembly/existing_C_to_wasm" target="_blank" rel="noopener">Compiling an Existing C Module to WebAssembly</a></li></ul><p>我们首先安装了 emsdk，然后编译一个 <code>hello.cpp</code> 看看能不能通过（这里还要用一步 <code>screen python3 -m http.server</code> 去加载本地的 wasm 文件）。</p><h2 id="What-about-OpenGL-and-FreeGLUT"><a href="#What-about-OpenGL-and-FreeGLUT" class="headerlink" title="What about OpenGL and FreeGLUT?"></a>What about OpenGL and FreeGLUT?</h2><p>嗯好问题！其实 emscripten 是支持 FreeGLUT 的，想不到吧！</p><p>但是支持就支持完整一些啊！为什么 <a href="//github.com/emscripten-core/emscripten/blob/4aba43b520aec5c648a8f05e5434471fd563e3e9/system/include/GL/freeglut_std.h#L514" target="_blank" rel="noopener">不能画圆柱</a> 啊！（明明茶杯都可以画</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Geometry functions, see freeglut_geometry.c</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireCube</span><span class="params">( GLdouble size )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidCube</span><span class="params">( GLdouble size )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireSphere</span><span class="params">( GLdouble radius, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidSphere</span><span class="params">( GLdouble radius, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireCone</span><span class="params">( GLdouble base, GLdouble height, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidCone</span><span class="params">( GLdouble base, GLdouble height, GLint slices, GLint stacks )</span></span>;</span><br></pre></td></tr></table></figure><p>（浪费了一下午的宝贵生命后）意识到 GLUT 是个被时代抛弃的玩意儿，不如趁早转到 SDL （虽然两者并不能直接这样比较……而且画圆柱也变得麻烦了）</p><p>然后又摸索了 n 久……发现虽然说是支持 OpenGL 1.0，但其实那套立即模式早就不支持了（请允悲），所以我们需要摸索一套不使用立即模式的绘画方式！</p><p>那么，（中二的）少年一起来学习着色器吧！</p><h2 id="Shaders"><a href="#Shaders" class="headerlink" title="Shaders"></a>Shaders</h2><p>一开始走了一点弯路，后来照着 <a href="//learnopengl-cn.github.io/" target="_blank" rel="noopener">LearnOpenGL CN</a> 的教程学chao习daima。</p><p>（准确地说，这个教程教的是 OpenGL 3.2 的核心模式，不过基本上和 OpenGL ES 2.0 差异不大，而 WebGL 和 ES 2.0 差异也不大，所以是没有问题的啦！）</p><p>但是学了一会儿之后发现……呃……这套 API 和以前一样丑啊……</p><p>比如，如果我想画一些三角形……</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `vertices` stores vertex position, normal and texture position.</span></span><br><span class="line"></span><br><span class="line">glGenVertexArrays(<span class="number">1</span>, &amp;vao);</span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;vbo);</span><br><span class="line"></span><br><span class="line">glBindVertexArray(vao);</span><br><span class="line"></span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, vbo);</span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices[<span class="number">0</span>]) * vertices.size(), &amp;vertices[<span class="number">0</span>], GL_STATIC_DRAW);</span><br><span class="line">drawCount = vertices.size();</span><br><span class="line"></span><br><span class="line">glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">8</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), <span class="literal">nullptr</span>);</span><br><span class="line">glEnableVertexAttribArray(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure><p>怎么这么 old style 啊！还好可以把它们封装起来。</p><p>所以在核心模式下，画图的流程大概是：</p><ol><li>加载+编译 shader</li><li>加载 texture</li><li>加载模型（就是上面那坨魔法）</li><li>每帧更新的时候<ol><li>激活 shader</li><li>计算好 model 和 projection 矩阵，喂给 shader</li><li>画模型</li></ol></li></ol><p>emmm，好像也不是很麻烦？但问题是这种旧的 API 没有类型保证，所以很有可能传错指针或者忘记激活 shader ，导致各类莫名奇妙的事情发生。</p><p>（啊忘记了，节标题是着色器，那我们讲讲着色器吧）</p><p>简单来说，</p><ul><li>定点着色器会把模型中的坐标（世界坐标）变成屏幕上可以画出来的坐标；</li><li>片段着色器负责决定每个像素是怎么被着色的；<br>所以——都需要手写（请允悲）。</li></ul><p>还好这些东西都可以抄的（开心），而且渲染出来直接是 Phong 光照，一下真实了很多呢！</p><p>坏处是……如果传错参数，连 runtime error 都没有……</p><h2 id="Emscripten-revisited"><a href="#Emscripten-revisited" class="headerlink" title="Emscripten revisited"></a>Emscripten revisited</h2><p>那么现在问题是如何将这些代码跑在浏览器里呢？</p><p>官方教程说用 cmake 的同学可以</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">emcmake cmake .</span><br></pre></td></tr></table></figure><p>但很显然，对于像我们这种有一些冷门依赖的项目是走不通的。所以还是只能手写 makefile：</p><figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">DIREM = bin-em</span><br><span class="line">BINEM = <span class="variable">$(DIREM)</span>/Othello.html</span><br><span class="line">OBJEM = <span class="variable">$(DIREM)</span>/main.o <span class="variable">$(DIREM)</span>/ai.o <span class="variable">$(DIREM)</span>/display.o <span class="variable">$(DIREM)</span>/element.o <span class="variable">$(DIREM)</span>/game.o <span class="variable">$(DIREM)</span>/io.o <span class="variable">$(DIREM)</span>/model.o <span class="variable">$(DIREM)</span>/player.o</span><br><span class="line">EMXX = em++</span><br><span class="line">EMXXFLAGS = -Wall -O2</span><br><span class="line">EMLINKFLAGS = -s FULL_ES2=1 -s FULL_ES3=1 -s USE_GLFW=3 -s LLD_REPORT_UNDEFINED -s WASM=1 --preload-file resources --preload-file render --preload-file Settings</span><br></pre></td></tr></table></figure><p>所幸也不是很长（</p><p>这里有个问题是 js 天生不支持读本地文件，所以 filesystem 其实是 runtime 模拟的，要用 <code>--preload-file</code> 搞进去。</p><p>还有个问题是，原本跑在 native 上的版本是给渲染单独开了一个线程，怎么在 wasm 上办到呢？官方说可以用 pthread ，但是试了一下 bug 太多，而且还会牵连到 firefox 的各种 bug 和兼容性问题。简单起见我们就全塞到 main 线程算啦~（于是遍地都是 <code>#ifdef __EMSCRIPTEN__</code> 宏）</p><h2 id="GLFW"><a href="#GLFW" class="headerlink" title="GLFW"></a>GLFW</h2><p>哦对了，后来我没用 SDL ，转成 GLFW ，因为教程用的这个（</p><p>不过总体上来说都要比 GLUT 好，毕竟 main loop 是自己的了（</p><p>其他一些 callback 照虎画猫就行，不难的</p><h2 id="白嫖-Cloudflare-worker"><a href="#白嫖-Cloudflare-worker" class="headerlink" title="白嫖 Cloudflare worker"></a>白嫖 Cloudflare worker</h2><p>既然编译出来都是静态文件，自然可以用 Cloudflare 的 worker 去 serve。</p><h2 id="Roadmap"><a href="#Roadmap" class="headerlink" title="Roadmap"></a>Roadmap</h2><p>还需要填的坑：<br>[x] 把 Watch_Doge 的算法移植上去（哼虽然 botzone 上比分不高，但是和人下还是小菜一碟呢）（于 177cd06 完成）<br>[ ] （求求你）换个好看点的材质吧<br>[x] 一键掀桌！（于 13d09fa 完成）<br>[ ] <del>看看能不能用 <a href="//github.com/ocornut/imgui" target="_blank" rel="noopener">ocornut/imgui</a> 做一下 GUI 的一些控制</del>（我放弃了……实在没办法把环境配好）<br>[ ] 嵌入的网页稍微修整一下吧……</p>]]></content>
     
     <summary type="html">
     
@@ -33,21 +33,21 @@
     </summary>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.tech/categories/gizmo/"/>
+      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
     
     
-      <category term="opengl" scheme="https://blog.xdrd.tech/tags/opengl/"/>
+      <category term="opengl" scheme="https://blog.xdrd.me/tags/opengl/"/>
     
-      <category term="wasm" scheme="https://blog.xdrd.tech/tags/wasm/"/>
+      <category term="wasm" scheme="https://blog.xdrd.me/tags/wasm/"/>
     
-      <category term="webgl" scheme="https://blog.xdrd.tech/tags/webgl/"/>
+      <category term="webgl" scheme="https://blog.xdrd.me/tags/webgl/"/>
     
   </entry>
   
   <entry>
     <title>训练神经网络给图片上色</title>
-    <link href="https://blog.xdrd.tech/2020/11/image-colorization/"/>
-    <id>https://blog.xdrd.tech/2020/11/image-colorization/</id>
+    <link href="https://blog.xdrd.me/2020/11/image-colorization/"/>
+    <id>https://blog.xdrd.me/2020/11/image-colorization/</id>
     <published>2020-11-28T05:37:04.000Z</published>
     <updated>2020-12-22T23:40:16.609Z</updated>
     
@@ -60,21 +60,21 @@
     </summary>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.tech/categories/gizmo/"/>
+      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
     
     
-      <category term="deep learning" scheme="https://blog.xdrd.tech/tags/deep-learning/"/>
+      <category term="deep learning" scheme="https://blog.xdrd.me/tags/deep-learning/"/>
     
-      <category term="keras" scheme="https://blog.xdrd.tech/tags/keras/"/>
+      <category term="keras" scheme="https://blog.xdrd.me/tags/keras/"/>
     
-      <category term="tensorflow" scheme="https://blog.xdrd.tech/tags/tensorflow/"/>
+      <category term="tensorflow" scheme="https://blog.xdrd.me/tags/tensorflow/"/>
     
   </entry>
   
   <entry>
     <title>线性代数如此容易（棒读</title>
-    <link href="https://blog.xdrd.tech/2020/11/linear-algebra-made-easy/"/>
-    <id>https://blog.xdrd.tech/2020/11/linear-algebra-made-easy/</id>
+    <link href="https://blog.xdrd.me/2020/11/linear-algebra-made-easy/"/>
+    <id>https://blog.xdrd.me/2020/11/linear-algebra-made-easy/</id>
     <published>2020-11-14T17:43:28.000Z</published>
     <updated>2020-12-22T23:40:45.446Z</updated>
     
@@ -92,19 +92,19 @@
     </summary>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.tech/categories/gizmo/"/>
+      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
     
     
-      <category term="matrix product" scheme="https://blog.xdrd.tech/tags/matrix-product/"/>
+      <category term="matrix product" scheme="https://blog.xdrd.me/tags/matrix-product/"/>
     
-      <category term="linear algebra" scheme="https://blog.xdrd.tech/tags/linear-algebra/"/>
+      <category term="linear algebra" scheme="https://blog.xdrd.me/tags/linear-algebra/"/>
     
   </entry>
   
   <entry>
     <title>「日历记事本」模组</title>
-    <link href="https://blog.xdrd.tech/2020/07/calendar-as-diary-module/"/>
-    <id>https://blog.xdrd.tech/2020/07/calendar-as-diary-module/</id>
+    <link href="https://blog.xdrd.me/2020/07/calendar-as-diary-module/"/>
+    <id>https://blog.xdrd.me/2020/07/calendar-as-diary-module/</id>
     <published>2020-07-09T18:25:21.000Z</published>
     <updated>2020-07-10T19:21:48.627Z</updated>
     
@@ -118,19 +118,19 @@
     </summary>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.tech/categories/gizmo/"/>
+      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
     
     
-      <category term="calendar-as-diary" scheme="https://blog.xdrd.tech/tags/calendar-as-diary/"/>
+      <category term="calendar-as-diary" scheme="https://blog.xdrd.me/tags/calendar-as-diary/"/>
     
-      <category term="rust" scheme="https://blog.xdrd.tech/tags/rust/"/>
+      <category term="rust" scheme="https://blog.xdrd.me/tags/rust/"/>
     
   </entry>
   
   <entry>
     <title>「日历记事本」规划</title>
-    <link href="https://blog.xdrd.tech/2020/05/calendar-as-diary-roadmap/"/>
-    <id>https://blog.xdrd.tech/2020/05/calendar-as-diary-roadmap/</id>
+    <link href="https://blog.xdrd.me/2020/05/calendar-as-diary-roadmap/"/>
+    <id>https://blog.xdrd.me/2020/05/calendar-as-diary-roadmap/</id>
     <published>2020-05-26T21:49:42.000Z</published>
     <updated>2020-06-01T16:56:29.055Z</updated>
     
@@ -151,19 +151,19 @@
     </summary>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.tech/categories/gizmo/"/>
+      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
     
     
-      <category term="calendar-as-diary" scheme="https://blog.xdrd.tech/tags/calendar-as-diary/"/>
+      <category term="calendar-as-diary" scheme="https://blog.xdrd.me/tags/calendar-as-diary/"/>
     
-      <category term="rust" scheme="https://blog.xdrd.tech/tags/rust/"/>
+      <category term="rust" scheme="https://blog.xdrd.me/tags/rust/"/>
     
   </entry>
   
   <entry>
     <title>USTC 字体 CDN 服务被墙</title>
-    <link href="https://blog.xdrd.tech/2020/05/ustc-font-blocked/"/>
-    <id>https://blog.xdrd.tech/2020/05/ustc-font-blocked/</id>
+    <link href="https://blog.xdrd.me/2020/05/ustc-font-blocked/"/>
+    <id>https://blog.xdrd.me/2020/05/ustc-font-blocked/</id>
     <published>2020-05-25T17:52:35.000Z</published>
     <updated>2020-05-25T18:01:22.798Z</updated>
     
@@ -181,19 +181,19 @@
     </summary>
     
     
-      <category term="site" scheme="https://blog.xdrd.tech/categories/site/"/>
+      <category term="site" scheme="https://blog.xdrd.me/categories/site/"/>
     
     
-      <category term="ustc" scheme="https://blog.xdrd.tech/tags/ustc/"/>
+      <category term="ustc" scheme="https://blog.xdrd.me/tags/ustc/"/>
     
-      <category term="cdn" scheme="https://blog.xdrd.tech/tags/cdn/"/>
+      <category term="cdn" scheme="https://blog.xdrd.me/tags/cdn/"/>
     
   </entry>
   
   <entry>
     <title>AMD Yes 之深度学习</title>
-    <link href="https://blog.xdrd.tech/2020/05/rocm/"/>
-    <id>https://blog.xdrd.tech/2020/05/rocm/</id>
+    <link href="https://blog.xdrd.me/2020/05/rocm/"/>
+    <id>https://blog.xdrd.me/2020/05/rocm/</id>
     <published>2020-05-25T16:43:53.000Z</published>
     <updated>2020-05-25T17:40:31.571Z</updated>
     
@@ -207,19 +207,19 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://blog.xdrd.tech/categories/Linux/"/>
+      <category term="Linux" scheme="https://blog.xdrd.me/categories/Linux/"/>
     
     
-      <category term="amd graphics card" scheme="https://blog.xdrd.tech/tags/amd-graphics-card/"/>
+      <category term="amd graphics card" scheme="https://blog.xdrd.me/tags/amd-graphics-card/"/>
     
-      <category term="rocm" scheme="https://blog.xdrd.tech/tags/rocm/"/>
+      <category term="rocm" scheme="https://blog.xdrd.me/tags/rocm/"/>
     
   </entry>
   
   <entry>
     <title>0202 年安装 Windows 记录</title>
-    <link href="https://blog.xdrd.tech/2020/04/install-windows/"/>
-    <id>https://blog.xdrd.tech/2020/04/install-windows/</id>
+    <link href="https://blog.xdrd.me/2020/04/install-windows/"/>
+    <id>https://blog.xdrd.me/2020/04/install-windows/</id>
     <published>2020-04-12T15:07:56.000Z</published>
     <updated>2020-04-12T15:44:36.111Z</updated>
     
@@ -234,19 +234,19 @@
     </summary>
     
     
-      <category term="Windows" scheme="https://blog.xdrd.tech/categories/Windows/"/>
+      <category term="Windows" scheme="https://blog.xdrd.me/categories/Windows/"/>
     
     
-      <category term="windows" scheme="https://blog.xdrd.tech/tags/windows/"/>
+      <category term="windows" scheme="https://blog.xdrd.me/tags/windows/"/>
     
-      <category term="chocolatey" scheme="https://blog.xdrd.tech/tags/chocolatey/"/>
+      <category term="chocolatey" scheme="https://blog.xdrd.me/tags/chocolatey/"/>
     
   </entry>
   
   <entry>
     <title>AMD Yes!</title>
-    <link href="https://blog.xdrd.tech/2020/03/amd-yes/"/>
-    <id>https://blog.xdrd.tech/2020/03/amd-yes/</id>
+    <link href="https://blog.xdrd.me/2020/03/amd-yes/"/>
+    <id>https://blog.xdrd.me/2020/03/amd-yes/</id>
     <published>2020-03-29T15:57:46.000Z</published>
     <updated>2020-03-29T17:42:40.608Z</updated>
     
@@ -260,21 +260,21 @@
     </summary>
     
     
-      <category term="desktop" scheme="https://blog.xdrd.tech/categories/desktop/"/>
+      <category term="desktop" scheme="https://blog.xdrd.me/categories/desktop/"/>
     
     
-      <category term="amd" scheme="https://blog.xdrd.tech/tags/amd/"/>
+      <category term="amd" scheme="https://blog.xdrd.me/tags/amd/"/>
     
-      <category term="2600X" scheme="https://blog.xdrd.tech/tags/2600X/"/>
+      <category term="2600X" scheme="https://blog.xdrd.me/tags/2600X/"/>
     
-      <category term="desktop" scheme="https://blog.xdrd.tech/tags/desktop/"/>
+      <category term="desktop" scheme="https://blog.xdrd.me/tags/desktop/"/>
     
   </entry>
   
   <entry>
     <title>纪念在疫情中不幸暴毙的 SSD</title>
-    <link href="https://blog.xdrd.tech/2020/03/ssd-perished/"/>
-    <id>https://blog.xdrd.tech/2020/03/ssd-perished/</id>
+    <link href="https://blog.xdrd.me/2020/03/ssd-perished/"/>
+    <id>https://blog.xdrd.me/2020/03/ssd-perished/</id>
     <published>2020-03-29T15:34:58.000Z</published>
     <updated>2020-03-29T15:51:12.392Z</updated>
     
@@ -291,17 +291,17 @@
     </summary>
     
     
-      <category term="nagging" scheme="https://blog.xdrd.tech/categories/nagging/"/>
+      <category term="nagging" scheme="https://blog.xdrd.me/categories/nagging/"/>
     
     
-      <category term="ssd" scheme="https://blog.xdrd.tech/tags/ssd/"/>
+      <category term="ssd" scheme="https://blog.xdrd.me/tags/ssd/"/>
     
   </entry>
   
   <entry>
     <title>Mi A2 Lite</title>
-    <link href="https://blog.xdrd.tech/2019/12/mi-a2-lite-daisy/"/>
-    <id>https://blog.xdrd.tech/2019/12/mi-a2-lite-daisy/</id>
+    <link href="https://blog.xdrd.me/2019/12/mi-a2-lite-daisy/"/>
+    <id>https://blog.xdrd.me/2019/12/mi-a2-lite-daisy/</id>
     <published>2019-12-18T21:34:06.000Z</published>
     <updated>2020-03-29T15:15:57.398Z</updated>
     
@@ -318,21 +318,21 @@
     </summary>
     
     
-      <category term="phone" scheme="https://blog.xdrd.tech/categories/phone/"/>
+      <category term="phone" scheme="https://blog.xdrd.me/categories/phone/"/>
     
     
-      <category term="bacon" scheme="https://blog.xdrd.tech/tags/bacon/"/>
+      <category term="bacon" scheme="https://blog.xdrd.me/tags/bacon/"/>
     
-      <category term="daisy" scheme="https://blog.xdrd.tech/tags/daisy/"/>
+      <category term="daisy" scheme="https://blog.xdrd.me/tags/daisy/"/>
     
-      <category term="Android Q" scheme="https://blog.xdrd.tech/tags/Android-Q/"/>
+      <category term="Android Q" scheme="https://blog.xdrd.me/tags/Android-Q/"/>
     
   </entry>
   
   <entry>
     <title>一加一换屏</title>
-    <link href="https://blog.xdrd.tech/2019/10/repairing-bacon/"/>
-    <id>https://blog.xdrd.tech/2019/10/repairing-bacon/</id>
+    <link href="https://blog.xdrd.me/2019/10/repairing-bacon/"/>
+    <id>https://blog.xdrd.me/2019/10/repairing-bacon/</id>
     <published>2019-10-27T03:37:37.000Z</published>
     <updated>2020-03-29T15:15:57.398Z</updated>
     
@@ -346,21 +346,21 @@
     </summary>
     
     
-      <category term="phone" scheme="https://blog.xdrd.tech/categories/phone/"/>
+      <category term="phone" scheme="https://blog.xdrd.me/categories/phone/"/>
     
     
-      <category term="oneplus" scheme="https://blog.xdrd.tech/tags/oneplus/"/>
+      <category term="oneplus" scheme="https://blog.xdrd.me/tags/oneplus/"/>
     
-      <category term="bacon" scheme="https://blog.xdrd.tech/tags/bacon/"/>
+      <category term="bacon" scheme="https://blog.xdrd.me/tags/bacon/"/>
     
-      <category term="repair" scheme="https://blog.xdrd.tech/tags/repair/"/>
+      <category term="repair" scheme="https://blog.xdrd.me/tags/repair/"/>
     
   </entry>
   
   <entry>
     <title>账户大清理</title>
-    <link href="https://blog.xdrd.tech/2019/09/account-deletion/"/>
-    <id>https://blog.xdrd.tech/2019/09/account-deletion/</id>
+    <link href="https://blog.xdrd.me/2019/09/account-deletion/"/>
+    <id>https://blog.xdrd.me/2019/09/account-deletion/</id>
     <published>2019-09-14T21:42:58.000Z</published>
     <updated>2020-03-29T15:15:57.395Z</updated>
     
@@ -374,14 +374,14 @@
     
     
     
-      <category term="KeepassXC" scheme="https://blog.xdrd.tech/tags/KeepassXC/"/>
+      <category term="KeepassXC" scheme="https://blog.xdrd.me/tags/KeepassXC/"/>
     
   </entry>
   
   <entry>
     <title>人人网备份方案</title>
-    <link href="https://blog.xdrd.tech/2019/09/clone-your-renren-com/"/>
-    <id>https://blog.xdrd.tech/2019/09/clone-your-renren-com/</id>
+    <link href="https://blog.xdrd.me/2019/09/clone-your-renren-com/"/>
+    <id>https://blog.xdrd.me/2019/09/clone-your-renren-com/</id>
     <published>2019-09-10T14:12:41.000Z</published>
     <updated>2020-03-29T15:15:57.398Z</updated>
     
@@ -395,21 +395,21 @@
     </summary>
     
     
-      <category term="tech" scheme="https://blog.xdrd.tech/categories/tech/"/>
+      <category term="tech" scheme="https://blog.xdrd.me/categories/tech/"/>
     
     
-      <category term="bash" scheme="https://blog.xdrd.tech/tags/bash/"/>
+      <category term="bash" scheme="https://blog.xdrd.me/tags/bash/"/>
     
-      <category term="renren" scheme="https://blog.xdrd.tech/tags/renren/"/>
+      <category term="renren" scheme="https://blog.xdrd.me/tags/renren/"/>
     
-      <category term="jq" scheme="https://blog.xdrd.tech/tags/jq/"/>
+      <category term="jq" scheme="https://blog.xdrd.me/tags/jq/"/>
     
   </entry>
   
   <entry>
     <title>二周目红米 5 刷机</title>
-    <link href="https://blog.xdrd.tech/2019/08/flashing-whyred-2/"/>
-    <id>https://blog.xdrd.tech/2019/08/flashing-whyred-2/</id>
+    <link href="https://blog.xdrd.me/2019/08/flashing-whyred-2/"/>
+    <id>https://blog.xdrd.me/2019/08/flashing-whyred-2/</id>
     <published>2019-08-14T18:00:07.000Z</published>
     <updated>2020-03-29T15:15:57.398Z</updated>
     
@@ -422,21 +422,21 @@
     </summary>
     
     
-      <category term="phone" scheme="https://blog.xdrd.tech/categories/phone/"/>
+      <category term="phone" scheme="https://blog.xdrd.me/categories/phone/"/>
     
     
-      <category term="whyred" scheme="https://blog.xdrd.tech/tags/whyred/"/>
+      <category term="whyred" scheme="https://blog.xdrd.me/tags/whyred/"/>
     
-      <category term="orangefox" scheme="https://blog.xdrd.tech/tags/orangefox/"/>
+      <category term="orangefox" scheme="https://blog.xdrd.me/tags/orangefox/"/>
     
-      <category term="syberia" scheme="https://blog.xdrd.tech/tags/syberia/"/>
+      <category term="syberia" scheme="https://blog.xdrd.me/tags/syberia/"/>
     
   </entry>
   
   <entry>
     <title>是时候给沉船换一个外壳了！</title>
-    <link href="https://blog.xdrd.tech/2019/07/laptop-case/"/>
-    <id>https://blog.xdrd.tech/2019/07/laptop-case/</id>
+    <link href="https://blog.xdrd.me/2019/07/laptop-case/"/>
+    <id>https://blog.xdrd.me/2019/07/laptop-case/</id>
     <published>2019-07-06T21:26:35.000Z</published>
     <updated>2020-03-29T15:15:57.398Z</updated>
     
@@ -451,19 +451,19 @@
     </summary>
     
     
-      <category term="laptop" scheme="https://blog.xdrd.tech/categories/laptop/"/>
+      <category term="laptop" scheme="https://blog.xdrd.me/categories/laptop/"/>
     
     
-      <category term="touchpad" scheme="https://blog.xdrd.tech/tags/touchpad/"/>
+      <category term="touchpad" scheme="https://blog.xdrd.me/tags/touchpad/"/>
     
-      <category term="screw" scheme="https://blog.xdrd.tech/tags/screw/"/>
+      <category term="screw" scheme="https://blog.xdrd.me/tags/screw/"/>
     
   </entry>
   
   <entry>
     <title>数值实验二三事</title>
-    <link href="https://blog.xdrd.tech/2019/03/numerical-experiments-0/"/>
-    <id>https://blog.xdrd.tech/2019/03/numerical-experiments-0/</id>
+    <link href="https://blog.xdrd.me/2019/03/numerical-experiments-0/"/>
+    <id>https://blog.xdrd.me/2019/03/numerical-experiments-0/</id>
     <published>2019-03-25T19:40:30.000Z</published>
     <updated>2020-03-29T15:15:57.398Z</updated>
     
@@ -479,21 +479,21 @@
     </summary>
     
     
-      <category term="linux" scheme="https://blog.xdrd.tech/categories/linux/"/>
+      <category term="linux" scheme="https://blog.xdrd.me/categories/linux/"/>
     
     
-      <category term="matlab" scheme="https://blog.xdrd.tech/tags/matlab/"/>
+      <category term="matlab" scheme="https://blog.xdrd.me/tags/matlab/"/>
     
-      <category term="i3" scheme="https://blog.xdrd.tech/tags/i3/"/>
+      <category term="i3" scheme="https://blog.xdrd.me/tags/i3/"/>
     
-      <category term="governor" scheme="https://blog.xdrd.tech/tags/governor/"/>
+      <category term="governor" scheme="https://blog.xdrd.me/tags/governor/"/>
     
   </entry>
   
   <entry>
     <title>amixer 切换静音模式的诡异行为</title>
-    <link href="https://blog.xdrd.tech/2019/02/amixer-strange-behaviour/"/>
-    <id>https://blog.xdrd.tech/2019/02/amixer-strange-behaviour/</id>
+    <link href="https://blog.xdrd.me/2019/02/amixer-strange-behaviour/"/>
+    <id>https://blog.xdrd.me/2019/02/amixer-strange-behaviour/</id>
     <published>2019-02-06T19:28:00.000Z</published>
     <updated>2020-03-29T15:15:57.395Z</updated>
     
@@ -509,17 +509,17 @@
     </summary>
     
     
-      <category term="linux" scheme="https://blog.xdrd.tech/categories/linux/"/>
+      <category term="linux" scheme="https://blog.xdrd.me/categories/linux/"/>
     
     
-      <category term="amixer" scheme="https://blog.xdrd.tech/tags/amixer/"/>
+      <category term="amixer" scheme="https://blog.xdrd.me/tags/amixer/"/>
     
   </entry>
   
   <entry>
     <title>深入定制 i3bar</title>
-    <link href="https://blog.xdrd.tech/2019/02/decor-i3bar/"/>
-    <id>https://blog.xdrd.tech/2019/02/decor-i3bar/</id>
+    <link href="https://blog.xdrd.me/2019/02/decor-i3bar/"/>
+    <id>https://blog.xdrd.me/2019/02/decor-i3bar/</id>
     <published>2019-02-05T04:04:03.000Z</published>
     <updated>2020-03-29T15:15:57.398Z</updated>
     
@@ -533,21 +533,21 @@
     </summary>
     
     
-      <category term="linux" scheme="https://blog.xdrd.tech/categories/linux/"/>
+      <category term="linux" scheme="https://blog.xdrd.me/categories/linux/"/>
     
     
-      <category term="i3" scheme="https://blog.xdrd.tech/tags/i3/"/>
+      <category term="i3" scheme="https://blog.xdrd.me/tags/i3/"/>
     
-      <category term="voidrice" scheme="https://blog.xdrd.tech/tags/voidrice/"/>
+      <category term="voidrice" scheme="https://blog.xdrd.me/tags/voidrice/"/>
     
-      <category term="fontawesome" scheme="https://blog.xdrd.tech/tags/fontawesome/"/>
+      <category term="fontawesome" scheme="https://blog.xdrd.me/tags/fontawesome/"/>
     
   </entry>
   
   <entry>
     <title>从 pacman 更新的中断中恢复</title>
-    <link href="https://blog.xdrd.tech/2018/12/fixing-pacman/"/>
-    <id>https://blog.xdrd.tech/2018/12/fixing-pacman/</id>
+    <link href="https://blog.xdrd.me/2018/12/fixing-pacman/"/>
+    <id>https://blog.xdrd.me/2018/12/fixing-pacman/</id>
     <published>2018-12-31T05:48:16.000Z</published>
     <updated>2020-03-29T15:15:57.398Z</updated>
     
@@ -561,14 +561,14 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://blog.xdrd.tech/categories/Linux/"/>
+      <category term="Linux" scheme="https://blog.xdrd.me/categories/Linux/"/>
     
     
-      <category term="i3" scheme="https://blog.xdrd.tech/tags/i3/"/>
+      <category term="i3" scheme="https://blog.xdrd.me/tags/i3/"/>
     
-      <category term="pacman" scheme="https://blog.xdrd.tech/tags/pacman/"/>
+      <category term="pacman" scheme="https://blog.xdrd.me/tags/pacman/"/>
     
-      <category term="imagemagick" scheme="https://blog.xdrd.tech/tags/imagemagick/"/>
+      <category term="imagemagick" scheme="https://blog.xdrd.me/tags/imagemagick/"/>
     
   </entry>
   
