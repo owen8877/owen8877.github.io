@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.me/"/>
-  <updated>2021-01-10T23:56:00.483Z</updated>
+  <updated>2022-03-01T04:23:38.033Z</updated>
   <id>https://blog.xdrd.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Matlab造成的死机？！</title>
+    <link href="https://blog.xdrd.me/2022/02/matlab-panic/"/>
+    <id>https://blog.xdrd.me/2022/02/matlab-panic/</id>
+    <published>2022-03-01T03:12:35.000Z</published>
+    <updated>2022-03-01T04:23:38.033Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近遇到一个非常奇怪的事情，本来好好的写作业，需要跑一个matlab代码，结果跑了一小会儿直接黑屏了。我一开始以为是内存爆了，就把测试矩阵的大小改小了一点，结果还是崩，而且崩的时候是鼠标键盘统统没反应，只能按电源键。失败几次之后决定从日志里找找原因。</p><a id="more"></a><p>让我们康康 <code>journalctl --since=today</code> 里都有啥：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Feb 28 18:37:30 xDroid-Arch26X MATLAB[4591]: Failed to load module &quot;canberra-gtk-module&quot;</span><br><span class="line">Feb 28 18:37:50 xDroid-Arch26X kernel: pcieport 0000:03:01.0: can&#39;t change power state from D3cold to D0 (config space inacce&gt;</span><br><span class="line">Feb 28 18:37:51 xDroid-Arch26X kernel: xhci_hcd 0000:02:00.0: xHCI host controller not responding, assume dead</span><br><span class="line">Feb 28 18:37:51 xDroid-Arch26X kernel: xhci_hcd 0000:02:00.0: HC died; cleaning up</span><br><span class="line">Feb 28 18:37:51 xDroid-Arch26X kernel: usb 1-5: USB disconnect, device number 2</span><br><span class="line">Feb 28 18:37:52 xDroid-Arch26X &#x2F;usr&#x2F;lib&#x2F;gdm-x-session[1305]: (II) event16 - DELL Alienware 310K: device removed</span><br></pre></td></tr></table></figure><p>下面是一些设备（键鼠）被断开，然后是</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Feb 28 18:37:53 xDroid-Arch26X kernel: iwlwifi 0000:06:00.0: Error sending CMD_DTS_MEASUREMENT_TRIGGER_WIDE: time out after 2&gt;</span><br><span class="line">Feb 28 18:37:53 xDroid-Arch26X kernel: iwlwifi 0000:06:00.0: Current CMD queue read_ptr 91 write_ptr 92</span><br><span class="line">Feb 28 18:37:53 xDroid-Arch26X kernel: ------------[ cut here ]------------</span><br><span class="line">Feb 28 18:37:53 xDroid-Arch26X kernel: Timeout waiting for hardware access (CSR_GP_CNTRL 0xffffffff)</span><br><span class="line">Feb 28 18:37:53 xDroid-Arch26X kernel: WARNING: CPU: 5 PID: 5784 at drivers&#x2F;net&#x2F;wireless&#x2F;intel&#x2F;iwlwifi&#x2F;pcie&#x2F;trans.c:2084 __iw&gt;</span><br><span class="line">Fe</span><br></pre></td></tr></table></figure><p>然后无线网卡看起来也跟着炸了。</p><p>emm我们还是先从出事的<code>03:01.0</code>看起来吧。<code>lspci -vt</code>显示的设备如下：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-[0000:00]-+-00.0  Advanced Micro Devices, Inc. [AMD] Family 17h (Models 00h-0fh) Root Complex</span><br><span class="line">           +-01.0  Advanced Micro Devices, Inc. [AMD] Family 17h (Models 00h-1fh) PCIe Dummy Host Bridge</span><br><span class="line">           +-01.1-[01]----00.0  Samsung Electronics Co Ltd NVMe SSD Controller SM981&#x2F;PM981&#x2F;PM983</span><br><span class="line">           +-01.3-[02-06]--+-00.0  Advanced Micro Devices, Inc. [AMD] 400 Series Chipset USB 3.1 XHCI Controller</span><br><span class="line">           |               +-00.1  Advanced Micro Devices, Inc. [AMD] 400 Series Chipset SATA Controller</span><br><span class="line">           |               \-00.2-[03-06]--+-00.0-[04]----00.0  Realtek Semiconductor Co., Ltd. RTL8111&#x2F;8168&#x2F;8411 PCI Express Gigabit Ethernet Controller</span><br><span class="line">           |                               +-01.0-[05]--</span><br><span class="line">           |                               \-04.0-[06]----00.0  Intel Corporation Wireless 8265 &#x2F; 8275</span><br><span class="line">           +-03.0  Advanced Micro Devices, Inc. [AMD] Family 17h (Models 00h-1fh) PCIe Dummy Host Bridge</span><br><span class="line">           +-03.1-[07]--+-00.0  Advanced Micro Devices, Inc. [AMD&#x2F;ATI] Ellesmere [Radeon RX 470&#x2F;480&#x2F;570&#x2F;570X&#x2F;580&#x2F;580X&#x2F;590]</span><br><span class="line">           |            \-00.1  Advanced Micro Devices, Inc. [AMD&#x2F;ATI] Ellesmere HDMI Audio [Radeon RX 470&#x2F;480 &#x2F; 570&#x2F;580&#x2F;590]</span><br></pre></td></tr></table></figure><p>好家伙，我啥也没看懂——稍微翻了点资料大概明白了方括号里是实际连接的设备，从01开始编号，那么03的话应该是连着04-06的……主控？上面也没标出来啊（捂脸</p><p>anyway用<code>lspci -v -s 03:01.0</code>看看吧：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">03:01.0 PCI bridge: Advanced Micro Devices, Inc. [AMD] 400 Series Chipset PCIe Port (rev 01) (prog-if 00 [Normal decode])</span><br><span class="line">Flags: bus master, fast devsel, latency 0, IRQ 36, IOMMU group 0</span><br><span class="line">Bus: primary&#x3D;03, secondary&#x3D;05, subordinate&#x3D;05, sec-latency&#x3D;0</span><br></pre></td></tr></table></figure><p>好像就还真是一个主控……那也没啥信息啊。</p><p>上网搜了一圈，发现有一些非常离谱的<a href="https://bbs.archlinux.org/viewtopic.php?id=236536" target="_blank" rel="noopener">方案</a>（好像是定时重启usb主控）……感觉也不是很靠谱</p><p>想了想是不是matlab自己的锅，就卸载重装了一次（其实还更新到了2021b），但是然并卵。最后误打误撞发现是dropbox的锅，matlab在写入图表epsc的文件的时候和dropbox的同步机制撞车了[允悲]，也算是大开眼界。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近遇到一个非常奇怪的事情，本来好好的写作业，需要跑一个matlab代码，结果跑了一小会儿直接黑屏了。我一开始以为是内存爆了，就把测试矩阵的大小改小了一点，结果还是崩，而且崩的时候是鼠标键盘统统没反应，只能按电源键。失败几次之后决定从日志里找找原因。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://blog.xdrd.me/categories/Linux/"/>
+    
+    
+      <category term="matlab" scheme="https://blog.xdrd.me/tags/matlab/"/>
+    
+      <category term="dropbox" scheme="https://blog.xdrd.me/tags/dropbox/"/>
+    
+  </entry>
   
   <entry>
     <title>将可掀桌的黑白棋移植到 Wasm ！（持续更新）</title>
@@ -541,34 +566,6 @@
       <category term="voidrice" scheme="https://blog.xdrd.me/tags/voidrice/"/>
     
       <category term="fontawesome" scheme="https://blog.xdrd.me/tags/fontawesome/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>从 pacman 更新的中断中恢复</title>
-    <link href="https://blog.xdrd.me/2018/12/fixing-pacman/"/>
-    <id>https://blog.xdrd.me/2018/12/fixing-pacman/</id>
-    <published>2018-12-31T05:48:16.000Z</published>
-    <updated>2020-03-29T15:15:57.398Z</updated>
-    
-    <content type="html"><![CDATA[<p>呃……今天出的事有点多（</p><p>大概就是船在 pacman 更新的时候过热关机了……然后重启之后找不到 linux module 的位置了……非常尴尬。</p><a id="more"></a><p>先把睡梦中的大葱摇醒让他帮我刻一个 LiveCD （喂），然后轻车熟路各种 mount。</p><p>首先注意到是断电，需要在每个分区上运行 <code>fsck</code>；之后 arch-chroot 进去，本来想直接 <code>pacman -Syu</code> 的，没想到还是得联网（含泪打开了热点，并且暂时把 archlinuxcn 注释掉了 = =）。</p><p>比较麻烦的是滚动更新并不顺利，中间出现了这样一些错误：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[2018-12-30 10:44] [ALPM-SCRIPTLET] ldconfig: File &#x2F;usr&#x2F;lib&#x2F;libjavascriptcoregtk-4.0.so.18 is empty, not checked.</span><br><span class="line">[2018-12-30 10:44] [ALPM-SCRIPTLET] ldconfig: File &#x2F;usr&#x2F;lib&#x2F;libgit2-glib-1.0.so is empty, not checked.</span><br><span class="line">...</span><br><span class="line">[2018-12-30 10:44] [ALPM-SCRIPTLET] xetex: error while loading shared libraries: &#x2F;usr&#x2F;lib&#x2F;libharfbuzz-icu.so.0: file too short</span><br><span class="line">[2018-12-30 10:44] [ALPM-SCRIPTLET] fmtutil [ERROR]: running &#96;xetex -ini   -jobname&#x3D;xetex -progname&#x3D;xetex -etex xetex.ini &lt;&#x2F;dev&#x2F;null&#39; return status 127</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>反正……各种报错。</p><p>重启之后倒是能进入 lightdm 了，可是没看见 i3bar ，有点慌张。</p><hr><p>先解决 pacman 报错的问题（</p><p>看论坛上的说法可能是之前断电更新那次的影响，反正 <code>pacman -S --force</code> 一把梭就是了（<br><em>（摘自 Arch Linux Wiki）警告: 小心使用 <code>--force</code> 开关。使用不当会造成大问题。 请只在 Arch 新闻里要求这么做的时候才用。</em></p><p>重装了 git gimp webkit2gtk libgit2 libgit2-glib harfbuzz-icu webkit2gtk texlive-core i3，反正怀疑坏的都重装了一下（具体什么命令记不得了，好像是全部重装的错误输出里看到的</p><hr><p>（假装解决了上述的问题）</p><p>另一个让人困惑的问题是 i3bar 为什么不见了——其实原因很简单，因为</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ i3 --version </span><br><span class="line">i3 version 4.16 (2018-11-04) © 2009 Michael Stapelberg and contributors</span><br><span class="line">$ i3bar --version </span><br><span class="line">i3bar version 4.16 (2018-11-04) © 2010 Axel Wagner and contributors</span><br><span class="line">$ i3bar-icons --version </span><br><span class="line">i3bar version 4.11 (2015-09-30, branch <span class="string">"4.11"</span>) © 2010 Axel Wagner and contributors</span><br></pre></td></tr></table></figure><p>所以现在用不了 xbm 的图标了……只好拿 icon font 的字符凑活一下（</p><p>（挖个坑寒假里研究一下 <a href="https://github.com/greshake/i3status-rust" target="_blank" rel="noopener">i3status-rust</a>）</p><hr><p>于是全盘升级遇到了第二个 bug：在 lyx 里插入图片的时候不能自动转换格式并显示。找来找去发现是 Magick 的锅。</p><p>根据 <a href="https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion" target="_blank" rel="noopener">ImageMagick security policy ‘PDF’ blocking conversion</a> 的提示，只要把 <code>/etc/ImageMagick-7/policy.xml</code> 里的</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">policy</span> <span class="attr">domain</span>=<span class="string">"coder"</span> <span class="attr">rights</span>=<span class="string">"none"</span> <span class="attr">pattern</span>=<span class="string">"&#123;PS,PS2,PS3,EPS,PDF,XPS&#125;"</span> /&gt;</span></span><br></pre></td></tr></table></figure><p>注释了就行。（我：emmm……）</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;呃……今天出的事有点多（&lt;/p&gt;
-&lt;p&gt;大概就是船在 pacman 更新的时候过热关机了……然后重启之后找不到 linux module 的位置了……非常尴尬。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://blog.xdrd.me/categories/Linux/"/>
-    
-    
-      <category term="i3" scheme="https://blog.xdrd.me/tags/i3/"/>
-    
-      <category term="pacman" scheme="https://blog.xdrd.me/tags/pacman/"/>
-    
-      <category term="imagemagick" scheme="https://blog.xdrd.me/tags/imagemagick/"/>
     
   </entry>
   
