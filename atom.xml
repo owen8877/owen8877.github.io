@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.me/"/>
-  <updated>2022-03-01T04:23:38.033Z</updated>
+  <updated>2022-03-07T17:39:48.483Z</updated>
   <id>https://blog.xdrd.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pytorch 自定义网络类的参数</title>
+    <link href="https://blog.xdrd.me/2022/03/pytorch-register-parameter/"/>
+    <id>https://blog.xdrd.me/2022/03/pytorch-register-parameter/</id>
+    <published>2022-03-07T17:05:58.000Z</published>
+    <updated>2022-03-07T17:39:48.483Z</updated>
+    
+    <content type="html"><![CDATA[<p><del>真的是要被自己蠢哭了</del></p><p>事情是这样的，最近在用deep learning的方法解pde，然后代码写到了保存和读取网络参数的部分，发现载入参数后的网络会生成和训练时不一样的结果；更令人奇怪的是这个结果每次运行都不一样。</p><a id="more"></a><p>比如说训练完保存前网络输出长这样：<br><img src="/images/2022-03-pytorch-register-parameter/sobel_u1.jpg" alt="应该长这样"><br>通过读取保存的参数文件重建后的输出长这样：<br><img src="/images/2022-03-pytorch-register-parameter/load_random.png" alt="结果长这样了"><br>呃……我寻思好像也没有dropoff和其他随机的layer啊，而且也设置了<code>model.eval()</code>。上网搜了一些论坛后觉得可能是参数保存的问题……？</p><p>先来看一下我自己写的resnet实现：</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResNet</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, d, m, activation=<span class="string">"elu"</span>, groups=<span class="number">2</span>)</span>:</span></span><br><span class="line">        super(ResNet, self).__init__()</span><br><span class="line">        self.d = d</span><br><span class="line">        self.m = m</span><br><span class="line"></span><br><span class="line">        self.preprocess = nn.Linear(d, m)</span><br><span class="line"></span><br><span class="line">        self.groups = groups</span><br><span class="line">        self.block_per_group = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">        self.res_fcs = [[nn.Linear(m, m) <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.block_per_group)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.groups)]</span><br><span class="line"></span><br><span class="line">        self.fc = nn.Linear(m, <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> activation == <span class="string">"relu"</span>:</span><br><span class="line">            self.activation = <span class="keyword">lambda</span> x: Func.relu(x)</span><br><span class="line">        <span class="comment">#...</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        z = self.preprocess(x)</span><br><span class="line">        <span class="keyword">for</span> group <span class="keyword">in</span> self.res_fcs:</span><br><span class="line">            z_id = z</span><br><span class="line">            <span class="keyword">for</span> block <span class="keyword">in</span> group:</span><br><span class="line">                z = self.activation(block(z))</span><br><span class="line">            z = z_id + z</span><br><span class="line">        <span class="keyword">return</span> self.fc(z)</span><br></pre></td></tr></table></figure><p>是不是感觉特别优雅？写完还觉得这样就不用手写跳接层，多方便呀。结果看了一眼<code>model.state_dict()</code>：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; model.state_dict()</span><br><span class="line">OrderedDict([(&#39;preprocess.weight&#39;, tensor(...)), (&#39;preprocess.bias&#39;, tensor(...)), (&#39;fc.weight&#39;, tensor(...)), (&#39;fc.bias&#39;, tensor(...))])</span><br></pre></td></tr></table></figure><p>我去……整个人都傻了……也就是说只有<code>preprocess</code>和<code>fc</code>这两个layer是别识别成可训练/可保存的，其它的都被无视了。</p><p>想想好像也有道理……毕竟<code>res_fcs</code>是一个list，长的不像layer。解决办法感觉是用<code>ModuleList</code>（<a href="https://pytorch.org/docs/stable/generated/torch.nn.ModuleList.html" target="_blank" rel="noopener">文档</a>）（不用自己造轮子了开心）。修改后的代码如下：</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.res_fcs = nn.ModuleList([nn.ModuleList([nn.Linear(m, m) <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.block_per_group)]) <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.groups)])</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;del&gt;真的是要被自己蠢哭了&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;事情是这样的，最近在用deep learning的方法解pde，然后代码写到了保存和读取网络参数的部分，发现载入参数后的网络会生成和训练时不一样的结果；更令人奇怪的是这个结果每次运行都不一样。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="coding" scheme="https://blog.xdrd.me/categories/coding/"/>
+    
+    
+      <category term="pytorch" scheme="https://blog.xdrd.me/tags/pytorch/"/>
+    
+      <category term="state_dict" scheme="https://blog.xdrd.me/tags/state-dict/"/>
+    
+      <category term="resnet" scheme="https://blog.xdrd.me/tags/resnet/"/>
+    
+  </entry>
   
   <entry>
     <title>Matlab造成的死机？！</title>
@@ -538,34 +566,6 @@
     
     
       <category term="amixer" scheme="https://blog.xdrd.me/tags/amixer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入定制 i3bar</title>
-    <link href="https://blog.xdrd.me/2019/02/decor-i3bar/"/>
-    <id>https://blog.xdrd.me/2019/02/decor-i3bar/</id>
-    <published>2019-02-05T04:04:03.000Z</published>
-    <updated>2020-03-29T15:15:57.398Z</updated>
-    
-    <content type="html"><![CDATA[<p>又到寒假开始折腾的时间了（</p><p>听说 i3bar 有传递鼠标按键的功能，于是研究了一下。</p><a id="more"></a><p>用的模板是 <a href="https://github.com/LukeSmithxyz/voidrice" target="_blank" rel="noopener">LukeSmithxyz/voidrice</a> ，是在 YouTube 上看到的，感觉颇有意思。</p><p>clone 下来试了一下就后悔了……因为用了很多 emoji ，实际上并看不清（</p><hr><p>工作原理大概是 i3bar 本身支持传递 button event ，然后经过 i3blocks 一包装就非常易用了。处理点击事件的结过是由 dunst 提供的消息通知服务实现的（一开始不知道要安装这个……）；大概每个 blocklet 模板是这样：</p><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="variable">$BLOCK_BUTTON</span> <span class="keyword">in</span></span><br><span class="line">    3) pgrep -x dunst &gt;/dev/null &amp;&amp; notify-send <span class="string">"..."</span> ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure><p>总之（重新）学习了很多正则表达式和 <code>ip</code> 命令东西（传送门：<a href="https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf" target="_blank" rel="noopener">CHEAT SHEET for Red Hat Enterprise Linux</a>）。</p><hr><p>另一件比较头疼的事情是 i3bar 不能很好的处理空格，总是会尝试用 FontAwesome 来显示空格，留下一个方框里面写着 0020 ……只好用各种标点符号 hack 一下填充进去。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;又到寒假开始折腾的时间了（&lt;/p&gt;
-&lt;p&gt;听说 i3bar 有传递鼠标按键的功能，于是研究了一下。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="https://blog.xdrd.me/categories/linux/"/>
-    
-    
-      <category term="i3" scheme="https://blog.xdrd.me/tags/i3/"/>
-    
-      <category term="voidrice" scheme="https://blog.xdrd.me/tags/voidrice/"/>
-    
-      <category term="fontawesome" scheme="https://blog.xdrd.me/tags/fontawesome/"/>
     
   </entry>
   
