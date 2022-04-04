@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.me/"/>
-  <updated>2022-03-26T02:14:10.997Z</updated>
+  <updated>2022-04-04T23:12:44.771Z</updated>
   <id>https://blog.xdrd.me/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>蓝牙鼠标双系统连接</title>
+    <link href="https://blog.xdrd.me/2022/04/dual-pair/"/>
+    <id>https://blog.xdrd.me/2022/04/dual-pair/</id>
+    <published>2022-04-04T23:05:09.000Z</published>
+    <updated>2022-04-04T23:12:44.771Z</updated>
+    
+    <content type="html"><![CDATA[<p>存档向 <del>怎么会有我这种自作聪明的人</del></p><a id="more"></a><p>正确的<a href="https://gist.github.com/tVienonen/fad5cb68e6449f6c4804e276094516e3" target="_blank" rel="noopener">做法</a></p><hr><p>我之前参考 arch wiki，里面没有提到 CSRK（坑啊）。但其实更加坑的是 windows 导出的注册表文件里大小端是不一致的。</p><p>具体的对应顺序如下：</p><ul><li>LTK=LongTermKey：<strong>同序</strong></li><li>CSRK=LocalSignatureKey：<strong>同序</strong></li><li>IRK=IdentityResolvingKey：<strong>逆序</strong></li><li>mac地址：逆序（但是标了<code>hex(b)</code>所以也不意外）</li><li>EDiv：同序转换</li><li>ERand：逆序转换</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;存档向 &lt;del&gt;怎么会有我这种自作聪明的人&lt;/del&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="nagging" scheme="https://blog.xdrd.me/categories/nagging/"/>
+    
+    
+      <category term="bluetooth" scheme="https://blog.xdrd.me/tags/bluetooth/"/>
+    
+  </entry>
   
   <entry>
     <title>尝试一下 Miniflux</title>
@@ -540,36 +563,6 @@
       <category term="touchpad" scheme="https://blog.xdrd.me/tags/touchpad/"/>
     
       <category term="screw" scheme="https://blog.xdrd.me/tags/screw/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数值实验二三事</title>
-    <link href="https://blog.xdrd.me/2019/03/numerical-experiments-0/"/>
-    <id>https://blog.xdrd.me/2019/03/numerical-experiments-0/</id>
-    <published>2019-03-25T19:40:30.000Z</published>
-    <updated>2020-03-29T15:15:57.398Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="在-i3-中默认悬浮显示-Matlab-的图像窗口"><a href="#在-i3-中默认悬浮显示-Matlab-的图像窗口" class="headerlink" title="在 i3 中默认悬浮显示 Matlab 的图像窗口"></a>在 i3 中默认悬浮显示 Matlab 的图像窗口</h2><p>用 <code>xprop</code> 查询可知只需配置如下 i3 布局</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for_window [class&#x3D;&quot;MATLAB R2018b - academic use&quot; title&#x3D;&quot;^Fig&quot;] floating enable</span><br></pre></td></tr></table></figure><h2 id="运行数值实验容易自动关机的解决办法"><a href="#运行数值实验容易自动关机的解决办法" class="headerlink" title="运行数值实验容易自动关机的解决办法"></a>运行数值实验容易自动关机的解决办法</h2><p>猜测是因为撞到温度墙了；不知道哪个优化软件把 cpu 调度器设成 <code>powersave</code> 了，改成 <code>performance</code> 再加上酷冷应该就没问题了。<br>参考资料：<a href="https://wiki.archlinux.org/index.php/CPU_frequency_scaling" target="_blank" rel="noopener">CPU Frequency Scaling</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;在-i3-中默认悬浮显示-Matlab-的图像窗口&quot;&gt;&lt;a href=&quot;#在-i3-中默认悬浮显示-Matlab-的图像窗口&quot; class=&quot;headerlink&quot; title=&quot;在 i3 中默认悬浮显示 Matlab 的图像窗口&quot;&gt;&lt;/a&gt;在 i3 中默认悬浮显
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="https://blog.xdrd.me/categories/linux/"/>
-    
-    
-      <category term="matlab" scheme="https://blog.xdrd.me/tags/matlab/"/>
-    
-      <category term="i3" scheme="https://blog.xdrd.me/tags/i3/"/>
-    
-      <category term="governor" scheme="https://blog.xdrd.me/tags/governor/"/>
     
   </entry>
   
