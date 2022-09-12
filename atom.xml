@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.me/"/>
-  <updated>2022-04-04T23:12:44.771Z</updated>
+  <updated>2022-09-11T19:10:48.344Z</updated>
   <id>https://blog.xdrd.me/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>感谢大葱刷的 GTX 1080！</title>
+    <link href="https://blog.xdrd.me/2022/09/gtx1080/"/>
+    <id>https://blog.xdrd.me/2022/09/gtx1080/</id>
+    <published>2022-09-04T22:41:23.000Z</published>
+    <updated>2022-09-11T19:10:48.344Z</updated>
+    
+    <content type="html"><![CDATA[<p>老年人的标志就是换了 GTX 1080 这种事都懒得写一篇博文了（</p><a id="more"></a><h2 id="多显示器配置"><a href="#多显示器配置" class="headerlink" title="多显示器配置"></a>多显示器配置</h2><p><a href="https://christian.amsuess.com/tools/arandr/" target="_blank" rel="noopener">ARandR: Another XRandR GUI</a> 配合 i3wm 自启动脚本</p><h2 id="画面撕裂"><a href="#画面撕裂" class="headerlink" title="画面撕裂"></a>画面撕裂</h2><ul><li>关闭 compton</li><li>每块屏幕设置 <code>ForceCompositionPipeline</code></li><li>参见 <a href="https://techknowfile.dev/how-to-fix-screen-tearing-on-i3-wm-ubuntu-18-04/" target="_blank" rel="noopener">How to fix screen tearing on i3-wm (Ubuntu 18.04) - Techknowfile</a></li></ul><h2 id="Cuda-Pytorch"><a href="#Cuda-Pytorch" class="headerlink" title="Cuda, Pytorch"></a>Cuda, Pytorch</h2><ul><li><a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener">Start Locally | Pytorch</a></li><li><code>yay -S cuda</code></li><li><code>conda env create -f environment.yml</code> where<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li><li>注意：<code>cudatoolkit</code> 必须和 <code>pytorch</code> 包的要求对应，不然会装上 <code>cpuonly</code></li></ul><h2 id="cuda"><a href="#cuda" class="headerlink" title=".cuda()"></a><code>.cuda()</code></h2><p>写代码的时候需要注意如下几点：</p><ul><li>用 <code>.cuda()</code> 和 <code>.cpu()</code> 迁移 tensor 的位置</li><li><a href="https://pytorch.org/tutorials/recipes/recipes/profiler_recipe.html" target="_blank" rel="noopener">PyTorch Profiler</a> 配合 chrome tracing 食用</li><li>optimizer 为何占用很多 cpu 时间？因为还是在 cpu 上跑的动态图</li><li>解决方案：用 cuda graph 记录 gpu 上要跑的计算图 + optimizer 设为 <code>capturable=True</code>，见<a href="https://pytorch.org/blog/accelerating-pytorch-with-cuda-graphs/" target="_blank" rel="noopener">此</a>，配置正确后 profile 里应该只看见很少的 sync 和 launch graph。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;老年人的标志就是换了 GTX 1080 这种事都懒得写一篇博文了（&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="pytorch" scheme="https://blog.xdrd.me/categories/pytorch/"/>
+    
+    
+      <category term="deep learning" scheme="https://blog.xdrd.me/tags/deep-learning/"/>
+    
+      <category term="pytorch" scheme="https://blog.xdrd.me/tags/pytorch/"/>
+    
+      <category term="gtx 1080" scheme="https://blog.xdrd.me/tags/gtx-1080/"/>
+    
+      <category term="cuda" scheme="https://blog.xdrd.me/tags/cuda/"/>
+    
+  </entry>
   
   <entry>
     <title>蓝牙鼠标双系统连接</title>
@@ -536,33 +565,6 @@
       <category term="orangefox" scheme="https://blog.xdrd.me/tags/orangefox/"/>
     
       <category term="syberia" scheme="https://blog.xdrd.me/tags/syberia/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>是时候给沉船换一个外壳了！</title>
-    <link href="https://blog.xdrd.me/2019/07/laptop-case/"/>
-    <id>https://blog.xdrd.me/2019/07/laptop-case/</id>
-    <published>2019-07-06T21:26:35.000Z</published>
-    <updated>2020-03-29T15:15:57.398Z</updated>
-    
-    <content type="html"><![CDATA[<p>距 <a href="/2017/08/unboxing-Z6/index.html">上船</a> 已有近两年之久，在这两年中先是 AB 面的卡扣被拆断，最近半年开始，连转轴也无法正常工作了，每次打开盖子的时候都要小心翼翼地扶住转轴处，免得又——</p><p>“咔！崩！”</p><p>说多了都是泪（</p><a id="more"></a><p>所幸万能的淘宝给我们指了一条<del>通往黄浦江.jpg</del>的明路，我才发现居然这种冷门型号的什么配件都有卖（</p><p>于是光速下单了 CD 两面，合计三百多大洋。</p><hr><p>拆机我看的是 <a href="https://www.bilibili.com/video/av49776314" target="_blank" rel="noopener">小秋搞机战神Z6-Z7M T6 T6TI-X5蓝天N850炫龙T50TIC蓝天N85X更换整套外壳实况</a> 的视频。之前也拆过两次，我就按部就班地拆下螺丝钉、拆各种外设部件。</p><p>尸体现场：其实是 C 面和转轴连接的那部分的塑料底座化了（不要问我是什么反应……看图就知道怎么化了……）怪不得之前拧 D 面螺丝的时候有一个拧不动……</p><p><img src="/images/2019-07-laptop-case/IMG_20190706_163745-resized.jpg" alt="尸体现场"></p><hr><p>中间有一步令我x躯一震：“这里触控板的反面都是用双面胶粘起来的……处理比较麻烦，建议用热风机吹吹才能弄下来。”</p><p>热风机？我 TM 上哪里搞热风机？</p><p>向同学求助了一会儿（中间那个功率不到 30W 的吹风机不算 ←_←），误打误撞了解到学校里有热风枪的设备<del>，于是临毕业前美美地薅了羊毛</del></p><p><img src="/images/2019-07-laptop-case/IMG_20190630_145636-resized.jpg" alt="翘下来的触控板，全是胶水= ="></p><p><img src="/images/2019-07-laptop-case/IMG_20190630_145701-resized.jpg" alt="胶水对应的另一面，伤痕累累（"></p><hr><p>回去之后兴高采烈地磨平了一部分胶水，贴上双面胶接上排线开机一试……嗯？触控板没反应吗……可能是没装完全吧（</p><p>全部安装完才发现触控板确实不工作了 QAQ 难道是热风枪吹坏了？</p><p>这里补一个小插曲，那热风枪强怼之前确实查过一些说明书，上面写着工作 -20 到 85 度，存储温度还更宽一些……(应该能耐一百度左右的高温？)</p><p>雪上加霜的是，一不小心在上 D 面螺丝的时候用了卖家寄来的过长的螺丝钉，导致 C 面触控板区域旁边多出来一个小包（暴风哭泣）</p><hr><p>吃了个晚饭一琢磨，发现键盘、触控板和按键的排线可能接反了（这是因为它们的排线都是平的，靠一个翻盖固定住的）；于是动手拆了第二次。</p><p><img src="/images/2019-07-laptop-case/IMG_20190630_184712-resized.jpg" alt="吸取了教训，第二次拆的时候拍下了排线连接方式；话说这个接点安装方式好诡异"></p><p>把两组排线旋转一百八十度加 ！@#￥% 操作，然后就好使了233享受双指滚动的品质生活～</p><hr><p>装机的时候发现有一块很小的板，上面似乎只有一个三极管不知道什么用，不过现在知道了。</p><p><img src="/images/2019-07-laptop-case/IMG_20190630_191635-resized.jpg" alt="原来机身温度测量的这里= =好吧似乎也没什么问题"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;距 &lt;a href=&quot;/2017/08/unboxing-Z6/index.html&quot;&gt;上船&lt;/a&gt; 已有近两年之久，在这两年中先是 AB 面的卡扣被拆断，最近半年开始，连转轴也无法正常工作了，每次打开盖子的时候都要小心翼翼地扶住转轴处，免得又——&lt;/p&gt;
-&lt;p&gt;“咔！崩！”&lt;/p&gt;
-&lt;p&gt;说多了都是泪（&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="laptop" scheme="https://blog.xdrd.me/categories/laptop/"/>
-    
-    
-      <category term="touchpad" scheme="https://blog.xdrd.me/tags/touchpad/"/>
-    
-      <category term="screw" scheme="https://blog.xdrd.me/tags/screw/"/>
     
   </entry>
   
