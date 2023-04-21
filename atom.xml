@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.me/"/>
-  <updated>2022-10-07T21:21:30.039Z</updated>
+  <updated>2023-04-21T23:53:06.771Z</updated>
   <id>https://blog.xdrd.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>不作死就不会死</title>
+    <link href="https://blog.xdrd.me/2023/04/brick-and-unbrick/"/>
+    <id>https://blog.xdrd.me/2023/04/brick-and-unbrick/</id>
+    <published>2023-04-21T23:15:42.000Z</published>
+    <updated>2023-04-21T23:53:06.771Z</updated>
+    
+    <content type="html"><![CDATA[<p>人呐，就是要充分发挥主观能动性去作死（不是</p><p>这是怎么回事呢？周四早上的时候，不知道哪根筋搭住了，偏要找找自己手上用的这块 <a href="https://www.vastking.com/products/kingpad-k10" target="_blank" rel="noopener">Android 平板</a>（喏就是这个电子辣鸡）能不能升级到更新的 ROM 。稍微做了一番功课之后发现 <a href="https://developer.android.com/topic/generic-system-image/" target="_blank" rel="noopener">Generic System Images</a> 这东西，而且在某个论坛上看到有人成功升级了型号相似的一个平板，我寻思这也许有戏啊？</p><a id="more"></a><p>（于是拉开了作死的序幕）</p><p>一开始用 <a href="https://developer.android.com/topic/dsu" target="_blank" rel="noopener">DSU</a> 的方式更新，结果发现 adb 发送了 intent 之后岿然不动，完全不想搭理更新的样子。于是琢磨了一下 <a href="https://source.android.com/setup/build/gsi#flashing-gsis" target="_blank" rel="noopener">flashing</a> 的方法；有点脑子的人看到这个说法就知道肯定是要 unlock bootloader 的，但是很不幸呢这个平板太小众了查不到资料。</p><p>（补充一下：这个厂商把 <code>fastboot oem unlock</code> 直接封杀了）</p><p>好在天无绝人之路，误打误撞找到了这么个神奇的<a href="https://www.hovatek.com/forum/thread-32287.html" target="_blank" rel="noopener">论坛</a>，这个帖子里直接给了破解 bootloader lock 的方法。于是我兴高采烈地照做了之后果然顺利解开了（好像一切都还挺顺利的）。</p><p>这一路上还学到了不少新东西，比如 fastboot 现在有一部分和 recovery 合并了（相当于进入了用户空间），老版 fastboot 专门管 bootloader（后来发现是个大坑）。我照着官方 GSI 的刷入教程一步步做，没想到卡在了 erase 那一步：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ fastboot erase system</span><br><span class="line">FAILED: ...</span><br></pre></td></tr></table></figure><p>这是什么情况？左思右想搞不明白。</p><p>Anyway，似乎不太重要。刷 system 的时候还说空间不够，查了一下才知道是现在 system 变成逻辑分区了，左邻右舍还有 product 和 vendor。把 system.img 刷进去之后还要清 userdata，也没法直接搞，想了想 <code>format:f2fs</code> 了。之后就重启系统，然后是漫长的等待……</p><p>……</p><p>……（搁这读条呢？</p><p>……（老子不干了！</p><p>很明显卡在 boot splash 了（后来 lineageos 镜像的话是看圆圈圈转来转去）。试了很多镜像都没啥用，还好找到了 <a href="https://mega.nz/folder/TepnWZ5Z#Ftyr0HkCMS-Z4JS_kGLwpA" target="_blank" rel="noopener">stock image</a> 能刷回来（这个时候还是乐观的太早了）。</p><p>那我寻思不能升级系统的话，搞个 magisk 应该不过分吧？去看了一下现在 magisk 的文档，发现已经不推荐 recovery 刷入了，要自己提取 boot.img。好在之前刷入原版镜像的时候，误打误撞搞到了 recovery/boot.img（应该是那个大的 pac 里提取出来的）。喂给 magisk 打包，然后 fastboot 刷入，再重启……</p><p>又卡住了？？什么，这次直接显示 <code>INFO: LOCK STATUS UNLOCK!!</code> 就没下文了？而且也没法关机，重启还是显示这句话。试了几次无果，有种不好的预感可能要交代了。晚上睡了一觉，就把 pad 放在一边想着耗电自动关机算了，结果早上起来一看还是精神满满。甚至都查到了<a href="https://www.hovatek.com/forum/thread-808.html" target="_blank" rel="noopener">教怎么用 LED 灯泡放电的帖子</a>，感觉大事不妙。</p><p>好在之前蛛丝马迹指向一个叫 <a href="https://mega.nz/file/8lZzECZL#5lWkfej5E9muRDQRP0jxFRwe8IjkrUwfHt043ZFHy4A" target="_blank" rel="noopener">ResearchDownloadTool</a> 的东西。由于 MTK 和 Unisoc 都是整平台方案，所以有这种可以刷入的工具。进下载模式是音量下键+开机键，试了很多次才掌握门道。第一次把 boot 刷回去的时候真的是喜极而泣，不然家里真的要多电子辣鸡了。</p><p>在和 magisk 拉扯几次后，我终于放弃了安装 magisk 的想法。那么剩下的任务就是恢复 pad 之前的功能……等等，wifi 怎么彻底挂了？之前有过 wifi 莫名其妙卡住的情况，按一种特定的方式重启就能修好，但是这次……好像怎么玄学都没用。无奈只能上网搜能不能反向 tether；还真被我找到了，<a href="https://android.stackexchange.com/questions/171744/how-can-i-enable-usb-tethering-through-adb" target="_blank" rel="noopener">windows 下</a>和 <a href="https://github.com/Genymobile/gnirehtet" target="_blank" rel="noopener">linux 下</a>还有不同的方案。本以为就搞此一段落了，结果发现 wifi TMD 自己好了！好了！真气人（下播</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;人呐，就是要充分发挥主观能动性去作死（不是&lt;/p&gt;
+&lt;p&gt;这是怎么回事呢？周四早上的时候，不知道哪根筋搭住了，偏要找找自己手上用的这块 &lt;a href=&quot;https://www.vastking.com/products/kingpad-k10&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Android 平板&lt;/a&gt;（喏就是这个电子辣鸡）能不能升级到更新的 ROM 。稍微做了一番功课之后发现 &lt;a href=&quot;https://developer.android.com/topic/generic-system-image/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Generic System Images&lt;/a&gt; 这东西，而且在某个论坛上看到有人成功升级了型号相似的一个平板，我寻思这也许有戏啊？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="phone" scheme="https://blog.xdrd.me/categories/phone/"/>
+    
+    
+      <category term="android" scheme="https://blog.xdrd.me/tags/android/"/>
+    
+      <category term="fastboot" scheme="https://blog.xdrd.me/tags/fastboot/"/>
+    
+      <category term="magisk" scheme="https://blog.xdrd.me/tags/magisk/"/>
+    
+  </entry>
   
   <entry>
     <title>rust 测试环境看不到输出内容</title>
@@ -546,27 +574,6 @@
       <category term="bacon" scheme="https://blog.xdrd.me/tags/bacon/"/>
     
       <category term="repair" scheme="https://blog.xdrd.me/tags/repair/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>账户大清理</title>
-    <link href="https://blog.xdrd.me/2019/09/account-deletion/"/>
-    <id>https://blog.xdrd.me/2019/09/account-deletion/</id>
-    <published>2019-09-14T21:42:58.000Z</published>
-    <updated>2020-03-29T15:15:57.395Z</updated>
-    
-    <content type="html"><![CDATA[<p>心血来潮把 KeepassXC 数据库中的所有账号检查了一遍，目标是关掉尽可能多的非活跃账户和修改弱密码。</p><a id="more"></a><h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR:"></a>TL;DR:</h2><p>显然大部分国产服务是不具备关闭账户的功能的（哼）。很多在欧洲提供服务的公司为了迎合 <a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noopener">GDPR</a> 规范会提供下载/关闭的选项。<br>一些账户关闭的的策略比较安全，比如禁止同一邮箱账号再次注册。</p><h2 id="以下是奖惩名单公布时间！"><a href="#以下是奖惩名单公布时间！" class="headerlink" title="以下是奖惩名单公布时间！"></a>以下是奖惩名单公布时间！</h2><p>以下表格中</p><ul><li><strong>delete?</strong> = 能否删除账户？</li><li><strong>request?</strong> = 能否将用户数据打包一次性下载？</li></ul><h3 id="模范类"><a href="#模范类" class="headerlink" title="模范类"></a>模范类</h3><table><thead><tr><th>service</th><th>delete?</th><th>request?</th><th>备注</th></tr></thead><tbody><tr><td>c9.io</td><td>y</td><td>y</td><td>或者可以迁移到 AWS（c9 我会永远想念你的 QAQ）</td></tr><tr><td>discord</td><td>y</td><td>y</td><td></td></tr><tr><td>facebook</td><td>y</td><td>y</td><td></td></tr><tr><td>IFTTT</td><td>y</td><td>y</td><td></td></tr><tr><td>Pokemon</td><td>y</td><td>y</td><td></td></tr><tr><td>slack</td><td>y*</td><td>y</td><td>仅限关闭 workspace，不过好像和关账户没什么区别吧</td></tr></tbody></table><h3 id="一般类"><a href="#一般类" class="headerlink" title="一般类"></a>一般类</h3><table><thead><tr><th>service</th><th>delete?</th><th>request?</th><th>备注</th></tr></thead><tbody><tr><td>apple</td><td>?</td><td>y</td><td></td></tr><tr><td>archive.org</td><td>y</td><td>?</td><td></td></tr><tr><td>aws</td><td>y</td><td>n</td><td></td></tr><tr><td>bbc</td><td>y</td><td>?</td><td>难道是欧洲国家的公司都能？</td></tr><tr><td>bitbucket</td><td>y</td><td>n</td><td></td></tr><tr><td>chartable</td><td>y</td><td>?</td><td></td></tr><tr><td>cousera</td><td>y</td><td>n</td><td></td></tr><tr><td>craigslist</td><td>y</td><td>n</td><td>很安全，deactivate 了之后不能用相同邮箱注册</td></tr><tr><td>disque</td><td>y</td><td>n</td><td></td></tr><tr><td>EA</td><td>n</td><td>y</td><td></td></tr><tr><td>evernote</td><td>y</td><td>n</td><td>同样是 deactivate</td></tr><tr><td>genymotion</td><td>y</td><td>n</td><td></td></tr><tr><td>grammarly</td><td>y</td><td>n</td><td></td></tr><tr><td>IKEA</td><td>y</td><td>?</td><td></td></tr><tr><td>kaggle</td><td>y</td><td>?</td><td></td></tr><tr><td>ksyun</td><td>y*</td><td>n</td><td>卡在最后一步了，因为手机号，没了收不到验证码</td></tr><tr><td>lenovo</td><td>y</td><td>n</td><td>同样是 deactivate</td></tr><tr><td>minecraft</td><td>y</td><td>?</td><td></td></tr><tr><td>musescore</td><td>y</td><td>n</td><td></td></tr><tr><td>namecheap</td><td>y*</td><td>n</td><td>提交工单很麻烦……</td></tr><tr><td>prezi</td><td>y</td><td>n</td><td></td></tr><tr><td>realvnc</td><td>y</td><td>n</td><td></td></tr><tr><td>somagu</td><td>y</td><td>*</td><td>仅能下载到一些访问日志</td></tr><tr><td>teamviewer</td><td>y</td><td>n</td><td></td></tr><tr><td>unity</td><td>y</td><td>n</td><td></td></tr><tr><td>wjx</td><td>y*</td><td>n</td><td>问卷星账户注销流程同样神烦……</td></tr><tr><td>wordpress</td><td>y</td><td>n</td><td></td></tr></tbody></table><h3 id="无良类（x"><a href="#无良类（x" class="headerlink" title="无良类（x"></a>无良类（x</h3><table><thead><tr><th>service</th><th>delete?</th><th>request?</th><th>备注</th></tr></thead><tbody><tr><td>115</td><td>?</td><td>?</td><td>无法通过web登录=死</td></tr><tr><td>360</td><td>n</td><td>n</td><td>盲猜不能x</td></tr><tr><td>Auphonic</td><td>n</td><td>n</td><td></td></tr><tr><td>baidu</td><td>n</td><td>n</td><td>同样遇到手机无法换绑的问题</td></tr><tr><td>bestbuy</td><td>n</td><td>n</td><td></td></tr><tr><td>cloudiplc</td><td>n</td><td>n</td><td></td></tr><tr><td>dnspod</td><td>n</td><td>n</td><td></td></tr><tr><td>gurobi</td><td>n</td><td>n</td><td></td></tr><tr><td>Imperva</td><td>n</td><td>n</td><td></td></tr><tr><td>leapmotion</td><td>n</td><td>n</td><td></td></tr><tr><td>livere</td><td>n</td><td>n</td><td></td></tr><tr><td>markdownnotes</td><td>n</td><td>n</td><td></td></tr><tr><td>mathworks</td><td>n</td><td>n</td><td></td></tr><tr><td>mcbbs</td><td>n</td><td>n</td><td></td></tr><tr><td>oray</td><td>n</td><td>n</td><td>向日葵 dns</td></tr><tr><td>osu</td><td>n</td><td>n</td><td>改名还要课金（很可惜啊）</td></tr><tr><td>p360</td><td>n</td><td>n</td><td>现 teliportme</td></tr><tr><td>podtrac</td><td>n</td><td>n</td><td></td></tr><tr><td>qiniu</td><td>n</td><td>n</td><td></td></tr><tr><td>renren</td><td>n</td><td>n</td><td><a href="/2019/09/clone-your-renren-com/">人人网备份方案</a></td></tr><tr><td>小站</td><td>n</td><td>n</td><td>盲猜不能+1</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;心血来潮把 KeepassXC 数据库中的所有账号检查了一遍，目标是关掉尽可能多的非活跃账户和修改弱密码。&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="KeepassXC" scheme="https://blog.xdrd.me/tags/KeepassXC/"/>
     
   </entry>
   
