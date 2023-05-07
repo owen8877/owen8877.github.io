@@ -103,6 +103,68 @@ ga('send', 'pageview');
         <div class="col-sm-8 blog-main">
           
   
+    <article id="post-bash-read" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/bash-read/">Bash 中 read 的行为</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2017/01/bash-read/" class="article-date"><time datetime="2017-01-19T16:21:29.000Z" itemprop="datePublished">2017-01-19</time></a>
+</div>
+
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在写<a href="/2017/01/20.0-shell">这篇教程</a>的时候本来想把 shell 语言批判一番，说什么太容易被注入，经常多打一个空格（见 bumblebee 事件）引发一场巨大灾难什么的大新闻，于是我就着手尝试各种能形成危险行为的输入，却没有能成功的……后来发现是自己比较 naive ， <code>echo</code> 和 <code>read</code> 的行为并不像表面上那么直接。那我就直接贴测试代码和用例咯。</p>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2017/01/bash-read/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.xdrd.me/2017/01/bash-read/" data-id="ck8d81dsi0018g1zra2l4bqoe" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+        <a href="https://blog.xdrd.me/2017/01/bash-read/#disqus_thread" class="article-comment-link">
+          <i class="fa fa-comment"></i> Comments
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bash/" rel="tag">bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/echo/" rel="tag">echo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/read/" rel="tag">read</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-20.0-shell" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
@@ -656,66 +718,6 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Things-about-Raspberry-Pi-0" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/Things-about-Raspberry-Pi-0/">Things about Raspberry Pi - 0</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2016/12/Things-about-Raspberry-Pi-0/" class="article-date"><time datetime="2016-12-09T16:05:00.000Z" itemprop="datePublished">2016-12-09</time></a>
-</div>
-
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/pi/">pi</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>过生日的时候大葱送给我一个树莓派3B <del>分不清楚是不是3B+来着</del> ，其实11月26号就装好了……也就是说拖了近两个星期才着手写这篇文章……</p>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2016/12/Things-about-Raspberry-Pi-0/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2016/12/Things-about-Raspberry-Pi-0/" data-id="ck8d81dsa000ug1zr6ku7hv9m" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      
-        <a href="https://blog.xdrd.me/2016/12/Things-about-Raspberry-Pi-0/#disqus_thread" class="article-comment-link">
-          <i class="fa fa-comment"></i> Comments
-        </a>
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <div id="page-nav">
@@ -771,6 +773,10 @@ ga('send', 'pageview');
     <ul class="sidebar-module-list">
       
         <li>
+          <a href="/2023/05/calendar-as-diary-py/">「日历记事本」python 版</a>
+        </li>
+      
+        <li>
           <a href="/2023/04/brick-and-unbrick/">不作死就不会死</a>
         </li>
       
@@ -786,10 +792,6 @@ ga('send', 'pageview');
           <a href="/2022/09/gtx1080/">感谢大葱刷的 GTX 1080！</a>
         </li>
       
-        <li>
-          <a href="/2022/04/dual-pair/">蓝牙鼠标双系统连接</a>
-        </li>
-      
     </ul>
   </div>
 
@@ -797,7 +799,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
   </div>
 
 
@@ -805,7 +807,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2023/04/">April 2023</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2022/10/">October 2022</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2022/09/">September 2022</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2022/04/">April 2022</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2022/03/">March 2022</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2022/02/">February 2022</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2021/01/">January 2021</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/11/">November 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">July 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">May 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">April 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">March 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">October 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">September 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">March 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/02/">February 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">December 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">July 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">May 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">April 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">March 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">February 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">January 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">December 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">November 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">October 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">August 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">July 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">June 2017</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">May 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">March 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/02/">February 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">January 2017</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">December 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">November 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">October 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">September 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">August 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">July 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">June 2016</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">May 2016</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">April 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">March 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">February 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/01/">January 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/12/">December 2015</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/10/">October 2015</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">August 2015</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">July 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/02/">February 2015</a><span class="sidebar-module-list-count">4</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2023/05/">May 2023</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2023/04/">April 2023</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2022/10/">October 2022</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2022/09/">September 2022</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2022/04/">April 2022</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2022/03/">March 2022</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2022/02/">February 2022</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2021/01/">January 2021</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/11/">November 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">July 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">May 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">April 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">March 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">October 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">September 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">March 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/02/">February 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">December 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">July 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">May 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">April 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">March 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">February 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">January 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">December 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">November 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">October 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">August 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">July 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">June 2017</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">May 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">March 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/02/">February 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">January 2017</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">December 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">November 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">October 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">September 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">August 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">July 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">June 2016</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">May 2016</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">April 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">March 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">February 2016</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/01/">January 2016</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/12/">December 2015</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/10/">October 2015</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">August 2015</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">July 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/02/">February 2015</a><span class="sidebar-module-list-count">4</span></li></ul>
   </div>
 
 
