@@ -3,10 +3,10 @@
   <title>xDroid&#39;s Blog</title>
   
   <subtitle>假装高冷的Geek</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="https://blog.xdrd.me/atom.xml" rel="self"/>
   
   <link href="https://blog.xdrd.me/"/>
-  <updated>2023-05-07T19:05:27.213Z</updated>
+  <updated>2024-01-19T16:50:37.664Z</updated>
   <id>https://blog.xdrd.me/</id>
   
   <author>
@@ -17,28 +17,114 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>React.js、ChatGPT 和打卡 bot</title>
+    <link href="https://blog.xdrd.me/2024/01/React-js%E3%80%81ChatGPT-%E5%92%8C%E6%89%93%E5%8D%A1-bot/"/>
+    <id>https://blog.xdrd.me/2024/01/React-js%E3%80%81ChatGPT-%E5%92%8C%E6%89%93%E5%8D%A1-bot/</id>
+    <published>2024-01-19T16:33:10.000Z</published>
+    <updated>2024-01-19T16:50:37.664Z</updated>
+    
+    <content type="html"><![CDATA[<p>这次整个大新闻（</p><p>最近陪 Leon 刷题找工考证什么的，需要一些自动记录打卡的小程序帮助记录和监督，顺便整个类似 Github 的打卡界面玩玩（大概就是如下图所示的玩意儿</p><!-- Include the library. --><script  src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script><!-- Optionally, include the theme (if you don't want to struggle to write the CSS) --><link  rel="stylesheet"  href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"/><!-- Prepare a container for your calendar. --><div class="calendar">    <!-- Loading stuff -->    Loading the data just for you.</div><script>    GitHubCalendar(".calendar", "owen8877", { responsive: true });</script><p>Anyway，先列举一下我们的需求&#x2F;设想有哪些：</p><ol><li>支持以下项目的打卡</li></ol><ul><li>Leetcode</li><li>绿皮书（发送题目名字，然后做字符串匹配）</li><li>面试进度追踪</li></ul><ol start="2"><li>通过 Telegram bot 接口交互，降低前端开发成本</li><li>最重要的还有，基于 ChatGPT 的开发（心水很久了）</li></ol><span id="more"></span><h2 id="配置开发环境"><a href="#配置开发环境" class="headerlink" title="配置开发环境"></a>配置开发环境</h2>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;这次整个大新闻（&lt;/p&gt;
+&lt;p&gt;最近陪 Leon 刷题找工考证什么的，需要一些自动记录打卡的小程序帮助记录和监督，顺便整个类似 Github 的打卡界面玩玩（大概就是如下图所示的玩意儿&lt;/p&gt;
+&lt;!-- Include the library. --&gt;
+&lt;script
+  src=&quot;https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js&quot;&gt;
+&lt;/script&gt;
+
+&lt;!-- Optionally, include the theme (if you don&#39;t want to struggle to write the CSS) --&gt;
+&lt;link
+  rel=&quot;stylesheet&quot;
+  href=&quot;https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css&quot;
+/&gt;
+
+&lt;!-- Prepare a container for your calendar. --&gt;
+&lt;div class=&quot;calendar&quot;&gt;
+    &lt;!-- Loading stuff --&gt;
+    Loading the data just for you.
+&lt;/div&gt;
+
+&lt;script&gt;
+    GitHubCalendar(&quot;.calendar&quot;, &quot;owen8877&quot;, { responsive: true });
+&lt;/script&gt;
+
+&lt;p&gt;Anyway，先列举一下我们的需求&amp;#x2F;设想有哪些：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;支持以下项目的打卡&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Leetcode&lt;/li&gt;
+&lt;li&gt;绿皮书（发送题目名字，然后做字符串匹配）&lt;/li&gt;
+&lt;li&gt;面试进度追踪&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;通过 Telegram bot 接口交互，降低前端开发成本&lt;/li&gt;
+&lt;li&gt;最重要的还有，基于 ChatGPT 的开发（心水很久了）&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
+    
+    
+    <category term="telegram" scheme="https://blog.xdrd.me/tags/telegram/"/>
+    
+    <category term="react" scheme="https://blog.xdrd.me/tags/react/"/>
+    
+    <category term="chatgpt" scheme="https://blog.xdrd.me/tags/chatgpt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 站点与 Windows Powershell</title>
+    <link href="https://blog.xdrd.me/2023/12/hexo-in-windows/"/>
+    <id>https://blog.xdrd.me/2023/12/hexo-in-windows/</id>
+    <published>2023-12-22T04:59:50.000Z</published>
+    <updated>2024-01-19T16:22:32.700Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol><li>带着小破 Thinkpad 出门的时候能无痛 ssh 到服务器上</li><li>尽量容易&#x2F;低阻力地更新博客站点页面</li></ol><span id="more"></span><h2 id="powershell-二三事"><a href="#powershell-二三事" class="headerlink" title="powershell 二三事"></a>powershell 二三事</h2><h3 id="加载时间过长"><a href="#加载时间过长" class="headerlink" title="加载时间过长"></a>加载时间过长</h3><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e">Windows PowerShell</span></span><span class="line"><span style="color: #24292e">Copyright (C) Microsoft Corporation. All rights reserved.</span></span><span class="line"><span style="color: #24292e">Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows</span></span><span class="line"><span style="color: #24292e">Loading personal and system profiles took 1454ms.</span></span></code></pre><p><del>也真好意思加载这么长时间</del></p><p>解决方案：把 <code>Documents\PowerShell\Microsoft.PowerShell_profile.ps1</code> 下面的 choco 加载代码注释了<del>（因为我已经用 choco gui 了）</del></p><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6A737D"># $ChocolateyProfile = &quot;$env:ChocolateyInstall\helpers\chocolateyProfile.psm1&quot;</span></span><span class="line"><span style="color: #6A737D"># if (Test-Path($ChocolateyProfile)) &#123;</span></span><span class="line"><span style="color: #6A737D">#   Import-Module &quot;$ChocolateyProfile&quot;</span></span><span class="line"><span style="color: #6A737D"># &#125;</span></span></code></pre><h3 id="handy-features"><a href="#handy-features" class="headerlink" title="handy features"></a>handy features</h3><ul><li><p>然后去 microsoft store 里下了一个 powershell 7.4<br><del>（中间思考怎么释放C盘空间去了</del></p></li><li><p>有个小插曲是 <a href="//stackoverflow.com/questions/8264655/how-to-make-powershell-tab-completion-work-like-bash">powershell 的 tab 补全</a></p><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #005CC5">Set-PSReadlineKeyHandler</span><span style="color: #24292E"> </span><span style="color: #D73A49">-</span><span style="color: #24292E">Key Tab </span><span style="color: #D73A49">-</span><span style="color: #24292E">Function MenuComplete</span></span></code></pre><p>这样就可以像 oh-my-zsh 那样 tab 后高亮选择填充文件了</p></li><li><p>因为懒得安装vim：</p><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #D73A49">function</span><span style="color: #24292E"> </span><span style="color: #6F42C1">vim</span><span style="color: #24292E"> &#123; </span><span style="color: #D73A49">&amp;</span><span style="color: #032F62">&quot;</span><span style="color: #24292E">$&#123;</span><span style="color: #005CC5">Env:</span><span style="color: #24292E">ProgramFiles&#125;</span><span style="color: #032F62">\Sublime Text\sublime_text.exe&quot;</span><span style="color: #24292E"> </span><span style="color: #005CC5">$args</span><span style="color: #24292E"> &#125;</span></span></code></pre></li></ul><h2 id="注册-ssh-key"><a href="#注册-ssh-key" class="headerlink" title="注册 ssh key"></a>注册 ssh key</h2><ul><li><p>折腾了半天，目前这样的 <code>.ssh/config</code> 是好使的：</p><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e">Host xdroid_server</span></span><span class="line"><span style="color: #24292e">    Hostname [host domain]</span></span><span class="line"><span style="color: #24292e">    User xdroid</span></span><span class="line"><span style="color: #24292e">#   IdentitiesOnly yes</span></span><span class="line"><span style="color: #24292e">    AddKeysToAgent yes</span></span><span class="line"><span style="color: #24292e">    IdentityFile ~\.ssh\private_key</span></span></code></pre></li><li><p>然后加了一个 windows terminal 的 profile，这样就可以一键登录到服务器上了</p></li></ul><h2 id="在-windows-下部署-hexo-环境"><a href="#在-windows-下部署-hexo-环境" class="headerlink" title="在 windows 下部署 hexo 环境"></a>在 windows 下部署 hexo 环境</h2><ol><li><p>第一步是装 npm 环境，我这里用 <a href="//pnpm.io/">pnpm</a>，还能直接下载 node 的包，很方便</p></li><li><p>然后看了一眼 hexo 已经升级到 <a href="//hexo.io/news/">7.0</a> 了（当年还是 hexo 从 2 到 3 有 api 的 breaking change），尝试 <code>hexo g</code> 编译了一下发现 <code>WARN no layout found</code>。搞了半天发现是没有 clone <a href="//github.com/owen8877/hexo-theme-bootstrap-blog">我自己的主题文件</a>，而且文件夹没有命名成是 <code>_config.yml</code> 里写的那个。</p></li><li><p>看文档的时候还发现 <code>hexo g</code> 可以加 <code>-w</code> 开关来监视文件变化，太有用了！</p></li><li><p>看了一下有类似 <a href="//github.com/wuzheng228/hexo-pro">hexo-pro</a> 之类的编辑器，不过想了想还是下次部署吧（毕竟静态文件是放 github 的资源服务器而非我自己的 vps 上的）。目前的解决方案是本地跑，当作一个好用的文本编辑器吧。</p></li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;带着小破 Thinkpad 出门的时候能无痛 ssh 到服务器上&lt;/li&gt;
+&lt;li&gt;尽量容易&amp;#x2F;低阻力地更新博客站点页面&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="Windows" scheme="https://blog.xdrd.me/categories/Windows/"/>
+    
+    
+    <category term="ssh" scheme="https://blog.xdrd.me/tags/ssh/"/>
+    
+    <category term="hexo" scheme="https://blog.xdrd.me/tags/hexo/"/>
+    
+    <category term="powershell" scheme="https://blog.xdrd.me/tags/powershell/"/>
+    
+  </entry>
+  
+  <entry>
     <title>「日历记事本」python 版</title>
     <link href="https://blog.xdrd.me/2023/05/calendar-as-diary-py/"/>
     <id>https://blog.xdrd.me/2023/05/calendar-as-diary-py/</id>
     <published>2023-05-06T15:34:22.000Z</published>
-    <updated>2023-05-07T19:05:27.213Z</updated>
+    <updated>2024-01-19T16:31:29.360Z</updated>
     
-    <content type="html"><![CDATA[<p>之前搞 <a href="/2020/05/calendar-as-diary-roadmap/" title="「日历记事本」规划">「日历记事本」规划</a> 的时候被 rust 整到死去活来，<a href="//sebsauvage.net/python/" target="_blank" rel="noopener">人生苦短，我用 python</a>（</p><p>反正这次就是什么技术新我们就搞什么哈！新特性、新 idea 通通整上。</p><a id="more"></a><h2 id="一些思路"><a href="#一些思路" class="headerlink" title="一些思路"></a>一些思路</h2><h3 id="Python-环境和单元测试"><a href="#Python-环境和单元测试" class="headerlink" title="Python 环境和单元测试"></a>Python 环境和单元测试</h3><ul><li>环境创建 <code>mamba env create -f env.yml</code><ul><li>后来想起来还得在服务器上也整个 micromamba</li></ul></li><li>单元测试框架用的是 <a href="//docs.pytest.org/en/7.3.x/index.html" target="_blank" rel="noopener">pytest</a>，正在学习<ul><li>tips：用 <a href="//stackoverflow.com/questions/62044541/change-pytest-working-directory-to-test-case-directory" target="_blank" rel="noopener">monkeypatch</a> 可以改变测试时的 cwd，让命令行的 pytest 和 pycharm 和谐相处（很纠结要不要用这个特性）</li></ul></li><li>requests 库似乎移除了 async 特性，反正我们这小破程序也不需要 async，那就同步凑合一下吧</li><li>python 没有像 rust 那样的 typed enum，有时候写起来有点别扭；不过 rust 的 dyn box 来 mut 去的不是更恶心？</li><li>json 的 binding 靠 <a href="//xsdata.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">xsdata</a> 完成了（xs？）</li><li>爬虫还是一样难搞，好在现在有能用的 debugger 了（鄙视 rust 一秒钟），解析 HTML 用了 <a href="//www.crummy.com/software/BeautifulSoup/" target="_blank" rel="noopener">BeautifulSoup</a> 这个库</li><li>又遇到时区问题了……pytz 也未能避免设坑，参见 <a href="//stackoverflow.com/questions/24188060/in-pandas-why-does-tz-convert-change-the-timezone-used-from-est-to-lmt" target="_blank" rel="noopener">这个帖子</a>。解决方法是用 <a href="//docs.python.org/3/library/zoneinfo.html" target="_blank" rel="noopener">ZoneInfo</a> 代替 pytz.timezone。</li></ul><h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3><p>我记得之前好像搞过 <a href="//github.com/ncarlier/webhookd" target="_blank" rel="noopener">webhookd</a>，所以这次就直接拿出来用了。这样的话 Github Webhook 会把 repo 上的改动 event trigger 到服务器上，然后就能自动 pull 了。</p><ul><li>Github 设置页面里 content-type 要选 application/json，不然我想了半天也没搞清楚为啥 script 没有传入的 $1 参数。</li><li>micromamba 还是没法完全自动化，看来包的安装升级还是要手动搞了，这点 npm 完胜</li></ul><h3 id="Google-Calendar-API"><a href="#Google-Calendar-API" class="headerlink" title="Google Calendar API"></a>Google Calendar API</h3><p>有个比较蛋疼的事情是 python 版的 api library 只能用链接的方式验证，所以很难自动化。后来想了个办法，先本地验证完之后再 scp 给远端服务器（但还是有如果 token 挂了，那么整个 debug 信息都出不来的问题……）</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;之前搞 &lt;a href=&quot;/2020/05/calendar-as-diary-roadmap/&quot; title=&quot;「日历记事本」规划&quot;&gt;「日历记事本」规划&lt;/a&gt; 的时候被 rust 整到死去活来，&lt;a href=&quot;//sebsauvage.net/python/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;人生苦短，我用 python&lt;/a&gt;（&lt;/p&gt;
-&lt;p&gt;反正这次就是什么技术新我们就搞什么哈！新特性、新 idea 通通整上。&lt;/p&gt;
-    
-    </summary>
+    <content type="html"><![CDATA[<p>之前搞 <a href="/2020/05/calendar-as-diary-roadmap/" title="「日历记事本」规划">「日历记事本」规划</a> 的时候被 rust 整到死去活来，<a href="//sebsauvage.net/python/">人生苦短，我用 python</a>（</p><p>反正这次就是什么技术新我们就搞什么哈！新特性、新 idea 通通整上。</p><span id="more"></span><h2 id="一些思路"><a href="#一些思路" class="headerlink" title="一些思路"></a>一些思路</h2><h3 id="Python-环境和单元测试"><a href="#Python-环境和单元测试" class="headerlink" title="Python 环境和单元测试"></a>Python 环境和单元测试</h3><ul><li>环境创建 <code>mamba env create -f env.yml</code><ul><li>后来想起来还得在服务器上也整个 micromamba</li></ul></li><li>单元测试框架用的是 <a href="//docs.pytest.org/en/7.3.x/index.html">pytest</a>，正在学习<ul><li>tips：用 <a href="//stackoverflow.com/questions/62044541/change-pytest-working-directory-to-test-case-directory">monkeypatch</a> 可以改变测试时的 cwd，让命令行的 pytest 和 pycharm 和谐相处（很纠结要不要用这个特性）</li></ul></li><li>requests 库似乎移除了 async 特性，反正我们这小破程序也不需要 async，那就同步凑合一下吧</li><li>python 没有像 rust 那样的 typed enum，有时候写起来有点别扭；不过 rust 的 dyn box 来 mut 去的不是更恶心？</li><li>json 的 binding 靠 <a href="//xsdata.readthedocs.io/en/latest/index.html">xsdata</a> 完成了（xs？）</li><li>爬虫还是一样难搞，好在现在有能用的 debugger 了（鄙视 rust 一秒钟），解析 HTML 用了 <a href="//www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a> 这个库</li><li>又遇到时区问题了……pytz 也未能避免设坑，参见 <a href="//stackoverflow.com/questions/24188060/in-pandas-why-does-tz-convert-change-the-timezone-used-from-est-to-lmt">这个帖子</a>。解决方法是用 <a href="//docs.python.org/3/library/zoneinfo.html">ZoneInfo</a> 代替 pytz.timezone。</li></ul><h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3><p>我记得之前好像搞过 <a href="//github.com/ncarlier/webhookd">webhookd</a>，所以这次就直接拿出来用了。这样的话 Github Webhook 会把 repo 上的改动 event trigger 到服务器上，然后就能自动 pull 了。</p><ul><li>Github 设置页面里 content-type 要选 application&#x2F;json，不然我想了半天也没搞清楚为啥 script 没有传入的 $1 参数。</li><li>micromamba 还是没法完全自动化，看来包的安装升级还是要手动搞了，这点 npm 完胜</li></ul><h3 id="Google-Calendar-API"><a href="#Google-Calendar-API" class="headerlink" title="Google Calendar API"></a>Google Calendar API</h3><p>有个比较蛋疼的事情是 python 版的 api library 只能用链接的方式验证，所以很难自动化。后来想了个办法，先本地验证完之后再 scp 给远端服务器（但还是有如果 token 挂了，那么整个 debug 信息都出不来的问题……）</p>]]></content>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
+    <summary type="html">&lt;p&gt;之前搞 &lt;a href=&quot;/2020/05/calendar-as-diary-roadmap/&quot; title=&quot;「日历记事本」规划&quot;&gt;「日历记事本」规划&lt;/a&gt; 的时候被 rust 整到死去活来，&lt;a href=&quot;//sebsauvage.net/python/&quot;&gt;人生苦短，我用 python&lt;/a&gt;（&lt;/p&gt;
+&lt;p&gt;反正这次就是什么技术新我们就搞什么哈！新特性、新 idea 通通整上。&lt;/p&gt;</summary>
     
     
-      <category term="python" scheme="https://blog.xdrd.me/tags/python/"/>
     
-      <category term="calendar-as-diary" scheme="https://blog.xdrd.me/tags/calendar-as-diary/"/>
+    <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
+    
+    
+    <category term="python" scheme="https://blog.xdrd.me/tags/python/"/>
+    
+    <category term="calendar-as-diary" scheme="https://blog.xdrd.me/tags/calendar-as-diary/"/>
     
   </entry>
   
@@ -51,22 +137,20 @@
     
     <content type="html"><![CDATA[<p>人呐，就是要充分发挥主观能动性去作死（不是</p><p>这是怎么回事呢？周四早上的时候，不知道哪根筋搭住了，偏要找找自己手上用的这块 <a href="https://www.vastking.com/products/kingpad-k10" target="_blank" rel="noopener">Android 平板</a>（喏就是这个电子辣鸡）能不能升级到更新的 ROM 。稍微做了一番功课之后发现 <a href="https://developer.android.com/topic/generic-system-image/" target="_blank" rel="noopener">Generic System Images</a> 这东西，而且在某个论坛上看到有人成功升级了型号相似的一个平板，我寻思这也许有戏啊？</p><a id="more"></a><p>（于是拉开了作死的序幕）</p><p>一开始用 <a href="https://developer.android.com/topic/dsu" target="_blank" rel="noopener">DSU</a> 的方式更新，结果发现 adb 发送了 intent 之后岿然不动，完全不想搭理更新的样子。于是琢磨了一下 <a href="https://source.android.com/setup/build/gsi#flashing-gsis" target="_blank" rel="noopener">flashing</a> 的方法；有点脑子的人看到这个说法就知道肯定是要 unlock bootloader 的，但是很不幸呢这个平板太小众了查不到资料。</p><p>（补充一下：这个厂商把 <code>fastboot oem unlock</code> 直接封杀了）</p><p>好在天无绝人之路，误打误撞找到了这么个神奇的<a href="https://www.hovatek.com/forum/thread-32287.html" target="_blank" rel="noopener">论坛</a>，这个帖子里直接给了破解 bootloader lock 的方法。于是我兴高采烈地照做了之后果然顺利解开了（好像一切都还挺顺利的）。</p><p>这一路上还学到了不少新东西，比如 fastboot 现在有一部分和 recovery 合并了（相当于进入了用户空间），老版 fastboot 专门管 bootloader（后来发现是个大坑）。我照着官方 GSI 的刷入教程一步步做，没想到卡在了 erase 那一步：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ fastboot erase system</span><br><span class="line">FAILED: ...</span><br></pre></td></tr></table></figure><p>这是什么情况？左思右想搞不明白。</p><p>Anyway，似乎不太重要。刷 system 的时候还说空间不够，查了一下才知道是现在 system 变成逻辑分区了，左邻右舍还有 product 和 vendor。把 system.img 刷进去之后还要清 userdata，也没法直接搞，想了想 <code>format:f2fs</code> 了。之后就重启系统，然后是漫长的等待……</p><p>……</p><p>……（搁这读条呢？</p><p>……（老子不干了！</p><p>很明显卡在 boot splash 了（后来 lineageos 镜像的话是看圆圈圈转来转去）。试了很多镜像都没啥用，还好找到了 <a href="https://mega.nz/folder/TepnWZ5Z#Ftyr0HkCMS-Z4JS_kGLwpA" target="_blank" rel="noopener">stock image</a> 能刷回来（这个时候还是乐观的太早了）。</p><p>那我寻思不能升级系统的话，搞个 magisk 应该不过分吧？去看了一下现在 magisk 的文档，发现已经不推荐 recovery 刷入了，要自己提取 boot.img。好在之前刷入原版镜像的时候，误打误撞搞到了 recovery/boot.img（应该是那个大的 pac 里提取出来的）。喂给 magisk 打包，然后 fastboot 刷入，再重启……</p><p>又卡住了？？什么，这次直接显示 <code>INFO: LOCK STATUS UNLOCK!!</code> 就没下文了？而且也没法关机，重启还是显示这句话。试了几次无果，有种不好的预感可能要交代了。晚上睡了一觉，就把 pad 放在一边想着耗电自动关机算了，结果早上起来一看还是精神满满。甚至都查到了<a href="https://www.hovatek.com/forum/thread-808.html" target="_blank" rel="noopener">教怎么用 LED 灯泡放电的帖子</a>，感觉大事不妙。</p><p>好在之前蛛丝马迹指向一个叫 <a href="https://mega.nz/file/8lZzECZL#5lWkfej5E9muRDQRP0jxFRwe8IjkrUwfHt043ZFHy4A" target="_blank" rel="noopener">ResearchDownloadTool</a> 的东西。由于 MTK 和 Unisoc 都是整平台方案，所以有这种可以刷入的工具。进下载模式是音量下键+开机键，试了很多次才掌握门道。第一次把 boot 刷回去的时候真的是喜极而泣，不然家里真的要多电子辣鸡了。</p><p>在和 magisk 拉扯几次后，我终于放弃了安装 magisk 的想法。那么剩下的任务就是恢复 pad 之前的功能……等等，wifi 怎么彻底挂了？之前有过 wifi 莫名其妙卡住的情况，按一种特定的方式重启就能修好，但是这次……好像怎么玄学都没用。无奈只能上网搜能不能反向 tether；还真被我找到了，<a href="https://android.stackexchange.com/questions/171744/how-can-i-enable-usb-tethering-through-adb" target="_blank" rel="noopener">windows 下</a>和 <a href="https://github.com/Genymobile/gnirehtet" target="_blank" rel="noopener">linux 下</a>还有不同的方案。本以为就搞此一段落了，结果发现 wifi TMD 自己好了！好了！真气人（下播</p>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;人呐，就是要充分发挥主观能动性去作死（不是&lt;/p&gt;
-&lt;p&gt;这是怎么回事呢？周四早上的时候，不知道哪根筋搭住了，偏要找找自己手上用的这块 &lt;a href=&quot;https://www.vastking.com/products/kingpad-k10&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Android 平板&lt;/a&gt;（喏就是这个电子辣鸡）能不能升级到更新的 ROM 。稍微做了一番功课之后发现 &lt;a href=&quot;https://developer.android.com/topic/generic-system-image/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Generic System Images&lt;/a&gt; 这东西，而且在某个论坛上看到有人成功升级了型号相似的一个平板，我寻思这也许有戏啊？&lt;/p&gt;
-    
-    </summary>
+    <summary type="html">&lt;p&gt;人呐，就是要充分发挥主观能动性去作死（不是&lt;/p&gt;
+&lt;p&gt;这是怎么回事呢？周四早上的时候，不知道哪根筋搭住了，偏要找找自己手上用的这块 &lt;a href=&quot;https://www.vastking.com/products/kingpad-k10&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Android 平板&lt;/a&gt;（喏就是这个电子辣鸡）能不能升级到更新的 ROM 。稍微做了一番功课之后发现 &lt;a href=&quot;https://developer.android.com/topic/generic-system-image/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Generic System Images&lt;/a&gt; 这东西，而且在某个论坛上看到有人成功升级了型号相似的一个平板，我寻思这也许有戏啊？&lt;/p&gt;</summary>
     
     
-      <category term="phone" scheme="https://blog.xdrd.me/categories/phone/"/>
+    
+    <category term="phone" scheme="https://blog.xdrd.me/categories/phone/"/>
     
     
-      <category term="android" scheme="https://blog.xdrd.me/tags/android/"/>
+    <category term="android" scheme="https://blog.xdrd.me/tags/android/"/>
     
-      <category term="fastboot" scheme="https://blog.xdrd.me/tags/fastboot/"/>
+    <category term="fastboot" scheme="https://blog.xdrd.me/tags/fastboot/"/>
     
-      <category term="magisk" scheme="https://blog.xdrd.me/tags/magisk/"/>
+    <category term="magisk" scheme="https://blog.xdrd.me/tags/magisk/"/>
     
   </entry>
   
@@ -79,22 +163,20 @@
     
     <content type="html"><![CDATA[<p>我们长话短说（因为实在是太蠢了），先上解决方案：<a href="https://stackoverflow.com/questions/25106554/why-doesnt-println-work-in-rust-unit-tests" target="_blank" rel="noopener">Why doesn’t println! work in Rust unit tests? - Stack Overflow</a>（这个感叹号很灵性，不了解 rust 的可能还以为是个暴躁老歌）</p><p>简单来说就是我在修补之前写的日历自动化工具 <a href="/2020/05/calendar-as-diary-roadmap/" title="「日历记事本」规划">「日历记事本」规划</a>，结果发现死活打印不出 interactive oauth 的输出。本来还以为是 async 或者 oauth 啥的问题，结果后来发现连 <code>println!</code> 都打印不出东西了，感觉有点问题。这个 feature 也是特别奇怪，可能是某次升级加进去的吧。</p>]]></content>
     
-    <summary type="html">
     
       
       
-        &lt;p&gt;我们长话短说（因为实在是太蠢了），先上解决方案：&lt;a href=&quot;https://stackoverflow.com/questions/25106554/why-doesnt-println-work-in-rust-unit-tests&quot; target=&quot;_blank&quot;
+    <summary type="html">&lt;p&gt;我们长话短说（因为实在是太蠢了），先上解决方案：&lt;a href=&quot;https://stackoverflow.com/questions/25106554/why-doesnt-println-work-in-rust-unit-tests&quot; target=&quot;_blank&quot;</summary>
       
     
-    </summary>
     
     
-      <category term="coding" scheme="https://blog.xdrd.me/categories/coding/"/>
+    <category term="coding" scheme="https://blog.xdrd.me/categories/coding/"/>
     
     
-      <category term="rust" scheme="https://blog.xdrd.me/tags/rust/"/>
+    <category term="rust" scheme="https://blog.xdrd.me/tags/rust/"/>
     
-      <category term="idea" scheme="https://blog.xdrd.me/tags/idea/"/>
+    <category term="idea" scheme="https://blog.xdrd.me/tags/idea/"/>
     
   </entry>
   
@@ -107,23 +189,21 @@
     
     <content type="html"><![CDATA[<p>安装 matlab 2022b<del>（其实之前的版本也有问题）</del>时有如下报错：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">terminate called after throwing an instance of &#39;std::runtime_error&#39;</span><br><span class="line">  what():  Failed to launch web window with error: Unable to launch the MATLABWindow application. The exit code was: 127</span><br><span class="line">[1]    20338 IOT instruction (core dumped)  .&#x2F;install</span><br></pre></td></tr></table></figure><p>经过 google 发现是<a href="https://www.reddit.com/r/archlinux/comments/tkas9q/matlab_stopped_working_after_system_update/" target="_blank" rel="noopener">内嵌的 freetype 库有问题</a>，把 <code>libfreetype.so.6</code> 链接挪走就行。</p><hr><p>同理适用于安装后 <a href="https://www.mathworks.com/matlabcentral/answers/1779395-the-desktop-configuration-file-is-corrupt-or-improperly-formatted-when-starting-matlab" target="_blank" rel="noopener">matlab 抽风</a>：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Warning: The desktop configuration file is corrupt or improperly formatted.</span><br><span class="line">null</span><br><span class="line">Warning: An error occurred while reading the desktop configuration file.</span><br></pre></td></tr></table></figure>]]></content>
     
-    <summary type="html">
     
       
       
-        &lt;p&gt;安装 matlab 2022b&lt;del&gt;（其实之前的版本也有问题）&lt;/del&gt;时有如下报错：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;te
+    <summary type="html">&lt;p&gt;安装 matlab 2022b&lt;del&gt;（其实之前的版本也有问题）&lt;/del&gt;时有如下报错：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;te</summary>
       
     
-    </summary>
     
     
-      <category term="linux" scheme="https://blog.xdrd.me/categories/linux/"/>
+    <category term="linux" scheme="https://blog.xdrd.me/categories/linux/"/>
     
     
-      <category term="matlab" scheme="https://blog.xdrd.me/tags/matlab/"/>
+    <category term="matlab" scheme="https://blog.xdrd.me/tags/matlab/"/>
     
-      <category term="freetype" scheme="https://blog.xdrd.me/tags/freetype/"/>
+    <category term="freetype" scheme="https://blog.xdrd.me/tags/freetype/"/>
     
   </entry>
   
@@ -136,23 +216,21 @@
     
     <content type="html"><![CDATA[<p>老年人的标志就是换了 GTX 1080 这种事都懒得写一篇博文了（</p><a id="more"></a><h2 id="多显示器配置"><a href="#多显示器配置" class="headerlink" title="多显示器配置"></a>多显示器配置</h2><p><a href="https://christian.amsuess.com/tools/arandr/" target="_blank" rel="noopener">ARandR: Another XRandR GUI</a> 配合 i3wm 自启动脚本</p><h2 id="画面撕裂"><a href="#画面撕裂" class="headerlink" title="画面撕裂"></a>画面撕裂</h2><ul><li>关闭 compton</li><li>每块屏幕设置 <code>ForceCompositionPipeline</code></li><li>参见 <a href="https://techknowfile.dev/how-to-fix-screen-tearing-on-i3-wm-ubuntu-18-04/" target="_blank" rel="noopener">How to fix screen tearing on i3-wm (Ubuntu 18.04) - Techknowfile</a></li></ul><h2 id="Cuda-Pytorch"><a href="#Cuda-Pytorch" class="headerlink" title="Cuda, Pytorch"></a>Cuda, Pytorch</h2><ul><li><a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener">Start Locally | Pytorch</a></li><li><code>yay -S cuda</code></li><li><code>conda env create -f environment.yml</code> where <code>cat environment.yml</code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name: cuda116env</span><br><span class="line">channels:</span><br><span class="line">  - pytorch</span><br><span class="line">  - conda-forge</span><br><span class="line">dependencies:</span><br><span class="line">  - cudatoolkit&#x3D;11.6</span><br><span class="line">  - pytorch</span><br><span class="line">  - numpy</span><br><span class="line">  - scipy</span><br><span class="line">  - tqdm</span><br><span class="line">  - opt_einsum</span><br><span class="line">  - numba</span><br><span class="line">  - matplotlib</span><br></pre></td></tr></table></figure></li><li>注意：<code>cudatoolkit</code> 必须和 <code>pytorch</code> 包的要求对应，不然会装上 <code>cpuonly</code></li></ul><h2 id="cuda"><a href="#cuda" class="headerlink" title=".cuda()"></a><code>.cuda()</code></h2><p>写代码的时候需要注意如下几点：</p><ul><li>用 <code>.cuda()</code> 和 <code>.cpu()</code> 迁移 tensor 的位置</li><li><a href="https://pytorch.org/tutorials/recipes/recipes/profiler_recipe.html" target="_blank" rel="noopener">PyTorch Profiler</a> 配合 chrome tracing 食用</li><li>optimizer 为何占用很多 cpu 时间？因为还是在 cpu 上跑的动态图</li><li>解决方案：用 cuda graph 记录 gpu 上要跑的计算图 + optimizer 设为 <code>capturable=True</code>，见<a href="https://pytorch.org/blog/accelerating-pytorch-with-cuda-graphs/" target="_blank" rel="noopener">此</a>，配置正确后 profile 里应该只看见很少的 sync 和 launch graph。</li></ul>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;老年人的标志就是换了 GTX 1080 这种事都懒得写一篇博文了（&lt;/p&gt;
-    
-    </summary>
+    <summary type="html">&lt;p&gt;老年人的标志就是换了 GTX 1080 这种事都懒得写一篇博文了（&lt;/p&gt;</summary>
     
     
-      <category term="pytorch" scheme="https://blog.xdrd.me/categories/pytorch/"/>
+    
+    <category term="pytorch" scheme="https://blog.xdrd.me/categories/pytorch/"/>
     
     
-      <category term="deep learning" scheme="https://blog.xdrd.me/tags/deep-learning/"/>
+    <category term="deep learning" scheme="https://blog.xdrd.me/tags/deep-learning/"/>
     
-      <category term="pytorch" scheme="https://blog.xdrd.me/tags/pytorch/"/>
+    <category term="pytorch" scheme="https://blog.xdrd.me/tags/pytorch/"/>
     
-      <category term="gtx 1080" scheme="https://blog.xdrd.me/tags/gtx-1080/"/>
+    <category term="gtx 1080" scheme="https://blog.xdrd.me/tags/gtx-1080/"/>
     
-      <category term="cuda" scheme="https://blog.xdrd.me/tags/cuda/"/>
+    <category term="cuda" scheme="https://blog.xdrd.me/tags/cuda/"/>
     
   </entry>
   
@@ -165,17 +243,15 @@
     
     <content type="html"><![CDATA[<p>存档向 <del>怎么会有我这种自作聪明的人</del></p><a id="more"></a><p>正确的<a href="https://gist.github.com/tVienonen/fad5cb68e6449f6c4804e276094516e3" target="_blank" rel="noopener">做法</a></p><hr><p>我之前参考 arch wiki，里面没有提到 CSRK（坑啊）。但其实更加坑的是 windows 导出的注册表文件里大小端是不一致的。</p><p>具体的对应顺序如下：</p><ul><li>LTK=LongTermKey：<strong>同序</strong></li><li>CSRK=LocalSignatureKey：<strong>同序</strong></li><li>IRK=IdentityResolvingKey：<strong>逆序</strong></li><li>mac地址：逆序（但是标了<code>hex(b)</code>所以也不意外）</li><li>EDiv：同序转换</li><li>ERand：逆序转换</li></ul>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;存档向 &lt;del&gt;怎么会有我这种自作聪明的人&lt;/del&gt;&lt;/p&gt;
-    
-    </summary>
+    <summary type="html">&lt;p&gt;存档向 &lt;del&gt;怎么会有我这种自作聪明的人&lt;/del&gt;&lt;/p&gt;</summary>
     
     
-      <category term="nagging" scheme="https://blog.xdrd.me/categories/nagging/"/>
+    
+    <category term="nagging" scheme="https://blog.xdrd.me/categories/nagging/"/>
     
     
-      <category term="bluetooth" scheme="https://blog.xdrd.me/tags/bluetooth/"/>
+    <category term="bluetooth" scheme="https://blog.xdrd.me/tags/bluetooth/"/>
     
   </entry>
   
@@ -188,24 +264,22 @@
     
     <content type="html"><![CDATA[<p>Inoreader 好辣鸡，我博客的 rss 插件输出对的，但是不知道为啥时间全都变成最后一次更新时间……</p><p>试一下 Miniflux，看起来是一个开源的（颜值还行）的 rss server + client。</p><p>安装见<a href="https://miniflux.app/docs/installation.html" target="_blank" rel="noopener">这里</a>。这边配置 postgreSQL 有点坑，见<a href="https://stackoverflow.com/questions/7695962/password-authentication-failed-for-user-postgres" target="_blank" rel="noopener">这篇</a>。配置完之后正常设 nginx 反向代理和 let’s encrypt 证书。</p><p>试了一下感觉非常不错，就是有些极简过头了。一个第三方客户端居然连历史回看都不支持（不过好像确实没有支持的必要……）。</p><p>插件方面<a href="https://www.jamesfmackenzie.com/getting-started-with-the-pocket-developer-api/" target="_blank" rel="noopener">连接了 pocket</a>，方便一键进收藏夹（吃灰）。</p>]]></content>
     
-    <summary type="html">
     
       
       
-        &lt;p&gt;Inoreader 好辣鸡，我博客的 rss 插件输出对的，但是不知道为啥时间全都变成最后一次更新时间……&lt;/p&gt;
+    <summary type="html">&lt;p&gt;Inoreader 好辣鸡，我博客的 rss 插件输出对的，但是不知道为啥时间全都变成最后一次更新时间……&lt;/p&gt;
 &lt;p&gt;试一下 Miniflux，看起来是一个开源的（颜值还行）的 rss server + client。&lt;/p&gt;
-&lt;p&gt;安装见&lt;a href=&quot;https:
+&lt;p&gt;安装见&lt;a href=&quot;https:</summary>
       
     
-    </summary>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
+    <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
     
     
-      <category term="miniflux" scheme="https://blog.xdrd.me/tags/miniflux/"/>
+    <category term="miniflux" scheme="https://blog.xdrd.me/tags/miniflux/"/>
     
-      <category term="rss" scheme="https://blog.xdrd.me/tags/rss/"/>
+    <category term="rss" scheme="https://blog.xdrd.me/tags/rss/"/>
     
   </entry>
   
@@ -218,22 +292,20 @@
     
     <content type="html"><![CDATA[<p><del>真的是要被自己蠢哭了</del></p><p>事情是这样的，最近在用deep learning的方法解pde，然后代码写到了保存和读取网络参数的部分，发现载入参数后的网络会生成和训练时不一样的结果；更令人奇怪的是这个结果每次运行都不一样。</p><a id="more"></a><p>比如说训练完保存前网络输出长这样：<br><img src="/images/2022-03-pytorch-register-parameter/sobel_u1.jpg" alt="应该长这样"><br>通过读取保存的参数文件重建后的输出长这样：<br><img src="/images/2022-03-pytorch-register-parameter/load_random.png" alt="结果长这样了"><br>呃……我寻思好像也没有dropoff和其他随机的layer啊，而且也设置了<code>model.eval()</code>。上网搜了一些论坛后觉得可能是参数保存的问题……？</p><p>先来看一下我自己写的resnet实现：</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResNet</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, d, m, activation=<span class="string">"elu"</span>, groups=<span class="number">2</span>)</span>:</span></span><br><span class="line">        super(ResNet, self).__init__()</span><br><span class="line">        self.d = d</span><br><span class="line">        self.m = m</span><br><span class="line"></span><br><span class="line">        self.preprocess = nn.Linear(d, m)</span><br><span class="line"></span><br><span class="line">        self.groups = groups</span><br><span class="line">        self.block_per_group = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">        self.res_fcs = [[nn.Linear(m, m) <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.block_per_group)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.groups)]</span><br><span class="line"></span><br><span class="line">        self.fc = nn.Linear(m, <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> activation == <span class="string">"relu"</span>:</span><br><span class="line">            self.activation = <span class="keyword">lambda</span> x: Func.relu(x)</span><br><span class="line">        <span class="comment">#...</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        z = self.preprocess(x)</span><br><span class="line">        <span class="keyword">for</span> group <span class="keyword">in</span> self.res_fcs:</span><br><span class="line">            z_id = z</span><br><span class="line">            <span class="keyword">for</span> block <span class="keyword">in</span> group:</span><br><span class="line">                z = self.activation(block(z))</span><br><span class="line">            z = z_id + z</span><br><span class="line">        <span class="keyword">return</span> self.fc(z)</span><br></pre></td></tr></table></figure><p>是不是感觉特别优雅？写完还觉得这样就不用手写跳接层，多方便呀。结果看了一眼<code>model.state_dict()</code>：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; model.state_dict()</span><br><span class="line">OrderedDict([(&#39;preprocess.weight&#39;, tensor(...)), (&#39;preprocess.bias&#39;, tensor(...)), (&#39;fc.weight&#39;, tensor(...)), (&#39;fc.bias&#39;, tensor(...))])</span><br></pre></td></tr></table></figure><p>我去……整个人都傻了……也就是说只有<code>preprocess</code>和<code>fc</code>这两个layer是别识别成可训练/可保存的，其它的都被无视了。</p><p>想想好像也有道理……毕竟<code>res_fcs</code>是一个list，长的不像layer。解决办法感觉是用<code>ModuleList</code>（<a href="https://pytorch.org/docs/stable/generated/torch.nn.ModuleList.html" target="_blank" rel="noopener">文档</a>）（不用自己造轮子了开心）。修改后的代码如下：</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.res_fcs = nn.ModuleList([nn.ModuleList([nn.Linear(m, m) <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.block_per_group)]) <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.groups)])</span><br></pre></td></tr></table></figure>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;&lt;del&gt;真的是要被自己蠢哭了&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;事情是这样的，最近在用deep learning的方法解pde，然后代码写到了保存和读取网络参数的部分，发现载入参数后的网络会生成和训练时不一样的结果；更令人奇怪的是这个结果每次运行都不一样。&lt;/p&gt;
-    
-    </summary>
+    <summary type="html">&lt;p&gt;&lt;del&gt;真的是要被自己蠢哭了&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;事情是这样的，最近在用deep learning的方法解pde，然后代码写到了保存和读取网络参数的部分，发现载入参数后的网络会生成和训练时不一样的结果；更令人奇怪的是这个结果每次运行都不一样。&lt;/p&gt;</summary>
     
     
-      <category term="coding" scheme="https://blog.xdrd.me/categories/coding/"/>
+    
+    <category term="coding" scheme="https://blog.xdrd.me/categories/coding/"/>
     
     
-      <category term="pytorch" scheme="https://blog.xdrd.me/tags/pytorch/"/>
+    <category term="pytorch" scheme="https://blog.xdrd.me/tags/pytorch/"/>
     
-      <category term="state_dict" scheme="https://blog.xdrd.me/tags/state-dict/"/>
+    <category term="state_dict" scheme="https://blog.xdrd.me/tags/state-dict/"/>
     
-      <category term="resnet" scheme="https://blog.xdrd.me/tags/resnet/"/>
+    <category term="resnet" scheme="https://blog.xdrd.me/tags/resnet/"/>
     
   </entry>
   
@@ -246,19 +318,17 @@
     
     <content type="html"><![CDATA[<p>最近遇到一个非常奇怪的事情，本来好好的写作业，需要跑一个matlab代码，结果跑了一小会儿直接黑屏了。我一开始以为是内存爆了，就把测试矩阵的大小改小了一点，结果还是崩，而且崩的时候是鼠标键盘统统没反应，只能按电源键。失败几次之后决定从日志里找找原因。</p><a id="more"></a><p>让我们康康 <code>journalctl --since=today</code> 里都有啥：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Feb 28 18:37:30 xDroid-Arch26X MATLAB[4591]: Failed to load module &quot;canberra-gtk-module&quot;</span><br><span class="line">Feb 28 18:37:50 xDroid-Arch26X kernel: pcieport 0000:03:01.0: can&#39;t change power state from D3cold to D0 (config space inacce&gt;</span><br><span class="line">Feb 28 18:37:51 xDroid-Arch26X kernel: xhci_hcd 0000:02:00.0: xHCI host controller not responding, assume dead</span><br><span class="line">Feb 28 18:37:51 xDroid-Arch26X kernel: xhci_hcd 0000:02:00.0: HC died; cleaning up</span><br><span class="line">Feb 28 18:37:51 xDroid-Arch26X kernel: usb 1-5: USB disconnect, device number 2</span><br><span class="line">Feb 28 18:37:52 xDroid-Arch26X &#x2F;usr&#x2F;lib&#x2F;gdm-x-session[1305]: (II) event16 - DELL Alienware 310K: device removed</span><br></pre></td></tr></table></figure><p>下面是一些设备（键鼠）被断开，然后是</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Feb 28 18:37:53 xDroid-Arch26X kernel: iwlwifi 0000:06:00.0: Error sending CMD_DTS_MEASUREMENT_TRIGGER_WIDE: time out after 2&gt;</span><br><span class="line">Feb 28 18:37:53 xDroid-Arch26X kernel: iwlwifi 0000:06:00.0: Current CMD queue read_ptr 91 write_ptr 92</span><br><span class="line">Feb 28 18:37:53 xDroid-Arch26X kernel: ------------[ cut here ]------------</span><br><span class="line">Feb 28 18:37:53 xDroid-Arch26X kernel: Timeout waiting for hardware access (CSR_GP_CNTRL 0xffffffff)</span><br><span class="line">Feb 28 18:37:53 xDroid-Arch26X kernel: WARNING: CPU: 5 PID: 5784 at drivers&#x2F;net&#x2F;wireless&#x2F;intel&#x2F;iwlwifi&#x2F;pcie&#x2F;trans.c:2084 __iw&gt;</span><br><span class="line">Fe</span><br></pre></td></tr></table></figure><p>然后无线网卡看起来也跟着炸了。</p><p>emm我们还是先从出事的<code>03:01.0</code>看起来吧。<code>lspci -vt</code>显示的设备如下：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-[0000:00]-+-00.0  Advanced Micro Devices, Inc. [AMD] Family 17h (Models 00h-0fh) Root Complex</span><br><span class="line">           +-01.0  Advanced Micro Devices, Inc. [AMD] Family 17h (Models 00h-1fh) PCIe Dummy Host Bridge</span><br><span class="line">           +-01.1-[01]----00.0  Samsung Electronics Co Ltd NVMe SSD Controller SM981&#x2F;PM981&#x2F;PM983</span><br><span class="line">           +-01.3-[02-06]--+-00.0  Advanced Micro Devices, Inc. [AMD] 400 Series Chipset USB 3.1 XHCI Controller</span><br><span class="line">           |               +-00.1  Advanced Micro Devices, Inc. [AMD] 400 Series Chipset SATA Controller</span><br><span class="line">           |               \-00.2-[03-06]--+-00.0-[04]----00.0  Realtek Semiconductor Co., Ltd. RTL8111&#x2F;8168&#x2F;8411 PCI Express Gigabit Ethernet Controller</span><br><span class="line">           |                               +-01.0-[05]--</span><br><span class="line">           |                               \-04.0-[06]----00.0  Intel Corporation Wireless 8265 &#x2F; 8275</span><br><span class="line">           +-03.0  Advanced Micro Devices, Inc. [AMD] Family 17h (Models 00h-1fh) PCIe Dummy Host Bridge</span><br><span class="line">           +-03.1-[07]--+-00.0  Advanced Micro Devices, Inc. [AMD&#x2F;ATI] Ellesmere [Radeon RX 470&#x2F;480&#x2F;570&#x2F;570X&#x2F;580&#x2F;580X&#x2F;590]</span><br><span class="line">           |            \-00.1  Advanced Micro Devices, Inc. [AMD&#x2F;ATI] Ellesmere HDMI Audio [Radeon RX 470&#x2F;480 &#x2F; 570&#x2F;580&#x2F;590]</span><br></pre></td></tr></table></figure><p>好家伙，我啥也没看懂——稍微翻了点资料大概明白了方括号里是实际连接的设备，从01开始编号，那么03的话应该是连着04-06的……主控？上面也没标出来啊（捂脸</p><p>anyway用<code>lspci -v -s 03:01.0</code>看看吧：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">03:01.0 PCI bridge: Advanced Micro Devices, Inc. [AMD] 400 Series Chipset PCIe Port (rev 01) (prog-if 00 [Normal decode])</span><br><span class="line">Flags: bus master, fast devsel, latency 0, IRQ 36, IOMMU group 0</span><br><span class="line">Bus: primary&#x3D;03, secondary&#x3D;05, subordinate&#x3D;05, sec-latency&#x3D;0</span><br></pre></td></tr></table></figure><p>好像就还真是一个主控……那也没啥信息啊。</p><p>上网搜了一圈，发现有一些非常离谱的<a href="https://bbs.archlinux.org/viewtopic.php?id=236536" target="_blank" rel="noopener">方案</a>（好像是定时重启usb主控）……感觉也不是很靠谱</p><p>想了想是不是matlab自己的锅，就卸载重装了一次（其实还更新到了2021b），但是然并卵。最后误打误撞发现是dropbox的锅，matlab在写入图表epsc的文件的时候和dropbox的同步机制撞车了[允悲]，也算是大开眼界。</p>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;最近遇到一个非常奇怪的事情，本来好好的写作业，需要跑一个matlab代码，结果跑了一小会儿直接黑屏了。我一开始以为是内存爆了，就把测试矩阵的大小改小了一点，结果还是崩，而且崩的时候是鼠标键盘统统没反应，只能按电源键。失败几次之后决定从日志里找找原因。&lt;/p&gt;
-    
-    </summary>
+    <summary type="html">&lt;p&gt;最近遇到一个非常奇怪的事情，本来好好的写作业，需要跑一个matlab代码，结果跑了一小会儿直接黑屏了。我一开始以为是内存爆了，就把测试矩阵的大小改小了一点，结果还是崩，而且崩的时候是鼠标键盘统统没反应，只能按电源键。失败几次之后决定从日志里找找原因。&lt;/p&gt;</summary>
     
     
-      <category term="Linux" scheme="https://blog.xdrd.me/categories/Linux/"/>
+    
+    <category term="Linux" scheme="https://blog.xdrd.me/categories/Linux/"/>
     
     
-      <category term="matlab" scheme="https://blog.xdrd.me/tags/matlab/"/>
+    <category term="matlab" scheme="https://blog.xdrd.me/tags/matlab/"/>
     
-      <category term="dropbox" scheme="https://blog.xdrd.me/tags/dropbox/"/>
+    <category term="dropbox" scheme="https://blog.xdrd.me/tags/dropbox/"/>
     
   </entry>
   
@@ -271,22 +341,20 @@
     
     <content type="html"><![CDATA[<p>刚上大学的时候，我写了 <a href="//github.com/owen8877/Othello/blob/master/report.md" target="_blank" rel="noopener">owen8877/Othello</a> 作为我编程课的大作业。最近，当我想把它展示给其他人看的时候，却遇到了编译和链接上的困难，更别说大部分人没有 linux 环境了。想到移植到 Wasm 上应该是给不错的主意，那么这篇文章就梳理一下整体的流程和遇到的困难吧！</p><p>发布请移步至 <a href="//othello.xdroid.workers.dev/" target="_blank" rel="noopener">这里</a> 。</p><a id="more"></a><h2 id="配环境和-Smoke-Test"><a href="#配环境和-Smoke-Test" class="headerlink" title="配环境和 Smoke Test"></a>配环境和 Smoke Test</h2><p>照官方教程</p><ul><li><a href="//developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm" target="_blank" rel="noopener">Compiling a New C/C++ Module to WebAssembly</a></li><li><a href="//developer.mozilla.org/en-US/docs/WebAssembly/existing_C_to_wasm" target="_blank" rel="noopener">Compiling an Existing C Module to WebAssembly</a></li></ul><p>我们首先安装了 emsdk，然后编译一个 <code>hello.cpp</code> 看看能不能通过（这里还要用一步 <code>screen python3 -m http.server</code> 去加载本地的 wasm 文件）。</p><h2 id="What-about-OpenGL-and-FreeGLUT"><a href="#What-about-OpenGL-and-FreeGLUT" class="headerlink" title="What about OpenGL and FreeGLUT?"></a>What about OpenGL and FreeGLUT?</h2><p>嗯好问题！其实 emscripten 是支持 FreeGLUT 的，想不到吧！</p><p>但是支持就支持完整一些啊！为什么 <a href="//github.com/emscripten-core/emscripten/blob/4aba43b520aec5c648a8f05e5434471fd563e3e9/system/include/GL/freeglut_std.h#L514" target="_blank" rel="noopener">不能画圆柱</a> 啊！（明明茶杯都可以画</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Geometry functions, see freeglut_geometry.c</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireCube</span><span class="params">( GLdouble size )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidCube</span><span class="params">( GLdouble size )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireSphere</span><span class="params">( GLdouble radius, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidSphere</span><span class="params">( GLdouble radius, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutWireCone</span><span class="params">( GLdouble base, GLdouble height, GLint slices, GLint stacks )</span></span>;</span><br><span class="line"><span class="function">FGAPI <span class="keyword">void</span>    FGAPIENTRY <span class="title">glutSolidCone</span><span class="params">( GLdouble base, GLdouble height, GLint slices, GLint stacks )</span></span>;</span><br></pre></td></tr></table></figure><p>（浪费了一下午的宝贵生命后）意识到 GLUT 是个被时代抛弃的玩意儿，不如趁早转到 SDL （虽然两者并不能直接这样比较……而且画圆柱也变得麻烦了）</p><p>然后又摸索了 n 久……发现虽然说是支持 OpenGL 1.0，但其实那套立即模式早就不支持了（请允悲），所以我们需要摸索一套不使用立即模式的绘画方式！</p><p>那么，（中二的）少年一起来学习着色器吧！</p><h2 id="Shaders"><a href="#Shaders" class="headerlink" title="Shaders"></a>Shaders</h2><p>一开始走了一点弯路，后来照着 <a href="//learnopengl-cn.github.io/" target="_blank" rel="noopener">LearnOpenGL CN</a> 的教程学chao习daima。</p><p>（准确地说，这个教程教的是 OpenGL 3.2 的核心模式，不过基本上和 OpenGL ES 2.0 差异不大，而 WebGL 和 ES 2.0 差异也不大，所以是没有问题的啦！）</p><p>但是学了一会儿之后发现……呃……这套 API 和以前一样丑啊……</p><p>比如，如果我想画一些三角形……</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `vertices` stores vertex position, normal and texture position.</span></span><br><span class="line"></span><br><span class="line">glGenVertexArrays(<span class="number">1</span>, &amp;vao);</span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;vbo);</span><br><span class="line"></span><br><span class="line">glBindVertexArray(vao);</span><br><span class="line"></span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, vbo);</span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices[<span class="number">0</span>]) * vertices.size(), &amp;vertices[<span class="number">0</span>], GL_STATIC_DRAW);</span><br><span class="line">drawCount = vertices.size();</span><br><span class="line"></span><br><span class="line">glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">8</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), <span class="literal">nullptr</span>);</span><br><span class="line">glEnableVertexAttribArray(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure><p>怎么这么 old style 啊！还好可以把它们封装起来。</p><p>所以在核心模式下，画图的流程大概是：</p><ol><li>加载+编译 shader</li><li>加载 texture</li><li>加载模型（就是上面那坨魔法）</li><li>每帧更新的时候<ol><li>激活 shader</li><li>计算好 model 和 projection 矩阵，喂给 shader</li><li>画模型</li></ol></li></ol><p>emmm，好像也不是很麻烦？但问题是这种旧的 API 没有类型保证，所以很有可能传错指针或者忘记激活 shader ，导致各类莫名奇妙的事情发生。</p><p>（啊忘记了，节标题是着色器，那我们讲讲着色器吧）</p><p>简单来说，</p><ul><li>定点着色器会把模型中的坐标（世界坐标）变成屏幕上可以画出来的坐标；</li><li>片段着色器负责决定每个像素是怎么被着色的；<br>所以——都需要手写（请允悲）。</li></ul><p>还好这些东西都可以抄的（开心），而且渲染出来直接是 Phong 光照，一下真实了很多呢！</p><p>坏处是……如果传错参数，连 runtime error 都没有……</p><h2 id="Emscripten-revisited"><a href="#Emscripten-revisited" class="headerlink" title="Emscripten revisited"></a>Emscripten revisited</h2><p>那么现在问题是如何将这些代码跑在浏览器里呢？</p><p>官方教程说用 cmake 的同学可以</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">emcmake cmake .</span><br></pre></td></tr></table></figure><p>但很显然，对于像我们这种有一些冷门依赖的项目是走不通的。所以还是只能手写 makefile：</p><figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">DIREM = bin-em</span><br><span class="line">BINEM = <span class="variable">$(DIREM)</span>/Othello.html</span><br><span class="line">OBJEM = <span class="variable">$(DIREM)</span>/main.o <span class="variable">$(DIREM)</span>/ai.o <span class="variable">$(DIREM)</span>/display.o <span class="variable">$(DIREM)</span>/element.o <span class="variable">$(DIREM)</span>/game.o <span class="variable">$(DIREM)</span>/io.o <span class="variable">$(DIREM)</span>/model.o <span class="variable">$(DIREM)</span>/player.o</span><br><span class="line">EMXX = em++</span><br><span class="line">EMXXFLAGS = -Wall -O2</span><br><span class="line">EMLINKFLAGS = -s FULL_ES2=1 -s FULL_ES3=1 -s USE_GLFW=3 -s LLD_REPORT_UNDEFINED -s WASM=1 --preload-file resources --preload-file render --preload-file Settings</span><br></pre></td></tr></table></figure><p>所幸也不是很长（</p><p>这里有个问题是 js 天生不支持读本地文件，所以 filesystem 其实是 runtime 模拟的，要用 <code>--preload-file</code> 搞进去。</p><p>还有个问题是，原本跑在 native 上的版本是给渲染单独开了一个线程，怎么在 wasm 上办到呢？官方说可以用 pthread ，但是试了一下 bug 太多，而且还会牵连到 firefox 的各种 bug 和兼容性问题。简单起见我们就全塞到 main 线程算啦~（于是遍地都是 <code>#ifdef __EMSCRIPTEN__</code> 宏）</p><h2 id="GLFW"><a href="#GLFW" class="headerlink" title="GLFW"></a>GLFW</h2><p>哦对了，后来我没用 SDL ，转成 GLFW ，因为教程用的这个（</p><p>不过总体上来说都要比 GLUT 好，毕竟 main loop 是自己的了（</p><p>其他一些 callback 照虎画猫就行，不难的</p><h2 id="白嫖-Cloudflare-worker"><a href="#白嫖-Cloudflare-worker" class="headerlink" title="白嫖 Cloudflare worker"></a>白嫖 Cloudflare worker</h2><p>既然编译出来都是静态文件，自然可以用 Cloudflare 的 worker 去 serve。</p><h2 id="Roadmap"><a href="#Roadmap" class="headerlink" title="Roadmap"></a>Roadmap</h2><p>还需要填的坑：<br>[x] 把 Watch_Doge 的算法移植上去（哼虽然 botzone 上比分不高，但是和人下还是小菜一碟呢）（于 177cd06 完成）<br>[ ] （求求你）换个好看点的材质吧<br>[x] 一键掀桌！（于 13d09fa 完成）<br>[ ] <del>看看能不能用 <a href="//github.com/ocornut/imgui" target="_blank" rel="noopener">ocornut/imgui</a> 做一下 GUI 的一些控制</del>（我放弃了……实在没办法把环境配好）<br>[ ] 嵌入的网页稍微修整一下吧……</p>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;刚上大学的时候，我写了 &lt;a href=&quot;//github.com/owen8877/Othello/blob/master/report.md&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;owen8877/Othello&lt;/a&gt; 作为我编程课的大作业。最近，当我想把它展示给其他人看的时候，却遇到了编译和链接上的困难，更别说大部分人没有 linux 环境了。想到移植到 Wasm 上应该是给不错的主意，那么这篇文章就梳理一下整体的流程和遇到的困难吧！&lt;/p&gt;
-&lt;p&gt;发布请移步至 &lt;a href=&quot;//othello.xdroid.workers.dev/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这里&lt;/a&gt; 。&lt;/p&gt;
-    
-    </summary>
+    <summary type="html">&lt;p&gt;刚上大学的时候，我写了 &lt;a href=&quot;//github.com/owen8877/Othello/blob/master/report.md&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;owen8877/Othello&lt;/a&gt; 作为我编程课的大作业。最近，当我想把它展示给其他人看的时候，却遇到了编译和链接上的困难，更别说大部分人没有 linux 环境了。想到移植到 Wasm 上应该是给不错的主意，那么这篇文章就梳理一下整体的流程和遇到的困难吧！&lt;/p&gt;
+&lt;p&gt;发布请移步至 &lt;a href=&quot;//othello.xdroid.workers.dev/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这里&lt;/a&gt; 。&lt;/p&gt;</summary>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
+    
+    <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
     
     
-      <category term="opengl" scheme="https://blog.xdrd.me/tags/opengl/"/>
+    <category term="opengl" scheme="https://blog.xdrd.me/tags/opengl/"/>
     
-      <category term="wasm" scheme="https://blog.xdrd.me/tags/wasm/"/>
+    <category term="wasm" scheme="https://blog.xdrd.me/tags/wasm/"/>
     
-      <category term="webgl" scheme="https://blog.xdrd.me/tags/webgl/"/>
+    <category term="webgl" scheme="https://blog.xdrd.me/tags/webgl/"/>
     
   </entry>
   
@@ -299,21 +367,19 @@
     
     <content type="html"><![CDATA[<p>项目挂在 <a href="//github.com/owen8877/chroma-instance" target="_blank" rel="noopener">owen8877/chroma-instance</a> 上面了，是我在 UT 2020 Fall 的一门课的期末项目。</p><a id="more"></a><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>大家直接去 github 页面上看好了，反正就是抄了抄两篇论文二合为一（</p><p>倒是在画图的时候学到了一点新的东西，原来还有专门画网络结构图的 dsl <a href="//github.com/HarisIqbal88/PlotNeuralNet" target="_blank" rel="noopener">HarisIqbal88/PlotNeuralNet</a>。设计的还不错，就是小 bug 太多，需要配合补丁使用（见 <a href="//github.com/HarisIqbal88/PlotNeuralNet/issues/82" target="_blank" rel="noopener">这里</a> 或者 <a href="//github.com/owen8877/chroma-instance/blob/master/chroma_instance/source/plot_neural_net/generator.py" target="_blank" rel="noopener">这里</a>）。</p><h2 id="总结与感想"><a href="#总结与感想" class="headerlink" title="总结与感想"></a>总结与感想</h2><p>效果非常一般，基本就是瞎上色（</p><p>可能是数据量太小了，也就在 5k 的图片上跑了 5 个 epoch，能学出什么呢（</p><p>还有就是 VGG 拓展出来的 encoder-decoder 架构感觉不太靠谱……也许换 U-net 会好一些。</p><p>本来还想部署到 heroku 上的，一看内存……告辞……</p><h2 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h2><p><del>哦我亲爱的读者啊，那需要吐槽的可真是太多了呢</del></p><ol><li>Keras 对于我来说已经是魔法般的存在了，想要手写一个组件嵌到 keras 里简直难度正无穷。<ul><li>Keras 将很多 tensorflow 中的操作进行了包装（应该是为了保证不同的后端都能有相同的 interface），但这也导致了有很多绕来绕去的 internal call。</li><li>如果想要自己写一个新的 Model，不仅需要 override <code>call</code> 函数，而且还要处理好<ul><li><code>get_config(self)</code></li><li><code>from_config(cls, config)</code></li><li><code>compute_output_shape(self, input_shape)</code><br>等等一大堆问题，才能保证 keras 正常存读自定义的模型</li></ul></li><li>最麻烦的是 keras 有时候会自己计算 tensor 的大小，出现 <code>_keras_shape</code> 这样的玩意儿，但很多时候还是错的</li><li>所以结论是看似 Layers API 是最吼的，<strong>但是</strong> Lambda 层里面可能会遇到 <code>tf</code> 这种符号在 load 的时候没定义的问题……结果我现在也不知道该怎么解决，只好调用 <code>set_weights()</code> 绕过去了。</li></ul></li><li>放大不仅可以用 <code>UpSampling2D</code>，还可以考虑一下 <code>Conv2DTranspose</code>。但是后者不仅维数不能自动推导（似乎是 keras 的 bug，import <code>tensorflow.python.keras</code> 可解决），而且还面临着训练困难的问题（</li><li>写了几天之后才发现 pipeline 只能接受定长的 tensor （嗯，我可能表达的不是特别清楚，就是说像物体分割这种可能导致变长输入/输出的问题，其实只能设一个最大上限，然后把数据一股脑堆进去）</li><li>Commit history 真的是一把辛酸泪，到后面真的是语无伦次了——Colab 体验还极差，改代码需要经过本地修改-&gt;推到 github-&gt;在 colab 上拉下来-&gt;重新初始化 colab 内存-&gt;运行的步骤，硬生生把 python 写出了 C++ 的感觉。</li><li>到现在我还是没搞清楚 GAN 的两个 counterpart 是怎么设置的，为什么 loss function 和 trainable 属性要这么写[捂脸]Keras 能不能出个官方教程啊……</li><li>Colab 用到后面配额暂时用完了……只能开 pro 凑合一下了（有点小贵哦</li></ol>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;项目挂在 &lt;a href=&quot;//github.com/owen8877/chroma-instance&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;owen8877/chroma-instance&lt;/a&gt; 上面了，是我在 UT 2020 Fall 的一门课的期末项目。&lt;/p&gt;
-    
-    </summary>
+    <summary type="html">&lt;p&gt;项目挂在 &lt;a href=&quot;//github.com/owen8877/chroma-instance&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;owen8877/chroma-instance&lt;/a&gt; 上面了，是我在 UT 2020 Fall 的一门课的期末项目。&lt;/p&gt;</summary>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
+    
+    <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
     
     
-      <category term="deep learning" scheme="https://blog.xdrd.me/tags/deep-learning/"/>
+    <category term="deep learning" scheme="https://blog.xdrd.me/tags/deep-learning/"/>
     
-      <category term="keras" scheme="https://blog.xdrd.me/tags/keras/"/>
+    <category term="keras" scheme="https://blog.xdrd.me/tags/keras/"/>
     
-      <category term="tensorflow" scheme="https://blog.xdrd.me/tags/tensorflow/"/>
+    <category term="tensorflow" scheme="https://blog.xdrd.me/tags/tensorflow/"/>
     
   </entry>
   
@@ -326,24 +392,22 @@
     
     <content type="html"><![CDATA[<p>今早在朋友圈看到一张梗图：</p><p><img src="/images/2020-11-linear-algebra-made-easy/meme.jpg" alt="你学废了吗？"></p><p>然后转发到群里，出现了如下的沙雕对话：</p><blockquote><p>谁暴搜一下10^8个<br>看看还有啥<br><em>草</em><br><em>哦好多</em><br><em>我怎么贴比较好</em></p></blockquote><a id="more"></a><p>写了个简单的 <a href="//repl.it/@owen8877/TastyWrithingRedundancy" target="_blank" rel="noopener">代码</a> 跑了一下发现 <a href="https://gist.github.com/owen8877/1b9eb3c8a556e40342f7ba189de200e8" target="_blank" rel="noopener">解</a> 还挺多。然后群友看了一眼，讨论继续：</p><blockquote><p>| 9  3 | * | 9  3 | = | 99  33 |<br>| 6  2 | * | 6  2 | = | 66  22 |<br>这组真tm有意思<br><em>草还真是对的</em><br>我想想<br>搜出来100组<br>至少有4合1<br>ab，cd等价于ac，bd等价于dc，ba等价于db，ca<br><em>呃我想想</em><br><em>什么意思呢</em><br>就是你把矩阵转置一下和转180度是trivial的变换<br>我再看看细节<br><em>这不是很显然吧</em></p></blockquote><p>对，其实 180 旋转确实可以 trivial 地导出另一组解，但是转置并不行。因为如果 <code>X*Y=Z</code> 而且 <code>X^T*Y^T=Z^T</code> 的话，其实 <code>X</code> 和 <code>Y</code> 就可交换了。不过熟悉线性代数的朋友们应该知道，可交换等价于可被同时上三角化，所以其实我们可以推出两组恒等式：</p><p>假设 <code>X=(a, b; c, d)</code> 且 <code>Y=(e, f; g, h)</code>，我们有</p><ol><li><code>bg=cf</code> （感谢 Bai 同学的证明）</li><li><code>(a-d)/c=(e-h)/g</code> （这个不是太好证明）</li></ol><p>最后贴几组比较有意思的结果吧233</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 2  3 |   | 2  3 |   | 22  33 |</span><br><span class="line">|      | * |      | &#x3D; |        |</span><br><span class="line">| 6  9 |   | 6  9 |   | 66  99 |</span><br><span class="line"></span><br><span class="line">| 10  13 |   | 10  13 |   | 1010  1313 |</span><br><span class="line">|        | * |        | &#x3D; |            |</span><br><span class="line">| 70  91 |   | 70  91 |   | 7070  9191 |</span><br><span class="line"></span><br><span class="line">| 20  18 |   | 20  18 |   | 2020  1818 |</span><br><span class="line">|        | * |        | &#x3D; |            |</span><br><span class="line">| 90  81 |   | 90  81 |   | 9090  8181 |</span><br></pre></td></tr></table></figure><p>（就算是这样自己平方的解也有几十组……）</p>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;今早在朋友圈看到一张梗图：&lt;/p&gt;
+    <summary type="html">&lt;p&gt;今早在朋友圈看到一张梗图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/2020-11-linear-algebra-made-easy/meme.jpg&quot; alt=&quot;你学废了吗？&quot;&gt;&lt;/p&gt;
 &lt;p&gt;然后转发到群里，出现了如下的沙雕对话：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;谁暴搜一下10^8个&lt;br&gt;看看还有啥&lt;br&gt;&lt;em&gt;草&lt;/em&gt;&lt;br&gt;&lt;em&gt;哦好多&lt;/em&gt;&lt;br&gt;&lt;em&gt;我怎么贴比较好&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
+&lt;/blockquote&gt;</summary>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
+    
+    <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
     
     
-      <category term="matrix product" scheme="https://blog.xdrd.me/tags/matrix-product/"/>
+    <category term="matrix product" scheme="https://blog.xdrd.me/tags/matrix-product/"/>
     
-      <category term="linear algebra" scheme="https://blog.xdrd.me/tags/linear-algebra/"/>
+    <category term="linear algebra" scheme="https://blog.xdrd.me/tags/linear-algebra/"/>
     
   </entry>
   
@@ -356,20 +420,18 @@
     
     <content type="html"><![CDATA[<p>其实在上一篇 <a href="/2020/05/calendar-as-diary-roadmap/" title="「日历记事本」规划">「日历记事本」规划</a> 之后不久我就把插件陆陆续续写得差不多了，但是由于懒癌发作一直没有更新博客 QAQ ……</p><p>那么目前完成的模组有三个流媒体和一个 coding 时间跟踪工具。</p><a id="more"></a><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="#bilibili">Bilibili</a></li><li><a href="#netflix">Netflix</a></li><li><a href="#wakatime">Wakatime</a></li><li><a href="#youtube">Youtube</a></li></ul><h2 id="bilibili">Bilibili</h2><p>B 站的数据是从他们家的历史记录页面抓取的，从审查元素页面可以看到有如下的请求：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://api.bilibili.com/x/v2/history?pn=1&amp;ps=100&amp;jsonp=jsonp'</span></span><br></pre></td></tr></table></figure><p>那么返回的数据是一个 json 对象，内含一堆 <del>看不懂</del> 的条目……里面比较重要的其实也就下面这些：</p><ul><li>aid: 就是以前的 av 号</li><li>bvid: B 站后来又搞了个 bv 号，想了想那就拿这个当主键吧</li><li>duration: 这个应该是总长吧</li><li>page: 包含观看分 p 号和观看时间等</li><li>progress: 观看的长度；-1 表示的是看完了</li><li>redirect_link: 链接，其实可以用 av/bv 号生成</li><li>title: 标题</li><li>view_at: 观看时间，是 Unix 时间戳格式的</li></ul><p>这边比较复杂的一个问题是有些视频是分 p 的，所以需要考虑到可能看完第 1p 之后看了第 2p 导致有两个条目这样的情况。还有的问题就是 progress 可能是 -1 所以这个时候要用 duration 替代……</p><p><del>不过总的来说 B 站的数据真的是很良心了（全靠同行衬托），下面的两个流媒体网站才是真正的灾难（</del></p><h2 id="netflix">Netflix</h2><p>Netflix 只有精确到天且看完节目的记录，所以只能解析 html 了……</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://www.netflix.com/viewingactivity'</span></span><br></pre></td></tr></table></figure><p>虽然不是 json 格式，所幸数据都在一个 table 里面，还算比较规整，只要拿 scraper 稍微搞搞就可以了。其他应该也没什么坑点，日期用正则表达式 parse 一下就行（</p><h2 id="wakatime">Wakatime</h2><p>Wakatime 做的还不错，至少有 <a href="//wakatime.com/developers/" target="_blank" rel="noopener">api</a> 和对应的文档（虽然写得不怎么样……）</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://wakatime.com/api/v1/users/current/durations?date=YYYY-MM-DD'</span></span><br><span class="line">curl <span class="string">'https://wakatime.com/api/v1/users/current/summaries?start=YYYY-MM-DD&amp;end=YYYY-MM-DD&amp;cache=false'</span></span><br></pre></td></tr></table></figure><p>有个小问题（其实每个插件都会遇到）是，比如我正在看视频或者进行某个项目，那么如果这个活动持续时间超过了服务器抓取历史记录的间隔市场的话，就会抓取到两份历史记录——但是它们指向的是同一个活动。因此一个<a href="//github.com/owen8877/calendar-as-diary/issues/1" target="_blank" rel="noopener">修复的小技巧</a>就是过滤掉结束时间太近的那些活动；这样会引入一丢丢延迟，但是总体上来说应该没问题。</p><h2 id="youtube">Youtube</h2><p><del>谷歌简直是业界毒瘤x</del></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://myactivity.google.com/activitycontrols/youtube?view=item'</span></span><br></pre></td></tr></table></figure><p>Youtube 的历史记录要难搞很多，因为首先它可能会受到时区影响（因为精确到了分钟），其次它“智能”地将同一天观看的内容整合在一起，中间用另一个 div 元素分开，所以还要动点脑筋才能把日期读出来……像观看进度这种东西都是靠缩略图上的进度条读出来的，实在受不了这种奇技淫巧x</p><p>目前为止<a href="//github.com/owen8877/calendar-as-diary/issues/3" target="_blank" rel="noopener">时区的问题</a>还不太能搞定……还是等有时间再修复吧x</p>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;其实在上一篇 &lt;a href=&quot;/2020/05/calendar-as-diary-roadmap/&quot; title=&quot;「日历记事本」规划&quot;&gt;「日历记事本」规划&lt;/a&gt; 之后不久我就把插件陆陆续续写得差不多了，但是由于懒癌发作一直没有更新博客 QAQ ……&lt;/p&gt;
-&lt;p&gt;那么目前完成的模组有三个流媒体和一个 coding 时间跟踪工具。&lt;/p&gt;
-    
-    </summary>
+    <summary type="html">&lt;p&gt;其实在上一篇 &lt;a href=&quot;/2020/05/calendar-as-diary-roadmap/&quot; title=&quot;「日历记事本」规划&quot;&gt;「日历记事本」规划&lt;/a&gt; 之后不久我就把插件陆陆续续写得差不多了，但是由于懒癌发作一直没有更新博客 QAQ ……&lt;/p&gt;
+&lt;p&gt;那么目前完成的模组有三个流媒体和一个 coding 时间跟踪工具。&lt;/p&gt;</summary>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
+    
+    <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
     
     
-      <category term="calendar-as-diary" scheme="https://blog.xdrd.me/tags/calendar-as-diary/"/>
+    <category term="calendar-as-diary" scheme="https://blog.xdrd.me/tags/calendar-as-diary/"/>
     
-      <category term="rust" scheme="https://blog.xdrd.me/tags/rust/"/>
+    <category term="rust" scheme="https://blog.xdrd.me/tags/rust/"/>
     
   </entry>
   
@@ -382,9 +444,8 @@
     
     <content type="html"><![CDATA[<p>本文是 2020 年暑假学习 rust 计划的一部分。目前项目存放在 <a href="//github.com/owen8877/calendar-as-diary" target="_blank" rel="noopener">owen8877/calendar-as-diary</a>，欢迎围观<del>和吐槽</del>。</p><h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>逐渐发现 Google Calendar 是个好东西（其实所有日历软件都是个好东西），用来计划日常生活、提醒工作安排真是非常方便，在计划之余还能形成一本自然的日记本。于是我就想，如果能 <strong>自动</strong> 记录一些生活琐事（一些懒得规划的事情），那就再好不过了——比如看视频、锻炼身体，因为在完成之余还要誊到日历上真的是非常麻烦。</p><p>市面上有一些比较成熟的自动化软件/服务，比如 ifttt 、 zapier 和被苹果收购的 workflow ，它们的特点是功能广泛，要完成和日历的对接也是非常容易。但是缺点也比较明显，如果是像上文提出的那种特殊需求，有时候就有点力不从心了。因为很多站点并不开放让用户自己查询自己的历史数据，因此根本无法从流程自动化的服务中提取这些信息——需要说明的是这一点和 GDPR 并不矛盾，因为后者只要把所有东西塞到一个 json 再打个 tarball 扔给用户就完事了。</p><p>目前来看，可以借由已有服务完成的有：</p><ul><li><a href="//ifttt.com/applets/416458p-add-strava-runs-and-rides-to-google-calendar" target="_blank" rel="noopener">将 Strava 上跑步和骑车记录同步到 GC</a></li><li>将 Zapier 上的天气预报信息同步到 GC</li></ul><p>（呃……还真是少的可怜呢）因此自己造轮子就势在必行啦！</p><a id="more"></a><h2 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h2><h3 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h3><ul><li>流视频类：netflix, bilibili, youtube</li><li>游戏类：steam, uplay, epic games</li><li>写<del>摸鱼</del>代码类：wakatime</li></ul><h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><ul><li>以 rust 为主要使用的语言</li><li>webserver 选用 <a href="//github.com/SergioBenitez/Rocket" target="_blank" rel="noopener">SergioBenitez/Rocket</a></li><li>request 库 <a href="//github.com/seanmonstar/reqwest" target="_blank" rel="noopener">seanmonstar/reqwest</a></li><li>json 解析用 <a href="//github.com/serde-rs/json" target="_blank" rel="noopener">serde-rs/json</a></li><li>xml 解析用 <a href="//github.com/tafia/quick-xml" target="_blank" rel="noopener">tafia/quick-xml</a></li></ul><h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>目前在看 <a href="https://doc.rust-lang.org/stable/book/" target="_blank" rel="noopener">官方教程</a>（还挺有意思）。IDE 选用 CLion 加 rust 插件支持（噫已经离不开 jetbrains 全家桶了吗）。安装过程查看了 <a href="https://wiki.archlinux.org/index.php/Rust" target="_blank" rel="noopener">archlinux 关于 rust 的文档</a>，用 pacman 安装了 rustup 然后更新了 toolchains 。</p><h2 id="纯净的吐槽"><a href="#纯净的吐槽" class="headerlink" title="纯净的吐槽"></a>纯净的吐槽</h2><p>有模式匹配哎（有 haskell 内味了……）相应地 enum 类型也变得很强大了</p><p>ownership 这个挺有意思……之后再慢慢琢磨到底是怎么回事……（看这个 ownership transfer 我已经可以预见到之后为了使编译通过要头昏脑胀了x</p><p><code>&quot;Hello World!&quot;.into()</code> 是个什么鬼玩意儿（看了一下代码……呃好吧，这个设计还可以吧）结果因为不能编译被迫使用 <code>&quot;Hello World!&quot;.to_string()</code></p><p>rust 这套 reference borrowing 也太激进了吧，non-const 方法（C++ 用语，rust 的话应该叫 <code>&amp;mut self</code>）也算 mutable reference 吗（想想确实没毛病</p>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;本文是 2020 年暑假学习 rust 计划的一部分。目前项目存放在 &lt;a href=&quot;//github.com/owen8877/calendar-as-diary&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;owen8877/calendar-as-diary&lt;/a&gt;，欢迎围观&lt;del&gt;和吐槽&lt;/del&gt;。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;本文是 2020 年暑假学习 rust 计划的一部分。目前项目存放在 &lt;a href=&quot;//github.com/owen8877/calendar-as-diary&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;owen8877/calendar-as-diary&lt;/a&gt;，欢迎围观&lt;del&gt;和吐槽&lt;/del&gt;。&lt;/p&gt;
 &lt;h2 id=&quot;动机&quot;&gt;&lt;a href=&quot;#动机&quot; class=&quot;headerlink&quot; title=&quot;动机&quot;&gt;&lt;/a&gt;动机&lt;/h2&gt;&lt;p&gt;逐渐发现 Google Calendar 是个好东西（其实所有日历软件都是个好东西），用来计划日常生活、提醒工作安排真是非常方便，在计划之余还能形成一本自然的日记本。于是我就想，如果能 &lt;strong&gt;自动&lt;/strong&gt; 记录一些生活琐事（一些懒得规划的事情），那就再好不过了——比如看视频、锻炼身体，因为在完成之余还要誊到日历上真的是非常麻烦。&lt;/p&gt;
 &lt;p&gt;市面上有一些比较成熟的自动化软件/服务，比如 ifttt 、 zapier 和被苹果收购的 workflow ，它们的特点是功能广泛，要完成和日历的对接也是非常容易。但是缺点也比较明显，如果是像上文提出的那种特殊需求，有时候就有点力不从心了。因为很多站点并不开放让用户自己查询自己的历史数据，因此根本无法从流程自动化的服务中提取这些信息——需要说明的是这一点和 GDPR 并不矛盾，因为后者只要把所有东西塞到一个 json 再打个 tarball 扔给用户就完事了。&lt;/p&gt;
 &lt;p&gt;目前来看，可以借由已有服务完成的有：&lt;/p&gt;
@@ -392,17 +453,16 @@
 &lt;li&gt;&lt;a href=&quot;//ifttt.com/applets/416458p-add-strava-runs-and-rides-to-google-calendar&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;将 Strava 上跑步和骑车记录同步到 GC&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;将 Zapier 上的天气预报信息同步到 GC&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;（呃……还真是少的可怜呢）因此自己造轮子就势在必行啦！&lt;/p&gt;
-    
-    </summary>
+&lt;p&gt;（呃……还真是少的可怜呢）因此自己造轮子就势在必行啦！&lt;/p&gt;</summary>
     
     
-      <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
+    
+    <category term="gizmo" scheme="https://blog.xdrd.me/categories/gizmo/"/>
     
     
-      <category term="calendar-as-diary" scheme="https://blog.xdrd.me/tags/calendar-as-diary/"/>
+    <category term="calendar-as-diary" scheme="https://blog.xdrd.me/tags/calendar-as-diary/"/>
     
-      <category term="rust" scheme="https://blog.xdrd.me/tags/rust/"/>
+    <category term="rust" scheme="https://blog.xdrd.me/tags/rust/"/>
     
   </entry>
   
@@ -415,24 +475,22 @@
     
     <content type="html"><![CDATA[<p>真是活久见，第一次看到除了影视版权原因以外被反向墙的案例（</p><p>今早准备更新博客的时候，发现自己的站点打不开了（什么？在国外 github 还能被墙？）看了一眼控制台，发现大概是一个字体的 css 加载不出来了。定睛一看：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fonts.lug.ustc.edu.cn&#x2F;css?family&#x3D;Source+Code+Pro</span><br></pre></td></tr></table></figure><p>这就，很尴尬，因为 <a href="https://lug.ustc.edu.cn/wiki/lug/services/googlefonts" target="_blank" rel="noopener">中科大的站点</a> 还是好好的——当然不能排除仅仅是由于他们的 CDN 服务器挂了的可能性，但是结合近日国内某重要会议事件，大概率是这种冷门访问被丢包了（</p><p>查了一下似乎很难有 fallback 的方案，而且现有的方案都是已知加载不出来之后的行动——但是这里是直接被丢包，Firefox 还在戆戆地等，这就很麻烦了。</p><p>所以最后怎么办呢？只好先换成 googleapis ，毕竟还有 cloudflare 撑腰，国内的小伙伴应该不至于完全打不开（</p>]]></content>
     
-    <summary type="html">
     
       
       
-        &lt;p&gt;真是活久见，第一次看到除了影视版权原因以外被反向墙的案例（&lt;/p&gt;
+    <summary type="html">&lt;p&gt;真是活久见，第一次看到除了影视版权原因以外被反向墙的案例（&lt;/p&gt;
 &lt;p&gt;今早准备更新博客的时候，发现自己的站点打不开了（什么？在国外 github 还能被墙？）看了一眼控制台，发现大概是一个字体的 css 加载不出来了。定睛一看：&lt;/p&gt;
-&lt;figure class=&quot;h
+&lt;figure class=&quot;h</summary>
       
     
-    </summary>
     
     
-      <category term="site" scheme="https://blog.xdrd.me/categories/site/"/>
+    <category term="site" scheme="https://blog.xdrd.me/categories/site/"/>
     
     
-      <category term="ustc" scheme="https://blog.xdrd.me/tags/ustc/"/>
+    <category term="ustc" scheme="https://blog.xdrd.me/tags/ustc/"/>
     
-      <category term="cdn" scheme="https://blog.xdrd.me/tags/cdn/"/>
+    <category term="cdn" scheme="https://blog.xdrd.me/tags/cdn/"/>
     
   </entry>
   
@@ -445,20 +503,18 @@
     
     <content type="html"><![CDATA[<p>继上次坚定不移的 <a href="/2020/03/amd-yes/" title="AMD Yes!">AMD Yes!</a> 之后，玩游戏之余的我发现了一个大问题……那就是我要拿手上的显卡完成 Deep Learning 课程的作业……</p><p>查了一下资料，似乎 AMD 官方正在推行一个叫做 <a href="https://rocmdocs.amd.com/en/latest/index.html" target="_blank" rel="noopener">ROCm</a> 的项目。啥意思，什么原理？我也不懂，总之赶紧完成作业就好啦（flag</p><a id="more"></a><p>尝试了一下 <code>yay rocm-dkms</code> ，然后看了一会儿 archlinux 的文档，然后等了一下午编译 llvm ……呃跑不起来（就很尴尬了</p><p>最终！还是划了一小块分区安装官方支持的 Ubuntu ，直接 apt 下个编译好的包就可以了ww虽然还是掉进了一堆坑里……总之想尝试的朋友们建议出门右转老老实实买老黄家的卡——毕竟连 tensorflow 都要安装一个额外的包，而像 pytorch 就根本没有 official build （摔</p><p>（于是过了一个多月我终于把报告口胡完了……享受一下最后一个暑假……</p><hr><p>哦对了，似乎 rocm 还有不少 bug ，因为拿 cpu 和 gpu train 一个 rnn 的结果是不一样的……很明显 gpu train 出来的 loss 一直不下降（一通操作猛如虎，一看 loss 根本没变）。倒是 cnn 那块可能比较稳定（用的人多了 bug 修好了吧）。</p>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;继上次坚定不移的 &lt;a href=&quot;/2020/03/amd-yes/&quot; title=&quot;AMD Yes!&quot;&gt;AMD Yes!&lt;/a&gt; 之后，玩游戏之余的我发现了一个大问题……那就是我要拿手上的显卡完成 Deep Learning 课程的作业……&lt;/p&gt;
-&lt;p&gt;查了一下资料，似乎 AMD 官方正在推行一个叫做 &lt;a href=&quot;https://rocmdocs.amd.com/en/latest/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ROCm&lt;/a&gt; 的项目。啥意思，什么原理？我也不懂，总之赶紧完成作业就好啦（flag&lt;/p&gt;
-    
-    </summary>
+    <summary type="html">&lt;p&gt;继上次坚定不移的 &lt;a href=&quot;/2020/03/amd-yes/&quot; title=&quot;AMD Yes!&quot;&gt;AMD Yes!&lt;/a&gt; 之后，玩游戏之余的我发现了一个大问题……那就是我要拿手上的显卡完成 Deep Learning 课程的作业……&lt;/p&gt;
+&lt;p&gt;查了一下资料，似乎 AMD 官方正在推行一个叫做 &lt;a href=&quot;https://rocmdocs.amd.com/en/latest/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ROCm&lt;/a&gt; 的项目。啥意思，什么原理？我也不懂，总之赶紧完成作业就好啦（flag&lt;/p&gt;</summary>
     
     
-      <category term="Linux" scheme="https://blog.xdrd.me/categories/Linux/"/>
+    
+    <category term="Linux" scheme="https://blog.xdrd.me/categories/Linux/"/>
     
     
-      <category term="amd graphics card" scheme="https://blog.xdrd.me/tags/amd-graphics-card/"/>
+    <category term="amd graphics card" scheme="https://blog.xdrd.me/tags/amd-graphics-card/"/>
     
-      <category term="rocm" scheme="https://blog.xdrd.me/tags/rocm/"/>
+    <category term="rocm" scheme="https://blog.xdrd.me/tags/rocm/"/>
     
   </entry>
   
@@ -471,21 +527,19 @@
     
     <content type="html"><![CDATA[<p>补一下上次 <a href="/2020/03/amd-yes/" title="安装了新电脑">安装了新电脑</a> 的一些后续步骤吧。</p><p>由于这次没有附赠的授权了（而且贫穷 UT 没买批量授权……），只能偷偷摸摸用 KMS 激活了（（（</p><p>首先从 itellyoumsdn 的 ed2k 链接下载镜像（居然花了整整两天才下载完），然后刻到 U 盘上（现在 rufus 都更新这么多了），再插到新电脑上设好引导安装就可以了。</p><a id="more"></a><p>谁能想到第一个安装的软件居然是 uplay，steam 和 epic games 呢！</p><p>然后把游戏镜像拷过去……由于没有网线而且小区网络 AP 隔离，所以只能用移动硬盘了（才发现 Hitman 2 有 200G 多……天呐）</p><p><del>全境封锁，启动！进入任务！一通操作居然挂了，游戏退出！</del> 总之画质和流畅度都没有问题，温度也还正常。</p><hr><p>然后是 Windows Terminal + chocolatey 组合，全面向 Linux 看齐（</p><p>大概用包管理器安装了那些呢？</p><blockquote><p>7zip, cpuz, gpuz, hwi, dismplusplus, weasel, telegram, rufus, vlc …</p></blockquote><p>哦对了，还可以 <a href="https://superuser.com/questions/7327/how-to-add-a-custom-search-engine-to-firefox" target="_blank" rel="noopener">通过添加书签的方式自定义搜索引擎</a>（学习了</p><hr><h2 id="杂"><a href="#杂" class="headerlink" title="杂"></a>杂</h2><p>然后是用 dism++ 进行简单调教（咦，用户最终许可协议？有这回事情吗？），包括关闭小娜</p><p>好在 UT 买了 Office 365 的授权，但是给的安装包默认全部安装（呃……）。查了一下可以通过 <a href="https://docs.microsoft.com/zh-cn/deployoffice/configuration-options-for-the-office-2016-deployment-tool?redirectedfrom=MSDN#excludeapp-element" target="_blank" rel="noopener">xml 配置文件</a> 的方式 <a href="https://roov.org/2015/12/office-365-diy/" target="_blank" rel="noopener">定义安装行为</a>。</p><p>还有是小狼毫如果通过 chocolatey 安装的话似乎有点问题，好像是缺了一个 default.yaml 。另一个无关问题见 <a href="https://github.com/rime/weasel/issues/228" target="_blank" rel="noopener">这里</a>。</p>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;补一下上次 &lt;a href=&quot;/2020/03/amd-yes/&quot; title=&quot;安装了新电脑&quot;&gt;安装了新电脑&lt;/a&gt; 的一些后续步骤吧。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;补一下上次 &lt;a href=&quot;/2020/03/amd-yes/&quot; title=&quot;安装了新电脑&quot;&gt;安装了新电脑&lt;/a&gt; 的一些后续步骤吧。&lt;/p&gt;
 &lt;p&gt;由于这次没有附赠的授权了（而且贫穷 UT 没买批量授权……），只能偷偷摸摸用 KMS 激活了（（（&lt;/p&gt;
-&lt;p&gt;首先从 itellyoumsdn 的 ed2k 链接下载镜像（居然花了整整两天才下载完），然后刻到 U 盘上（现在 rufus 都更新这么多了），再插到新电脑上设好引导安装就可以了。&lt;/p&gt;
-    
-    </summary>
+&lt;p&gt;首先从 itellyoumsdn 的 ed2k 链接下载镜像（居然花了整整两天才下载完），然后刻到 U 盘上（现在 rufus 都更新这么多了），再插到新电脑上设好引导安装就可以了。&lt;/p&gt;</summary>
     
     
-      <category term="Windows" scheme="https://blog.xdrd.me/categories/Windows/"/>
+    
+    <category term="Windows" scheme="https://blog.xdrd.me/categories/Windows/"/>
     
     
-      <category term="windows" scheme="https://blog.xdrd.me/tags/windows/"/>
+    <category term="windows" scheme="https://blog.xdrd.me/tags/windows/"/>
     
-      <category term="chocolatey" scheme="https://blog.xdrd.me/tags/chocolatey/"/>
+    <category term="chocolatey" scheme="https://blog.xdrd.me/tags/chocolatey/"/>
     
   </entry>
   
@@ -498,80 +552,20 @@
     
     <content type="html"><![CDATA[<p>自从 <a href="/2020/03/ssd-perished/" title="那块 SSD 在疫情中暴毙了">那块 SSD 在疫情中暴毙了</a> 之后，我摸出了之前换下的硬盘装了上去，还算能用。但是与此同时一直积累着的想要换电脑的冲动抑制不住了（神船：你不<a href="/2019/07/laptop-case/" title="爱我">爱我</a>了吗x），就盘算着趁春假这段时间攥一台。</p><p>在网上闲逛逛正好看到 Ryzen 5 打折力度还不错，于是就不如以 AMD Yes 的口号出发吧（滑稽</p><a id="more"></a><h2 id="攒机"><a href="#攒机" class="headerlink" title="攒机"></a>攒机</h2><p>首先确定中心思想：Ryzen 5 2600 + B450 （因为穷，但是又想要性能</p><p>结果过了几分钟查到 microcenter 卖 2600X 打对折。那肯定香啊！而且配套主板还能立减 20 刀，那赶紧买啊！</p><p>呃……店内自提……？最近的网点是在 Houston ……？</p><p>幸好有（并不）熟的人那两天在 Houston 马上要回来，于是就托他带回来了。</p><hr><p>显卡由于买不起全新的，故转战 ebay 。由于矿卡鱼龙混杂，水太深，干脆就当不知道有这回事（鸵鸟态度x</p><p>结果下单后过了几分钟又发现带保的非公版 RX470 ，那肯定香啊（如出一辙的剧情）于是退了之前的订单重下。</p><hr><p>由于小区的网络是无线网，而且买的是<del>低端</del>主板，没有自带 wifi ，所以只能在 ebay 上网购无线网卡。</p><p>看了一圈……为啥无线网卡都这么贵……随便买一个 8265 得了……</p><hr><p>机箱和电源：新蛋有促销，虽然是 mail-in rebate ，但是我相信（flag）通过合理操作应该能搞到的！</p><p>发现两边都是铁板的机箱普遍 60 刀朝上……下面价位的全都是光污染（我吐了，但是想想成本似乎也挺合理的……</p><p>（在 Amazon 上逛逛）为啥便宜的风扇全都是 RGB ！ LED 不要钱的吗（可能还真不要，我也不知道怎么关掉x</p><hr><p>小结：所以整机的配置大概是这个样子的：</p><table><thead><tr><th>组件</th><th></th><th>价格（单位：刀）</th><th>吐槽</th></tr></thead><tbody><tr><td>CPU</td><td><a href="https://www.microcenter.com/product/505629/amd-ryzen-5-2600x-36ghz-6-core-am4-boxed-processor-with-wraith-spire-cooler" target="_blank" rel="noopener">Ryzen 2600X</a></td><td>99.99</td><td>所以 CPU 的毛利究竟有多高啊……</td></tr><tr><td>Motherboard</td><td><a href="https://www.microcenter.com/product/510207/gigabyte-b450-aorus-m-amd-am4-matx-motherboard" target="_blank" rel="noopener">Gigabyte B450 AORUS M</a></td><td>84.99-20</td><td>这里买不到迫击炮……也不是买不到，但是好贵……</td></tr><tr><td>SSD</td><td><a href="https://www.amazon.com/Samsung-970-EVO-500GB-MZ-V7E500BW/dp/B07BN4NJ2J/ref=sr_1_2" target="_blank" rel="noopener">Samsung (MZ-V7E500BW) 970 EVO 500GB</a></td><td>87.99</td><td>五年质保（新月.jpg</td></tr><tr><td>Memory</td><td><a href="https://www.microcenter.com/product/607433/crucial-ballistix-sport-lt-16gb-(2-x-8gb)-ddr4-3200-pc4-25600-cl16-dual-channel-desktop-memory-kit-bls2k8g4d32aesb---gray" target="_blank" rel="noopener">Crucial Ballistix Sport LT 2x8GB</a></td><td>68.99</td><td></td></tr><tr><td>Graphics Card</td><td><a href="https://www.ebay.com/itm/MSI-Radeon-RX-470-4GB-Graphics-Card-Processor-ARMOR-4G-OC-for-Gaming/323948065176" target="_blank" rel="noopener">MSI Radeon RX 470 4GB Armor</a></td><td>83.99+8.99</td><td>带保，香了（虽然看成色可能是返修过的</td></tr><tr><td>Power</td><td><a href="https://www.newegg.com/corsair-cx-series-cx450-450w/p/N82E16817139201" target="_blank" rel="noopener">CORSAIR CX 450 (Non-mod)</a></td><td>54.99-20</td><td>非模组的线加起来可以绕地球三圈（</td></tr><tr><td>Wireless Network</td><td><a href="https://www.ebay.com/itm/GENUINE-DELL-WIRELESS-BLUETOOTH-CARD-M-2-INTEL-8265NGW-8F3Y8/253864289929" target="_blank" rel="noopener">M.2 INTEL 8265NGW 8F3Y8</a></td><td>10.5</td><td></td></tr><tr><td></td><td><a href="https://www.ebay.com/itm/NGFF-M-2-To-PCI-E-X1-wifi-adapter-Converter-For-Intel-AX200-8260-7260-Wifi-Card/202929891708" target="_blank" rel="noopener">NGFF M.2 To PCI-E X1 Converter</a></td><td>10.44</td><td></td></tr><tr><td>Case</td><td><a href="https://www.newegg.com/black-corsair-carbide-series-spec-05-atx-mid-tower/p/N82E16811139122" target="_blank" rel="noopener">Corsair Carbide Series SPEC-05</a></td><td>59.99-15</td><td></td></tr><tr><td>Fan</td><td><a href="https://www.amazon.com/gp/product/B00066FH7O" target="_blank" rel="noopener">好像是 Antec 的什么</a></td><td>6.99</td><td></td></tr></tbody></table><p>所以整机（不含税）的话大概是五百多刀的样子……我觉得还是很香的！</p><h2 id="装机"><a href="#装机" class="headerlink" title="装机"></a>装机</h2><p>先来张全家福~</p><p><img src="/images/2020-03-amd-yes/IMG_20200321_141017_resized.jpg" alt="全家福~"></p><p>发现了一堆说明书（新月.jpg）大概流程反正还是 CPU 、内存先插到主板上，然后主板再放进机箱里……</p><p><img src="/images/2020-03-amd-yes/IMG_20200321_151657_resized.jpg" alt="主板放进去了。一开始有一个锚孔没有留意到，一直在想为什么卡不进去（新月"></p><p>先装了显卡……过了一会儿才发现 M.2 SSD 位置被压在显卡下面了（囧），只好全部反工。</p><p><img src="/images/2020-03-amd-yes/IMG_20200321_154435_resized.jpg" alt="主板自带散热片（这里没拍进去），但是用起来温度还是挺高的……"></p><p><img src="/images/2020-03-amd-yes/IMG_20200320_164931_resized.jpg" alt="无线网卡和 adapter"></p><p><img src="/images/2020-03-amd-yes/IMG_20200320_171327_resized.jpg" alt="装好的样子"></p><p><img src="/images/2020-03-amd-yes/IMG_20200321_161509_resized.jpg" alt="稍微走了一下线"></p><p><img src="/images/2020-03-amd-yes/IMG_20200321_165325_resized.jpg" alt="这根多出来的线是风扇调速器……"></p><p><img src="/images/2020-03-amd-yes/IMG_20200321_175921_resized.jpg" alt="贴上标签美滋滋w"></p><p>然后就是漫长的系统安装和迁移……</p><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>现在用了一个星期感觉还不错，打全境 2 中画质大概整机 60 度左右，温度最高的居然是 SSD ……</p><p>还没有跑数值……等有机会了更新一下……</p>]]></content>
     
-    <summary type="html">
     
-      &lt;p&gt;自从 &lt;a href=&quot;/2020/03/ssd-perished/&quot; title=&quot;那块 SSD 在疫情中暴毙了&quot;&gt;那块 SSD 在疫情中暴毙了&lt;/a&gt; 之后，我摸出了之前换下的硬盘装了上去，还算能用。但是与此同时一直积累着的想要换电脑的冲动抑制不住了（神船：你不&lt;a href=&quot;/2019/07/laptop-case/&quot; title=&quot;爱我&quot;&gt;爱我&lt;/a&gt;了吗x），就盘算着趁春假这段时间攥一台。&lt;/p&gt;
-&lt;p&gt;在网上闲逛逛正好看到 Ryzen 5 打折力度还不错，于是就不如以 AMD Yes 的口号出发吧（滑稽&lt;/p&gt;
-    
-    </summary>
+    <summary type="html">&lt;p&gt;自从 &lt;a href=&quot;/2020/03/ssd-perished/&quot; title=&quot;那块 SSD 在疫情中暴毙了&quot;&gt;那块 SSD 在疫情中暴毙了&lt;/a&gt; 之后，我摸出了之前换下的硬盘装了上去，还算能用。但是与此同时一直积累着的想要换电脑的冲动抑制不住了（神船：你不&lt;a href=&quot;/2019/07/laptop-case/&quot; title=&quot;爱我&quot;&gt;爱我&lt;/a&gt;了吗x），就盘算着趁春假这段时间攥一台。&lt;/p&gt;
+&lt;p&gt;在网上闲逛逛正好看到 Ryzen 5 打折力度还不错，于是就不如以 AMD Yes 的口号出发吧（滑稽&lt;/p&gt;</summary>
     
     
-      <category term="desktop" scheme="https://blog.xdrd.me/categories/desktop/"/>
+    
+    <category term="desktop" scheme="https://blog.xdrd.me/categories/desktop/"/>
     
     
-      <category term="amd" scheme="https://blog.xdrd.me/tags/amd/"/>
+    <category term="amd" scheme="https://blog.xdrd.me/tags/amd/"/>
     
-      <category term="2600X" scheme="https://blog.xdrd.me/tags/2600X/"/>
+    <category term="2600X" scheme="https://blog.xdrd.me/tags/2600X/"/>
     
-      <category term="desktop" scheme="https://blog.xdrd.me/tags/desktop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>纪念在疫情中不幸暴毙的 SSD</title>
-    <link href="https://blog.xdrd.me/2020/03/ssd-perished/"/>
-    <id>https://blog.xdrd.me/2020/03/ssd-perished/</id>
-    <published>2020-03-29T15:34:58.000Z</published>
-    <updated>2020-03-29T15:51:12.392Z</updated>
-    
-    <content type="html"><![CDATA[<p>这篇文章本应当是两周前写的，可是一放春假就开始拖延症，加上其他的一些压力和逃避因素就迟迟没有动笔……我本人也不是很喜欢在博客上写这种无病呻吟的文字（x，但是那天触动还算是挺大的（不然我也不会现在想起来去补</p><p>简单来说呢，就是吃个晚饭的功夫，回到桌前发现电脑重启到 bios 界面了……仔细一看说是没有启动介质，因为之前也遇到过这种情况，想着可能是什么引导器的 bug ，就随手重启了一下。结果重启之后直接卡在 bios logo 那里了（呆）。</p><p>一开始想莫非不是内存挂了（这就比较麻烦了）。把笔记本壳子拆下来之后换了内存插槽的位置，还是没什么卵用（因为之前几天帮人修过开机问题，当时就是内存没插紧，所以思路一直卡在这里）。后来不知怎么开始怀疑是不是硬盘的问题，把 SSD 拆下来开机发现果然可以进 bios 设置了（也就是说自检过了……），那么问题基本上就是 SSD 挂了或者是 nvme 插槽坏了。问同学借了一个 nvme 插槽（这也能借的吗x），看了一下 <code>/dev</code> ，嗯……凉了（哭晕了）。</p><p>既然硬盘已经自挂东南枝了，那只好处理后事了……首先是考虑数据丢失的程度。幸好这块 SSD 上存放的是 Windows 10 和 Arch Linux 的两个系统分区和一些杂七杂八的 <code>/tmp</code> 什么的，所以没有损失下载不到的东西（x 这块 SSD 给我扔冰箱里冻着了，希望有朝一日拿出来还能用+上面零碎的数据还能拷出来（x</p><p>仔细想了一下数据没丢完全是运气好，平时程序放 SSD 数据放 HDD 上，虽然原因仅仅是空间不太够……但是确实给我敲响了数据备份的警钟。（有钱了组 RAID 学习一下……</p><p>P.S. 这块 SSD 是大葱出给我的，原本是笔记本内置的，所以也不知道有没有保修这一说。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;这篇文章本应当是两周前写的，可是一放春假就开始拖延症，加上其他的一些压力和逃避因素就迟迟没有动笔……我本人也不是很喜欢在博客上写这种无病呻吟的文字（x，但是那天触动还算是挺大的（不然我也不会现在想起来去补&lt;/p&gt;
-&lt;p&gt;简单来说呢，就是吃个晚饭的功夫，回到桌前发现电脑重启到
-      
-    
-    </summary>
-    
-    
-      <category term="nagging" scheme="https://blog.xdrd.me/categories/nagging/"/>
-    
-    
-      <category term="ssd" scheme="https://blog.xdrd.me/tags/ssd/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mi A2 Lite</title>
-    <link href="https://blog.xdrd.me/2019/12/mi-a2-lite-daisy/"/>
-    <id>https://blog.xdrd.me/2019/12/mi-a2-lite-daisy/</id>
-    <published>2019-12-18T21:34:06.000Z</published>
-    <updated>2020-03-29T15:15:57.398Z</updated>
-    
-    <content type="html"><![CDATA[<p><del>每月流水帐任务 1/1</del></p><p>继上次 <a href="/2019/10/repairing-bacon/" title="给 bacon 换屏幕续命">给 bacon 换屏幕续命</a> 以后，最近发现电池掉得巨快。确认绿色守护正常工作了之后，应该就是电池老化的原因了……总之该换手机了（（（</p><p>这次换的是 Mi A2 Lite（代号 <code>daisy</code>，和 Redmi 6 Pro 基本配置一致），主要是看重 android one 不锁 bootloader（小米锁 bootloader 的操作……你懂的）。</p><p>本来心动 Moto g7 power 的，因为有 5000mAh 的电池而且屏幕也比较大的，只可惜没降价——而且 Moto 的 bootloader 解锁起来也相当麻烦，xda 上给出的说法并不统一。<br>Moto 机型的另一个好处是支持 sdcard 拓展——然鹅红米系列也是支持的。daisy 的另一个优势是指南针和 LTE 支持要比 Moto Power G7 好（后者的国际版压根就没指南针和米国的 4G 频段）。<br>本来还看上 Moto Z3 Play 的，电池太小，太贵，遂弃。</p><p><a href="https://www.ebay.com/itm/Xiaomi-Mi-A2-Lite-Unlocked-32GB-3GB-RAM-DualSim-4G-LTE-Smartphone-Global-Version/173459246269?epid=22025300359&hash=item2862fa0cbd%3Am%3AmvBzAXWZP41glJOlsAFsjzg&LH_ItemCondition=1000" target="_blank" rel="noopener">下单链接</a>（购买后两天就售罄了）</p><a id="more"></a><p>Mi A2 Lite（下简称 daisy）是 Android One 系列的产品。和 bacon 比较的话，机身比较长，所以屏幕对角线更长其实并没有什么优势，去掉刘海和导航键区域，实际展示的内容其实不及 bacon （有种 16:9 vs 黑莓手机的感觉）。<br>厚度也略厚（想想电池还是忍一下吧……但是测了一下电池容量只有93%左右了？难道不是全新？），还有原装的保护壳手感有些难以描述……</p><hr><p>daisy 的分区方案是臭名昭著的 A/B 分区，很多人吐槽到</p><blockquote><p>Installing a custom ROM on an Android phone used to be a walk in the park. However, some newer phones, like Xiaomi Mi A2 Lite, have what’s called an A/B partition layout. This facilitates an update process on stock ROMs, however it makes it harder to install and develop custom ROMs.</p><footer><strong>tkchn</strong><cite><a href="https://github.com/tkchn/daisyinstall/blob/master/README.md" target="_blank" rel="noopener">README.md at master - tkchn/daisyinstall</a></cite></footer></blockquote><p>所以之后理所当然掉进去了（（（<br>事情是这样的：移植 lineageos 的开发者用了一种新的打包格式，要用有补丁的某个 TWRP 才能刷入。起初我不知道这个事情，就 official TWRP 上了，结果 system 清了发现刷不进去，连带着某些奇怪的分区也给清了，结果 fastboot 进不了 recovery。最后下了<a href="https://forum.xda-developers.com/mi-a2-lite/how-to/fastboot-xiaomi-mi-a2-fastboot-images-t3824871" target="_blank" rel="noopener">官方的包</a>，用 <code>flash_all.bat</code> 刷了一遍（其实之后还会回来的233）才修复好这里。</p><p>本来决定 lineageos 一生推，结果和 google play 不太兼容——play 更新安装不了，按理说 safetynet 过了应该不是 root 的问题，不知道是什么 bug。<br>后来刷了 <a href="https://forum.xda-developers.com/mi-a2-lite/development/10-superioros-xiaomi-mi-a2-lite-t3998109" target="_blank" rel="noopener">superioros</a>；9102 年都快结束了 opengapps 10 还没出 stable……好在我正好赶上了 <a href="https://github.com/opengapps/opengapps/pull/773#issuecomment-557702216" target="_blank" rel="noopener">beta 发布</a>，总之能凑合用了233。</p><p>驱动稍微有点问题……后来刷了<a href="https://forum.xda-developers.com/mi-a2-lite/development/r1-nitrogen-kernel-mi-a2-lite-t4011019" target="_blank" rel="noopener">新的内核</a>掉电问题稍微好一点了……但是还是不如 bacon 最后调教到一晚上完全不掉电。</p><p>Pix3lify把手机屏幕关了……只好卸了，然后用 magisk props 手动开启 camera2api……</p><hr><p>昨天把微信什么一堆扔过去了，发现一个问题就是默认通讯录是备份 google 而且不能选择存到本机。后来发现一个上古解决方案 <a href="https://play.google.com/store/apps/details?id=com.fjsoft.mylocalaccount" target="_blank" rel="noopener">MyLocalAccount</a>，实在是太草了。</p><hr><p>Update (19/12/21):</p><p>感觉电池还是不太经用……搁一晚上就会慢慢漏电很不爽。</p><p>指纹传感器在吃炸鸡之后性能显著下降（（（</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;del&gt;每月流水帐任务 1/1&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;继上次 &lt;a href=&quot;/2019/10/repairing-bacon/&quot; title=&quot;给 bacon 换屏幕续命&quot;&gt;给 bacon 换屏幕续命&lt;/a&gt; 以后，最近发现电池掉得巨快。确认绿色守护正常工作了之后，应该就是电池老化的原因了……总之该换手机了（（（&lt;/p&gt;
-&lt;p&gt;这次换的是 Mi A2 Lite（代号 &lt;code&gt;daisy&lt;/code&gt;，和 Redmi 6 Pro 基本配置一致），主要是看重 android one 不锁 bootloader（小米锁 bootloader 的操作……你懂的）。&lt;/p&gt;
-&lt;p&gt;本来心动 Moto g7 power 的，因为有 5000mAh 的电池而且屏幕也比较大的，只可惜没降价——而且 Moto 的 bootloader 解锁起来也相当麻烦，xda 上给出的说法并不统一。&lt;br&gt;Moto 机型的另一个好处是支持 sdcard 拓展——然鹅红米系列也是支持的。daisy 的另一个优势是指南针和 LTE 支持要比 Moto Power G7 好（后者的国际版压根就没指南针和米国的 4G 频段）。&lt;br&gt;本来还看上 Moto Z3 Play 的，电池太小，太贵，遂弃。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.ebay.com/itm/Xiaomi-Mi-A2-Lite-Unlocked-32GB-3GB-RAM-DualSim-4G-LTE-Smartphone-Global-Version/173459246269?epid=22025300359&amp;hash=item2862fa0cbd%3Am%3AmvBzAXWZP41glJOlsAFsjzg&amp;LH_ItemCondition=1000&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下单链接&lt;/a&gt;（购买后两天就售罄了）&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="phone" scheme="https://blog.xdrd.me/categories/phone/"/>
-    
-    
-      <category term="bacon" scheme="https://blog.xdrd.me/tags/bacon/"/>
-    
-      <category term="daisy" scheme="https://blog.xdrd.me/tags/daisy/"/>
-    
-      <category term="Android Q" scheme="https://blog.xdrd.me/tags/Android-Q/"/>
+    <category term="desktop" scheme="https://blog.xdrd.me/tags/desktop/"/>
     
   </entry>
   
