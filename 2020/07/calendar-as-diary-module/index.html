@@ -136,7 +136,7 @@ ga('send', 'pageview');
       
         <p>其实在上一篇 <a href="/2020/05/calendar-as-diary-roadmap/" title="「日历记事本」规划">「日历记事本」规划</a> 之后不久我就把插件陆陆续续写得差不多了，但是由于懒癌发作一直没有更新博客 QAQ ……</p>
 <p>那么目前完成的模组有三个流媒体和一个 coding 时间跟踪工具。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><a href="#bilibili">Bilibili</a></li>
@@ -147,7 +147,7 @@ ga('send', 'pageview');
 <h2 id="bilibili">Bilibili</h2>
 
 <p>B 站的数据是从他们家的历史记录页面抓取的，从审查元素页面可以看到有如下的请求：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://api.bilibili.com/x/v2/history?pn=1&amp;ps=100&amp;jsonp=jsonp'</span></span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">curl</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;https://api.bilibili.com/x/v2/history?pn=1&amp;ps=100&amp;jsonp=jsonp&#39;</span></span></code></pre>
 <p>那么返回的数据是一个 json 对象，内含一堆 <del>看不懂</del> 的条目……里面比较重要的其实也就下面这些：</p>
 <ul>
 <li>aid: 就是以前的 av 号</li>
@@ -155,7 +155,7 @@ ga('send', 'pageview');
 <li>duration: 这个应该是总长吧</li>
 <li>page: 包含观看分 p 号和观看时间等</li>
 <li>progress: 观看的长度；-1 表示的是看完了</li>
-<li>redirect_link: 链接，其实可以用 av/bv 号生成</li>
+<li>redirect_link: 链接，其实可以用 av&#x2F;bv 号生成</li>
 <li>title: 标题</li>
 <li>view_at: 观看时间，是 Unix 时间戳格式的</li>
 </ul>
@@ -164,21 +164,22 @@ ga('send', 'pageview');
 <h2 id="netflix">Netflix</h2>
 
 <p>Netflix 只有精确到天且看完节目的记录，所以只能解析 html 了……</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://www.netflix.com/viewingactivity'</span></span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">curl</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;https://www.netflix.com/viewingactivity&#39;</span></span></code></pre>
 <p>虽然不是 json 格式，所幸数据都在一个 table 里面，还算比较规整，只要拿 scraper 稍微搞搞就可以了。其他应该也没什么坑点，日期用正则表达式 parse 一下就行（</p>
 <h2 id="wakatime">Wakatime</h2>
 
-<p>Wakatime 做的还不错，至少有 <a href="//wakatime.com/developers/" target="_blank" rel="noopener">api</a> 和对应的文档（虽然写得不怎么样……）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://wakatime.com/api/v1/users/current/durations?date=YYYY-MM-DD'</span></span><br><span class="line">curl <span class="string">'https://wakatime.com/api/v1/users/current/summaries?start=YYYY-MM-DD&amp;end=YYYY-MM-DD&amp;cache=false'</span></span><br></pre></td></tr></table></figure>
+<p>Wakatime 做的还不错，至少有 <a href="//wakatime.com/developers/">api</a> 和对应的文档（虽然写得不怎么样……）</p>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">curl</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;https://wakatime.com/api/v1/users/current/durations?date=YYYY-MM-DD&#39;</span></span>
+<span class="line"><span style="color: #6F42C1">curl</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;https://wakatime.com/api/v1/users/current/summaries?start=YYYY-MM-DD&amp;end=YYYY-MM-DD&amp;cache=false&#39;</span></span></code></pre>
 
-<p>有个小问题（其实每个插件都会遇到）是，比如我正在看视频或者进行某个项目，那么如果这个活动持续时间超过了服务器抓取历史记录的间隔市场的话，就会抓取到两份历史记录——但是它们指向的是同一个活动。因此一个<a href="//github.com/owen8877/calendar-as-diary/issues/1" target="_blank" rel="noopener">修复的小技巧</a>就是过滤掉结束时间太近的那些活动；这样会引入一丢丢延迟，但是总体上来说应该没问题。</p>
+<p>有个小问题（其实每个插件都会遇到）是，比如我正在看视频或者进行某个项目，那么如果这个活动持续时间超过了服务器抓取历史记录的间隔市场的话，就会抓取到两份历史记录——但是它们指向的是同一个活动。因此一个<a href="//github.com/owen8877/calendar-as-diary/issues/1">修复的小技巧</a>就是过滤掉结束时间太近的那些活动；这样会引入一丢丢延迟，但是总体上来说应该没问题。</p>
 <h2 id="youtube">Youtube</h2>
 
 <p><del>谷歌简直是业界毒瘤x</del></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl <span class="string">'https://myactivity.google.com/activitycontrols/youtube?view=item'</span></span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">curl</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;https://myactivity.google.com/activitycontrols/youtube?view=item&#39;</span></span></code></pre>
 
 <p>Youtube 的历史记录要难搞很多，因为首先它可能会受到时区影响（因为精确到了分钟），其次它“智能”地将同一天观看的内容整合在一起，中间用另一个 div 元素分开，所以还要动点脑筋才能把日期读出来……像观看进度这种东西都是靠缩略图上的进度条读出来的，实在受不了这种奇技淫巧x</p>
-<p>目前为止<a href="//github.com/owen8877/calendar-as-diary/issues/3" target="_blank" rel="noopener">时区的问题</a>还不太能搞定……还是等有时间再修复吧x</p>
+<p>目前为止<a href="//github.com/owen8877/calendar-as-diary/issues/3">时区的问题</a>还不太能搞定……还是等有时间再修复吧x</p>
 
       
     </div>
@@ -189,7 +190,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2020/07/calendar-as-diary-module/" data-id="ckcf4yhtd00002fzrf9so5ulm" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2020/07/calendar-as-diary-module/" data-id="clroidz2u005ef0zr0pidgkks" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -310,7 +311,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">31</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
   </div>
 
 

@@ -131,7 +131,7 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>这个是 shell 的（一部分）精髓吧 <del>所以我几乎每次都会搞错</del></p>
-<p>简单说来就是通过一些保留的符号，操纵命令的输入流、输出流（包括标准输出流和错误输出流）。我们提到过 Unix/Linux 设计哲学是一切都是文件，所以一个命令（进程？）输入、输出都是“文件”；既然是文件那就可以进行重定向。</p>
+<p>简单说来就是通过一些保留的符号，操纵命令的输入流、输出流（包括标准输出流和错误输出流）。我们提到过 Unix&#x2F;Linux 设计哲学是一切都是文件，所以一个命令（进程？）输入、输出都是“文件”；既然是文件那就可以进行重定向。</p>
         
           <p class="article-more-link">
             <a class="btn btn-primary" href="/2018/01/20.7-io-redirection/#more">Read More</a>
@@ -143,7 +143,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/01/20.7-io-redirection/" data-id="ck8d81ds7000lg1zr75t35037" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/01/20.7-io-redirection/" data-id="clroidz1w001lf0zr6hlb2c2q" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -194,8 +194,13 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>先来看一下三种循环的语法：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">help</span> <span class="keyword">for</span> | head -n1</span><br><span class="line"><span class="keyword">for</span>: <span class="keyword">for</span> NAME [<span class="keyword">in</span> WORDS ... ] ; <span class="keyword">do</span> COMMANDS; <span class="keyword">done</span></span><br><span class="line">$ <span class="built_in">help</span> <span class="keyword">while</span> | head -n1</span><br><span class="line"><span class="keyword">while</span>: <span class="keyword">while</span> COMMANDS; <span class="keyword">do</span> COMMANDS; <span class="keyword">done</span></span><br><span class="line">$ <span class="built_in">help</span> until | head -n1</span><br><span class="line">until: until COMMANDS; <span class="keyword">do</span> COMMANDS; <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>反正我觉得 until 相对于 while 是没什么用= =</p>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">help</span><span style="color: #24292E"> </span><span style="color: #032F62">for</span><span style="color: #24292E"> </span><span style="color: #D73A49">|</span><span style="color: #24292E"> </span><span style="color: #6F42C1">head</span><span style="color: #24292E"> </span><span style="color: #005CC5">-n1</span></span>
+<span class="line"><span style="color: #24292E">for: </span><span style="color: #D73A49">for</span><span style="color: #24292E"> NAME [in WORDS ... ] ; </span><span style="color: #D73A49">do</span><span style="color: #24292E"> </span><span style="color: #6F42C1">COMMANDS</span><span style="color: #24292E">; </span><span style="color: #D73A49">done</span></span>
+<span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">help</span><span style="color: #24292E"> </span><span style="color: #032F62">while</span><span style="color: #24292E"> </span><span style="color: #D73A49">|</span><span style="color: #24292E"> </span><span style="color: #6F42C1">head</span><span style="color: #24292E"> </span><span style="color: #005CC5">-n1</span></span>
+<span class="line"><span style="color: #24292E">while: </span><span style="color: #D73A49">while</span><span style="color: #24292E"> </span><span style="color: #6F42C1">COMMANDS</span><span style="color: #24292E">; </span><span style="color: #D73A49">do</span><span style="color: #24292E"> </span><span style="color: #6F42C1">COMMANDS</span><span style="color: #24292E">; </span><span style="color: #D73A49">done</span></span>
+<span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">help</span><span style="color: #24292E"> </span><span style="color: #032F62">until</span><span style="color: #24292E"> </span><span style="color: #D73A49">|</span><span style="color: #24292E"> </span><span style="color: #6F42C1">head</span><span style="color: #24292E"> </span><span style="color: #005CC5">-n1</span></span>
+<span class="line"><span style="color: #24292E">until: </span><span style="color: #D73A49">until</span><span style="color: #24292E"> </span><span style="color: #6F42C1">COMMANDS</span><span style="color: #24292E">; </span><span style="color: #D73A49">do</span><span style="color: #24292E"> </span><span style="color: #6F42C1">COMMANDS</span><span style="color: #24292E">; </span><span style="color: #D73A49">done</span></span></code></pre>
+<p>反正我觉得 until 相对于 while 是没什么用&#x3D; &#x3D;</p>
         
           <p class="article-more-link">
             <a class="btn btn-primary" href="/2018/01/20.6-loop-statement/#more">Read More</a>
@@ -207,7 +212,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/01/20.6-loop-statement/" data-id="ck8d81ds6000kg1zr9ypl8n9h" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/01/20.6-loop-statement/" data-id="clroidz1v001if0zraq212b54" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -257,26 +262,67 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>除了 js 和 c/cpp 的三目操作符 <code>[] ? [] : []</code> 和 python 的 <code>[val1] if [cond] else [val2]</code> <del>是的我就是要吐槽它们顺序不一样</del> ，应该大部分语言的条件表达式只有 if-else 类或者 switch-case 类，那么我们也从这两种看一下 bash 里怎么做条件判断。</p>
+        <p>除了 js 和 c&#x2F;cpp 的三目操作符 <code>[] ? [] : []</code> 和 python 的 <code>[val1] if [cond] else [val2]</code> <del>是的我就是要吐槽它们顺序不一样</del> ，应该大部分语言的条件表达式只有 if-else 类或者 switch-case 类，那么我们也从这两种看一下 bash 里怎么做条件判断。</p>
 <h3 id="if-else"><a href="#if-else" class="headerlink" title="if-else"></a>if-else</h3><p>基本语法是</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ cond1 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  exp1</span><br><span class="line"><span class="keyword">elif</span> [ cond2 ]</span><br><span class="line">  exp2</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  exp3</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #D73A49">if</span><span style="color: #24292E"> [ cond1 ]</span></span>
+<span class="line"><span style="color: #D73A49">then</span></span>
+<span class="line"><span style="color: #24292E">  </span><span style="color: #6F42C1">exp1</span></span>
+<span class="line"><span style="color: #D73A49">elif</span><span style="color: #24292E"> [ cond2 ]</span></span>
+<span class="line"><span style="color: #24292E">  </span><span style="color: #6F42C1">exp2</span></span>
+<span class="line"><span style="color: #D73A49">else</span></span>
+<span class="line"><span style="color: #24292E">  </span><span style="color: #6F42C1">exp3</span></span>
+<span class="line"><span style="color: #D73A49">fi</span></span></code></pre>
 <p>假设大家都已经掌握了 if-else 结构，这里只强调几个不按常理出牌的地方：</p>
 <ul>
-<li>左右方括号周围要有空格，不然就是语法错误（原因接下来说道 <code>test</code> 的时候会分析），比如：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="keyword">if</span> [ 1 -ne 2 ]; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"Surely"</span>; <span class="keyword">else</span> <span class="built_in">echo</span> <span class="string">"Math taught by literature teacher."</span>; <span class="keyword">fi</span></span><br><span class="line">Surely</span><br><span class="line">$ <span class="keyword">if</span> [1 -ne 2 ]; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"Surely"</span>; <span class="keyword">else</span> <span class="built_in">echo</span> <span class="string">"Math taught by literature teacher."</span>; <span class="keyword">fi</span></span><br><span class="line">bash: [1: <span class="built_in">command</span> not found</span><br><span class="line">Math taught by literature teacher.</span><br><span class="line">$ <span class="keyword">if</span> [ 1 -ne 2]; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"Surely"</span>; <span class="keyword">else</span> <span class="built_in">echo</span> <span class="string">"Math taught by literature teacher."</span>; <span class="keyword">fi</span></span><br><span class="line">bash: [: missing `]<span class="string">'</span></span><br><span class="line"><span class="string">Math taught by literature teacher.</span></span><br></pre></td></tr></table></figure>
+<li>左右方括号周围要有空格，不然就是语法错误（原因接下来说道 <code>test</code> 的时候会分析），比如：<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292E">  </span><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">if</span><span style="color: #24292E"> [ </span><span style="color: #005CC5">1</span><span style="color: #24292E"> </span><span style="color: #005CC5">-ne</span><span style="color: #24292E"> </span><span style="color: #005CC5">2</span><span style="color: #24292E"> </span><span style="color: #032F62">]</span><span style="color: #24292E">; </span><span style="color: #D73A49">then</span><span style="color: #24292E"> </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;Surely&quot;</span><span style="color: #24292E">; </span><span style="color: #D73A49">else</span><span style="color: #24292E"> </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;Math taught by literature teacher.&quot;</span><span style="color: #24292E">; </span><span style="color: #D73A49">fi</span></span>
+<span class="line"><span style="color: #24292E">  </span><span style="color: #6F42C1">Surely</span></span>
+<span class="line"><span style="color: #24292E">  </span><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">if</span><span style="color: #24292E"> [1 </span><span style="color: #005CC5">-ne</span><span style="color: #24292E"> </span><span style="color: #005CC5">2</span><span style="color: #24292E"> </span><span style="color: #032F62">]</span><span style="color: #24292E">; </span><span style="color: #D73A49">then</span><span style="color: #24292E"> </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;Surely&quot;</span><span style="color: #24292E">; </span><span style="color: #D73A49">else</span><span style="color: #24292E"> </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;Math taught by literature teacher.&quot;</span><span style="color: #24292E">; </span><span style="color: #D73A49">fi</span></span>
+<span class="line"><span style="color: #24292E">  </span><span style="color: #6F42C1">bash:</span><span style="color: #24292E"> [1: </span><span style="color: #032F62">command</span><span style="color: #24292E"> </span><span style="color: #032F62">not</span><span style="color: #24292E"> </span><span style="color: #032F62">found</span></span>
+<span class="line"><span style="color: #24292E">  </span><span style="color: #6F42C1">Math</span><span style="color: #24292E"> </span><span style="color: #032F62">taught</span><span style="color: #24292E"> </span><span style="color: #032F62">by</span><span style="color: #24292E"> </span><span style="color: #032F62">literature</span><span style="color: #24292E"> </span><span style="color: #032F62">teacher.</span></span>
+<span class="line"><span style="color: #24292E">  </span><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">if</span><span style="color: #24292E"> [ </span><span style="color: #005CC5">1</span><span style="color: #24292E"> </span><span style="color: #005CC5">-ne</span><span style="color: #24292E"> </span><span style="color: #005CC5">2</span><span style="color: #032F62">]</span><span style="color: #24292E">; </span><span style="color: #D73A49">then</span><span style="color: #24292E"> </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;Surely&quot;</span><span style="color: #24292E">; </span><span style="color: #D73A49">else</span><span style="color: #24292E"> </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;Math taught by literature teacher.&quot;</span><span style="color: #24292E">; </span><span style="color: #D73A49">fi</span></span>
+<span class="line"><span style="color: #24292E">  </span><span style="color: #6F42C1">bash:</span><span style="color: #24292E"> [: </span><span style="color: #032F62">missing</span><span style="color: #24292E"> </span><span style="color: #032F62">`]&#39;</span></span>
+<span class="line"><span style="color: #032F62">  </span><span style="color: #6F42C1">Math</span><span style="color: #032F62"> taught by literature teacher.</span></span></code></pre>
 这里我们也展示了如何将 if-else 写在同一行内。</li>
 <li>和 matlab 不一样的地方是， if-else 块用 fi 结束，而不是 end （相比之下我觉得还是 matlab 的写法好一点）。</li>
-<li>测试条件是返回值等于 0 为真，返回值非零为假（真 TM 奇怪，居然<a href="https://stackoverflow.com/questions/14462272/why-is-true-equal-to-1" target="_blank" rel="noopener">和 VB 差不多</a>）</li>
+<li>测试条件是返回值等于 0 为真，返回值非零为假（真 TM 奇怪，居然<a href="https://stackoverflow.com/questions/14462272/why-is-true-equal-to-1">和 VB 差不多</a>）</li>
 </ul>
 <h3 id="与-test"><a href="#与-test" class="headerlink" title="[ 与 test"></a>[ 与 test</h3><p>上面提到了左右方括号两边必须加空格，这是为什么呢？</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">help</span> [</span><br><span class="line">[: [ arg... ]</span><br><span class="line">    Evaluate conditional expression.</span><br><span class="line">    </span><br><span class="line">    This is a synonym <span class="keyword">for</span> the <span class="string">"test"</span> <span class="built_in">builtin</span>, but the last argument must</span><br><span class="line">    be a literal `]<span class="string">', to match the opening `['</span>.</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">help</span><span style="color: #24292E"> [</span></span>
+<span class="line"><span style="color: #24292E">[: [ arg... ]</span></span>
+<span class="line"><span style="color: #24292E">    Evaluate conditional expression.</span></span>
+<span class="line"><span style="color: #24292E">    </span></span>
+<span class="line"><span style="color: #24292E">    This is a synonym </span><span style="color: #D73A49">for</span><span style="color: #24292E"> the </span><span style="color: #032F62">&quot;test&quot;</span><span style="color: #24292E"> builtin, but the last argument must</span></span>
+<span class="line"><span style="color: #24292E">    be a literal </span><span style="color: #032F62">`]&#39;, to match the opening `[&#39;.</span></span></code></pre>
 <p>这就很有趣了，我们再来看看 <code>test</code> 的帮助：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">help</span> <span class="built_in">test</span></span><br><span class="line"><span class="built_in">test</span>: <span class="built_in">test</span> [expr]</span><br><span class="line">    Evaluate conditional expression.</span><br><span class="line">    </span><br><span class="line">    Exits with a status of 0 (<span class="literal">true</span>) or 1 (<span class="literal">false</span>) depending on</span><br><span class="line">    the evaluation of EXPR.  Expressions may be unary or binary.  Unary</span><br><span class="line">    expressions are often used to examine the status of a file.  There</span><br><span class="line">    are string operators and numeric comparison operators as well.</span><br><span class="line">    </span><br><span class="line">    The behavior of <span class="built_in">test</span> depends on the number of arguments.  Read the</span><br><span class="line">    bash manual page <span class="keyword">for</span> the complete specification.</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">help</span><span style="color: #24292E"> </span><span style="color: #032F62">test</span></span>
+<span class="line"><span style="color: #005CC5">test</span><span style="color: #24292E">: </span><span style="color: #032F62">test</span><span style="color: #24292E"> [expr]</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #6F42C1">Evaluate</span><span style="color: #24292E"> </span><span style="color: #032F62">conditional</span><span style="color: #24292E"> </span><span style="color: #032F62">expression.</span></span>
+<span class="line"><span style="color: #24292E">    </span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #6F42C1">Exits</span><span style="color: #24292E"> </span><span style="color: #032F62">with</span><span style="color: #24292E"> </span><span style="color: #032F62">a</span><span style="color: #24292E"> </span><span style="color: #032F62">status</span><span style="color: #24292E"> </span><span style="color: #032F62">of</span><span style="color: #24292E"> </span><span style="color: #005CC5">0</span><span style="color: #24292E"> (true) or 1 (</span><span style="color: #005CC5">false</span><span style="color: #24292E">) depending on</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #6F42C1">the</span><span style="color: #24292E"> </span><span style="color: #032F62">evaluation</span><span style="color: #24292E"> </span><span style="color: #032F62">of</span><span style="color: #24292E"> </span><span style="color: #032F62">EXPR.</span><span style="color: #24292E">  </span><span style="color: #032F62">Expressions</span><span style="color: #24292E"> </span><span style="color: #032F62">may</span><span style="color: #24292E"> </span><span style="color: #032F62">be</span><span style="color: #24292E"> </span><span style="color: #032F62">unary</span><span style="color: #24292E"> </span><span style="color: #032F62">or</span><span style="color: #24292E"> </span><span style="color: #032F62">binary.</span><span style="color: #24292E">  </span><span style="color: #032F62">Unary</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #6F42C1">expressions</span><span style="color: #24292E"> </span><span style="color: #032F62">are</span><span style="color: #24292E"> </span><span style="color: #032F62">often</span><span style="color: #24292E"> </span><span style="color: #032F62">used</span><span style="color: #24292E"> </span><span style="color: #032F62">to</span><span style="color: #24292E"> </span><span style="color: #032F62">examine</span><span style="color: #24292E"> </span><span style="color: #032F62">the</span><span style="color: #24292E"> </span><span style="color: #032F62">status</span><span style="color: #24292E"> </span><span style="color: #032F62">of</span><span style="color: #24292E"> </span><span style="color: #032F62">a</span><span style="color: #24292E"> </span><span style="color: #032F62">file.</span><span style="color: #24292E">  </span><span style="color: #032F62">There</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #6F42C1">are</span><span style="color: #24292E"> </span><span style="color: #032F62">string</span><span style="color: #24292E"> </span><span style="color: #032F62">operators</span><span style="color: #24292E"> </span><span style="color: #032F62">and</span><span style="color: #24292E"> </span><span style="color: #032F62">numeric</span><span style="color: #24292E"> </span><span style="color: #032F62">comparison</span><span style="color: #24292E"> </span><span style="color: #032F62">operators</span><span style="color: #24292E"> </span><span style="color: #032F62">as</span><span style="color: #24292E"> </span><span style="color: #032F62">well.</span></span>
+<span class="line"><span style="color: #24292E">    </span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #6F42C1">The</span><span style="color: #24292E"> </span><span style="color: #032F62">behavior</span><span style="color: #24292E"> </span><span style="color: #032F62">of</span><span style="color: #24292E"> </span><span style="color: #032F62">test</span><span style="color: #24292E"> </span><span style="color: #032F62">depends</span><span style="color: #24292E"> </span><span style="color: #032F62">on</span><span style="color: #24292E"> </span><span style="color: #032F62">the</span><span style="color: #24292E"> </span><span style="color: #032F62">number</span><span style="color: #24292E"> </span><span style="color: #032F62">of</span><span style="color: #24292E"> </span><span style="color: #032F62">arguments.</span><span style="color: #24292E">  </span><span style="color: #032F62">Read</span><span style="color: #24292E"> </span><span style="color: #032F62">the</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #6F42C1">bash</span><span style="color: #24292E"> </span><span style="color: #032F62">manual</span><span style="color: #24292E"> </span><span style="color: #032F62">page</span><span style="color: #24292E"> </span><span style="color: #032F62">for</span><span style="color: #24292E"> </span><span style="color: #032F62">the</span><span style="color: #24292E"> </span><span style="color: #032F62">complete</span><span style="color: #24292E"> </span><span style="color: #032F62">specification.</span></span></code></pre>
 <p>因此 <code>[</code> 只是 <code>test</code> 的别名，只是最后一个参数必须是 <code>]</code> ；至于 test 能干嘛，只要知道它测试文件状态、比较字符串或数字就可以了——剩下的，文档都说了 <em>Read the bash manual page for the complete specification</em> <del>面向 StackOverFlow 编程就可以了</del>。</p>
 <h3 id="if-else-的简化写法"><a href="#if-else-的简化写法" class="headerlink" title="if-else 的简化写法"></a>if-else 的简化写法</h3><p>我们注意到既然条件表达式可以包含命令，那么我们就可以直接把分支中的表达式“接”在做出判断后面；这种技巧是这样实现的：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">condition &amp;&amp; if_succeed || if_failed</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">condition</span><span style="color: #24292E"> &amp;&amp; </span><span style="color: #6F42C1">if_succeed</span><span style="color: #24292E"> </span><span style="color: #D73A49">||</span><span style="color: #24292E"> </span><span style="color: #6F42C1">if_failed</span></span></code></pre>
 <p><del>这种语句为什么能够成立留作习题</del></p>
 <h3 id="case-esac-结构"><a href="#case-esac-结构" class="headerlink" title="case-esac 结构"></a>case-esac 结构</h3><p>是的，他们又把单词反过来了（手动微笑），举个例子：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ day=<span class="string">"Sat"</span></span><br><span class="line">$ <span class="keyword">case</span> <span class="variable">$day</span> <span class="keyword">in</span></span><br><span class="line">&gt;   Mon | Tue | Wed | Thu | Fri)</span><br><span class="line">&gt;     <span class="built_in">echo</span> <span class="string">'Oh no, we have to work today.'</span></span><br><span class="line">&gt;     ;;</span><br><span class="line">&gt;   Sat | Sun)</span><br><span class="line">&gt;     <span class="built_in">echo</span> <span class="string">'Relax!'</span></span><br><span class="line">&gt;     ;;</span><br><span class="line">&gt;   *)</span><br><span class="line">&gt;     <span class="built_in">echo</span> <span class="string">'Sorry aliens.'</span></span><br><span class="line">&gt;     ;;</span><br><span class="line">&gt; <span class="keyword">esac</span></span><br><span class="line">Relax!</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">day=&quot;Sat&quot;</span></span>
+<span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">case</span><span style="color: #24292E"> $day </span><span style="color: #032F62">in</span></span>
+<span class="line"><span style="color: #D73A49">&gt;</span><span style="color: #24292E">   Mon </span><span style="color: #D73A49">|</span><span style="color: #24292E"> </span><span style="color: #6F42C1">Tue</span><span style="color: #24292E"> </span><span style="color: #D73A49">|</span><span style="color: #24292E"> </span><span style="color: #6F42C1">Wed</span><span style="color: #24292E"> </span><span style="color: #D73A49">|</span><span style="color: #24292E"> </span><span style="color: #6F42C1">Thu</span><span style="color: #24292E"> </span><span style="color: #D73A49">|</span><span style="color: #24292E"> </span><span style="color: #6F42C1">Fri</span><span style="color: #24292E">)</span></span>
+<span class="line"><span style="color: #D73A49">&gt;</span><span style="color: #24292E">     echo </span><span style="color: #032F62">&#39;Oh no, we have to work today.&#39;</span></span>
+<span class="line"><span style="color: #D73A49">&gt;</span><span style="color: #24292E">     ;;</span></span>
+<span class="line"><span style="color: #D73A49">&gt;</span><span style="color: #24292E">   Sat </span><span style="color: #D73A49">|</span><span style="color: #24292E"> </span><span style="color: #6F42C1">Sun</span><span style="color: #24292E">)</span></span>
+<span class="line"><span style="color: #D73A49">&gt;</span><span style="color: #24292E">     echo </span><span style="color: #032F62">&#39;Relax!&#39;</span></span>
+<span class="line"><span style="color: #D73A49">&gt;</span><span style="color: #24292E">     ;;</span></span>
+<span class="line"><span style="color: #D73A49">&gt;</span><span style="color: #24292E">   </span><span style="color: #D73A49">*</span><span style="color: #24292E">)</span></span>
+<span class="line"><span style="color: #D73A49">&gt;</span><span style="color: #24292E">     echo </span><span style="color: #032F62">&#39;Sorry aliens.&#39;</span></span>
+<span class="line"><span style="color: #D73A49">&gt;</span><span style="color: #24292E">     ;;</span></span>
+<span class="line"><span style="color: #D73A49">&gt;</span><span style="color: #24292E"> </span><span style="color: #D73A49">esac</span></span>
+<span class="line"><span style="color: #6F42C1">Relax!</span></span></code></pre>
 <p>别忘了打两个分号。</p>
 
       
@@ -288,7 +334,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/01/20.5-conditional-statements/" data-id="ck8d81ds5000ig1zrgsdr7b5a" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/01/20.5-conditional-statements/" data-id="clroidz1v001ff0zr5dym1ufw" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -340,8 +386,11 @@ ga('send', 'pageview');
       
         <p>好的，我抓紧把这个坑填上就可以安利其他有趣的命令了（</p>
 <p>我们提到过 shell 是弱类型的语言，除了数字和数组类型以外好像也就字符串类型了。个人感觉用 shell 的时候字符串类型是最多的，因为你看传参数是用字符串，就连循环</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 10`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p><code>i</code> 的取值 <code>seq 1 10</code> 都是字符串类型。记得某篇文章说过 Lisp 系统比类 Unix 系统高端之处就在于前者用表传参，而后者是用字符串传参= =</p>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #D73A49">for</span><span style="color: #24292E"> i </span><span style="color: #D73A49">in</span><span style="color: #24292E"> </span><span style="color: #032F62">`</span><span style="color: #6F42C1">seq</span><span style="color: #032F62"> </span><span style="color: #005CC5">1</span><span style="color: #032F62"> </span><span style="color: #005CC5">10</span><span style="color: #032F62">`</span></span>
+<span class="line"><span style="color: #D73A49">do</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">...</span></span>
+<span class="line"><span style="color: #D73A49">done</span></span></code></pre>
+<p><code>i</code> 的取值 <code>seq 1 10</code> 都是字符串类型。记得某篇文章说过 Lisp 系统比类 Unix 系统高端之处就在于前者用表传参，而后者是用字符串传参&#x3D; &#x3D;</p>
         
           <p class="article-more-link">
             <a class="btn btn-primary" href="/2018/01/20.4-strings/#more">Read More</a>
@@ -353,7 +402,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/01/20.4-strings/" data-id="ck8d81ds6000jg1zrer90fvhr" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/01/20.4-strings/" data-id="clroidz1u001cf0zr7v8q9w5r" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -416,7 +465,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2017/12/practice-lesson-to-stochastic-process/" data-id="ck8d81dt5002vg1zrb0lqef20" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2017/12/practice-lesson-to-stochastic-process/" data-id="clroidz3s00auf0zrh5bu9vt6" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -468,7 +517,7 @@ ga('send', 'pageview');
       
         <p>这篇博文注定也是会比较细碎。</p>
 <p>需求是这样的：有一系列索大法某 DV 录制的音乐会视频，现在需要压制然后按照节目分割。一开始我的想法是这样子的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">压制 &#x3D;&gt; 分割</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e">压制 =&gt; 分割</span></span></code></pre>
 
 <hr>
         
@@ -482,7 +531,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2017/11/working-with-ffmpeg/" data-id="ck8d81dup003zg1zr1hdsddpb" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2017/11/working-with-ffmpeg/" data-id="clroidz4b00dqf0zr7adje0zk" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -533,13 +582,30 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>大意是在 Matlab 命令行安装 Gurobi 的时候提示架构不对，看了一下安装文件的源码：</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">% We don't require GUROBI_HOME on Mac or Linux. Get gurobiarch from path.</span></span><br><span class="line">gurobiarch = gurobipath;</span><br><span class="line">gurobiarch(<span class="keyword">end</span>) = [];</span><br><span class="line">slashes = strfind(gurobiarch, fs);</span><br><span class="line">gurobiarch = gurobiarch(slashes(<span class="keyword">end</span><span class="number">-1</span>)+<span class="number">1</span>:slashes(<span class="keyword">end</span>)<span class="number">-1</span>);</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6A737D">% We don&#39;t require GUROBI_HOME on Mac or Linux. Get gurobiarch from path.</span></span>
+<span class="line"><span style="color: #24292E">gurobiarch = gurobipath;</span></span>
+<span class="line"><span style="color: #24292E">gurobiarch(</span><span style="color: #D73A49">end</span><span style="color: #24292E">) = [];</span></span>
+<span class="line"><span style="color: #24292E">slashes = strfind(gurobiarch, fs);</span></span>
+<span class="line"><span style="color: #24292E">gurobiarch = gurobiarch(slashes(</span><span style="color: #D73A49">end</span><span style="color: #24292E">-</span><span style="color: #005CC5">1</span><span style="color: #24292E">)+</span><span style="color: #005CC5">1</span><span style="color: #24292E">:slashes(</span><span style="color: #D73A49">end</span><span style="color: #24292E">)-</span><span style="color: #005CC5">1</span><span style="color: #24292E">);</span></span></code></pre>
 <p>关爱智障的眼神。</p>
 <p>（解释一下，因为我把 Gurobi 安装到 <code>/opt/gurobi</code> 去了，但是似乎安装程序默认我们应该安装到一个类似于 <code>/***/gurobi752/linux64/</code> 的地方）</p>
 <hr>
 <p>顺便吐槽一下 CVX 。</p>
 <p>申请 academic license 的时候需要输入（网卡的）特征编码，但是在我这里的发行版上 <code>cvx_version</code> 并不显示出来……继续读源码：</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">%%%%%%%%%%%%%%%%</span></span><br><span class="line"><span class="comment">% License file %</span></span><br><span class="line"><span class="comment">%%%%%%%%%%%%%%%%</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> isoctave,</span><br><span class="line">    <span class="keyword">if</span> ~<span class="built_in">isempty</span>( cvx___.license ),</span><br><span class="line">        fprintf( <span class="string">'CVX Professional is not supported with Octave.\n'</span> );</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">elseif</span> cvx___.jver &lt; <span class="number">1.6</span>,</span><br><span class="line">    fprintf(<span class="string">'       WARNING: full support for CVX Professional licenses\n'</span> );</span><br><span class="line">    fprintf(<span class="string">'       requres Java version 1.6.0 or later. Please upgrade.\n'</span> );</span><br><span class="line"><span class="keyword">elseif</span> exist( <span class="string">'cvx_license'</span>, <span class="string">'file'</span> ),</span><br><span class="line">    cvx_license( args&#123;:&#125; );</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6A737D">%%%%%%%%%%%%%%%%</span></span>
+<span class="line"><span style="color: #6A737D">% License file %</span></span>
+<span class="line"><span style="color: #6A737D">%%%%%%%%%%%%%%%%</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D73A49">if</span><span style="color: #24292E"> isoctave,</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #D73A49">if</span><span style="color: #24292E"> ~isempty( cvx___.license ),</span></span>
+<span class="line"><span style="color: #24292E">        fprintf( </span><span style="color: #032F62">&#39;CVX Professional is not supported with Octave.</span><span style="color: #005CC5">\n</span><span style="color: #032F62">&#39;</span><span style="color: #24292E"> );</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #D73A49">end</span></span>
+<span class="line"><span style="color: #D73A49">elseif</span><span style="color: #24292E"> cvx___.jver </span><span style="color: #D73A49">&lt;</span><span style="color: #24292E"> </span><span style="color: #005CC5">1.6</span><span style="color: #24292E">,</span></span>
+<span class="line"><span style="color: #24292E">    fprintf(</span><span style="color: #032F62">&#39;       WARNING: full support for CVX Professional licenses</span><span style="color: #005CC5">\n</span><span style="color: #032F62">&#39;</span><span style="color: #24292E"> );</span></span>
+<span class="line"><span style="color: #24292E">    fprintf(</span><span style="color: #032F62">&#39;       requres Java version 1.6.0 or later. Please upgrade.</span><span style="color: #005CC5">\n</span><span style="color: #032F62">&#39;</span><span style="color: #24292E"> );</span></span>
+<span class="line"><span style="color: #D73A49">elseif</span><span style="color: #24292E"> exist( </span><span style="color: #032F62">&#39;cvx_license&#39;</span><span style="color: #24292E">, </span><span style="color: #032F62">&#39;file&#39;</span><span style="color: #24292E"> ),</span></span>
+<span class="line"><span style="color: #24292E">    cvx_license( args&#123;:&#125; );</span></span>
+<span class="line"><span style="color: #D73A49">end</span></span></code></pre>
 <p>重下带 gurobi 和 mosek 的 standard 版本，把 <code>cvx_license.p</code> 文件复制过去就可以了。</p>
 <p>关爱智障的眼神*2。</p>
 
@@ -552,7 +618,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2017/11/stupid-gurobi-installation/" data-id="ck8d81dt80034g1zreuc7bumj" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2017/11/stupid-gurobi-installation/" data-id="clroidz4200c8f0zr24ot3xwb" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -617,7 +683,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2017/11/purists-0/" data-id="ck8d81dt0002og1zrg8dqfgq8" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2017/11/purists-0/" data-id="clroidz3t00axf0zr1gx18ib0" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -681,7 +747,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2017/10/matlab-opengl/" data-id="ck8d81dsu0027g1zr3iud96ms" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2017/10/matlab-opengl/" data-id="clroidz3j009bf0zr1ogpdaxh" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -732,13 +798,13 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>刚才偶然发现自己改的<a href="git@github.com:owen8877/hexo-theme-strict.git">播客模板</a>有个小 bug ：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">h3(): a(src &#x3D; &quot;&#x2F;&#x2F;&quot; + config.staticRoot + post.media) 下载链接</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #22863A">h3</span><span style="color: #005CC5">()</span><span style="color: #24292E">: </span><span style="color: #22863A">a</span><span style="color: #005CC5">(</span><span style="color: #6F42C1">src</span><span style="color: #24292E"> = </span><span style="color: #032F62">&quot;//&quot;</span><span style="color: #24292E"> </span><span style="color: #D73A49">+</span><span style="color: #24292E"> config.staticRoot </span><span style="color: #D73A49">+</span><span style="color: #24292E"> post.media</span><span style="color: #005CC5">)</span><span style="color: #24292E"> 下载链接</span></span></code></pre>
 <p>其实应该是 <code>a(href = ...)</code> 才对；否则链接会有下划线提示但是没有点击提示，也自然不会有点击跳转。</p>
 <hr>
 <p>本来记得这周还碰到过一个语言的某种坑的，结果周中太忙没时间记录下来，也算是非常遗憾。</p>
 <p>很遗憾啊……愿望太多、想做的事情太多、想达到的关系太复杂，往往就感觉没有完成，甚至不觉得自己能够完成。</p>
 <p>十一的时候出去转了一圈 <del>不过就是去隔壁圆明园走了半天嘚瑟什么</del> ，一路上和同伴谈天道地。聊起自己刚上大学时录制游戏视频传到网上，现在忽然也有了这份情调，却早已经没了彼时中二的气息和出名的欲望。或许有还是有的，只不过更多的被掩饰住了而已。</p>
-<p>或许就这样吧。有空我继续去<a href="https://fenglouyi.blogspot.com/" target="_blank" rel="noopener">风楼倚</a>上面去倾泻负能量去。</p>
+<p>或许就这样吧。有空我继续去<a href="https://fenglouyi.blogspot.com/">风楼倚</a>上面去倾泻负能量去。</p>
 
       
     </div>
@@ -749,7 +815,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2017/10/nagging-1/" data-id="ck8d81dsv002bg1zr4qg66tyx" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2017/10/nagging-1/" data-id="clroidz3m009uf0zrg7wnhb08" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -850,7 +916,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">31</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
   </div>
 
 

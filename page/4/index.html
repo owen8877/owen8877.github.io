@@ -143,7 +143,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/12/fixing-pacman/" data-id="ck8d81dsp001ug1zrexscgcer" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/12/fixing-pacman/" data-id="clroidz33006sf0zr9ud17ura" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -205,7 +205,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/12/switching-to-firefox/" data-id="ck8d81dt80035g1zr7fivcgs4" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/12/switching-to-firefox/" data-id="clroidz4200ccf0zrgfyfb4rj" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -267,7 +267,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/12/flashing-whyred/" data-id="ck8d81dsn001ng1zr1n51cycm" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/12/flashing-whyred/" data-id="clroidz350071f0zr0mib1uhr" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -330,7 +330,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/07/duet-display-2/" data-id="ck8d81dsm001kg1zr12tvh9q8" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/07/duet-display-2/" data-id="clroidz31006ff0zr7evhgjmj" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -392,7 +392,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/07/duet-display/" data-id="ck8d81dsl001hg1zraf87g7xu" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/07/duet-display/" data-id="clroidz32006kf0zrcssrdcno" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -444,24 +444,24 @@ ga('send', 'pageview');
       
         <p>最近又重新拾起 arch （假装自己在做科研），看着很小的字有点难受……</p>
 <p>记得最简单的方案是调整 <code>xrandr</code> ？</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xrandr --dpi 120</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">xrandr</span><span style="color: #24292E"> </span><span style="color: #005CC5">--dpi</span><span style="color: #24292E"> </span><span style="color: #005CC5">120</span></span></code></pre>
 
 <p>似乎效果不是很好？ Android Studio 会出现蜜汁位图放大和错位的现象。</p>
 <hr>
-<p>尝试了一下似乎 dpi 设置到 110 看起来差不多；而且把<a href="https://winaero.com/blog/find-change-screen-dpi-linux/" target="_blank" rel="noopener">参数设置</a>放到 <code>~/.Xresources</code> 里去了：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Xft.dpi: 110</span><br></pre></td></tr></table></figure>
+<p>尝试了一下似乎 dpi 设置到 110 看起来差不多；而且把<a href="https://winaero.com/blog/find-change-screen-dpi-linux/">参数设置</a>放到 <code>~/.Xresources</code> 里去了：</p>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e">Xft.dpi: 110</span></span></code></pre>
 
 <hr>
 <p><strong>i3</strong><br>先到 <code>~/.config/i3/config</code> 去把 i3-bar 的字号调了一下（并重新发现了一些有用的按键绑定）</p>
 <p><strong>sogou-pinyin</strong><br>输入法的字号就有点小了……而且白底实在看不下去了[捂脸]然而主题又很难改……</p>
 <p><strong>chrome</strong><br>这个比较简单，直接改 <code>~/.config/chrome-flags.conf</code> ：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--force-device-scale-factor&#x3D;1.2</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e">--force-device-scale-factor=1.2</span></span></code></pre>
 
 <p><strong>sublime</strong><br>直接读取了 dpi 参数，不需要其他操作</p>
 <p><strong>android studio</strong><br>按理说也是自动读取了 dpi 参数但是……每日 tips 居然是位图？？</p>
 <p><strong>matlab</strong><br>Wiki 上说 R2017b 支持……回学校我就重装 matlab ！</p>
 <hr>
-<p><em>参考链接</em><br><a href="https://wiki.archlinux.org/index.php/HiDPI" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/HiDPI</a></p>
+<p><em>参考链接</em><br><a href="https://wiki.archlinux.org/index.php/HiDPI">https://wiki.archlinux.org/index.php/HiDPI</a></p>
 
       
     </div>
@@ -472,7 +472,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/07/tweaking-dpi/" data-id="ck8d81duk003jg1zr35b6f097" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/07/tweaking-dpi/" data-id="clroidz4600d1f0zre3ib9yqo" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -522,10 +522,10 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>起因：手机接 OTG 线录视频，结果空间太小没把尾部/头部的流信息写上，完全无法播放。<br>查到似乎 <a href="https://github.com/ponchio/untrunc" target="_blank" rel="noopener">untrunc</a> 可以尝试修复。</p>
+        <p>起因：手机接 OTG 线录视频，结果空间太小没把尾部&#x2F;头部的流信息写上，完全无法播放。<br>查到似乎 <a href="https://github.com/ponchio/untrunc">untrunc</a> 可以尝试修复。</p>
 <hr>
 <p>先尝试安装一些依赖；在 Arch 上似乎是 ffmpeg-full ：<br><del></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cuda-9.1.85.3-5-x86_64  1119.3 MiB  28.7M&#x2F;s 00:39 100%</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e">cuda-9.1.85.3-5-x86_64  1119.3 MiB  28.7M/s 00:39 100%</span></span></code></pre>
 <p>？？？</del></p>
 <hr>
 <p>还是先 clone 一下 repo 吧（<br>然后发现 <code>/</code> 没空间了 QAQ<br>清了一遍 cache ，发现 aur 上原来有现成的源；但试了一下似乎又不行，报错 <code>std::bad_alloc</code> ……</p>
@@ -541,7 +541,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/05/untrunc/" data-id="ck8d81dul003ng1zrcznecxsn" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/05/untrunc/" data-id="clroidz4800daf0zr3rsg7lxy" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -593,11 +593,11 @@ ga('send', 'pageview');
       
         <p>期中考试的时候实在无法忍受 ss 的 Windows 客户端的速度了，于是琢磨着是不是要换个客户端用用。</p>
 <hr>
-<p>先前用的是用 C# 实现的<a href="https://github.com/shadowsocks/shadowsocks-windows" target="_blank" rel="noopener">客户端</a>，不知为何连接速度非常慢。考虑到在 Arch Linux 上使用的 python 版本表现还不错，试着在 Windows 下 <code>pip</code> 安装了一下。</p>
+<p>先前用的是用 C# 实现的<a href="https://github.com/shadowsocks/shadowsocks-windows">客户端</a>，不知为何连接速度非常慢。考虑到在 Arch Linux 上使用的 python 版本表现还不错，试着在 Windows 下 <code>pip</code> 安装了一下。</p>
 <p>然后就发现……并没有 systemd 啊（摔）这怎么开机自启？其实是有两种解决方案：</p>
 <ol>
 <li>使用计划任务等工具配置</li>
-<li>使用 the <strong>N</strong>on-<strong>S</strong>ucking <strong>S</strong>ervice <strong>M</strong>anager 配置<br>我觉得 <a href="https://nssm.cc/" target="_blank" rel="noopener">nssm</a> 还是挺不错的，支持日志旋转等非常细致的功能，就是 last release 老了一点……</li>
+<li>使用 the <strong>N</strong>on-<strong>S</strong>ucking <strong>S</strong>ervice <strong>M</strong>anager 配置<br>我觉得 <a href="https://nssm.cc/">nssm</a> 还是挺不错的，支持日志旋转等非常细致的功能，就是 last release 老了一点……</li>
 </ol>
 <hr>
 <p>不过 ss 的 python 版维护已经不勤快了，正在测试 libev 的版本……</p>
@@ -611,7 +611,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/04/ss-and-nssm/" data-id="ck8d81dt7002zg1zr3kl6h2el" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/04/ss-and-nssm/" data-id="clroidz4000c2f0zrelpdgefe" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -673,7 +673,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/03/updating-bios/" data-id="ck8d81dum003pg1zreiwdg37f" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/03/updating-bios/" data-id="clroidz4800ddf0zr0jx27fqw" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -724,13 +724,26 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>其实就是给命令做个缩写～语法是 <code>alias [name]=[value]</code> ，如果只运行 <code>alias</code> 的话就会显示全部的别名替换，比如</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">alias</span></span><br><span class="line"><span class="built_in">alias</span> ls=<span class="string">'ls --color=auto'</span></span><br><span class="line">$</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">alias</span></span>
+<span class="line"><span style="color: #D73A49">alias</span><span style="color: #24292E"> ls</span><span style="color: #D73A49">=</span><span style="color: #032F62">&#39;ls --color=auto&#39;</span></span>
+<span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span></span></code></pre>
 <p>呃……还是拿我现在在用的 oh-my-zsh 举例子吧……</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ <span class="built_in">alias</span> | wc -l</span><br><span class="line">161</span><br><span class="line">➜ <span class="built_in">alias</span> | grep git | wc -l</span><br><span class="line">124</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">➜</span><span style="color: #24292E"> </span><span style="color: #032F62">alias</span><span style="color: #24292E"> </span><span style="color: #D73A49">|</span><span style="color: #24292E"> </span><span style="color: #6F42C1">wc</span><span style="color: #24292E"> </span><span style="color: #005CC5">-l</span></span>
+<span class="line"><span style="color: #6F42C1">161</span></span>
+<span class="line"><span style="color: #6F42C1">➜</span><span style="color: #24292E"> </span><span style="color: #032F62">alias</span><span style="color: #24292E"> </span><span style="color: #D73A49">|</span><span style="color: #24292E"> </span><span style="color: #6F42C1">grep</span><span style="color: #24292E"> </span><span style="color: #032F62">git</span><span style="color: #24292E"> </span><span style="color: #D73A49">|</span><span style="color: #24292E"> </span><span style="color: #6F42C1">wc</span><span style="color: #24292E"> </span><span style="color: #005CC5">-l</span></span>
+<span class="line"><span style="color: #6F42C1">124</span></span></code></pre>
 <p>这么多别名有一大半都是为 git 服务的[捂脸]</p>
 <hr>
 <p>看到一个好玩的 <code>-=&#39;cd -&#39;</code> ，原来 <code>-</code> 表示旧目录的意思啊：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">pwd</span></span><br><span class="line">/home/xdroid</span><br><span class="line">$ <span class="built_in">cd</span> repo</span><br><span class="line">$ <span class="built_in">pwd</span></span><br><span class="line">/home/xdroid/repo</span><br><span class="line">$ <span class="built_in">cd</span> -</span><br><span class="line">/home/xdroid</span><br><span class="line">$ <span class="built_in">pwd</span></span><br><span class="line">/home/xdroid</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">pwd</span></span>
+<span class="line"><span style="color: #6F42C1">/home/xdroid</span></span>
+<span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">cd</span><span style="color: #24292E"> </span><span style="color: #032F62">repo</span></span>
+<span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">pwd</span></span>
+<span class="line"><span style="color: #6F42C1">/home/xdroid/repo</span></span>
+<span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">cd</span><span style="color: #24292E"> </span><span style="color: #032F62">-</span></span>
+<span class="line"><span style="color: #6F42C1">/home/xdroid</span></span>
+<span class="line"><span style="color: #6F42C1">$</span><span style="color: #24292E"> </span><span style="color: #032F62">pwd</span></span>
+<span class="line"><span style="color: #6F42C1">/home/xdroid</span></span></code></pre>
 <p>应该是个 shell 都能用。</p>
 
       
@@ -742,7 +755,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2018/02/20.8-alias/" data-id="ck8d81ds7000mg1zr5jb00cbi" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2018/02/20.8-alias/" data-id="clroidz1x001of0zrgb7n158p" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -843,7 +856,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">31</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
   </div>
 
 

@@ -129,10 +129,10 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>好吧，因爲<a href="/2017/05/confusing-breakdown/">上一次 gnome 莫名其妙掛了</a>，想試一下 i3 能不能啓動，於是就掉進了大坑。這裏記錄一下我的使用習慣和相關配置。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="終端"><a href="#終端" class="headerlink" title="終端"></a>終端</h2><ol>
-<li>將終端調整爲 <code>gnome-terminal</code>（在 <code>~/i3/config</code> 中）<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bindsym $mod+Return exec gnome-terminal</span><br></pre></td></tr></table></figure></li>
+<li>將終端調整爲 <code>gnome-terminal</code>（在 <code>~/i3/config</code> 中）<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e">bindsym $mod+Return exec gnome-terminal</span></span></code></pre></li>
 <li>對於字體，不知道爲什麼原來好好的 Ubuntu Mono 等一系列字體全都 fallback 到一個奇怪的繁體字體上（其實 UI 也有這個問題）。后来发现只是搜狗输入法没切成简体……</li>
 </ol>
 <h2 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h2><ol>
@@ -172,7 +172,7 @@ ga('send', 'pageview');
 </tr>
 <tr>
 <td><code>$ d/w/e</code></td>
-<td>棧疊/標籤/分裂模式</td>
+<td>棧疊&#x2F;標籤&#x2F;分裂模式</td>
 </tr>
 <tr>
 <td><code>$ shift space</code></td>
@@ -188,32 +188,203 @@ ga('send', 'pageview');
 </tr>
 <tr>
 <td><code>$ shift c/r/e</code></td>
-<td>重載配置/重啓 i3 /退出</td>
+<td>重載配置&#x2F;重啓 i3 &#x2F;退出</td>
 </tr>
 </tbody></table>
 <h2 id="控制鍵"><a href="#控制鍵" class="headerlink" title="控制鍵"></a>控制鍵</h2><ol>
-<li>原來的控制鍵不能用了，於是要註冊一下（ <code>~/.config/i3/config</code> ）<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Brightness</span><br><span class="line">bindsym XF86MonBrightnessUp exec xbacklight -inc 10</span><br><span class="line">bindsym XF86MonBrightnessDown exec xbacklight -dec 10</span><br><span class="line"></span><br><span class="line"># Audio</span><br><span class="line">bindsym XF86AudioRaiseVolume exec pamixer --increase 10</span><br><span class="line">bindsym XF86AudioLowerVolume exec pamixer --decrease 10</span><br><span class="line">bindsym XF86AudioMute exec pamixer -t</span><br></pre></td></tr></table></figure></li>
-<li>像截屏一類的比較難搞，本來好好的 <code>gnome-screenshot</code> 在 i3 下水土不服，只好默認開 <code>-i</code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># PrintScreen</span><br><span class="line">bindsym Print exec gnome-screenshot</span><br><span class="line">bindsym $mod+Print exec gnome-screenshot -i</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>原來的控制鍵不能用了，於是要註冊一下（ <code>~/.config/i3/config</code> ）<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e"># Brightness</span></span>
+<span class="line"><span style="color: #24292e">bindsym XF86MonBrightnessUp exec xbacklight -inc 10</span></span>
+<span class="line"><span style="color: #24292e">bindsym XF86MonBrightnessDown exec xbacklight -dec 10</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e"># Audio</span></span>
+<span class="line"><span style="color: #24292e">bindsym XF86AudioRaiseVolume exec pamixer --increase 10</span></span>
+<span class="line"><span style="color: #24292e">bindsym XF86AudioLowerVolume exec pamixer --decrease 10</span></span>
+<span class="line"><span style="color: #24292e">bindsym XF86AudioMute exec pamixer -t</span></span></code></pre></li>
+<li>像截屏一類的比較難搞，本來好好的 <code>gnome-screenshot</code> 在 i3 下水土不服，只好默認開 <code>-i</code><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e"># PrintScreen</span></span>
+<span class="line"><span style="color: #24292e">bindsym Print exec gnome-screenshot</span></span>
+<span class="line"><span style="color: #24292e">bindsym $mod+Print exec gnome-screenshot -i</span></span></code></pre></li>
 </ol>
 <h2 id="狀態欄"><a href="#狀態欄" class="headerlink" title="狀態欄"></a>狀態欄</h2><p>首先安裝一堆依賴</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S i3blocks acpi sysstat</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6F42C1">sudo</span><span style="color: #24292E"> </span><span style="color: #032F62">pacman</span><span style="color: #24292E"> </span><span style="color: #005CC5">-S</span><span style="color: #24292E"> </span><span style="color: #032F62">i3blocks</span><span style="color: #24292E"> </span><span style="color: #032F62">acpi</span><span style="color: #24292E"> </span><span style="color: #032F62">sysstat</span></span></code></pre>
 <p>然后……一通瞎搞，直接贴代码吧</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">command&#x3D;&#x2F;usr&#x2F;lib&#x2F;i3blocks&#x2F;$BLOCK_NAME</span><br><span class="line">separator_block_width&#x3D;15</span><br><span class="line">markup&#x3D;none</span><br><span class="line"></span><br><span class="line"># Volume indicator</span><br><span class="line">#</span><br><span class="line"># The first parameter sets the step (and units to display)</span><br><span class="line"># The second parameter overrides the mixer selection</span><br><span class="line"># See the script for details.</span><br><span class="line">[volume]</span><br><span class="line">command&#x3D;~&#x2F;.i3&#x2F;bin&#x2F;volume</span><br><span class="line">interval&#x3D;once</span><br><span class="line">signal&#x3D;10</span><br><span class="line">separator&#x3D;false</span><br><span class="line"></span><br><span class="line">[battery]</span><br><span class="line">command&#x3D;~&#x2F;.i3&#x2F;bin&#x2F;battery</span><br><span class="line">interval&#x3D;30</span><br><span class="line"></span><br><span class="line"># ---</span><br><span class="line"></span><br><span class="line">[iface]</span><br><span class="line">label&#x3D;</span><br><span class="line">#instance&#x3D;wlan0</span><br><span class="line">color&#x3D;#00FF00</span><br><span class="line">interval&#x3D;10</span><br><span class="line">separator&#x3D;false</span><br><span class="line"></span><br><span class="line">[wifi]</span><br><span class="line">instance&#x3D;wlp3s0</span><br><span class="line">interval&#x3D;10</span><br><span class="line"></span><br><span class="line">[proxy]</span><br><span class="line">command&#x3D;~&#x2F;.i3&#x2F;bin&#x2F;proxy</span><br><span class="line">color&#x3D;#00FF00</span><br><span class="line">interval&#x3D;10</span><br><span class="line">separator&#x3D;true</span><br><span class="line"></span><br><span class="line"># ---</span><br><span class="line"></span><br><span class="line">[cpu_usage]</span><br><span class="line">interval&#x3D;1</span><br><span class="line">min_width&#x3D;99.99%</span><br><span class="line">align&#x3D;right</span><br><span class="line">separator&#x3D;false</span><br><span class="line"></span><br><span class="line">[memory]</span><br><span class="line">label&#x3D;</span><br><span class="line">interval&#x3D;30</span><br><span class="line"></span><br><span class="line"># ---</span><br><span class="line"></span><br><span class="line">[time]</span><br><span class="line">command&#x3D;date &#39;+%Y-%m-%d %H:%M:%S&#39;</span><br><span class="line">interval&#x3D;1</span><br></pre></td></tr></table></figure>
+<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e">command=/usr/lib/i3blocks/$BLOCK_NAME</span></span>
+<span class="line"><span style="color: #24292e">separator_block_width=15</span></span>
+<span class="line"><span style="color: #24292e">markup=none</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e"># Volume indicator</span></span>
+<span class="line"><span style="color: #24292e">#</span></span>
+<span class="line"><span style="color: #24292e"># The first parameter sets the step (and units to display)</span></span>
+<span class="line"><span style="color: #24292e"># The second parameter overrides the mixer selection</span></span>
+<span class="line"><span style="color: #24292e"># See the script for details.</span></span>
+<span class="line"><span style="color: #24292e">[volume]</span></span>
+<span class="line"><span style="color: #24292e">command=~/.i3/bin/volume</span></span>
+<span class="line"><span style="color: #24292e">interval=once</span></span>
+<span class="line"><span style="color: #24292e">signal=10</span></span>
+<span class="line"><span style="color: #24292e">separator=false</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e">[battery]</span></span>
+<span class="line"><span style="color: #24292e">command=~/.i3/bin/battery</span></span>
+<span class="line"><span style="color: #24292e">interval=30</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e"># ---</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e">[iface]</span></span>
+<span class="line"><span style="color: #24292e">label=</span></span>
+<span class="line"><span style="color: #24292e">#instance=wlan0</span></span>
+<span class="line"><span style="color: #24292e">color=#00FF00</span></span>
+<span class="line"><span style="color: #24292e">interval=10</span></span>
+<span class="line"><span style="color: #24292e">separator=false</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e">[wifi]</span></span>
+<span class="line"><span style="color: #24292e">instance=wlp3s0</span></span>
+<span class="line"><span style="color: #24292e">interval=10</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e">[proxy]</span></span>
+<span class="line"><span style="color: #24292e">command=~/.i3/bin/proxy</span></span>
+<span class="line"><span style="color: #24292e">color=#00FF00</span></span>
+<span class="line"><span style="color: #24292e">interval=10</span></span>
+<span class="line"><span style="color: #24292e">separator=true</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e"># ---</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e">[cpu_usage]</span></span>
+<span class="line"><span style="color: #24292e">interval=1</span></span>
+<span class="line"><span style="color: #24292e">min_width=99.99%</span></span>
+<span class="line"><span style="color: #24292e">align=right</span></span>
+<span class="line"><span style="color: #24292e">separator=false</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e">[memory]</span></span>
+<span class="line"><span style="color: #24292e">label=</span></span>
+<span class="line"><span style="color: #24292e">interval=30</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e"># ---</span></span>
+<span class="line"><span style="color: #24292e"></span></span>
+<span class="line"><span style="color: #24292e">[time]</span></span>
+<span class="line"><span style="color: #24292e">command=date &#39;+%Y-%m-%d %H:%M:%S&#39;</span></span>
+<span class="line"><span style="color: #24292e">interval=1</span></span></code></pre>
 <p>依赖几个小脚本</p>
 <ul>
-<li><code>battery</code><figure class="highlight perl"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/bin/perl</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"><span class="keyword">use</span> utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $acpi;</span><br><span class="line"><span class="keyword">my</span> $status;</span><br><span class="line"><span class="keyword">my</span> $percent;</span><br><span class="line"><span class="keyword">my</span> $ac_adapt;</span><br><span class="line"><span class="keyword">my</span> $full_text;</span><br><span class="line"><span class="keyword">my</span> $short_text;</span><br><span class="line"><span class="keyword">my</span> $bat_number = $ENV<span class="string">&#123;BLOCK_INSTANCE&#125;</span> || <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># read the first line of the "acpi" command output</span></span><br><span class="line"><span class="keyword">open</span> (ACPI, <span class="string">"acpi -b | grep 'Battery $bat_number' |"</span>) <span class="keyword">or</span> <span class="keyword">die</span>;</span><br><span class="line">$acpi = &lt;ACPI&gt;;</span><br><span class="line"><span class="keyword">close</span>(ACPI);</span><br><span class="line"></span><br><span class="line"><span class="comment"># fail on unexpected output</span></span><br><span class="line"><span class="keyword">if</span> ($acpi !~ <span class="regexp">/: (\w+), (\d+)%/</span>) &#123;</span><br><span class="line">	<span class="keyword">die</span> <span class="string">"$acpi\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$status = $1;</span><br><span class="line">$percent = $2;</span><br><span class="line">$full_text = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($status eq <span class="string">'Discharging'</span>) &#123;</span><br><span class="line">	$full_text .= <span class="string">''</span>;</span><br><span class="line">&#125; <span class="keyword">elsif</span> ($status eq <span class="string">'Charging'</span>) &#123;</span><br><span class="line">	$full_text .= <span class="string">''</span>;</span><br><span class="line">&#125; <span class="keyword">elsif</span> ($status eq <span class="string">'Unknown'</span>) &#123;</span><br><span class="line">	<span class="keyword">open</span> (AC_ADAPTER, <span class="string">"acpi -a |"</span>) <span class="keyword">or</span> <span class="keyword">die</span>;</span><br><span class="line">	$ac_adapt = &lt;AC_ADAPTER&gt;;</span><br><span class="line">	<span class="keyword">close</span>(AC_ADAPTER);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ($ac_adapt =~ <span class="regexp">/: ([\w-]+)/</span>) &#123;</span><br><span class="line">		$ac_adapt = $1;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> ($ac_adapt eq <span class="string">'on-line'</span>) &#123;</span><br><span class="line">			$full_text .= <span class="string">''</span>;</span><br><span class="line">		&#125; <span class="keyword">elsif</span> ($ac_adapt eq <span class="string">'off-line'</span>) &#123;</span><br><span class="line">			$full_text .= <span class="string">''</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$short_text = $full_text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($acpi =~ <span class="regexp">/(\d\d:\d\d):/</span>) &#123;</span><br><span class="line">	$full_text .= <span class="string">" ($1)"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$full_text .= <span class="string">" $percent%";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># print text</span></span><br><span class="line"><span class="string">print "</span>$full_text\n<span class="string">";</span></span><br><span class="line"><span class="string">print "</span>$short_text\n<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># consider color and urgent flag only on discharge</span></span><br><span class="line"><span class="string">if ($status eq 'Discharging') &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	if ($percent &lt; 20) &#123;</span></span><br><span class="line"><span class="string">		print "</span><span class="comment">#FF0000\n";</span></span><br><span class="line">	&#125; <span class="keyword">elsif</span> ($percent &lt; <span class="number">40</span>) &#123;</span><br><span class="line">		<span class="keyword">print</span> <span class="string">"#FFAE00\n"</span>;</span><br><span class="line">	&#125; <span class="keyword">elsif</span> ($percent &lt; <span class="number">60</span>) &#123;</span><br><span class="line">		<span class="keyword">print</span> <span class="string">"#FFF600\n"</span>;</span><br><span class="line">	&#125; <span class="keyword">elsif</span> ($percent &lt; <span class="number">85</span>) &#123;</span><br><span class="line">		<span class="keyword">print</span> <span class="string">"#A8FF00\n"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ($percent &lt; <span class="number">5</span>) &#123;</span><br><span class="line">		<span class="keyword">exit</span>(<span class="number">33</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">exit</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></li>
-<li><code>proxy</code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">target=<span class="string">"www.google.com"</span></span><br><span class="line">timeout=1</span><br><span class="line"></span><br><span class="line">res=`proxychains -f /etc/proxychain.conf.test curl <span class="variable">$&#123;target&#125;</span> -m <span class="variable">$&#123;timeout&#125;</span> -I -s -w %&#123;http_code&#125; 2&gt;/dev/null | tail -n1`</span><br><span class="line"></span><br><span class="line">icon=<span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"x<span class="variable">$&#123;res&#125;</span>"</span> = <span class="string">"x200"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment">#2F8DFF</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment">#CD101E</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></li>
-<li><code>volume</code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ismute=`pamixer --get-mute`</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$ismute</span> = <span class="string">"true"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="comment"># mute</span></span><br><span class="line">    muteicon=<span class="string">""</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$muteicon</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$muteicon</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment">#777777</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="comment"># not mute</span></span><br><span class="line">    volume=`pamixer --get-volume`</span><br><span class="line">    icon=<span class="string">""</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span> <span class="variable">$volume</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$icon</span> <span class="variable">$volume</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment">#FFFF00</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<li><code>battery</code><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6A737D">#!/bin/perl</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D73A49">use</span><span style="color: #24292E"> strict;</span></span>
+<span class="line"><span style="color: #D73A49">use</span><span style="color: #24292E"> warnings;</span></span>
+<span class="line"><span style="color: #D73A49">use</span><span style="color: #24292E"> utf8;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D73A49">my</span><span style="color: #24292E"> $acpi;</span></span>
+<span class="line"><span style="color: #D73A49">my</span><span style="color: #24292E"> $status;</span></span>
+<span class="line"><span style="color: #D73A49">my</span><span style="color: #24292E"> $percent;</span></span>
+<span class="line"><span style="color: #D73A49">my</span><span style="color: #24292E"> $ac_adapt;</span></span>
+<span class="line"><span style="color: #D73A49">my</span><span style="color: #24292E"> $full_text;</span></span>
+<span class="line"><span style="color: #D73A49">my</span><span style="color: #24292E"> $short_text;</span></span>
+<span class="line"><span style="color: #D73A49">my</span><span style="color: #24292E"> $bat_number = $ENV&#123;</span><span style="color: #005CC5">BLOCK_INSTANCE</span><span style="color: #24292E">&#125; || 0;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6A737D"># read the first line of the &quot;acpi&quot; command output</span></span>
+<span class="line"><span style="color: #005CC5">open</span><span style="color: #24292E"> (ACPI, </span><span style="color: #032F62">&quot;acpi -b | grep &#39;Battery </span><span style="color: #24292E">$bat_number</span><span style="color: #032F62">&#39; |&quot;</span><span style="color: #24292E">) </span><span style="color: #D73A49">or</span><span style="color: #24292E"> </span><span style="color: #D73A49">die</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">$acpi = &lt;ACPI&gt;;</span></span>
+<span class="line"><span style="color: #005CC5">close</span><span style="color: #24292E">(ACPI);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6A737D"># fail on unexpected output</span></span>
+<span class="line"><span style="color: #D73A49">if</span><span style="color: #24292E"> ($acpi !~ </span><span style="color: #032F62">/: (</span><span style="color: #22863A; font-weight: bold">\w</span><span style="color: #032F62">+), (</span><span style="color: #22863A; font-weight: bold">\d</span><span style="color: #032F62">+)%/</span><span style="color: #24292E">) &#123;</span></span>
+<span class="line"><span style="color: #24292E">	</span><span style="color: #D73A49">die</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;</span><span style="color: #24292E">$acpi</span><span style="color: #005CC5">\n</span><span style="color: #032F62">&quot;</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">&#125;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">$status = $1;</span></span>
+<span class="line"><span style="color: #24292E">$percent = $2;</span></span>
+<span class="line"><span style="color: #24292E">$full_text = </span><span style="color: #032F62">&quot;&quot;</span><span style="color: #24292E">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D73A49">if</span><span style="color: #24292E"> ($status </span><span style="color: #005CC5">eq</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;Discharging&#39;</span><span style="color: #24292E">) &#123;</span></span>
+<span class="line"><span style="color: #24292E">	$full_text .= </span><span style="color: #032F62">&#39;&#39;</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">&#125; </span><span style="color: #D73A49">elsif</span><span style="color: #24292E"> ($status </span><span style="color: #005CC5">eq</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;Charging&#39;</span><span style="color: #24292E">) &#123;</span></span>
+<span class="line"><span style="color: #24292E">	$full_text .= </span><span style="color: #032F62">&#39;&#39;</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">&#125; </span><span style="color: #D73A49">elsif</span><span style="color: #24292E"> ($status </span><span style="color: #005CC5">eq</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;Unknown&#39;</span><span style="color: #24292E">) &#123;</span></span>
+<span class="line"><span style="color: #24292E">	</span><span style="color: #005CC5">open</span><span style="color: #24292E"> (AC_ADAPTER, </span><span style="color: #032F62">&quot;acpi -a |&quot;</span><span style="color: #24292E">) </span><span style="color: #D73A49">or</span><span style="color: #24292E"> </span><span style="color: #D73A49">die</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">	$ac_adapt = &lt;AC_ADAPTER&gt;;</span></span>
+<span class="line"><span style="color: #24292E">	</span><span style="color: #005CC5">close</span><span style="color: #24292E">(AC_ADAPTER);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">	</span><span style="color: #D73A49">if</span><span style="color: #24292E"> ($ac_adapt =~ </span><span style="color: #032F62">/: ([</span><span style="color: #22863A; font-weight: bold">\w</span><span style="color: #032F62">-]+)/</span><span style="color: #24292E">) &#123;</span></span>
+<span class="line"><span style="color: #24292E">		$ac_adapt = $1;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">		</span><span style="color: #D73A49">if</span><span style="color: #24292E"> ($ac_adapt </span><span style="color: #005CC5">eq</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;on-line&#39;</span><span style="color: #24292E">) &#123;</span></span>
+<span class="line"><span style="color: #24292E">			$full_text .= </span><span style="color: #032F62">&#39;&#39;</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">		&#125; </span><span style="color: #D73A49">elsif</span><span style="color: #24292E"> ($ac_adapt </span><span style="color: #005CC5">eq</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;off-line&#39;</span><span style="color: #24292E">) &#123;</span></span>
+<span class="line"><span style="color: #24292E">			$full_text .= </span><span style="color: #032F62">&#39;&#39;</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">		&#125;</span></span>
+<span class="line"><span style="color: #24292E">	&#125;</span></span>
+<span class="line"><span style="color: #24292E">&#125;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">$short_text = $full_text;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D73A49">if</span><span style="color: #24292E"> ($acpi =~ </span><span style="color: #032F62">/(</span><span style="color: #22863A; font-weight: bold">\d\d</span><span style="color: #032F62">:</span><span style="color: #22863A; font-weight: bold">\d\d</span><span style="color: #032F62">):/</span><span style="color: #24292E">) &#123;</span></span>
+<span class="line"><span style="color: #24292E">	$full_text .= </span><span style="color: #032F62">&quot; (</span><span style="color: #24292E">$1</span><span style="color: #032F62">)&quot;</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">&#125;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">$full_text .= </span><span style="color: #032F62">&quot; </span><span style="color: #24292E">$percent</span><span style="color: #032F62">%&quot;</span><span style="color: #24292E">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6A737D"># print text</span></span>
+<span class="line"><span style="color: #005CC5">print</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;</span><span style="color: #24292E">$full_text</span><span style="color: #005CC5">\n</span><span style="color: #032F62">&quot;</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #005CC5">print</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;</span><span style="color: #24292E">$short_text</span><span style="color: #005CC5">\n</span><span style="color: #032F62">&quot;</span><span style="color: #24292E">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6A737D"># consider color and urgent flag only on discharge</span></span>
+<span class="line"><span style="color: #D73A49">if</span><span style="color: #24292E"> ($status </span><span style="color: #005CC5">eq</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;Discharging&#39;</span><span style="color: #24292E">) &#123;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">	</span><span style="color: #D73A49">if</span><span style="color: #24292E"> ($percent &lt; 20) &#123;</span></span>
+<span class="line"><span style="color: #24292E">		</span><span style="color: #005CC5">print</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;#FF0000</span><span style="color: #005CC5">\n</span><span style="color: #032F62">&quot;</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">	&#125; </span><span style="color: #D73A49">elsif</span><span style="color: #24292E"> ($percent &lt; 40) &#123;</span></span>
+<span class="line"><span style="color: #24292E">		</span><span style="color: #005CC5">print</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;#FFAE00</span><span style="color: #005CC5">\n</span><span style="color: #032F62">&quot;</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">	&#125; </span><span style="color: #D73A49">elsif</span><span style="color: #24292E"> ($percent &lt; 60) &#123;</span></span>
+<span class="line"><span style="color: #24292E">		</span><span style="color: #005CC5">print</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;#FFF600</span><span style="color: #005CC5">\n</span><span style="color: #032F62">&quot;</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">	&#125; </span><span style="color: #D73A49">elsif</span><span style="color: #24292E"> ($percent &lt; 85) &#123;</span></span>
+<span class="line"><span style="color: #24292E">		</span><span style="color: #005CC5">print</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;#A8FF00</span><span style="color: #005CC5">\n</span><span style="color: #032F62">&quot;</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">	&#125;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">	</span><span style="color: #D73A49">if</span><span style="color: #24292E"> ($percent &lt; 5) &#123;</span></span>
+<span class="line"><span style="color: #24292E">		</span><span style="color: #D73A49">exit</span><span style="color: #24292E">(33);</span></span>
+<span class="line"><span style="color: #24292E">	&#125;</span></span>
+<span class="line"><span style="color: #24292E">&#125;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D73A49">exit</span><span style="color: #24292E">(0);</span></span></code></pre></li>
+<li><code>proxy</code><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6A737D">#!/bin/bash</span></span>
+<span class="line"><span style="color: #24292E">target</span><span style="color: #D73A49">=</span><span style="color: #032F62">&quot;www.google.com&quot;</span></span>
+<span class="line"><span style="color: #24292E">timeout</span><span style="color: #D73A49">=</span><span style="color: #005CC5">1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">res</span><span style="color: #D73A49">=</span><span style="color: #032F62">`</span><span style="color: #6F42C1">proxychains</span><span style="color: #032F62"> </span><span style="color: #005CC5">-f</span><span style="color: #032F62"> /etc/proxychain.conf.test curl $&#123;</span><span style="color: #24292E">target</span><span style="color: #032F62">&#125; </span><span style="color: #005CC5">-m</span><span style="color: #032F62"> $&#123;</span><span style="color: #24292E">timeout</span><span style="color: #032F62">&#125; </span><span style="color: #005CC5">-I</span><span style="color: #032F62"> </span><span style="color: #005CC5">-s</span><span style="color: #032F62"> </span><span style="color: #005CC5">-w</span><span style="color: #032F62"> %&#123;http_code&#125; </span><span style="color: #D73A49">2&gt;</span><span style="color: #032F62">/dev/null </span><span style="color: #D73A49">|</span><span style="color: #032F62"> </span><span style="color: #6F42C1">tail</span><span style="color: #032F62"> </span><span style="color: #005CC5">-n1</span><span style="color: #032F62">`</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">icon</span><span style="color: #D73A49">=</span><span style="color: #032F62">&quot;&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D73A49">if</span><span style="color: #24292E"> [ </span><span style="color: #032F62">&quot;x$&#123;</span><span style="color: #24292E">res</span><span style="color: #032F62">&#125;&quot;</span><span style="color: #24292E"> </span><span style="color: #D73A49">=</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;x200&quot;</span><span style="color: #24292E"> ]</span></span>
+<span class="line"><span style="color: #D73A49">then</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> $icon</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> $icon</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> </span><span style="color: #005CC5">\#</span><span style="color: #032F62">2F8DFF</span></span>
+<span class="line"><span style="color: #D73A49">else</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> $icon</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> $icon</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> </span><span style="color: #005CC5">\#</span><span style="color: #032F62">CD101E</span></span>
+<span class="line"><span style="color: #D73A49">fi</span></span></code></pre></li>
+<li><code>volume</code><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #6A737D">#!/bin/bash</span></span>
+<span class="line"><span style="color: #24292E">ismute</span><span style="color: #D73A49">=</span><span style="color: #032F62">`</span><span style="color: #6F42C1">pamixer</span><span style="color: #032F62"> </span><span style="color: #005CC5">--get-mute</span><span style="color: #032F62">`</span></span>
+<span class="line"><span style="color: #D73A49">if</span><span style="color: #24292E"> [ $ismute </span><span style="color: #D73A49">=</span><span style="color: #24292E"> </span><span style="color: #032F62">&quot;true&quot;</span><span style="color: #24292E"> ]</span></span>
+<span class="line"><span style="color: #D73A49">then</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #6A737D"># mute</span></span>
+<span class="line"><span style="color: #24292E">    muteicon</span><span style="color: #D73A49">=</span><span style="color: #032F62">&quot;&quot;</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> $muteicon</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> $muteicon</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> </span><span style="color: #005CC5">\#</span><span style="color: #032F62">777777</span></span>
+<span class="line"><span style="color: #D73A49">else</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #6A737D"># not mute</span></span>
+<span class="line"><span style="color: #24292E">    volume</span><span style="color: #D73A49">=</span><span style="color: #032F62">`</span><span style="color: #6F42C1">pamixer</span><span style="color: #032F62"> </span><span style="color: #005CC5">--get-volume</span><span style="color: #032F62">`</span></span>
+<span class="line"><span style="color: #24292E">    icon</span><span style="color: #D73A49">=</span><span style="color: #032F62">&quot;&quot;</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> $icon $volume</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> $icon $volume</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #005CC5">echo</span><span style="color: #24292E"> </span><span style="color: #005CC5">\#</span><span style="color: #032F62">FFFF00</span></span>
+<span class="line"><span style="color: #D73A49">fi</span></span></code></pre>
 超有趣。</li>
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
-<li>有趣的配置，見 <a href="https://github.com/j-san/i3-config" target="_blank" rel="noopener">i3-config</a></li>
-<li>全局字體換爲 DejaVu （在 <code>~/i3/config</code> 中）<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">font pango:DejaVu Sans Mono, Noto Sans Mono CJK SC 8</span><br></pre></td></tr></table></figure></li>
-<li>改 <code>$mod</code> 爲 Windows 徽<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set $mod Mod4</span><br></pre></td></tr></table></figure></li>
-<li>自啓動 <code>fcitx</code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exec --no-startup-id fcitx</span><br></pre></td></tr></table></figure>
-</li>
+<li>有趣的配置，見 <a href="https://github.com/j-san/i3-config">i3-config</a></li>
+<li>全局字體換爲 DejaVu （在 <code>~/i3/config</code> 中）<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e">font pango:DejaVu Sans Mono, Noto Sans Mono CJK SC 8</span></span></code></pre></li>
+<li>改 <code>$mod</code> 爲 Windows 徽<pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e">set $mod Mod4</span></span></code></pre></li>
+<li>自啓動 <code>fcitx</code><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292e">exec --no-startup-id fcitx</span></span></code></pre></li>
 </ol>
 
       
@@ -225,7 +396,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2017/05/using-i3/" data-id="ck8d81dum003rg1zrfwmmflev" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2017/05/using-i3/" data-id="clroidz4900dgf0zr4juxbyfi" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -344,7 +515,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">31</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
   </div>
 
 

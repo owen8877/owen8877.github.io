@@ -136,29 +136,31 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>这篇讲下怎么折腾树莓派的系统的。其实我过了很久才意识到树莓派的处理器是arm架构的 <del>orz</del>，这就导致一个比较麻烦的问题，就是原本在x86架构上跑着的东西就没办法在树莓派上跑了。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>我们还是按时间线索来捋一捋：</p>
 <ol>
-<li><p>总之最重要的事情还是先装系统咯；<del>为了赶时髦</del> 那我也装个Arch玩玩。结果上archlinuxarm一看：</p>
-<blockquote>
+<li>总之最重要的事情还是先装系统咯；<del>为了赶时髦</del> 那我也装个Arch玩玩。结果上archlinuxarm一看：<blockquote>
 <p><strong>Note</strong>: The current installation uses the 32-bit Raspberry Pi 2 armv7h root filesystem. This will be changing eventually to use our AArch64 repository to take full advantage of the ARMv8 Cortex-A53 cores. If you want an AArch64 system, consider the ODROID-C2.</p>
 <p><strong>Also note</strong>: The Raspberry Pi 3 has higher power requirements than the Raspberry Pi 2. A power supply rated at 2.5A is the official recommendation. Using an insufficient power supply will result in random, inexplicable errors and filesystem corruption.</p>
 </blockquote>
-<p><del>哎等等，2.5A……好像适配器又买小了</del></p>
-<p>那装就装了呗，拿出祖传的microSD卡，<code>fdisk</code>和<code>dd</code>咔咔咔几下就把镜像写进去了，插到树莓派上，ok启动了（因为风扇不再是满速转了，所以可以推知系统是启动了）</p>
-<p>然鹅……突然发现连接不上树莓派……</p>
-<p>要想通过<code>ssh</code>连到树莓派上，首先要获得树莓派的ip地址；要想获得ip地址，就先要登录到树莓派上。</p>
-<p>……</p>
-<p>好吧，办法总是有的；虽然校园网非常垃圾，但是有线网没有隔离，所以可以祭出ip scan神器<code>netcat</code>。先记下笔记本连上有线网的子网地址，然后通过对比树莓派联网与否时扫描 22 端口的回应情况，不就能知道树莓派的ip地址了吗？<del>红红火火恍恍惚惚</del></p>
-<p>然鹅……反正就是没连上……我也忘记是什么原因了……</p>
-<p>通过串口<code>minicom</code>也不行……oh no……</p>
 </li>
-<li><p>第二次尝试</p>
-<p>想了想还是谨遵树莓派官方的新手引导 <del>虽然不是很服气</del> ，从树莓派官网下载了 debian 的镜像写到 SD 卡上。找 ip 的方法还是和上面一样……</p>
-<p>这里有个小插曲：其实后来不得不换到 windows 下用另一个 ip scan 软件才找到树莓派地址并且用 putty 连上的……不知为什么用 Linux 死活连不上。</p>
-<p>当我看到树莓派的 motd 的时候眼泪简直快掉下来……好，赶紧把树莓派的 ipv6 地址记下来 <del>，以后就不关机了（其实我现在就是这样的hhh）</del></p>
-</li>
+</ol>
+<p>  <del>哎等等，2.5A……好像适配器又买小了</del></p>
+<p>  那装就装了呗，拿出祖传的microSD卡，<code>fdisk</code>和<code>dd</code>咔咔咔几下就把镜像写进去了，插到树莓派上，ok启动了（因为风扇不再是满速转了，所以可以推知系统是启动了）</p>
+<p>  然鹅……突然发现连接不上树莓派……</p>
+<p>  要想通过<code>ssh</code>连到树莓派上，首先要获得树莓派的ip地址；要想获得ip地址，就先要登录到树莓派上。</p>
+<p>  ……</p>
+<p>  好吧，办法总是有的；虽然校园网非常垃圾，但是有线网没有隔离，所以可以祭出ip scan神器<code>netcat</code>。先记下笔记本连上有线网的子网地址，然后通过对比树莓派联网与否时扫描 22 端口的回应情况，不就能知道树莓派的ip地址了吗？<del>红红火火恍恍惚惚</del></p>
+<p>  然鹅……反正就是没连上……我也忘记是什么原因了……</p>
+<p>  通过串口<code>minicom</code>也不行……oh no……</p>
+<ol start="2">
+<li>第二次尝试</li>
+</ol>
+<p>  想了想还是谨遵树莓派官方的新手引导 <del>虽然不是很服气</del> ，从树莓派官网下载了 debian 的镜像写到 SD 卡上。找 ip 的方法还是和上面一样……</p>
+<p>  这里有个小插曲：其实后来不得不换到 windows 下用另一个 ip scan 软件才找到树莓派地址并且用 putty 连上的……不知为什么用 Linux 死活连不上。</p>
+<p>  当我看到树莓派的 motd 的时候眼泪简直快掉下来……好，赶紧把树莓派的 ipv6 地址记下来 <del>，以后就不关机了（其实我现在就是这样的hhh）</del></p>
+<ol start="3">
 <li><p>为了连接垃圾校园网还是不得不搞了一个脚本扔到 <code>~/bin</code> 下面去。</p>
 </li>
 <li><p>命令行音乐播放器的话……试了一下 <code>cmus</code> 和 <code>mplayer</code> ，感觉体验都一般吧……</p>
@@ -178,7 +180,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.xdrd.me/2016/12/Things-about-Raspberry-Pi-1/" data-id="ck8d81dse000yg1zr97tbfh7e" class="article-share-link">
+      <a data-url="https://blog.xdrd.me/2016/12/Things-about-Raspberry-Pi-1/" data-id="clroidz22002hf0zrb2am5nbv" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -299,7 +301,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">31</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Android-Dev/">Android Dev</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Linux/">Linux</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Windows/">Windows</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/d3/">d3</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/daily/">daily</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/desktop/">desktop</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/electonics/">electonics</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/gizmo/">gizmo</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/laptop/">laptop</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/linux/">linux</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/music/">music</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/nagging/">nagging</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/node/">node</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/phone/">phone</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pi/">pi</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/poem/">poem</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/pytorch/">pytorch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/site/">site</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tech/">tech</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/video/">video</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/vps/">vps</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E8%8F%9C%E9%B8%9F%E7%9A%84Linux%E6%95%99%E7%A8%8B/">从新手到菜鸟的Linux教程</a><span class="sidebar-module-list-count">30</span></li></ul>
   </div>
 
 
